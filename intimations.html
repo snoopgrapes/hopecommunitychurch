@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Services & Activities | Your Church Name</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #4a6fa5;
+            --secondary: #6b8cbc;
+            --accent: #ff7e5f;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --success: #28a745;
+            --warning: #ffc107;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .back-button {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 0.7rem 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            backdrop-filter: blur(5px);
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-50%) translateX(-5px);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .week-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .day-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 4px solid var(--primary);
+        }
+
+        .day-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .day-card.special {
+            border-left-color: var(--accent);
+            background: linear-gradient(to right, #fff, #fff8f6);
+        }
+
+        .day-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .day-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .day-time {
+            background: var(--light);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .event-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .event-details {
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+
+        .event-leader {
+            display: flex;
+            align-items: center;
+            color: var(--secondary);
+            font-size: 0.9rem;
+            margin-top: 0.8rem;
+        }
+
+        .event-leader i {
+            margin-right: 0.5rem;
+        }
+
+        .highlight-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .highlight-title {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .highlight-details {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+        }
+
+        .foodbank-section {
+            background: linear-gradient(to right, #e8f5e9, #f1f8e9);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .food-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .food-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease;
+        }
+
+        .food-item:hover {
+            transform: scale(1.03);
+        }
+
+        .food-item i {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-note {
+            font-style: italic;
+            margin-top: 1rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .week-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .highlight-title {
+                font-size: 1.5rem;
+            }
+            
+            .back-button {
+                position: relative;
+                left: 0;
+                top: 0;
+                transform: none;
+                margin-bottom: 1rem;
+                align-self: flex-start;
+            }
+            
+            header {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <button class="back-button" onclick="goBack()">
+            <i class="fas fa-arrow-left"></i> Back
+        </button>
+        <div class="container">
+            <h1>Weekly Services & Activities</h1>
+            <p>Join us for fellowship, worship, and community outreach</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="week-grid">
+            <div class="day-card">
+                <div class="day-header">
+                    <div class="day-name">Monday</div>
+                    <div class="day-time">11am - 1:30pm</div>
+                </div>
+                <div class="event-title">H.F.R (Hope for Recovery)</div>
+                <div class="event-details">Overcoming Temptation Week 3: The First Temptation</div>
+            </div>
+
+            <div class="day-card">
+                <div class="day-header">
+                    <div class="day-name">Wednesday</div>
+                    <div class="day-time">6:30pm - 8pm</div>
+                </div>
+                <div class="event-title">Prayer Meeting</div>
+                <div class="event-leader">
+                    <i class="fas fa-user"></i>
+                    <span>Leading: Fisola</span>
+                </div>
+            </div>
+
+            <div class="day-card">
+                <div class="day-header">
+                    <div class="day-name">Thursday</div>
+                    <div class="day-time">12pm - 1:30pm</div>
+                </div>
+                <div class="event-title">Street Soccer Football Drop-In</div>
+                <div class="event-details">Holm Park, Yoker</div>
+            </div>
+
+            <div class="day-card">
+                <div class="day-header">
+                    <div class="day-name">Friday</div>
+                    <div class="day-time">12pm - 2pm</div>
+                </div>
+                <div class="event-title">Cafe & Foodbank</div>
+            </div>
+
+            <div class="day-card special">
+                <div class="day-header">
+                    <div class="day-name">Sunday</div>
+                    <div class="day-time">10:30am - Service</div>
+                </div>
+                <div class="event-title">Worship Service</div>
+                <div class="event-details">Theme: Spiritual Posture</div>
+                <div class="event-leader">
+                    <i class="fas fa-user"></i>
+                    <span>Leading: J. Abisoye</span>
+                </div>
+                <div class="event-leader">
+                    <i class="fas fa-microphone"></i>
+                    <span>Speaking: C. Halkett</span>
+                </div>
+                <div class="event-details" style="margin-top: 0.8rem;">
+                    <i class="fas fa-coffee"></i> Tea & Coffee from 10:30am
+                </div>
+            </div>
+        </div>
+
+        <div class="highlight-section">
+            <h2 class="highlight-title">Save the Date</h2>
+            <p class="highlight-details">
+                <strong>Friday, December 12th</strong><br>
+                Hope for Recovery Graduation<br>
+                Time to be confirmed (approx. 7pm - 9pm)<br>
+                <em>More details will follow soon</em>
+            </p>
+        </div>
+
+        <div class="foodbank-section">
+            <h2 class="section-title">Foodbank Support</h2>
+            <p style="text-align: center; margin-bottom: 1.5rem;">Please help support our foodbank if possible. A few items each week will help maintain our stock.</p>
+            
+            <div class="food-items">
+                <div class="food-item">
+                    <i class="fas fa-can"></i>
+                    <div>Tinned Soup</div>
+                </div>
+                <div class="food-item">
+                    <i class="fas fa-seedling"></i>
+                    <div>Beans</div>
+                </div>
+                <div class="food-item">
+                    <i class="fas fa-potato"></i>
+                    <div>Potatoes</div>
+                </div>
+                <div class="food-item">
+                    <i class="fas fa-carrot"></i>
+                    <div>Vegetables</div>
+                </div>
+                <div class="food-item">
+                    <i class="fas fa-drumstick-bite"></i>
+                    <div>Meat</div>
+                </div>
+                <div class="food-item">
+                    <i class="fas fa-utensils"></i>
+                    <div>Pasta/Rice</div>
+                </div>
+                <div class="food-item">
+                    <i class="fas fa-mortar-pestle"></i>
+                    <div>Sauce</div>
+                </div>
+                <div class="food-item">
+                    <i class="fas fa-bowl-food"></i>
+                    <div>Cereal</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>We look forward to welcoming you to our services and activities.</p>
+                <p class="footer-note">All are welcome - come as you are!</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function goBack() {
+            if (document.referrer && document.referrer.includes(window.location.hostname)) {
+                window.history.back();
+            } else {
+                // If there's no previous page in the same site, redirect to home or a default page
+                window.location.href = '/'; // Change this to your home page URL
+            }
+        }
+        
+        // Add keyboard shortcut (Esc key) for going back
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                goBack();
+            }
+        });
+    </script>
+</body>
+</html>

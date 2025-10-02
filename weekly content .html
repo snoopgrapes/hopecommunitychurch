@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Week 6 – Patience | Fruit of Freedom</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #f0f4f8;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    header {
+      background-color: #4ca1af;
+      color: #fff;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .video-section iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+    }
+
+    .resources, .quiz-section, .flashcard-section {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+    }
+
+    .resources a {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: #4ca1af;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .flashcard {
+      text-align: center;
+      padding: 2rem;
+      background-color: #fdfdfd;
+      border: 2px dashed #ccc;
+      font-size: 1.3rem;
+      font-style: italic;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .quiz-question {
+      margin-bottom: 1.2rem;
+    }
+
+    .quiz-question label {
+      display: block;
+      margin-top: 0.5rem;
+    }
+
+    button {
+      background-color: #4ca1af;
+      color: white;
+      border: none;
+      padding: 0.7rem 1.2rem;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    @media (max-width: 768px) {
+      .video-section iframe {
+        height: 220px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Week 6: Patience</h1>
+    <p>“Be completely humble and gentle; be patient…” — Ephesians 4:2</p>
+  </header>
+
+  <div class="container">
+
+    <section class="video-section">
+      <h2>🎥 Teaching Video</h2>
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+    </section>
+
+    <section class="resources">
+      <h2>📄 Resources</h2>
+      <p>Download this week’s worksheet and reflection guide:</p>
+      <a href="#">Download Week 6 Worksheet (PDF)</a>
+    </section>
+
+    <section class="flashcard-section">
+      <h2>💡 Memory Verse Flashcard</h2>
+      <div class="flashcard" onclick="flipCard()">
+        <span id="verse">Click to reveal verse...</span>
+      </div>
+    </section>
+
+    <section class="quiz-section">
+      <h2>📝 Quick Quiz</h2>
+
+      <div class="quiz-question">
+        <p><strong>1. What are the 4 A’s of patience?</strong></p>
+        <label><input type="radio" name="q1"> Avoid, Accept, Apply, Act</label>
+        <label><input type="radio" name="q1"> Accept others, Accept situations, Accept yourself, Accept God</label>
+        <label><input type="radio" name="q1"> Anger, Anxiety, Assertiveness, Attention</label>
+      </div>
+
+      <div class="quiz-question">
+        <p><strong>2. What book of the Bible is the memory verse from?</strong></p>
+        <label><input type="radio" name="q2"> Galatians</label>
+        <label><input type="radio" name="q2"> Ephesians</label>
+        <label><input type="radio" name="q2"> Philippians</label>
+      </div>
+
+      <button onclick="submitQuiz()">Submit Answers</button>
+      <p id="quiz-result" style="margin-top:1rem; font-weight:bold;"></p>
+    </section>
+
+  </div>
+
+  <footer>
+    © 2025 Fruit of Freedom | All rights reserved.
+  </footer>
+
+  <script>
+    let flipped = false;
+    const verse = document.getElementById("verse");
+
+    function flipCard() {
+      if (!flipped) {
+        verse.textContent = "Ephesians 4:2 – Be completely humble and gentle; be patient, bearing with one another in love.";
+        flipped = true;
+      } else {
+        verse.textContent = "Click to reveal verse...";
+        flipped = false;
+      }
+    }
+
+    function submitQuiz() {
+      const q1 = document.querySelector('input[name="q1"]:checked');
+      const q2 = document.querySelector('input[name="q2"]:checked');
+      const result = document.getElementById("quiz-result");
+
+      if (!q1 || !q2) {
+        result.textContent = "Please answer all questions.";
+        result.style.color = "orange";
+        return;
+      }
+
+      if (
+        q1.nextSibling.textContent.includes("Accept others") &&
+        q2.nextSibling.textContent.includes("Ephesians")
+      ) {
+        result.textContent = "✅ Great job! You passed.";
+        result.style.color = "green";
+      } else {
+        result.textContent = "❌ Some answers were incorrect. Try again.";
+        result.style.color = "red";
+      }
+    }
+  </script>
+
+</body>
+</html>

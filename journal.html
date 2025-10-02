@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Journal – Fruit of Freedom</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #f0f4f8;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    header {
+      background-color: #4ca1af;
+      color: #fff;
+      padding: 1.5rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .journal-container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .journal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .journal-date {
+      font-size: 1rem;
+      color: #666;
+    }
+
+    .entry-title-input {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 1.1rem;
+    }
+
+    #editor {
+      height: 300px;
+      margin-bottom: 1rem;
+    }
+
+    .ql-editor {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .journal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.7rem 1.5rem;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 0.9rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: none;
+    }
+
+    .btn-primary {
+      background-color: #4ca1af;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: #3d8a99;
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: #4ca1af;
+      border: 1px solid #4ca1af !important;
+    }
+
+    .btn-secondary:hover {
+      background-color: #f0f4f8;
+    }
+
+    .btn-edit {
+      background-color: #3498db;
+      color: white;
+    }
+
+    .btn-edit:hover {
+      background-color: #2980b9;
+    }
+
+    .btn-danger {
+      background-color: #e74c3c;
+      color: white;
+    }
+
+    .btn-danger:hover {
+      background-color: #c0392b;
+    }
+
+    .search-container {
+      margin: 2rem 0;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .previous-entries {
+      margin-top: 3rem;
+    }
+
+    .entry-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .entry-title {
+      font-weight: bold;
+      color: #2c3e50;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .entry-date {
+      font-weight: bold;
+      color: #666;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .entry-content {
+      line-height: 1.6;
+    }
+
+    .entry-actions {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .entry-action-btn {
+      padding: 0.5rem 0.8rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #777;
+      margin-top: 3rem;
+    }
+
+    .sign-out-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: #f5f7fa;
+      color: #2c3e50;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    .sign-out-btn:hover {
+      background-color: #e1e5eb;
+    }
+
+    @media (max-width: 768px) {
+      .journal-actions {
+        flex-direction: column;
+      }
+      .sign-out-btn {
+        position: static;
+        margin: 10px auto;
+        display: block;
+      }
+      .entry-actions {
+        position: static;
+        margin-bottom: 1rem;
+        justify-content: flex-end;
+      }
+    }
+
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 1s ease-in-out infinite;
+      margin-right: 10px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <button id="signOutButton" class="sign-out-btn">Sign Out</button>
+    <h1>My Journal</h1>
+    <p>Reflect on your journey and God's work in your life</p>
+  </header>
+
+  <div class="journal-container">
+    <div class="journal-header">
+      <h2>Today's Reflection</h2>
+      <div class="journal-date" id="currentDate"></div>
+    </div>
+
+    <input type="text" id="entryTitle" class="entry-title-input" placeholder="Entry Title">
+    
+    <div id="editor"></div>
+
+    <div class="journal-actions">
+      <button class="btn btn-secondary" id="clearBtn">Clear</button>
+      <button class="btn btn-primary" id="saveBtn">
+        <span id="saveBtnText">Save Entry</span>
+      </button>
+    </div>
+
+    <div class="search-container">
+      <input type="text" id="searchInput" class="search-input" placeholder="Search entries...">
+    </div>
+
+    <div class="previous-entries">
+      <h2>Previous Entries</h2>
+      <div id="entriesList"></div>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 Fruit of Freedom | All rights reserved.
+  </footer>
+
+  <script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+    import { 
+      getFirestore, 
+      doc, 
+      setDoc,
+      getDoc,
+      collection,
+      query,
+      where,
+      getDocs,
+      orderBy,
+      serverTimestamp,
+      deleteDoc,
+      updateDoc
+    } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
+    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBlraUCERxYy9b1vN4FRtimdltQWNfEXww",
+      authDomain: "hopeforrecovery-8afc7.firebaseapp.com",
+      projectId: "hopeforrecovery-8afc7",
+      storageBucket: "hopeforrecovery-8afc7.firebasestorage.app",
+      messagingSenderId: "272983348501",
+      appId: "1:272983348501:web:0bba174aed5ec827ba051c",
+      measurementId: "G-BJB0E4LXSP"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    // Initialize Quill editor
+    const quill = new Quill('#editor', {
+      theme: 'snow',
+      modules: {
+        toolbar: [
+          ['bold', 'italic', 'underline', 'strike'],
+          ['blockquote', 'code-block'],
+          [{ 'header': 1 }, { 'header': 2 }],
+          [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+          ['link', 'image'],
+          ['clean']
+        ]
+      },
+      placeholder: 'Write your thoughts here... What is God showing you today? What struggles or victories are you experiencing?'
+    });
+
+    // DOM elements
+    const signOutButton = document.getElementById('signOutButton');
+    const entryTitle = document.getElementById('entryTitle');
+    const saveBtn = document.getElementById('saveBtn');
+    const saveBtnText = document.getElementById('saveBtnText');
+    const clearBtn = document.getElementById('clearBtn');
+    const currentDate = document.getElementById('currentDate');
+    const entriesList = document.getElementById('entriesList');
+    const searchInput = document.getElementById('searchInput');
+    let currentEditingId = null;
+
+    // Set current date
+    currentDate.textContent = new Date().toLocaleDateString('en-US', { 
+      weekday: 'long', 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric' 
+    });
+
+    // Enhanced loadEntries function with search
+    async function loadEntries(userId, searchTerm = '') {
+      entriesList.innerHTML = '<p>Loading your entries...</p>';
+      
+      try {
+        let q;
+        if (searchTerm) {
+          q = query(
+            collection(db, "journals"),
+            where("userId", "==", userId),
+            where("keywords", "array-contains", searchTerm.toLowerCase()),
+            orderBy("createdAt", "desc")
+          );
+        } else {
+          q = query(
+            collection(db, "journals"),
+            where("userId", "==", userId),
+            orderBy("createdAt", "desc")
+          );
+        }
+        
+        const querySnapshot = await getDocs(q);
+        
+        if (querySnapshot.empty) {
+          entriesList.innerHTML = '<p>No entries found. Start writing above!</p>';
+          return;
+        }
+        
+        entriesList.innerHTML = '';
+        querySnapshot.forEach((doc) => {
+          const entry = doc.data();
+          const entryDate = entry.createdAt?.toDate()?.toLocaleDateString('en-US', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          }) || 'Date not available';
+          
+          const entryCard = document.createElement('div');
+          entryCard.className = 'entry-card';
+          entryCard.innerHTML = `
+            <div class="entry-actions">
+              <button class="btn btn-edit entry-action-btn" data-id="${doc.id}">Edit</button>
+              <button class="btn btn-danger entry-action-btn" data-id="${doc.id}">Delete</button>
+            </div>
+            <div class="entry-title">${entry.title || 'Untitled Entry'}</div>
+            <div class="entry-date">${entryDate}</div>
+            <div class="entry-content">${entry.content}</div>
+          `;
+          entriesList.appendChild(entryCard);
+        });
+
+        // Add event listeners to edit and delete buttons
+        document.querySelectorAll('.btn-edit').forEach(btn => {
+          btn.addEventListener('click', (e) => editEntry(e.target.dataset.id));
+        });
+        
+        document.querySelectorAll('.btn-danger').forEach(btn => {
+          btn.addEventListener('click', (e) => deleteEntry(e.target.dataset.id));
+        });
+      } catch (error) {
+        console.error("Error loading entries:", error);
+        entriesList.innerHTML = `
+          <p>Error loading entries: ${error.message}</p>
+          <p>Please refresh the page and try again.</p>
+        `;
+      }
+    }
+
+    // Enhanced saveEntry function
+    async function saveEntry(userId, title, content) {
+      if (!content.trim()) {
+        alert("Please write something before saving.");
+        return;
+      }
+      
+      try {
+        // Show loading state
+        saveBtn.disabled = true;
+        saveBtnText.innerHTML = '<span class="loading"></span> Saving...';
+        
+        const entryData = {
+          userId: userId,
+          title: title,
+          content: content,
+          keywords: generateKeywords(title + ' ' + content),
+          createdAt: currentEditingId ? undefined : serverTimestamp(),
+          updatedAt: serverTimestamp()
+        };
+
+        if (currentEditingId) {
+          // Update existing entry
+          const entryRef = doc(db, "journals", currentEditingId);
+          await updateDoc(entryRef, entryData);
+          currentEditingId = null;
+        } else {
+          // Create new entry
+          const newEntryRef = doc(collection(db, "journals"));
+          await setDoc(newEntryRef, entryData);
+        }
+        
+        // Reset form
+        entryTitle.value = '';
+        quill.setContents([{ insert: '\n' }]);
+        
+        // Reload entries
+        await new Promise(resolve => setTimeout(resolve, 500));
+        await loadEntries(userId, searchInput.value.trim());
+        
+        alert("Entry saved successfully!");
+      } catch (error) {
+        console.error("Error saving entry:", error);
+        alert("Error saving entry. Please try again.");
+      } finally {
+        // Reset button state
+        saveBtn.disabled = false;
+        saveBtnText.textContent = "Save Entry";
+      }
+    }
+
+    // Fixed editEntry function
+    async function editEntry(entryId) {
+      try {
+        const entryRef = doc(db, "journals", entryId);
+        const entryDoc = await getDoc(entryRef);
+        
+        if (!entryDoc.exists()) {
+          throw new Error("Entry not found");
+        }
+
+        const entry = entryDoc.data();
+        currentEditingId = entryId;
+        entryTitle.value = entry.title || '';
+        
+        // Clear and set editor content
+        quill.setContents([]);
+        if (entry.content) {
+          quill.clipboard.dangerouslyPasteHTML(0, entry.content);
+        }
+        
+        // Update UI
+        saveBtnText.textContent = "Update Entry";
+        document.getElementById('editor').scrollIntoView({ behavior: 'smooth' });
+      } catch (error) {
+        console.error("Error editing entry:", error);
+        alert(`Error: ${error.message}`);
+        currentEditingId = null;
+        saveBtnText.textContent = "Save Entry";
+      }
+    }
+
+    // Delete entry function
+    async function deleteEntry(entryId) {
+      if (!confirm("Are you sure you want to delete this entry? This cannot be undone.")) {
+        return;
+      }
+      
+      try {
+        await deleteDoc(doc(db, "journals", entryId));
+        await loadEntries(auth.currentUser.uid, searchInput.value.trim());
+      } catch (error) {
+        console.error("Error deleting entry:", error);
+        alert("Error deleting entry. Please try again.");
+      }
+    }
+
+    // Generate search keywords from text
+    function generateKeywords(text) {
+      const words = text.toLowerCase().split(/\s+/);
+      const uniqueWords = [...new Set(words)];
+      return uniqueWords.filter(word => word.length > 2);
+    }
+
+    // Auth state listener
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        if (!user.emailVerified && user.providerData[0].providerId === 'password') {
+          window.location.href = "verify-email.html";
+        } else {
+          // Load user's journal entries
+          await loadEntries(user.uid);
+          
+          // Set up event listeners
+          saveBtn.addEventListener('click', async () => {
+            await saveEntry(user.uid, entryTitle.value.trim(), quill.root.innerHTML);
+          });
+          
+          clearBtn.addEventListener('click', () => {
+            if ((entryTitle.value || quill.getText().trim()) && 
+                !confirm("Are you sure you want to clear your current entry?")) {
+              return;
+            }
+            entryTitle.value = '';
+            quill.setContents([{ insert: '\n' }]);
+            currentEditingId = null;
+            saveBtnText.textContent = "Save Entry";
+          });
+
+          // Search functionality
+          searchInput.addEventListener('input', async (e) => {
+            await loadEntries(user.uid, e.target.value.trim());
+          });
+        }
+      } else {
+        window.location.href = "journey.html";
+      }
+    });
+
+    // Sign out
+    signOutButton.addEventListener('click', async () => {
+      try {
+        await signOut(auth);
+        window.location.href = "journey.html";
+      } catch (error) {
+        console.error("Error signing out:", error);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Devotional – Fruit of Freedom</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Vibrant theme (light) */
+      --primary-color: #FF7E5D;
+      --primary-hover: #E0694A;
+      --background-color: #F7F9FC;
+      --card-bg: #fff;
+      --text-color: #2E2E2E;
+      --progress-bg: #E3F2FD;
+      --shadow-color: rgba(74, 144, 226, 0.2);
+      --inspiration-color: #444;
+      --footer-color: #777;
+      --accent-blue: #4A90E2;
+      --accent-green: #6BBF70;
+      --accent-yellow: #FFD166;
+      --accent-purple: #A05CFF;
+    }
+
+    /* Dark theme - adjusted for vibrancy */
+    [data-theme="dark"] {
+      --primary-color: #FF8E6D;
+      --primary-hover: #FF6B45;
+      --background-color: #1A1A2E;
+      --card-bg: #16213E;
+      --text-color: #E0E0E0;
+      --progress-bg: #2A3A5E;
+      --shadow-color: rgba(0,0,0,0.4);
+      --inspiration-color: #B8B8FF;
+      --footer-color: #999;
+      --accent-blue: #5D9CEC;
+      --accent-green: #7DCEA0;
+      --accent-yellow: #FFD166;
+      --accent-purple: #B399FF;
+    }
+
+    /* High contrast theme */
+    [data-theme="high-contrast"] {
+      --primary-color: #0057b7;
+      --primary-hover: #004494;
+      --background-color: #ffffff;
+      --card-bg: #f0f0f0;
+      --text-color: #000000;
+      --progress-bg: #e0e0e0;
+      --shadow-color: rgba(0,0,0,0.5);
+      --inspiration-color: #333;
+      --footer-color: #555;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: var(--background-color);
+      margin: 0;
+      padding: 0;
+      color: var(--text-color);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Devotional Card Styles */
+    .devotional-card {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 12px var(--shadow-color);
+      border-left: 6px solid var(--primary-color);
+      position: relative;
+      max-width: 800px;
+      margin: 2rem auto;
+      overflow: hidden;
+    }
+
+    .devotional-card::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color), var(--accent-blue), var(--accent-green));
+    }
+
+    .devotional-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .devotional-header h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2rem;
+      background: linear-gradient(45deg, var(--primary-color), var(--accent-purple));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 2px 2px 0 rgba(255, 210, 102, 0.2);
+      margin: 0;
+    }
+
+    .devotional-date {
+      font-size: 0.9rem;
+      color: var(--footer-color);
+    }
+
+    .verse-of-the-day {
+      margin-bottom: 1rem;
+    }
+
+    .scripture {
+      font-size: 1.3rem;
+      font-style: italic;
+      line-height: 1.6;
+      margin-bottom: 0.5rem;
+      color: var(--primary-color);
+    }
+
+    .reference {
+      text-align: right;
+      font-weight: 600;
+      color: var(--accent-blue);
+    }
+
+    .devotional-content {
+      padding: 1rem 0;
+      border-top: 1px dashed var(--primary-color);
+      border-bottom: 1px dashed var(--primary-color);
+      margin: 1rem 0;
+      line-height: 1.7;
+    }
+
+    .devotional-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary-color);
+      color: var(--primary-color);
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+    }
+
+    .btn-outline:hover {
+      background: var(--primary-color);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .devotion-history {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--progress-bg);
+    }
+
+    .past-devotion {
+      padding: 0.8rem 0;
+      border-bottom: 1px dashed var(--progress-bg);
+      transition: all 0.3s;
+    }
+
+    .past-devotion:hover {
+      background-color: rgba(74, 144, 226, 0.05);
+    }
+
+    .past-devotion:last-child {
+      border-bottom: none;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: var(--primary-color);
+      color: white;
+      padding: 0.6rem 1.4rem;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .inspiration {
+      text-align: center;
+      margin-top: 3rem;
+      padding: 2rem;
+      font-style: italic;
+      color: var(--inspiration-color);
+      transition: color 0.3s ease;
+      background-color: rgba(255, 210, 102, 0.15);
+      border-radius: 12px;
+      max-width: 800px;
+      margin: 3rem auto;
+      border-left: 4px solid var(--accent-purple);
+    }
+
+    .prayer {
+      margin-top: 1rem;
+      font-style: italic;
+      padding: 1rem;
+      background-color: rgba(255, 126, 93, 0.1);
+      border-radius: 8px;
+      border-left: 3px solid var(--accent-green);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--footer-color);
+      transition: color 0.3s ease;
+    }
+
+    /* Confetti effect for New Verse button */
+    @keyframes confetti {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: var(--accent-yellow);
+      opacity: 0;
+      animation: confetti 1s ease-out;
+    }
+
+    @media (max-width: 768px) {
+      .devotional-actions {
+        justify-content: center;
+      }
+
+      .btn-outline {
+        flex: 1 1 100%;
+      }
+
+      .devotional-header h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="dashboard">
+  <div class="devotional-card">
+    <div class="devotional-header">
+      <h1>📖 Daily Encouragement</h1>
+      <div class="devotional-date" id="todayDate"></div>
+    </div>
+    <div class="verse-of-the-day">
+      <p class="scripture" id="dailyVerse">"The Lord is my shepherd, I lack nothing."</p>
+      <p class="reference" id="verseReference">Psalm 23:1 (NIV)</p>
+    </div>
+    <div class="devotional-content" id="devotionContent">
+      <p>No matter what challenges you face today, remember that God is your shepherd. He will guide you, protect you, and provide for all your needs. Take comfort in knowing you are never alone in your journey.</p>
+    </div>
+    <div class="devotional-actions">
+      <button class="btn-outline" id="saveDevotion">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 5px;">
+          <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+        </svg>
+        Save
+      </button>
+      <button class="btn-outline" id="shareVerse">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 5px;">
+          <path d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"/>
+        </svg>
+        Share
+      </button>
+      <button class="btn-outline" id="newVerse">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 5px;">
+          <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+          <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+        </svg>
+        New Verse
+      </button>
+      <button class="btn-outline" id="addJournal">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 5px;">
+          <path d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+          <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+          <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+        </svg>
+        Journal
+      </button>
+    </div>
+    <div class="devotion-history" id="devotionHistory"></div>
+  </div>
+
+  <div class="inspiration">
+    "The Spirit of God who raised Jesus from the dead lives in you." — Romans 8:11
+  </div>
+</div>
+
+<footer>
+  © 2025 Fruit of Freedom | All rights reserved.
+</footer>
+
+<script type="module">
+  // Default devotions data if module fails to load
+  let devotions = {
+    days: [{
+      day: 1,
+      title: "Psalm 23:1 (NIV)",
+      verse: "\"The Lord is my shepherd, I lack nothing.\"",
+      content: "No matter what challenges you face today, remember that God is your shepherd. He will guide you, protect you, and provide for all your needs. Take comfort in knowing you are never alone in your journey.",
+      prayer: "Lord, thank you for being my shepherd. Help me to trust in your provision today."
+    }]
+  };
+
+  // Try to load devotions from module
+  try {
+    import('./devotional.js')
+      .then(module => {
+        devotions = module.default;
+        initDashboard();
+      })
+      .catch(err => {
+        console.error('Failed to load devotions:', err);
+        initDashboard();
+      });
+  } catch (e) {
+    console.error('Import error:', e);
+    initDashboard();
+  }
+
+  function initDashboard() {
+    // DOM Elements
+    const todayDateEl = document.getElementById('todayDate');
+    const dailyVerseEl = document.getElementById('dailyVerse');
+    const verseReferenceEl = document.getElementById('verseReference');
+    const devotionContentEl = document.getElementById('devotionContent');
+    const saveDevotionBtn = document.getElementById('saveDevotion');
+    const shareVerseBtn = document.getElementById('shareVerse');
+    const newVerseBtn = document.getElementById('newVerse');
+    const addJournalBtn = document.getElementById('addJournal');
+    const devotionHistoryEl = document.getElementById('devotionHistory');
+
+    // Set today's date
+    const today = new Date();
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    if (todayDateEl) {
+      todayDateEl.textContent = today.toLocaleDateString('en-US', options);
+    }
+
+    // Get the day of the month (1-31)
+    const dayOfMonth = today.getDate();
+    
+    // Calculate which devotion to show (1-28, cycling through the array)
+    const devotionIndex = (dayOfMonth - 1) % devotions.days.length;
+    const todaysDevotion = devotions.days[devotionIndex];
+
+    // Display the devotion
+    function displayDevotion(devotion) {
+      if (dailyVerseEl) dailyVerseEl.textContent = devotion.verse;
+      if (verseReferenceEl) verseReferenceEl.textContent = devotion.title;
+      
+      if (devotionContentEl) {
+        let contentHTML = `<h4>${devotion.title}</h4>`;
+        contentHTML += `<p>${devotion.content}</p>`;
+        
+        if (devotion.prayer) {
+          contentHTML += `<div class="prayer">
+            <strong>Prayer:</strong> ${devotion.prayer}
+          </div>`;
+        }
+        
+        devotionContentEl.innerHTML = contentHTML;
+      }
+    }
+
+    // Display today's devotion
+    displayDevotion(todaysDevotion);
+
+    // Safe localStorage access
+    function getSavedDevotions() {
+      try {
+        return JSON.parse(localStorage.getItem('savedDevotions')) || [];
+      } catch (e) {
+        console.error('Error accessing localStorage:', e);
+        return [];
+      }
+    }
+
+    function setSavedDevotions(devotions) {
+      try {
+        localStorage.setItem('savedDevotions', JSON.stringify(devotions));
+      } catch (e) {
+        console.error('Error saving to localStorage:', e);
+      }
+    }
+
+    // Save devotion to localStorage
+    if (saveDevotionBtn) {
+      saveDevotionBtn.addEventListener('click', () => {
+        const savedDevotions = getSavedDevotions();
+        
+        // Check if this devotion is already saved
+        const alreadySaved = savedDevotions.some(d => d.day === todaysDevotion.day);
+        
+        if (!alreadySaved) {
+          savedDevotions.push({
+            day: todaysDevotion.day,
+            title: todaysDevotion.title,
+            date: today.toISOString()
+          });
+          setSavedDevotions(savedDevotions);
+          alert('Devotion saved! You can view it in your history.');
+          updateDevotionHistory();
+        } else {
+          alert('This devotion is already saved.');
+        }
+      });
+    }
+
+    // Share verse
+    if (shareVerseBtn) {
+      shareVerseBtn.addEventListener('click', () => {
+        const shareText = `Today's Verse: ${todaysDevotion.verse}\n\nFrom ${todaysDevotion.title}\n\nShared via Fruit of Freedom`;
+        
+        if (navigator.share) {
+          navigator.share({
+            title: 'Daily Devotion',
+            text: shareText,
+            url: window.location.href
+          }).catch(err => {
+            console.error('Error sharing:', err);
+            fallbackShare(shareText);
+          });
+        } else {
+          fallbackShare(shareText);
+        }
+      });
+    }
+
+    function fallbackShare(text) {
+      // Copy to clipboard as fallback
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Verse copied to clipboard! You can paste it to share.');
+      }).catch(err => {
+        console.error('Could not copy text: ', err);
+        prompt('Copy this verse to share:', text);
+      });
+    }
+
+    // Get a random devotion with confetti effect
+    if (newVerseBtn) {
+      newVerseBtn.addEventListener('click', () => {
+        const randomIndex = Math.floor(Math.random() * devotions.days.length);
+        const randomDevotion = devotions.days[randomIndex];
+        displayDevotion(randomDevotion);
+        
+        // Create confetti effect
+        const buttonRect = newVerseBtn.getBoundingClientRect();
+        for (let i = 0; i < 20; i++) {
+          const confetti = document.createElement('div');
+          confetti.className = 'confetti';
+          confetti.style.left = `${buttonRect.left + buttonRect.width/2}px`;
+          confetti.style.top = `${buttonRect.bottom}px`;
+          confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+          document.body.appendChild(confetti);
+          
+          setTimeout(() => {
+            confetti.remove();
+          }, 1000);
+        }
+      });
+    }
+
+    // Journal button
+    if (addJournalBtn) {
+      addJournalBtn.addEventListener('click', () => {
+        window.location.href = 'journal.html';
+      });
+    }
+
+    // Update devotion history from localStorage
+    function updateDevotionHistory() {
+      if (!devotionHistoryEl) return;
+      
+      const savedDevotions = getSavedDevotions();
+      
+      if (savedDevotions.length === 0) {
+        devotionHistoryEl.innerHTML = '<p>No saved devotions yet. Click "Save" to save your favorites.</p>';
+        return;
+      }
+      
+      let historyHTML = '<h4>Your Saved Devotions</h4>';
+      
+      savedDevotions.forEach(devotion => {
+        const devotionDate = new Date(devotion.date);
+        const formattedDate = devotionDate.toLocaleDateString('en-US', { 
+          month: 'short', day: 'numeric', year: 'numeric' 
+        });
+        
+        historyHTML += `
+          <div class="past-devotion">
+            <strong>Day ${devotion.day}: ${devotion.title}</strong>
+            <div style="font-size: 0.8rem; color: var(--footer-color);">Saved on ${formattedDate}</div>
+          </div>
+        `;
+      });
+      
+      devotionHistoryEl.innerHTML = historyHTML;
+    }
+
+    // Initialize devotion history
+    updateDevotionHistory();
+
+    // Theme switcher functionality
+    document.querySelectorAll('.theme-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const theme = btn.getAttribute('data-theme');
+        document.documentElement.setAttribute('data-theme', theme);
+        try {
+          localStorage.setItem('theme', theme);
+        } catch (e) {
+          console.error('Error saving theme preference:', e);
+        }
+        
+        // Update active state
+        document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+
+    // Set saved theme or default
+    let savedTheme;
+    try {
+      savedTheme = localStorage.getItem('theme') || 'light';
+    } catch (e) {
+      console.error('Error reading theme preference:', e);
+      savedTheme = 'light';
+    }
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    const themeBtn = document.querySelector(`.theme-btn[data-theme="${savedTheme}"]`);
+    if (themeBtn) {
+      themeBtn.classList.add('active');
+    }
+  }
+</script>
+</body>
+</html>

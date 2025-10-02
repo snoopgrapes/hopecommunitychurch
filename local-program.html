@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hope for Recovery - Clydebank Program</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Poppins:wght@800&display=swap" rel="stylesheet">
+  <style>
+    /* Uplifting Sunrise Color Palette */
+    :root {
+      --primary: #FF6B6B; /* Vibrant coral */
+      --secondary: #4ECDC4; /* Teal */
+      --accent: #FFE66D; /* Sunny yellow */
+      --light: #F7FFF7; /* Mint cream */
+      --dark: #292F36; /* Dark slate */
+      --text: #292F36;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: var(--light);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      padding-top: 80px; /* For fixed header */
+    }
+
+    header {
+      background-color: #FFFFFF;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      z-index: 100;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+      padding: 0.7rem;
+      box-sizing: border-box;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+      position: relative;
+      overflow: hidden;
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('images/journey.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: -1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      animation: fadeInDown 1s ease;
+    }
+
+    .hero p {
+      font-size: 1.4rem;
+      max-width: 700px;
+      margin: 0 auto 30px;
+      animation: fadeInUp 1s ease 0.3s both;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: 600;
+      margin: 10px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: var(--dark);
+      box-shadow: 0 4px 15px rgba(255,107,107,0.4);
+    }
+
+    .btn-secondary {
+      background: linear-gradient(135deg, var(--secondary), var(--primary));
+      color: white;
+      box-shadow: 0 4px 15px rgba(78,205,196,0.4);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Content Sections */
+    .section {
+      background-color: var(--light);
+      padding: 4rem 2rem;
+      margin: 2rem auto;
+      max-width: 1100px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      border-left: 5px solid var(--primary);
+    }
+
+    .section h2, .section h3 {
+      color: var(--primary);
+      position: relative;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+    }
+
+    .section h3::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 50%;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    /* Features Grid */
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .feature {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      flex: 1;
+      min-width: 280px;
+      max-width: 300px;
+      border-top: 4px solid var(--secondary);
+      transition: transform 0.3s;
+    }
+
+    .feature:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature h4 {
+      color: var(--secondary);
+      margin-top: 0;
+    }
+
+    /* Weekly Schedule */
+    .weekly-schedule {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: 0 auto;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    .weekly-schedule div {
+      background-color: rgba(78, 205, 196, 0.1);
+      padding: 12px 15px;
+      margin: 8px 0;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      font-weight: 600;
+    }
+
+    /* Partner Callout */
+    .partner-call {
+      text-align: center;
+      background: linear-gradient(135deg, var(--secondary), var(--primary));
+      color: white;
+      padding: 3rem 2rem;
+      border-radius: 12px;
+      margin: 3rem auto;
+      max-width: 900px;
+      box-shadow: 0 10px 30px rgba(78,205,196,0.3);
+    }
+
+    .partner-call h3 {
+      color: white;
+    }
+
+    .partner-call h3::after {
+      background: var(--accent);
+    }
+
+    /* Map Container */
+    .map-container {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      margin: 2rem auto;
+      max-width: 800px;
+      border: 3px solid white;
+    }
+
+    /* Navigation */
+    nav {
+      display: flex;
+      transition: all 0.3s ease;
+    }
+
+    nav a {
+      color: var(--dark);
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: 600;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      transition: width 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .login-link {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-weight: bold;
+    }
+
+    .profile-link {
+      background: linear-gradient(90deg, var(--secondary), var(--primary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-weight: bold;
+    }
+
+    .logo-container img {
+      max-width: 135px;
+      height: auto;
+      transition: transform 0.3s;
+    }
+
+    .logo-container img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Mobile Menu */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 21px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      z-index: 101;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 100%;
+      height: 3px;
+      background: var(--dark);
+      transition: all 0.3s ease;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: translateY(9px) rotate(45deg);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: translateY(-9px) rotate(-45deg);
+    }
+
+    /* Mobile view */
+    @media (max-width: 768px) {
+      body {
+        padding-top: 60px;
+      }
+
+      header {
+        height: 60px;
+        padding: 0;
+      }
+
+      .header-container {
+        padding: 1rem;
+      }
+
+      .hero {
+        min-height: 400px;
+        padding: 40px 20px;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      nav {
+        position: fixed;
+        top: 60px;
+        right: -100%;
+        width: 70%;
+        height: calc(100vh - 60px);
+        background: white;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 2rem;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        z-index: 100;
+      }
+
+      nav.active {
+        right: 0;
+      }
+
+      nav a {
+        margin: 1rem 0;
+        font-size: 1.2rem;
+      }
+
+      .logo-container img {
+        max-width: 100px;
+      }
+
+      .features {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .section {
+        padding: 2rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo-container">
+        <a href="index.html">
+          <img src="images/HFR.png" alt="Hope For Recovery Logo">
+        </a>
+      </div>
+
+      <button class="menu-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav>
+        <a href="index.html">Hope Community Church</a>
+        <a href="journey.html">Join</a>
+        <a href="hfr.html">Hope for Recovery</a>
+        <a id="authLink" href="login.html" class="login-link">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-image"></div>
+    <div class="hero-content">
+      <h1>Hope for Recovery Clydebank</h1>
+      <p>A Christ-centered recovery program offering hope and healing through community and faith</p>
+      <div>
+        <a href="#program-structure" class="btn btn-primary">View Program</a>
+        <a href="#weekly-schedule" class="btn btn-secondary">Weekly Schedule</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Program Structure -->
+  <section class="section mission" id="program-structure">
+    <h3>Our Local Recovery Pathway</h3>
+    <p>
+      Hope for recovery is a 2 year community based, faith to freedom, recovery pathway. It offers individuals an opportunity to explore faith as a recovery model. 
+    </p>
+    <p>
+      The program is split into 6 x 12 week groups, with each course offering a unique faith aspect for change. At the end of each group, participants have a chance to gain a pass or a pass with merit certificate depending upon their attendance and their score in the end of course quiz. At the end of the 2 years, a final graduation certificate will be presented.
+    </p>
+    <p>
+      Hope for Recovery is an excellent way for individuals to explore faith in a relaxed, friendly and fun atmosphere. It's also a great course for individuals with a faith to strengthen their beliefs in order to move forward into a more positive lifestyle.
+    </p>
+  </section>
+
+  <section class="section">
+    <h3>Program Structure</h3>
+    <div class="features">
+      <div class="feature">
+        <h4>📅 Year 1 Courses</h4>
+        <ul>
+          <li>Reveal, Release & Recovery</li>
+          <li>Restoring Broken Relationships</li>
+          <li>Holistic Health</li>
+        </ul>
+      </div>
+      <div class="feature">
+        <h4>📅 Year 2 Courses</h4>
+        <ul>
+          <li>Fruit of Freedom</li>
+          <li>Overcoming Temptation</li>
+          <li>3 S's for Sobriety</li>
+        </ul>
+      </div>
+      <div class="feature">
+        <h4>🎓 Certification</h4>
+        <p>Each 12-week course offers pass or pass with merit certification. After completing the 2-year program, participants receive a graduation certificate.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="weekly-schedule">
+    <h3>Weekly Schedule</h3>
+    <div class="weekly-schedule">
+      <h4>Every Monday at Hope Community Church</h4>
+      <div>
+        <span>11:00 - 11:30</span>
+        <span>Breakfast</span>
+      </div>
+      <div>
+        <span>11:30 - 12:30</span>
+        <span>Group Work</span>
+      </div>
+      <div>
+        <span>12:30 - 1:30</span>
+        <span>Lunch</span>
+      </div>
+      <p>All meals, materials, and supplies are provided free of charge.</p>
+    </div>
+  </section>
+
+  <section class="partner-call">
+    <h3>Ready to Begin Your Journey?</h3>
+    <p>Join us any Monday at Hope Community Church in Clydebank. No registration required.</p>
+    <a href="https://www.google.com/maps" target="_blank" class="btn btn-primary">Get Directions</a>
+    
+    <div class="map-container" style="margin-top: 2rem;">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d71555.9217973408!2d-4.566770002734333!3d55.9125753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48884e520a11863b%3A0x9841fa268df5d387!2sHope%20Community%20Church%20-%20Clydebank!5e0!3m2!1sen!2suk!4v1752170859210!5m2!1sen!2suk" 
+        width="100%" 
+        height="300" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </section>
+
+  <script type="module">
+    // Mobile menu functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('nav');
+
+      menuToggle.addEventListener('click', function() {
+        menuToggle.classList.toggle('active');
+        nav.classList.toggle('active');
+      });
+
+      // Close menu when clicking on a nav link (for mobile)
+      const navLinks = document.querySelectorAll('nav a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          if (window.innerWidth <= 768) {
+            menuToggle.classList.remove('active');
+            nav.classList.remove('active');
+          }
+        });
+      });
+
+      // Smooth scrolling with offset for fixed header
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            const headerHeight = document.querySelector('header').offsetHeight;
+            const targetPosition = targetElement.offsetTop - headerHeight;
+            
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+
+            // Update URL without page jump
+            if (history.pushState) {
+              history.pushState(null, null, targetId);
+            } else {
+              location.hash = targetId;
+            }
+          }
+        });
+      });
+    });
+
+    // Authentication state
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBlraUCERxYy9b1vN4FRtimdltQWNfEXww",
+      authDomain: "hopeforrecovery-8afc7.firebaseapp.com",
+      projectId: "hopeforrecovery-8afc7",
+      storageBucket: "hopeforrecovery-8afc7.firebasestorage.app",
+      messagingSenderId: "272983348501",
+      appId: "1:272983348501:web:0bba174aed5ec827ba051c",
+      measurementId: "G-BJB0E4LXSP"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const authLink = document.getElementById('authLink');
+
+    function updateAuthLink(user) {
+      if (user) {
+        authLink.textContent = 'My Profile';
+        authLink.href = 'dashboard.html';
+        authLink.className = 'profile-link';
+      } else {
+        authLink.textContent = 'Login';
+        authLink.href = 'login.html';
+        authLink.className = 'login-link';
+      }
+    }
+
+    onAuthStateChanged(auth, (user) => {
+      updateAuthLink(user);
+    });
+  </script>
+</body>
+</html>

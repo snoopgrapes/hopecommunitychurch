@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hope for Recovery - Under Construction</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom, #ffd166, #ff9e00);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 5px solid #06d6a0;
+        }
+        
+        .construction-border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cpath d='M0 0h80v80H0z' fill='%2306d6a0' fill-opacity='0.1'/%3E%3Cpath d='M0 0l80 80M80 0L0 80' stroke='%2306d6a0' stroke-width='1' stroke-opacity='0.2'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            color: #ef476f;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 0 #ffd166;
+        }
+        
+        .logo {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            background: linear-gradient(45deg, #7209B7, #FF7D00);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 5px solid #ffd166;
+            box-shadow: 0 0 20px rgba(114, 9, 183, 0.4);
+        }
+        
+        .logo i {
+            font-size: 70px;
+            color: white;
+        }
+        
+        .message {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: #118ab2;
+            font-weight: bold;
+        }
+        
+        .cta {
+            background: linear-gradient(to right, #7209B7, #FF7D00);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 20px 0;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(114, 9, 183, 0.4);
+        }
+        
+        .cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(114, 9, 183, 0.6);
+        }
+        
+        .construction-elements {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            margin: 40px 0;
+            height: 150px;
+        }
+        
+        .cone {
+            width: 0;
+            height: 0;
+            border-left: 25px solid transparent;
+            border-right: 25px solid transparent;
+            border-bottom: 50px solid #ff9e00;
+            position: relative;
+            animation: bounce 2s infinite;
+        }
+        
+        .cone:after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: -15px;
+            width: 30px;
+            height: 10px;
+            background: white;
+        }
+        
+        .barrier {
+            width: 80px;
+            height: 40px;
+            background: #ef476f;
+            position: relative;
+            animation: rotate 4s infinite;
+        }
+        
+        .barrier:before, .barrier:after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 60px;
+            background: #073b4c;
+            top: -10px;
+        }
+        
+        .barrier:before {
+            left: 10px;
+        }
+        
+        .barrier:after {
+            right: 10px;
+        }
+        
+        .sign {
+            width: 100px;
+            height: 100px;
+            background: #06d6a0;
+            border: 5px solid #073b4c;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: wobble 3s infinite;
+        }
+        
+        .sign i {
+            font-size: 40px;
+            color: white;
+        }
+        
+        .progress-container {
+            width: 100%;
+            height: 30px;
+            background: #e0e0e0;
+            border-radius: 15px;
+            margin: 30px 0;
+            overflow: hidden;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .progress-bar {
+            height: 100%;
+            width: 65%;
+            background: linear-gradient(to right, #FF7D00, #7209B7);
+            border-radius: 15px;
+            animation: progress 2s infinite alternate;
+        }
+        
+        .contact {
+            margin-top: 30px;
+            font-size: 1.2rem;
+        }
+        
+        .contact a {
+            color: #7209B7;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .contact a:hover {
+            text-decoration: underline;
+        }
+        
+        .hard-hat {
+            position: absolute;
+            top: -30px;
+            right: 50px;
+            font-size: 60px;
+            color: #ff9e00;
+            transform: rotate(20deg);
+            animation: float 6s infinite ease-in-out;
+            z-index: 3;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes rotate {
+            0%, 100% { transform: rotate(0); }
+            25% { transform: rotate(5deg); }
+            75% { transform: rotate(-5deg); }
+        }
+        
+        @keyframes wobble {
+            0%, 100% { transform: rotate(0); }
+            25% { transform: rotate(2deg); }
+            50% { transform: rotate(-2deg); }
+            75% { transform: rotate(1deg); }
+        }
+        
+        @keyframes progress {
+            0% { width: 65%; }
+            100% { width: 68%; }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(20deg); }
+            50% { transform: translateY(-15px) rotate(25deg); }
+        }
+        
+        .sparkle {
+            position: absolute;
+            font-size: 20px;
+            color: #ffd166;
+            animation: sparkle 3s infinite;
+            z-index: 3;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .message {
+                font-size: 1.4rem;
+            }
+            
+            .construction-elements {
+                height: 120px;
+            }
+            
+            .cone {
+                transform: scale(0.8);
+            }
+            
+            .barrier {
+                transform: scale(0.8);
+            }
+            
+            .sign {
+                transform: scale(0.8);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hard-hat">
+        <i class="fas fa-hard-hat"></i>
+    </div>
+    
+    <div class="sparkle" style="top: 20%; left: 20%;">✨</div>
+    <div class="sparkle" style="top: 60%; right: 25%;">✨</div>
+    <div class="sparkle" style="bottom: 30%; left: 30%;">✨</div>
+    
+    <div class="container">
+        <div class="construction-border"></div>
+        <div class="content">
+            <div class="logo">
+                <i class="fas fa-church"></i>
+            </div>
+            
+            <h1>UNDER CONSTRUCTION</h1>
+            
+            <p class="message">
+                We're building something amazing for Hope for Recovery!
+            </p>
+            
+            <div class="construction-elements">
+                <div class="cone"></div>
+                <div class="barrier"></div>
+                <div class="sign">
+                    <i class="fas fa-wrench"></i>
+                </div>
+            </div>
+            
+            <p>Our team is working hard to create a beautiful new online experience.</p>
+            
+            <div class="progress-container">
+                <div class="progress-bar"></div>
+            </div>
+            
+            <p>We'll be launching soon with new resources, support tools, and community features.</p>
+            
+            <button class="cta">
+                <i class="fas fa-envelope"></i> Notify Me When Ready
+            </button>
+            
+            <div class="contact">
+                <p>In the meantime, you can reach us at:</p>
+                <p><a href="mailto:info@hopeforrecovery.org">info@hopeforrecovery.org</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add more sparkle elements dynamically
+        document.addEventListener('DOMContentLoaded', function() {
+            const body = document.querySelector('body');
+            for (let i = 0; i < 5; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.innerHTML = '✨';
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.style.animationDelay = Math.random() * 3 + 's';
+                body.appendChild(sparkle);
+            }
+            
+            // Animate the CTA button
+            const cta = document.querySelector('.cta');
+            setInterval(() => {
+                cta.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    cta.style.transform = 'scale(1)';
+                }, 500);
+            }, 3000);
+        });
+    </script>
+</body>
+</html>

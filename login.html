@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login | Hope For Recovery</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Open Sans', sans-serif;
+      background-color: #f5f7fa;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #fff;
+      color: #000;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    nav {
+      margin-top: 1rem;
+    }
+
+    nav a {
+      color: #000;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .login-link {
+      color: #4CAF50 !important;
+      font-weight: bold;
+    }
+
+    .login-link:hover {
+      text-decoration: underline;
+    }
+
+    .logo-container img {
+      max-width: 150px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .login-container {
+      max-width: 500px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    h1, h2, h3 {
+      font-family: 'Poppins', sans-serif;
+      color: #2c3e50;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .login-form {
+      margin-top: 2rem;
+    }
+
+    .login-form label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: #555;
+    }
+
+    .login-form input[type="email"],
+    .login-form input[type="password"] {
+      width: calc(100% - 20px);
+      padding: 10px;
+      margin-bottom: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    .login-form button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      display: block;
+      width: 100%;
+      margin-top: 1.5rem;
+    }
+
+    .login-form button:hover {
+      background-color: #45a049;
+    }
+
+    .forgot-password {
+      text-align: right;
+      margin-top: -0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .forgot-password a {
+      color: #666;
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+
+    .forgot-password a:hover {
+      text-decoration: underline;
+    }
+
+    .signin-options {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    
+    .or-divider {
+      display: flex;
+      align-items: center;
+      margin: 1.5rem 0;
+      color: #666;
+      font-size: 0.9rem;
+    }
+    
+    .or-divider::before,
+    .or-divider::after {
+      content: "";
+      flex: 1;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .or-divider::before {
+      margin-right: 1rem;
+    }
+    
+    .or-divider::after {
+      margin-left: 1rem;
+    }
+    
+    .google-signin-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #fff;
+      color: #757575;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    
+    .google-signin-btn:hover {
+      background-color: #f9f9f9;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    }
+    
+    .google-icon {
+      width: 20px;
+      height: 20px;
+      margin-right: 12px;
+      background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTcuNiA5LjJsLS4xLTEuOEg5djMuNGg0LjhDMTMuNiAxMiAxMyAxMyAxMiAxMy42djIuMmgzArrayAdapterOC44IDguOCAwIDAgMCAyLjYtNi41eiIgZmlsbD0iIzQyODVGNCIgZmlsbC1ydWxlPSJub256ZXJvIi8+PHBhdGggZD0iTTkgMThjMi40IDAgNC41LS44IDYtMi4ybC0zLTIuMmE1LjQgNS40IDAgMCAxLTgtMi45SDFWMTJgOSAzNiAwIDAgMCA4IDV6IiBmaWxsPSIjMzRBODUzIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNNCAxMC43YTUuNCA1LjQgMCAwIDEgMC0zLjRWNUgxYTkgOSAwIDAgMCAwIDhsMy0yLjN6IiBmaWxsPSIjRkJCQzA1IiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNOSAzLjZjMS4zIDAgMi41LjQgMy40IDEuM0wxNSAyLjNBOSA5IDAgMCAwIDEgNWwzIDIuNGE1LjQgNS40IDAgMCAxIDUtMy43eiIgZmlsbD0iI0VBNDMzNSIgZmlsbC1ydWxlPSJub256ZXJvIi8+PHBhdGggZD0iTTAgMGgxOHYxOEgweiIvPjwvZz48L3N2Zz4=');
+      background-size: contain;
+    }
+
+    .register-link {
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+
+    .register-link a {
+      color: #4CAF50;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .register-link a:hover {
+      text-decoration: underline;
+    }
+
+    #loginMessage {
+      text-align: center;
+      margin-top: 1rem;
+      padding: 0.5rem;
+      border-radius: 5px;
+    }
+
+    .error {
+      color: #dc3545;
+      background-color: #f8d7da;
+      border: 1px solid #f5c6cb;
+    }
+
+    .success {
+      color: #28a745;
+      background-color: #d4edda;
+      border: 1px solid #c3e6cb;
+    }
+
+    footer {
+      background: #f1f1f1;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.95rem;
+      color: #444;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 600px) {
+      .login-container {
+        margin: 2rem 1rem;
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <a href="index.html">
+        <img src="images/logo.png" alt="Hope For Recovery Logo">
+      </a>
+    </div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="#">About</a>
+      <a href="#">Fruit of Freedom</a>
+      <a href="journey.html">Join</a>
+      <a href="#">Partners</a>
+      <a href="login.html" class="login-link">Login</a>
+    </nav>
+  </header>
+
+  <div class="login-container">
+    <h1>Member Login</h1>
+    <p style="text-align: center;">Welcome back! Sign in to access your resources and continue your journey.</p>
+
+    <div class="signin-options">
+      <button class="google-signin-btn" id="googleSignIn">
+        <span class="google-icon"></span>
+        Sign in with Google
+      </button>
+      
+      <div class="or-divider">or</div>
+    </div>
+
+    <form class="login-form" id="loginForm">
+      <label for="loginEmail">Email Address:</label>
+      <input type="email" id="loginEmail" name="email" required>
+
+      <label for="loginPassword">Password:</label>
+      <input type="password" id="loginPassword" name="password" required>
+      <div class="forgot-password">
+        <a href="forgot-password.html">Forgot password?</a>
+      </div>
+
+      <button type="submit">Sign In</button>
+      <div id="loginMessage"></div>
+    </form>
+
+    <div class="register-link">
+      Don't have an account? <a href="journey.html">Register here</a>
+    </div>
+  </div>
+
+  <footer>
+    "He brought me out into a spacious place; he rescued me because he delighted in me." – Psalm 18:19<br><br>
+    © 2025 Hope For Recovery | A ministry of healing and hope.
+  </footer>
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-analytics.js";
+    import { 
+      getAuth, 
+      signInWithEmailAndPassword,
+      GoogleAuthProvider,
+      signInWithPopup
+    } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBlraUCERxYy9b1vN4FRtimdltQWNfEXww",
+      authDomain: "hopeforrecovery-8afc7.firebaseapp.com",
+      projectId: "hopeforrecovery-8afc7",
+      storageBucket: "hopeforrecovery-8afc7.firebasestorage.app",
+      messagingSenderId: "272983348501",
+      appId: "1:272983348501:web:0bba174aed5ec827ba051c",
+      measurementId: "G-BJB0E4LXSP"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+
+    // Get DOM elements
+    const loginForm = document.getElementById('loginForm');
+    const loginMessage = document.getElementById('loginMessage');
+    const googleSignIn = document.getElementById('googleSignIn');
+
+    // Email/Password Login Handler
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const email = loginForm['email'].value;
+      const password = loginForm['password'].value;
+      
+      loginMessage.textContent = 'Signing in...';
+      loginMessage.className = '';
+      
+      try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+        
+        // Check if email is verified
+        if (!user.emailVerified) {
+          loginMessage.textContent = 'Please verify your email before logging in. Check your inbox for the verification link.';
+          loginMessage.className = 'error';
+          return;
+        }
+        
+        loginMessage.textContent = 'Login successful! Redirecting to your dashboard...';
+        loginMessage.className = 'success';
+        
+        // Redirect to dashboard after successful login
+        setTimeout(() => {
+          window.location.href = "dashboard.html";
+        }, 1500);
+        
+      } catch (error) {
+        let errorMessage = 'An error occurred during login.';
+        
+        switch(error.code) {
+          case 'auth/invalid-email':
+            errorMessage = 'Invalid email address.';
+            break;
+          case 'auth/user-disabled':
+            errorMessage = 'This account has been disabled.';
+            break;
+          case 'auth/user-not-found':
+            errorMessage = 'No account found with this email.';
+            break;
+          case 'auth/wrong-password':
+            errorMessage = 'Incorrect password. Please try again.';
+            break;
+          default:
+            errorMessage = error.message;
+        }
+        
+        loginMessage.textContent = errorMessage;
+        loginMessage.className = 'error';
+        console.error("Error during login:", error);
+      }
+    });
+
+    // Google Sign-In Handler
+    googleSignIn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      
+      loginMessage.textContent = 'Signing in with Google...';
+      loginMessage.className = '';
+      
+      try {
+        const result = await signInWithPopup(auth, provider);
+        const user = result.user;
+        
+        loginMessage.textContent = 'Login successful! Redirecting to your dashboard...';
+        loginMessage.className = 'success';
+        
+        // Redirect after successful sign-in
+        setTimeout(() => {
+          window.location.href = "dashboard.html";
+        }, 1500);
+        
+      } catch (error) {
+        let errorMessage = 'An error occurred during Google sign-in.';
+        if (error.code === 'auth/account-exists-with-different-credential') {
+          errorMessage = 'An account already exists with this email. Please sign in with your existing method.';
+        } else {
+          errorMessage = `Error: ${error.message}`;
+        }
+        loginMessage.textContent = errorMessage;
+        loginMessage.className = 'error';
+        console.error("Error during Google sign-in:", error);
+      }
+    });
+  </script>
+</body>
+</html>

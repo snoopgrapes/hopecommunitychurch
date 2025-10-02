@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Our Location</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        header {
+            background: #4285F4;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .info-section {
+            flex: 1;
+            min-width: 300px;
+            padding: 30px;
+            background: #f9f9f9;
+        }
+        
+        .map-section {
+            flex: 1.5;
+            min-width: 300px;
+        }
+        
+        #map {
+            width: 100%;
+            height: 400px;
+            background: #eaeaea;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .address {
+            margin: 25px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .address h3 {
+            color: #4285F4;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .address p {
+            margin: 8px 0;
+            font-size: 1.05rem;
+        }
+        
+        .hours {
+            margin: 25px 0;
+        }
+        
+        .hours h3 {
+            color: #4285F4;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .hours ul {
+            list-style: none;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .hours li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .hours li:last-child {
+            border-bottom: none;
+        }
+        
+        .directions-btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: #4285F4;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            margin-top: 25px;
+            box-shadow: 0 4px 15px rgba(66, 133, 244, 0.3);
+        }
+        
+        .directions-btn:hover {
+            background: #3367d6;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(66, 133, 244, 0.4);
+        }
+        
+        .directions-btn:active {
+            transform: translateY(0);
+        }
+        
+        .directions-btn i {
+            margin-right: 10px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+            }
+            
+            #map {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Visit Our Location</h1>
+            <p class="subtitle">We'd love to see you in person!</p>
+        </header>
+        
+        <div class="content">
+            <div class="info-section">
+                <div class="address">
+                    <h3><i class="fas fa-map-marker-alt"></i> Our Address</h3>
+                    <p>123 Business Avenue</p>
+                    <p>Suite 400</p>
+                    <p>San Francisco, CA 94107</p>
+                </div>
+                
+                <div class="hours">
+                    <h3><i class="fas fa-clock"></i> Business Hours</h3>
+                    <ul>
+                        <li><span>Monday - Friday:</span> <span>9:00 AM - 6:00 PM</span></li>
+                        <li><span>Saturday:</span> <span>10:00 AM - 4:00 PM</span></li>
+                        <li><span>Sunday:</span> <span>Closed</span></li>
+                    </ul>
+                </div>
+                
+                <a id="directions-btn" class="directions-btn" href="#" target="_blank">
+                    <i class="fas fa-directions"></i> Get Directions
+                </a>
+            </div>
+            
+            <div class="map-section">
+                <!-- In a real implementation, you would use Google Maps JavaScript API -->
+                <div id="map">
+                    [Google Maps would display here with a marker at our location]
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Contact us at: contact@business.com | (555) 123-4567</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set your business coordinates here
+            const businessCoords = {
+                lat: 37.7749,
+                lng: -122.4194
+            };
+            
+            // Set the href for the directions button
+            const directionsBtn = document.getElementById('directions-btn');
+            directionsBtn.href = `https://www.google.com/maps/dir/?api=1&destination=${businessCoords.lat},${businessCoords.lng}`;
+            
+            // In a real implementation, you would initialize Google Maps here
+            // For this example, we'll just display a message
+            const mapElement = document.getElementById('map');
+            mapElement.innerHTML = `
+                <div style="text-align: center; padding: 20px;">
+                    <i class="fas fa-map-marked-alt" style="font-size: 48px; color: #4285F4; margin-bottom: 15px;"></i>
+                    <h3>Google Maps Integration</h3>
+                    <p>In a real implementation, Google Maps would display here with a marker showing our location.</p>
+                    <p>Coordinates: ${businessCoords.lat}, ${businessCoords.lng}</p>
+                </div>
+            `;
+        });
+    </script>
+</body>
+</html>

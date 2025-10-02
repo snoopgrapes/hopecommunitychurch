@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verify Your Email</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #f5f7fa;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background-color: #fff;
+      padding: 3rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 500px;
+      width: 90%;
+    }
+    h1 {
+      font-family: 'Poppins', sans-serif;
+      color: #2c3e50;
+      margin-bottom: 1.5rem;
+    }
+    p {
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #resendEmailMessage {
+        margin-top: 1rem;
+        color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Verify Your Email Address</h1>
+    <p>Thank you for registering with Hope For Recovery!</p>
+    <p>We've sent a verification email to your inbox. Please click the link in that email to activate your account and gain full access to our resources.</p>
+    <p>If you don't see it, please check your spam folder.</p>
+    <button id="resendVerification">Resend Verification Email</button>
+    <p id="resendEmailMessage"></p>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+        import { getAuth, onAuthStateChanged, sendEmailVerification, signOut } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBlraUCERxYy9b1vN4FRtimdltQWNfEXww",
+            authDomain: "hopeforrecovery-8afc7.firebaseapp.com",
+            projectId: "hopeforrecovery-8afc7",
+            storageBucket: "hopeforrecovery-8afc7.firebasestorage.app",
+            messagingSenderId: "272983348501",
+            appId: "1:272983348501:web:0bba174aed5ec827ba051c",
+            measurementId: "G-BJB0E4LXSP"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        const resendVerificationButton = document.getElementById('resendVerification');
+        const resendEmailMessage = document.getElementById('resendEmailMessage');
+
+        let currentUser = null;
+        let checkVerificationInterval; // To store the interval ID
+
+        // Function to check verification status and redirect
+        async function checkVerificationStatusAndRedirect() {
+            if (currentUser) {
+                // Force a refresh of the user's ID token to get the latest emailVerified status
+                await currentUser.reload(); 
+                if (currentUser.emailVerified) {
+                    clearInterval(checkVerificationInterval); // Stop checking once verified
+                    window.location.href = "dashboard.html";
+                } else {
+                    console.log("Email not yet verified. Waiting...");
+                }
+            } else {
+                console.log("No user is signed in. Stopping verification check.");
+                clearInterval(checkVerificationInterval);
+                // Optionally redirect to login if no user is found after some time
+                // window.location.href = "journey.html"; 
+            }
+        }
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                currentUser = user;
+                if (user.emailVerified) {
+                    window.location.href = "dashboard.html";
+                } else {
+                    // Start periodic check if not verified and user is email/password
+                    if (user.providerData[0].providerId === 'password') {
+                        // Check every 3-5 seconds
+                        checkVerificationInterval = setInterval(checkVerificationStatusAndRedirect, 3000); 
+                    } else {
+                        // Google users are usually verified, redirect them directly
+                        window.location.href = "dashboard.html";
+                    }
+                }
+            } else {
+                // No user is logged in, clear any existing interval
+                if (checkVerificationInterval) {
+                    clearInterval(checkVerificationInterval);
+                }
+                console.log("No user is signed in on verify-email page.");
+                // Optionally redirect if not logged in
+                // window.location.href = "journey.html";
+            }
+        });
+
+        resendVerificationButton.addEventListener('click', async () => {
+            if (currentUser) {
+                try {
+                    await sendEmailVerification(currentUser);
+                    resendEmailMessage.textContent = 'Verification email sent! Please check your inbox.';
+                    resendEmailMessage.style.color = '#28a745';
+                } catch (error) {
+                    resendEmailMessage.textContent = `Error sending email: ${error.message}`;
+                    resendEmailMessage.style.color = '#dc3545';
+                    console.error("Error resending verification email:", error);
+                }
+            } else {
+                resendEmailMessage.textContent = 'Please sign in to resend the verification email.';
+                resendEmailMessage.style.color = '#ffc107';
+                // Optionally, redirect to login page if no user is found
+                // setTimeout(() => { window.location.href = "journey.html"; }, 3000);
+            }
+        });
+
+        // Clear the interval if the user navigates away from the page
+        window.addEventListener('beforeunload', () => {
+            if (checkVerificationInterval) {
+                clearInterval(checkVerificationInterval);
+            }
+        });
+    </script>
+  </div>
+</body>
+</html>

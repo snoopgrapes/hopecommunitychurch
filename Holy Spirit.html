@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holy Spirit Series | Hope Community Church</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f0f5ff;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: #3a4a6d;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        .series-header {
+            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .series-header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: spiritGlow 15s infinite alternate;
+        }
+        
+        @keyframes spiritGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .series-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            position: relative;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .series-header p {
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+            position: relative;
+            font-size: 1.1rem;
+        }
+        
+        .main-video {
+            margin-bottom: 40px;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px;
+        }
+        
+        .sermon-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .sermon-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e8ff;
+        }
+        
+        .sermon-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(74, 108, 183, 0.2);
+        }
+        
+        .sermon-image {
+            position: relative;
+            cursor: pointer;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .sermon-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .sermon-image:hover img {
+            transform: scale(1.1);
+        }
+        
+        .sermon-image::after {
+            content: "▶";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 50px;
+            opacity: 0.8;
+            text-shadow: 0 0 15px rgba(74, 108, 183, 0.8);
+            transition: all 0.3s ease;
+        }
+        
+        .sermon-image:hover::after {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.2);
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+        }
+        
+        .flame-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,200,100,0.3) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .sermon-image:hover .flame-overlay {
+            opacity: 1;
+        }
+        
+        .sermon-info {
+            padding: 25px;
+            background: white;
+        }
+        
+        .sermon-info h3 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+            font-size: 1.2rem;
+        }
+        
+        .sermon-meta {
+            color: #5a6a8a;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        
+        .download-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .download-button {
+            display: inline-block;
+            padding: 10px 18px;
+            background-color: #4b6cb7;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .download-button:hover {
+            background-color: #3a5aa5;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(74, 108, 183, 0.3);
+        }
+        
+        .series-description {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid #e0e8ff;
+            position: relative;
+        }
+        
+        .series-description::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, #4b6cb7, #3a5aa5);
+            border-radius: 8px 0 0 8px;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            position: relative;
+            width: 90%;
+            max-width: 900px;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            color: white;
+            font-size: 35px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            color: #4b6cb7;
+        }
+        
+        /* Loading Animation */
+        .loader {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 5px solid rgba(255,255,255,0.1);
+            border-top: 5px solid #4b6cb7;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+            z-index: 1001;
+        }
+        
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        footer {
+            background-color: #3a4a6d;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        footer a {
+            color: #a3c4ff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        footer a:hover {
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .sermon-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .series-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .modal-content {
+                width: 95%;
+            }
+            
+            .series-description {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Hope Community Church</h1>
+        </div>
+    </header>
+    
+    <div class="series-header">
+        <div class="container">
+            <h1>The Holy Spirit Series</h1>
+            <p>Discover the person, presence and power of the Holy Spirit in this transformative series</p>
+        </div>
+    </div>
+    
+    <main class="container">
+        <!-- Series Description -->
+        <section class="series-description">
+            <h2>About This Series</h2>
+            <p>This series explores the biblical teachings about the Holy Spirit - our Comforter, Guide, and Empowerer. Learn about the Spirit's role in salvation, sanctification, and daily Christian living. Each message includes practical insights for experiencing more of the Spirit's presence and power in your life.</p>
+        </section>
+        
+        <!-- Sermon List -->
+        <section class="sermon-list">
+            <!-- Part 1 -->
+            <div class="sermon-card">
+                <div class="sermon-image" onclick="openModal('https://www.youtube.com/embed/ITvdEEttph8')">
+                    <img src="images/spirit.png" alt="Holy Spirit Part 1">
+                    <div class="flame-overlay"></div>
+                </div>
+                <div class="sermon-info">
+                    <h3>The Transformative Ministry of the Holy Spirit in Believers Lifes</h3>
+                    <p class="sermon-meta">Pastor Craig Halkett | June 1, 2025</p>
+                    <div class="download-buttons">
+                        <a href="podcasts/Unity Through the Holy Spirit.mp3" class="download-button" target="_blank">Download MP3</a>
+                        <a href="notes/The Ministry of the Holy Spirit - Study Notes.html" class="download-button" target="_blank">Notes (PDF)</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Part 2 -->
+            <div class="sermon-card">
+                <div class="sermon-image" onclick="openModal('https://www.youtube.com/embed/YOUR_VIDEO_ID_2')">
+                    <img src="images/holy-spirit-2.jpg" alt="Holy Spirit Part 2">
+                    <div class="flame-overlay"></div>
+                </div>
+                <div class="sermon-info">
+                    <h3>The Spirit's Work in Salvation: Born of the Spirit (Part 2)</h3>
+                    <p class="sermon-meta">Pastor Craig Halkett | August 10, 2025</p>
+                    <div class="download-buttons">
+                        <a href="podcasts/Holy-Spirit-Part2.mp3" class="download-button" target="_blank">Download MP3</a>
+                        <a href="notes/Holy-Spirit-Part2-Notes.html" class="download-button" target="_blank">Notes (PDF)</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Part 3 -->
+            <div class="sermon-card">
+                <div class="sermon-image" onclick="openModal('https://www.youtube.com/embed/YOUR_VIDEO_ID_3')">
+                    <img src="images/holy-spirit-3.jpg" alt="Holy Spirit Part 3">
+                    <div class="flame-overlay"></div>
+                </div>
+                <div class="sermon-info">
+                    <h3>Being Filled with the Spirit: Power for Life and Ministry (Part 3)</h3>
+                    <p class="sermon-meta">Pastor Craig Halkett | August 17, 2025</p>
+                    <div class="download-buttons">
+                        <a href="podcasts/Holy-Spirit-Part3.mp3" class="download-button" target="_blank">Download MP3</a>
+                        <a href="notes/Holy-Spirit-Part3-Notes.html" class="download-button" target="_blank">Notes</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Part 4 -->
+            <div class="sermon-card">
+                <div class="sermon-image" onclick="openModal('https://www.youtube.com/embed/YOUR_VIDEO_ID_4')">
+                    <img src="images/holy-spirit-4.jpg" alt="Holy Spirit Part 4">
+                    <div class="flame-overlay"></div>
+                </div>
+                <div class="sermon-info">
+                    <h3>The Gifts of the Spirit: Equipped for Service (Part 4)</h3>
+                    <p class="sermon-meta">Pastor Craig Halkett | August 24, 2025</p>
+                    <div class="download-buttons">
+                        <a href="podcasts/Holy-Spirit-Part4.mp3" class="download-button" target="_blank">Download MP3</a>
+                        <a href="notes/Holy-Spirit-Part4-Notes.html" class="download-button" target="_blank">Notes</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Video Modal -->
+    <div class="modal" id="videoModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div class="video-container">
+                <iframe id="modalVideo" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Loading Animation -->
+    <div class="loader" id="videoLoader"></div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Hope Community Church. All Rights Reserved.</p>
+            <p><a href="../media.html">Back to Media Library</a></p>
+        </div>
+    </footer>
+    
+    <script>
+        // Modal functionality
+        function openModal(videoUrl) {
+            const modal = document.getElementById('videoModal');
+            const loader = document.getElementById('videoLoader');
+            const iframe = document.getElementById('modalVideo');
+            
+            // Show loader
+            loader.style.display = 'block';
+            
+            // Set iframe source after a slight delay for better UX
+            setTimeout(() => {
+                iframe.src = videoUrl;
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+                
+                // Hide loader when video is loaded
+                iframe.onload = function() {
+                    loader.style.display = 'none';
+                };
+            }, 300);
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('videoModal');
+            const loader = document.getElementById('videoLoader');
+            const iframe = document.getElementById('modalVideo');
+            
+            iframe.src = '';
+            modal.style.display = 'none';
+            loader.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside the video
+        window.onclick = function(event) {
+            const modal = document.getElementById('videoModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+        
+        // Close modal with Escape key
+        document.onkeydown = function(evt) {
+            evt = evt || window.event;
+            if (evt.keyCode == 27) {
+                closeModal();
+            }
+        };
+    </script>
+</body>
+</html>

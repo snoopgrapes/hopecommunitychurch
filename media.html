@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Media Library | Hope Community Church</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* Sunset Harmony Color Palette - Matching Your Main Site */
+    :root {
+      --primary: #FF7D00;
+      --secondary: #7209B7;
+      --accent: #FF9E00;
+      --light: #FFF5E6;
+      --dark: #333333;
+      --text: #333333;
+      --text-light: #FFFFFF;
+      --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+      --gradient-hover: linear-gradient(135deg, var(--accent), #8A2BE2);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Nunito Sans', sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #f5f7fa 0%, #f0f2f5 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Animated Hero Section */
+    .hero {
+      background: linear-gradient(rgba(114, 9, 183, 0.8), rgba(255, 125, 0, 0.8)), 
+                  url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: white;
+      text-align: center;
+      padding: 120px 20px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--gradient);
+      opacity: 0.1;
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    .hero h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 3.5rem;
+      margin: 0 0 15px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      animation: fadeInDown 1s ease;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 600px;
+      margin: 0 auto;
+      animation: fadeInUp 1s ease 0.3s both;
+    }
+
+    /* Animated Tabs */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      background: white;
+      padding: 0;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .tab {
+      padding: 20px 40px;
+      cursor: pointer;
+      font-weight: 600;
+      font-family: 'Poppins', sans-serif;
+      position: relative;
+      transition: all 0.3s ease;
+      background: white;
+      border: none;
+      font-size: 1.1rem;
+      color: var(--dark);
+    }
+
+    .tab::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 4px;
+      background: var(--gradient);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    .tab:hover {
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .tab.active {
+      color: var(--primary);
+    }
+
+    .tab.active::after {
+      width: 100%;
+    }
+
+    /* Sections with Smooth Transitions */
+    .section {
+      display: none;
+      padding: 60px 20px;
+      max-width: 1400px;
+      margin: auto;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    .section-title {
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      color: var(--dark);
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--gradient);
+      border-radius: 2px;
+    }
+
+    /* Modern Sermon Grid */
+    .sermon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .sermon-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .sermon-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    .sermon-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: var(--gradient);
+    }
+
+    .thumbnail-container {
+      position: relative;
+      overflow: hidden;
+      height: 200px;
+    }
+
+    .sermon-card .video-preview {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .sermon-card:hover .video-preview {
+      transform: scale(1.05);
+    }
+
+    .play-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    .sermon-card:hover .play-overlay {
+      opacity: 1;
+    }
+
+    .play-icon {
+      width: 0;
+      height: 0;
+      border-left: 15px solid var(--primary);
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      margin-left: 5px;
+    }
+
+    .content {
+      padding: 25px;
+    }
+
+    .sermon-card h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.3rem;
+      margin: 0 0 10px;
+      color: var(--dark);
+    }
+
+    .sermon-card .meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid #eee;
+    }
+
+    .date {
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    .speaker {
+      background: var(--gradient);
+      color: white;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    /* Shorts Section - Horizontal Scroller */
+    .shorts-section {
+      background: var(--light);
+      padding: 60px 20px;
+    }
+
+    .shorts-grid {
+      display: flex;
+      gap: 25px;
+      overflow-x: auto;
+      padding: 30px 20px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--primary) transparent;
+    }
+
+    .shorts-grid::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .shorts-grid::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .shorts-grid::-webkit-scrollbar-thumb {
+      background: var(--gradient);
+      border-radius: 4px;
+    }
+
+    .short-card {
+      min-width: 280px;
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .short-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    }
+
+    .short-card .video-preview {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+    }
+
+    .short-card .content {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .short-card .duration {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 15px;
+      font-size: 0.8rem;
+    }
+
+    /* Enhanced Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .modal-content {
+      position: relative;
+      width: 90%;
+      max-width: 1000px;
+      aspect-ratio: 16 / 9;
+      background: black;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      animation: scaleUp 0.3s ease;
+    }
+
+    .modal iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: -50px;
+      right: 0;
+      background: var(--gradient);
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      color: white;
+      transition: all 0.3s ease;
+      z-index: 1001;
+    }
+
+    .close-btn:hover {
+      background: var(--gradient-hover);
+      transform: rotate(90deg);
+    }
+
+    /* Loading Animation */
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 1s ease-in-out infinite;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes scaleUp {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.1; }
+      50% { opacity: 0.2; }
+      100% { opacity: 0.1;
+      }
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+      
+      .tab {
+        padding: 15px 20px;
+        font-size: 1rem;
+      }
+      
+      .sermon-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .modal-content {
+        width: 95%;
+      }
+      
+      .close-btn {
+        top: -60px;
+        right: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero {
+        padding: 100px 15px 60px;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .tabs {
+        flex-direction: column;
+      }
+      
+      .tab {
+        padding: 15px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Animated Hero Banner -->
+  <section class="hero">
+    <h1>Media Library</h1>
+    <p>Watch inspiring sermons and uplifting video shorts from Hope Community Church</p>
+  </section>
+
+  <!-- Animated Tabs -->
+  <div class="tabs">
+    <button class="tab active" onclick="showSection('sermons', event)">📺 Full Sermons</button>
+    <button class="tab" onclick="showSection('shorts', event)">⚡ Quick Inspiration</button>
+  </div>
+
+  <!-- Sermons Section -->
+  <section id="sermons" class="section active">
+    <h2 class="section-title">Latest Sermons</h2>
+    <div class="sermon-grid">
+      <div class="sermon-card" onclick="openModal('https://www.youtube.com/embed/603qFftE3TU?autoplay=1&mute=1')">
+        <div class="thumbnail-container">
+          <iframe class="video-preview" src="https://www.youtube.com/embed/603qFftE3TU?rel=0&controls=0&showinfo=0&modestbranding=1&autoplay=0&mute=1&loop=1&playlist=603qFftE3TU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <div class="play-overlay">
+            <div class="play-icon"></div>
+          </div>
+        </div>
+        <div class="content">
+          <h3>Spiritual Posture - Fix your eyes on Jesus Part 1</h3>
+          <p>The "perfect spiritual posture" involves fixing one's eyes on Jesus, the pioneer and perfector of faith, as emphasized in Hebrews 12:1-3.</p>
+          <div class="meta">
+            <span class="date">September 07, 2025</span>
+            <span class="speaker">Pastor Craig</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sermon-card" onclick="openModal('https://www.youtube.com/embed/bNMFOMvDyPw?autoplay=1&mute=1')">
+        <div class="thumbnail-container">
+          <iframe class="video-preview" src="https://www.youtube.com/embed/bNMFOMvDyPw?rel=0&controls=0&showinfo=0&modestbranding=1&autoplay=0&mute=1&loop=1&playlist=bNMFOMvDyPw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <div class="play-overlay">
+            <div class="play-icon"></div>
+          </div>
+        </div>
+        <div class="content">
+          <h3>Spiritual Growth and Purpose.</h3>
+          <p>Embracing a personal relationship with Jesus and recognizing one's unique gifts can lead to transformative growth, purpose, and the ability to positively impact others.</p>
+          <div class="meta">
+            <span class="date">September 02, 2025</span>
+            <span class="speaker">Mark Fleming</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sermon-card" onclick="openModal('https://www.youtube.com/embed/2GkBkMm8ixg?autoplay=1&mute=1')">
+        <div class="thumbnail-container">
+          <iframe class="video-preview" src="https://www.youtube.com/embed/2GkBkMm8ixg?rel=0&controls=0&showinfo=0&modestbranding=1&autoplay=0&mute=1&loop=1&playlist=2GkBkMm8ixg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <div class="play-overlay">
+            <div class="play-icon"></div>
+          </div>
+        </div>
+        <div class="content">
+          <h3>From Fear to Faith: How God Empowers Ordinary People </h3>
+          <p>Discover how your greatest struggles and perceived weaknesses can be transformed into divine potential, guiding you from a place of fear to a life of victory.</p>
+          <div class="meta">
+            <span class="date">July 13, 2025</span>
+            <span class="speaker">M Begley</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shorts Section -->
+  <section id="shorts" class="section shorts-section">
+    <h2 class="section-title">Quick Inspiration</h2>
+    <div class="shorts-grid">
+	
+      <div class="short-card" onclick="openModal('https://www.youtube.com/embed/bbzYnWWRUIk?autoplay=1&mute=1')">
+        <iframe class="video-preview" src="https://www.youtube.com/embed/bbzYnWWRUIk?rel=0&controls=0&showinfo=0&modestbranding=1&autoplay=0&mute=1&loop=1&playlist=bbzYnWWRUIk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        
+        <div class="content">
+          <p>🌟 Daily Encouragement</p>
+        </div>
+      </div>
+
+      <div class="short-card" onclick="openModal('https://www.youtube.com/embed/Xp0gV0INKDo?autoplay=1&mute=1')">
+        <iframe class="video-preview" src="https://www.youtube.com/embed/Xp0gV0INKDo?rel=0&controls=0&showinfo=0&modestbranding=1&autoplay=0&mute=1&loop=1&playlist=Xp0gV0INKDo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>       
+        <div class="content">
+          <p>🙏 Prayer Moment</p>
+        </div>
+      </div>
+
+<div class="short-card" onclick="openModal('https://www.youtube.com/embed/MxiY_wHlFIc?autoplay=1&mute=1')">
+    <iframe class="video-preview" src="https://www.youtube.com/embed/MxiY_wHlFIc?rel=0&controls=0&showinfo=0&modestbranding=1&autoplay=0&mute=1&loop=1&playlist=MxiY_wHlFIc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>        
+        <div class="content">
+          <p>🙏 Prayer Moment</p>
+        </div>
+      </div>
+	  
+
+
+<div class="short-card" onclick="openModal('https://www.youtube.com/embed/zHPaFDRZMUo?autoplay=1&mute=1')">
+    <iframe class="video-preview" src="https://www.youtube.com/embed/zHPaFDRZMUo?rel=0&controls=0&showinfo=0&modestbranding=1&autoplay=0&mute=1&loop=1&playlist=zHPaFDRZMUo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+        <div class="content">
+          <p>🙏 Prayer Moment</p>
+        </div>
+      </div>
+  </section>
+
+  <!-- Enhanced Video Modal -->
+  <div id="videoModal" class="modal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal()">&times;</button>
+      <iframe id="modalIframe" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <script>
+    function showSection(id, event) {
+      // Hide all sections
+      document.querySelectorAll('.section').forEach(s => {
+        s.classList.remove('active');
+      });
+      
+      // Remove active class from all tabs
+      document.querySelectorAll('.tab').forEach(t => {
+        t.classList.remove('active');
+      });
+      
+      // Show selected section and activate tab
+      document.getElementById(id).classList.add('active');
+      event.currentTarget.classList.add('active');
+      
+      // Add subtle animation to content
+      const section = document.getElementById(id);
+      section.style.animation = 'none';
+      setTimeout(() => {
+        section.style.animation = 'fadeIn 0.5s ease';
+      }, 10);
+    }
+
+    function openModal(videoUrl) {
+      const modal = document.getElementById("videoModal");
+      const iframe = document.getElementById("modalIframe");
+      
+      // Add loading state
+      iframe.src = "";
+      modal.style.display = "flex";
+      
+      // Small delay for smooth transition
+      setTimeout(() => {
+        iframe.src = videoUrl + "?autoplay=1&rel=0";
+      }, 300);
+    }
+
+    function closeModal() {
+      const modal = document.getElementById("videoModal");
+      const iframe = document.getElementById("modalIframe");
+      
+      iframe.src = "";
+      modal.style.display = "none";
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+      const modal = document.getElementById("videoModal");
+      if (event.target === modal) {
+        closeModal();
+      }
+    }
+
+    // Keyboard support
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closeModal();
+      }
+    });
+
+    // Add scroll animations on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add intersection observer for scroll animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, observerOptions);
+
+      // Observe sermon cards for scroll animations
+      document.querySelectorAll('.sermon-card, .short-card').forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(card);
+      });
+    });
+  </script>
+</body>
