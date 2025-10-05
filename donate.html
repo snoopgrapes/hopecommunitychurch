@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Our Cause!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            color: #FFD700;
+        }
+        
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        .donation-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .donation-amount {
+            background: #FF6B6B;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 25px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 0 #FF4757;
+        }
+        
+        .donation-amount:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 9px 0 #FF4757;
+        }
+        
+        .donation-amount:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 0 #FF4757;
+        }
+        
+        .custom-amount {
+            background: #1E90FF;
+            box-shadow: 0 4px 0 #1C86EE;
+        }
+        
+        .donate-button {
+            background: #FFD700;
+            color: #333;
+            border: none;
+            border-radius: 50px;
+            padding: 18px 40px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 30px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 0 #FFA500;
+        }
+        
+        .donate-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 11px 0 #FFA500;
+            background: #FFEE58;
+        }
+        
+        .donate-button:active {
+            transform: translateY(0);
+            box-shadow: 0 6px 0 #FFA500;
+        }
+        
+        .payment-methods {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .payment-method {
+            background: white;
+            border-radius: 10px;
+            padding: 10px;
+            width: 60px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            margin: 30px 0;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background: #FFD700;
+            border-radius: 10px;
+            width: 65%;
+            transition: width 1s ease;
+        }
+        
+        .emoji {
+            font-size: 2rem;
+            margin: 0 5px;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #f00;
+            opacity: 0;
+        }
+        
+        footer {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .donation-options {
+                gap: 10px;
+            }
+            
+            .donation-amount {
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Help Us Make a Difference! <span class="emoji">✨</span></h1>
+        
+        <p>Your support means the world to us! Every donation helps us continue our important work and create positive change in our community.</p>
+        
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+        
+        <p>We've raised <strong>$4,250</strong> of our <strong>$6,500</strong> goal! <span class="emoji">🎉</span></p>
+        
+        <h2>Select Donation Amount</h2>
+        <div class="donation-options">
+            <button class="donation-amount">$10</button>
+            <button class="donation-amount">$25</button>
+            <button class="donation-amount">$50</button>
+            <button class="donation-amount">$100</button>
+            <button class="donation-amount custom-amount">Custom</button>
+        </div>
+        
+        <button class="donate-button">Donate Now <span class="emoji">❤️</span></button>
+        
+        <div class="payment-methods">
+            <div class="payment-method">Visa</div>
+            <div class="payment-method">MC</div>
+            <div class="payment-method">PayPal</div>
+            <div class="payment-method">Apple Pay</div>
+        </div>
+        
+        <p>All donations are secure and tax-deductible. <span class="emoji">🔒</span></p>
+    </div>
+    
+    <footer>
+        <p>Thank you for your generosity! This is a temporary donation page for production purposes.</p>
+    </footer>
+
+    <script>
+        // Add interactivity to donation buttons
+        document.querySelectorAll('.donation-amount').forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                document.querySelectorAll('.donation-amount').forEach(btn => {
+                    btn.style.transform = 'translateY(0)';
+                    btn.style.boxShadow = '0 4px 0 #FF4757';
+                });
+                
+                // Add active effect to clicked button
+                this.style.transform = 'translateY(-5px)';
+                this.style.boxShadow = '0 9px 0 #FF4757';
+                
+                // For custom amount button
+                if(this.classList.contains('custom-amount')) {
+                    const amount = prompt('Enter custom donation amount:');
+                    if(amount && !isNaN(amount)) {
+                        this.textContent = '$' + amount;
+                    }
+                }
+            });
+        });
+        
+        // Add celebration effect when donate button is clicked
+        document.querySelector('.donate-button').addEventListener('click', function() {
+            // Create confetti effect
+            for(let i = 0; i < 50; i++) {
+                createConfetti();
+            }
+            
+            // Show thank you message
+            alert('Thank you for your donation! You\'re amazing! 🎉');
+        });
+        
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.backgroundColor = getRandomColor();
+            document.body.appendChild(confetti);
+            
+            // Animate confetti
+            const animation = confetti.animate([
+                { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+                { transform: `translateY(${window.innerHeight}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+            ], {
+                duration: 1000 + Math.random() * 2000,
+                easing: 'cubic-bezier(0.1, 0.8, 0.2, 1)'
+            });
+            
+            // Remove confetti after animation
+            animation.onfinish = () => confetti.remove();
+        }
+        
+        function getRandomColor() {
+            const colors = ['#FF6B6B', '#4ECDC4', '#FFD166', '#06D6A0', '#118AB2', '#EF476F'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+    </script>
+</body>
+</html>

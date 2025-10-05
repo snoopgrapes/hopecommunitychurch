@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What We Do | Hope Community Church Clydebank</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #FF6B35; /* Vibrant orange - energetic and uplifting */
+            --secondary: #00A8E8; /* Bright blue - vibrant and energetic */
+            --accent: #FF4081; /* Pink accent - exciting and vibrant */
+            --light: #F8F9FA; /* Light background */
+            --dark: #2C3E50; /* Dark blue for text - maintains readability */
+            --success: #4CAF50; /* Green for success messages */
+            --warning: #FFC107; /* Yellow for warnings */
+            --church: #9C27B0; /* Purple for church identity */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 15px;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+        
+        .logo span {
+            display: block;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 20px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        
+        nav a:hover {
+            opacity: 0.8;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(255, 107, 53, 0.8), rgba(255, 64, 129, 0.9)), url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        /* Mission Section */
+        .mission {
+            padding: 4rem 0;
+            background-color: white;
+        }
+        
+        .mission-content {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .mission h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+        }
+        
+        .mission p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+        
+        .mission-highlight {
+            background-color: var(--light);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+            border-left: 5px solid var(--accent);
+        }
+        
+        .mission-highlight h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        /* Services Grid */
+        .services {
+            padding: 4rem 0;
+            background-color: var(--light);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            color: var(--primary); /* Use vibrant orange for section titles */
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .service-icon {
+            background-color: var(--secondary);
+            color: white;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+        
+        .recovery-icon {
+            background-color: var(--accent);
+        }
+        
+        .church-icon {
+            background-color: var(--church);
+        }
+        
+        .community-icon {
+            background-color: var(--success);
+        }
+        
+        .service-content {
+            padding: 25px;
+        }
+        
+        .service-content h3 {
+            color: var(--primary); /* Use vibrant orange for card/service titles */
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .service-content p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+        
+        .service-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            font-size: 0.9rem;
+            color: #777;
+        }
+        
+        /* Recovery Pathway */
+        .recovery-pathway {
+            padding: 4rem 0;
+            background-color: white;
+        }
+        
+        .pathway-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 3rem;
+        }
+        
+        .pathway-step {
+            text-align: center;
+            padding: 25px;
+            border-radius: 10px;
+            background-color: var(--light);
+            position: relative;
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .pathway-step h3 {
+            margin: 15px 0 10px;
+            color: var(--primary);
+        }
+        
+        /* Partners Section */
+        .partners {
+            padding: 4rem 0;
+            background-color: var(--light);
+            text-align: center;
+        }
+        
+        .partner-logos {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 2rem;
+        }
+        
+        .partner-logo {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 150px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .partner-logo span {
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+        
+        .testimonial-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .testimonial-content p {
+            font-size: 1.3rem;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 4rem 0;
+            background-color: white;
+            text-align: center;
+        }
+        
+        .cta-box {
+            background: linear-gradient(135deg, var(--accent), #c0392b);
+            color: white;
+            padding: 3rem;
+            border-radius: 10px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-box p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: white;
+            color: var(--accent);
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: var(--light);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav li {
+                margin: 5px 10px;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <!-- In a real implementation, you would use your actual logo -->
+                <div style="width: 50px; height: 50px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                    <span style="color: var(--primary); font-weight: bold;">HCC</span>
+                </div>
+                <div>
+                    <h1>Hope Community Church</h1>
+                    <span>Clydebank | Hope, Healing, Wholeness</span>
+                </div>
+            </div>
+                    </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>A Holistic Approach to Community Transformation</h2>
+            <p>At Hope Community Church Clydebank, we're committed to addressing life's challenges through faith, practical support, and genuine community connection.</p>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission">
+        <div class="container mission-content">
+            <h2>Our Mission & Vision</h2>
+            <p>Hope Community Church exists to be a place of hope, healing, and wholeness for everyone in Clydebank and beyond. We believe in addressing the whole person - spiritual, emotional, physical, and social - through a comprehensive network of support services and faith-based programs.</p>
+            
+            <div class="mission-highlight">
+                <h3>Hope for Recovery: A Dynamic Movement</h3>
+                <p>Our recovery ministry is a dynamic movement where lives are radically transformed through the power of the Gospel. We equip individuals with battle-tested tools through our 6 × 12-week courses — a scriptural arsenal for lasting victory over addiction and life-controlling issues.</p>
+            </div>
+        </div>
+    </section>
+
+<!-- Services Section -->
+<section class="services">
+    <div class="container">
+        <div class="section-title">
+            <h2>Our Services & Programs</h2>
+            <p>A comprehensive network of support for individuals and families</p>
+        </div>
+        
+        <div class="services-grid">
+            <!-- Recovery Services - Updated -->
+            <div class="service-card">
+                <div class="service-icon recovery-icon">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <div class="service-content">
+                    <h3>Hope for Recovery - 12-Week Courses</h3>
+                    <p>Our structured 12-week recovery programs provide practical tools and community support for overcoming addiction and building resilience for long-lasting change.</p>
+                    <p><strong>Current Courses:</strong></p>
+                    <ul>
+                        <li><strong>Holistic Health:</strong> Exploring physical, emotional, mental and spiritual health components</li>
+                        <li><strong>Fruit of Freedom:</strong> Based on the nine Fruit of the Spirit to replace negative attitudes with positive ones</li>
+                    </ul>
+                    <div class="service-meta">
+                        <span><i class="fas fa-clock"></i> Mondays, 11am - 1:30pm</span>
+                        <span><i class="fas fa-users"></i> 12-week programs</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Recovery Pathway -->
+            <div class="service-card">
+                <div class="service-icon recovery-icon">
+                    <i class="fas fa-road"></i>
+                </div>
+                <div class="service-content">
+                    <h3>Faith to Freedom Recovery Pathway</h3>
+                    <p>A structured 2-year journey to lasting transformation through our comprehensive recovery programs:</p>
+                    <ol>
+                        <li>Initial connection through Community Cafe or Sunday services</li>
+                        <li>12-week courses (Fruit of Freedom & Holistic Health)</li>
+                        <li>Community integration through church life and small groups</li>
+                        <li>Leadership development opportunities</li>
+                    </ol>
+                    <p><em>Each 12-week course can be taken individually or as part of the complete pathway</em></p>
+                    <div class="service-meta">
+                        <span><i class="fas fa-certificate"></i> Certificate upon completion</span>
+                        <span><i class="fas fa-calendar"></i> Flexible participation</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Course Details -->
+            <div class="service-card">
+                <div class="service-icon recovery-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <div class="service-content">
+                    <h3>Recovery Course Details</h3>
+                    <p><strong>Holistic Health Course:</strong> Focuses on physical, emotional, mental and spiritual health components, helping participants understand how these areas interconnect in recovery.</p>
+                    <p><strong>Fruit of Freedom Course:</strong> Based on the nine Fruit of the Spirit (Love, Joy, Peace, Patience, Kindness, Goodness, Faithfulness, Gentleness, Self-Control) to transform negative behaviors and attitudes.</p>
+                    <p><strong>Certification:</strong> Participants can earn a Pass certificate (attend 6 sessions + 50% quiz score) or Merit certificate (attend 9 sessions + 75% quiz score).</p>
+                    <div class="service-meta">
+                        <span><i class="fas fa-graduation-cap"></i> Biblical foundation</span>
+                        <span><i class="fas fa-hands-helping"></i> Peer support</span>
+                    </div>
+                </div>
+            </div>
+            
+                        
+                        
+                        
+                        
+                    </div>
+    </div>
+</section>
+    <!-- Recovery Pathway -->
+    <section class="recovery-pathway">
+        <div class="container">
+            <div class="section-title">
+                <h2>The Faith to Freedom Recovery Pathway</h2>
+                <p>A structured 2-year journey to lasting transformation</p>
+            </div>
+            
+            <div class="pathway-steps">
+                <div class="pathway-step">
+                    <div class="step-number">1</div>
+                    <h3>Initial Connection</h3>
+                    <p>Reach out through our Community Cafe, Sunday services, or directly to Hope for Recovery</p>
+                </div>
+                
+                <div class="pathway-step">
+                    <div class="step-number">2</div>
+                    <h3>12-Week Courses</h3>
+                    <p>Participate in our structured recovery programs like Fruit of Freedom and Holistic Health</p>
+                </div>
+                
+                <div class="pathway-step">
+                    <div class="step-number">3</div>
+                    <h3>Community Integration</h3>
+                    <p>Join church life, small groups, and volunteer opportunities for ongoing support</p>
+                </div>
+                
+                <div class="pathway-step">
+                    <div class="step-number">4</div>
+                    <h3>Leadership Development</h3>
+                    <p>Opportunities to mentor others and develop leadership skills within the community</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <p><strong>Each 12-week course can be taken individually or as part of the complete 2-year pathway</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Partners in Recovery</h2>
+                <p>Collaborating with specialized organizations for comprehensive support</p>
+            </div>
+            
+            <div class="partner-logos">
+                <div class="partner-logo">
+                    <span>The Haven<br>Kilmacolm</span>
+                </div>
+                <div class="partner-logo">
+                    <span>Teen Challenge<br>UK</span>
+                </div>
+                <div class="partner-logo">
+                    <span>Local<br>Services</span>
+                </div>
+            </div>
+            
+            <p style="margin-top: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                We maintain strong connections with residential rehabilitation centers including The Haven Kilmacolm and Teen Challenge centres across the UK, ensuring those needing intensive support can access the right level of care.
+            </p>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container testimonial-content">
+            <p>"I came to Hope for Recovery broken and hopeless. Through the 12-week program and the support of this community, I found not just recovery from addiction, but a new purpose for my life. Today I'm living free and even helping others on their journey."</p>
+            <div class="testimonial-author">- Mark, 18 months in recovery</div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-box">
+                <h3>Ready to Take the First Step?</h3>
+                <p>Whether you're seeking help for yourself or a loved one, or simply want to learn more about our community, we're here to welcome you with open arms.</p>
+                <a href="find-help.html" class="cta-button">Get Help Today</a>
+                <a href="contact.html" class="cta-button" style="background: transparent; border: 2px solid white; color: white; margin-left: 15px;">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Hope Community Church Clydebank</h3>
+                    <p>A place of hope, healing, and wholeness for the Clydebank community and beyond.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="what-we-do.html">What We Do</a></li>
+                        <li><a href="find-help.html">Find Help</a></li>
+                        <li><a href="get-involved.html">Get Involved</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Clydebank, Scotland</li>
+                        <li><i class="fas fa-phone"></i> 0141 123 4567</li>
+                        <li><i class="fas fa-envelope"></i> info@hopechurchclydebank.org</li>
+                        <li><i class="fas fa-clock"></i> Sunday Service: 10:30am</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Hope Community Church Clydebank. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hope for Recovery | Addiction Recovery & Homelessness Support</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <style>
+        .section-divider-scalloped {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+        }
+        .section-divider-scalloped-inverted {
+            /* Rectangle: no clip-path for full box */
+        }
+        .text-highlight {
+            background: linear-gradient(180deg, transparent 50%, #fbbf24 50%);
+            background-size: 100% 200%;
+            background-position: 0 0;
+            transition: background-position 0.3s ease;
+        }
+        .text-highlight:hover {
+            background-position: 0 100%;
+        }
+        
+        /* Custom CSS for larger logo */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+        .logo-img {
+            height: 60px; /* Increased from h-12 (48px) to 60px */
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+        .logo-img:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="font-['Poppins']">
+    <!-- Announcement Bar -->
+    <div class="bg-gray-800 text-white py-2 px-4 text-center">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <a href="tel:07745-393649" class="flex items-center">
+                    <span class="mr-2">📞</span>
+                    <span>CALL NOW: 07745 393649</span>
+                </a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="https://www.facebook.com/profile.php?id=61581172410948" class="text-white">
+                    <span class="sr-only">Facebook</span>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path>
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/hopecommunitychurchclydebank/" class="text-white">
+                    <span class="sr-only">Instagram</span>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"></path>
+                    </svg>
+                </a>
+                <a href="donate.html" class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-1 px-3 rounded">
+                    Give now
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo - UPDATED -->
+                <div class="logo-container">
+                    <a href="/" class="flex items-center">
+                        <!-- Replaced h-12 with custom class logo-img -->
+                        <img src="images/HFR logo.png" alt="Hope for Recovery" class="logo-img">
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="support.html" target="_blank" rel="noopener" class="text-gray-700 hover:text-yellow-600 font-medium py-2 flex items-center">
+                            You Matter
+                    </a>
+
+                    <a href="what we do.html" target="_blank" rel="noopener" class="text-gray-700 hover:text-yellow-600 font-medium py-2 flex items-center">
+                            What we do
+                    </a>
+
+                    <a href="get involved.html" target="_blank" rel="noopener" class="text-gray-700 hover:text-yellow-600 font-medium py-2 flex items-center">
+                            Get Involved
+                    </a>
+
+                    <a href="inspire.html" target="_blank" rel="noopener" class="text-gray-700 hover:text-yellow-600 font-medium py-2 flex items-center">
+                            Be Inspired
+                    </a>
+
+                    <a href="/contact" class="text-gray-700 hover:text-yellow-600 font-medium py-2">Contact</a>
+                </nav>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-yellow-600 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white py-2 px-4 shadow-lg">
+            <div class="flex flex-col space-y-4">
+                <div>
+                    <a href="/get-support" class="text-gray-700 hover:text-yellow-600 font-medium block py-2">You Matter</a>
+                    <div class="pl-4 mt-2 space-y-2">
+                        <a href="/advice-for-someone" class="text-gray-600 hover:text-yellow-600 block py-1">I need advice for someone</a>
+                        <a href="/i-need-support" class="text-gray-600 hover:text-yellow-600 block py-1">I need support</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <a href="/what-we-do" class="text-gray-700 hover:text-yellow-600 font-medium block py-2">What we do</a>
+                    <div class="pl-4 mt-2 space-y-2">
+                        <a href="/about" class="text-gray-600 hover:text-yellow-600 block py-1">About</a>
+                        <a href="/how-it-works" class="text-gray-600 hover:text-yellow-600 block py-1">How it Works</a>
+                        <a href="/our-businesses" class="text-gray-600 hover:text-yellow-600 block py-1">Our Businesses</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <a href="/get-involved" class="text-gray-700 hover:text-yellow-600 font-medium block py-2">Get Involved</a>
+                    <div class="pl-4 mt-2 space-y-2">
+                        <a href="/get-involved" class="text-gray-600 hover:text-yellow-600 block py-1">How can I get involved</a>
+                        <a href="/internships" class="text-gray-600 hover:text-yellow-600 block py-1">Internships</a>
+                        <a href="/give" class="text-gray-600 hover:text-yellow-600 block py-1">Give</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <a href="/be-inspired" class="text-gray-700 hover:text-yellow-600 font-medium block py-2">Be Inspired</a>
+                    <div class="pl-4 mt-2 space-y-2">
+                        <a href="/stories" class="text-gray-600 hover:text-yellow-600 block py-1">Stories</a>
+                        <a href="/endorsements" class="text-gray-600 hover:text-yellow-600 block py-1">Endorsements</a>
+                    </div>
+                </div>
+                
+                <a href="/contact" class="text-gray-700 hover:text-yellow-600 font-medium block py-2">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative bg-gray-900 text-white section-divider-scalloped" style="min-height: 80vh;">
+            <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-70" style="background-image: url('images/Fruit of Freedom Certs.jpg');"></div>
+            <div class="absolute inset-0 bg-black opacity-50"></div>
+            
+            <div class="relative container mx-auto px-4 py-24 flex flex-col justify-center items-center text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 max-w-3xl">
+                    <span class="text-highlight">Hope</span> is just a call away.
+                </h1>
+                <a href="/i-need-support" class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">
+                    You Matter
+                </a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="py-20 bg-white section-divider-scalloped-inverted">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                            Your journey to freedom starts <span class="text-highlight">here</span>
+                        </h2>
+                        <p class="text-gray-600 mb-6">
+                            Struggling with drugs and alcohol addiction? Take the first step towards hope and freedom. Here at Hope for Recovery we offer you the unwavering support you need to break free. Your story doesn't end with addiction - get in touch for a brighter future today.
+                        </p>
+                        <a href="/contact" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 px-6 rounded-full transition duration-300">
+                            Get in touch
+                        </a>
+                    </div>
+                    <div class="rounded-lg overflow-hidden shadow-lg">
+                        <img src="images/group.jpg" alt="Recovery journey" class="w-full h-auto">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mt-20">
+                    <div class="order-2 md:order-1">
+                        <div class="rounded-lg overflow-hidden shadow-lg">
+                            <img src="images/involved.jpg" alt="Making a difference" class="w-full h-auto">
+                        </div>
+                    </div>
+                    <div class="order-1 md:order-2">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                            You can make a big <span class="text-highlight">difference</span>
+                        </h2>
+                        <p class="text-gray-600 mb-6">
+                            Join the movement of transforming lives with Hope for Recovery. By donating furniture, contributing funds or volunteering your time, you become a vital part of our mission to break the cycle of addiction and bring hope to those in need. Your generosity empowers us to restore countless broken lives. Together, we can make a lasting impact.
+                        </p>
+                        <a href="/get-involved" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 px-6 rounded-full transition duration-300">
+                            Get Involved
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Section -->
+        <section class="py-20 bg-gray-100">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto">
+                    <div class="aspect-w-16 aspect-h-9 bg-gray-300 rounded-lg overflow-hidden shadow-lg">
+                        <video controls class="w-full h-full">
+  <source src="videos/HFR.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-800">
+                    How do we help?
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                    <!-- Service 1 -->
+                    <div class="text-center">
+                        <div class="rounded-lg overflow-hidden shadow-lg mb-6">
+                            <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Residential Recovery" class="w-full h-64 object-cover">
+                        </div>
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">Residential Recovery</h3>
+                        <p class="text-gray-600">
+                            <strong>Rebuilding Hope, Healing and a sense of Home.</strong><br>
+                            Our residences provide a nurturing environment where individuals can regain their sense of hope, experience healing from addiction and rebuild their lives. Through comprehensive support and guidance, we help them create a new foundation and a safe place to call home.
+                        </p>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div class="text-center">
+                        <div class="rounded-lg overflow-hidden shadow-lg mb-6">
+                            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Strong Support System" class="w-full h-64 object-cover">
+                        </div>
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">Strong Support System</h3>
+                        <p class="text-gray-600">
+                            <strong>Embracing a family culture.</strong><br>
+                            We foster a culture of family and community, where individuals can experience the power of unity, unconditional love and renewal. Through shared activities, communal meals, worship and mutual support, we create a strong network that uplifts and encourages each person on their journey to recovery.
+                        </p>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="text-center">
+                        <div class="rounded-lg overflow-hidden shadow-lg mb-6">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Empowering Futures" class="w-full h-64 object-cover">
+                        </div>
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">Empowering Futures</h3>
+                        <p class="text-gray-600">
+                            <strong>Unlocking Potential, Building Thriving Careers.</strong><br>
+                            Our dedicated team works closely with individuals to identify their strengths, providing training, job experience and ongoing support. By unlocking their potential, we empower our residents to build thriving careers and long lasting change and stability.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="text-center mt-12">
+                    <a href="/how-it-works" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 px-8 rounded-full transition duration-300">
+                        Find out more
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Hope for Recovery</h3>
+                    <p class="text-gray-300">
+                        Providing life-changing support to those struggling with alcohol or drug addiction or homelessness.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="/get-support" class="text-gray-300 hover:text-white">You Matter</a></li>
+                        <li><a href="/what-we-do" class="text-gray-300 hover:text-white">What We Do</a></li>
+                        <li><a href="/get-involved" class="text-gray-300 hover:text-white">Get Involved</a></li>
+                        <li><a href="/contact" class="text-gray-300 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+                    <ul class="space-y-2">
+                        <li class="text-gray-300">Phone: 0121 594 0650</li>
+                        <li class="text-gray-300">Email: info@hopeforrecovery.uk</li>
+                        <li class="text-gray-300">Address: Birmingham, UK</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/profile.php?id=61581172410948" class="text-gray-300 hover:text-white">
+                            <span class="sr-only">Facebook</span>
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/hopecommunitychurchclydebank/" class="text-gray-300 hover:text-white">
+                            <span class="sr-only">Instagram</span>
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 Hope for Recovery. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

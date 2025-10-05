@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journey of Hope | Hope Community Church Clydebank</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #FF6B35; /* Vibrant orange - energetic and uplifting */
+            --secondary: #00A8E8; /* Bright blue - vibrant and energetic */
+            --accent: #FF4081; /* Pink accent - exciting and vibrant */
+            --light: #F8F9FA; /* Light background */
+            --dark: #2C3E50; /* Dark blue for text - maintains readability */
+            --success: #4CAF50; /* Green for success messages */
+            --warning: #FFC107; /* Yellow for warnings */
+            --church: #9C27B0; /* Purple for church identity */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 15px;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+        
+        .logo span {
+            display: block;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 20px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        
+        nav a:hover {
+            opacity: 0.8;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(255, 107, 53, 0.8), rgba(255, 64, 129, 0.9)), url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        /* Section Title */
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            padding-top: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            color: var(--primary); /* Use vibrant orange for section titles */
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Journey Stories */
+        .journey-stories {
+            padding: 2rem 0 4rem;
+        }
+        
+        .story-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 4rem;
+        }
+        
+        .story-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 350px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .story-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .story-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .story-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .story-card:hover .story-image img {
+            transform: scale(1.05);
+        }
+        
+        .story-content {
+            padding: 25px;
+        }
+        
+        .story-content h3 {
+            color: var(--primary); /* Use vibrant orange for story titles */
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+        
+        .story-meta {
+            color: var(--secondary); /* Use bright blue for metadata */
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .story-quote {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 20px;
+            border-left: 3px solid var(--accent); /* Use pink accent for quote borders */
+        }
+        
+        .story-text {
+            color: #555;
+            margin-bottom: 20px;
+        }
+        
+        .milestones {
+            background-color: var(--light);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .milestones h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .milestones ul {
+            list-style: none;
+        }
+        
+        .milestones li {
+            margin-bottom: 8px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .milestones li:before {
+            content: "✓";
+            color: var(--success); /* Keep green for checkmarks */
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        /* Hope Message */
+        .hope-message {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .hope-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hope-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hope-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 4rem 0;
+            background-color: white;
+            text-align: center;
+        }
+        
+        .cta-box {
+            background: linear-gradient(135deg, var(--secondary), #0288D1);
+            color: white;
+            padding: 3rem;
+            border-radius: 10px;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: subtlePulse 4s infinite ease-in-out;
+        }
+        
+        .cta-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-box p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: white;
+            color: var(--secondary); /* Use bright blue for CTA button text */
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--accent); /* Use pink accent on hover */
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: var(--light);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav li {
+                margin: 5px 10px;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .story-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    @keyframes subtlePulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+      100% { transform: scale(1); }
+    }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <!-- In a real implementation, you would use your actual logo -->
+                <div style="width: 50px; height: 50px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                    <span style="color: var(--primary); font-weight: bold;">HCC</span>
+                </div>
+                <div>
+                    <h1>Hope Community Church</h1>
+                    <span>Clydebank | Hope, Healing, Wholeness</span>
+                </div>
+            </div>
+                    </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Journey of Hope</h2>
+            <p>Real stories of transformation, healing, and new beginnings through Hope Community Church's recovery programs.</p>
+        </div>
+    </section>
+
+    <!-- Journey Stories -->
+    <section class="journey-stories">
+        <div class="container">
+            <div class="section-title">
+                <h2>Stories of Transformation</h2>
+                <p>Meet individuals who have found hope, healing, and wholeness through our recovery programs</p>
+            </div>
+            
+            <div class="story-container">
+                <!-- Story 1 -->
+                <div class="story-card">
+                    <div class="story-image">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Mark's journey">
+                    </div>
+                    <div class="story-content">
+                        <h3>Mark's Journey</h3>
+                        <div class="story-meta">18 months in recovery | Former addiction</div>
+                        <p class="story-quote">"I came to Hope for Recovery broken and hopeless. Today I'm living free and helping others."</p>
+                        <div class="story-text">
+                            <p>Mark struggled with addiction for over a decade, losing his job, home, and family connections. After hitting rock bottom, he found Hope Community Church's recovery program.</p>
+                            <p>Through the 12-week "Fruit of Freedom" course and ongoing community support, Mark rebuilt his life from the ground up.</p>
+                        </div>
+                        <div class="milestones">
+                            <h4>Key Milestones:</h4>
+                            <ul>
+                                <li>Completed both 12-week recovery courses</li>
+                                <li>Reconnected with his family after 3 years</li>
+                                <li>Now volunteers as a recovery group facilitator</li>
+                                <li>Celebrated 18 months of sobriety</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Story 2 -->
+                <div class="story-card">
+                    <div class="story-image">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Sarah's journey">
+                    </div>
+                    <div class="story-content">
+                        <h3>Sarah's Journey</h3>
+                        <div class="story-meta">9 months in recovery | Anxiety & depression</div>
+                        <p class="story-quote">"The Holistic Health course taught me how to care for my whole self - body, mind and spirit."</p>
+                        <div class="story-text">
+                            <p>Sarah battled severe anxiety and depression for years, which led to isolation and hopelessness. Medication alone wasn't providing the breakthrough she needed.</p>
+                            <p>Through the church's Holistic Health program, Sarah learned practical tools for managing her mental health while building a supportive community.</p>
+                        </div>
+                        <div class="milestones">
+                            <h4>Key Milestones:</h4>
+                            <ul>
+                                <li>Completed Holistic Health 12-week course</li>
+                                <li>Reduced anxiety medication by 50%</li>
+                                <li>Started volunteering at Community Cafe</li>
+                                <li>Leading a small support group for women</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Story 3 -->
+                <div class="story-card">
+                    <div class="story-image">
+                        <img src="https://images.unsplash.com/photo-1507591064344-4c6ce005b128?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="David's journey">
+                    </div>
+                    <div class="story-content">
+                        <h3>David's Journey</h3>
+                        <div class="story-meta">2 years in recovery | Alcohol dependency</div>
+                        <p class="story-quote">"The Faith to Freedom pathway gave me structure when my life had completely fallen apart."</p>
+                        <div class="story-text">
+                            <p>David's alcohol dependency cost him his career and nearly his marriage. After multiple failed attempts at recovery, he committed to the full 2-year Faith to Freedom pathway.</p>
+                            <p>Through consistent support, mentorship, and spiritual growth, David has not only maintained sobriety but is now training to become a recovery coach.</p>
+                        </div>
+                        <div class="milestones">
+                            <h4>Key Milestones:</h4>
+                            <ul>
+                                <li>Completed the full 2-year recovery pathway</li>
+                                <li>Restored relationship with his wife and children</li>
+                                <li>Now enrolled in recovery coach training</li>
+                                <li>Celebrating 2 years of continuous sobriety</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hope Message -->
+    <section class="hope-message">
+        <div class="container hope-content">
+            <h3>Real Hope, Real Transformation</h3>
+            <p>These stories represent just a few of the many lives being transformed through Hope Community Church's recovery ministries. Each journey is unique, but all share a common thread: the power of hope, community, and faith to bring lasting change.</p>
+            <p>Whether you're struggling with addiction, mental health challenges, or simply feeling lost, there is a path forward. You don't have to walk it alone.</p>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-box">
+                <h3>Ready to Start Your Journey?</h3>
+                <p>Whether you're seeking help for yourself or a loved one, or simply want to learn more about our community, we're here to welcome you with open arms.</p>
+                <a href="find-help.html" class="cta-button">Get Help Today</a>
+                <a href="contact.html" class="cta-button" style="background: transparent; border: 2px solid white; color: white; margin-left: 15px;">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Hope Community Church Clydebank</h3>
+                    <p>A place of hope, healing, and wholeness for the Clydebank community and beyond.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="what-we-do.html">What We Do</a></li>
+                        <li><a href="find-help.html">Find Help</a></li>
+                        <li><a href="get-involved.html">Get Involved</a></li>
+                        <li><a href="journey-of-hope.html">Journey of Hope</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Clydebank, Scotland</li>
+                        <li><i class="fas fa-phone"></i> 0141 123 4567</li>
+                        <li><i class="fas fa-envelope"></i> info@hopechurchclydebank.org</li>
+                        <li><i class="fas fa-clock"></i> Sunday Service: 10:30am</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Hope Community Church Clydebank. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

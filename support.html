@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Help & Support | Hope for Recovery</title>
+    <style>
+        :root {
+            --primary: #FF6B35; /* Vibrant orange - energetic and uplifting */
+            --secondary: #00A8E8; /* Bright blue - vibrant and energetic */
+            --accent: #FF4081; /* Pink accent - exciting and vibrant */
+            --light: #F8F9FA; /* Light background */
+            --dark: #2C3E50; /* Dark blue for text - maintains readability */
+            --success: #4CAF50; /* Green for success messages */
+            --warning: #FFC107; /* Yellow for warnings */
+            --church: #9C27B0; /* Purple for church identity */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 15px;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+        
+        .logo span {
+            display: block;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 20px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        
+        nav a:hover {
+            opacity: 0.8;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(255, 107, 53, 0.8), rgba(255, 64, 129, 0.9)), url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .cta-button:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            color: var(--primary); /* Use vibrant orange for section titles */
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Help Options */
+        .help-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 4rem;
+        }
+        
+        .help-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .help-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .card-icon {
+            background-color: var(--secondary);
+            color: white;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+        
+        .card-content {
+            padding: 25px;
+        }
+        
+        .card-content h3 {
+            color: var(--primary); /* Use vibrant orange for card titles */
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .card-content p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+        
+        .card-button {
+            display: inline-block;
+            background-color: white;
+            color: var(--secondary); /* Use bright blue for CTA button text */
+            padding: 8px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .card-button:hover {
+            background-color: var(--accent); /* Use pink accent on hover */
+            color: white;
+        }
+        
+        /* Crisis Section */
+        .crisis-section {
+            background-color: var(--light);
+            padding: 4rem 0;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .crisis-box {
+            background: white;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--accent);
+        }
+        
+        .crisis-box h3 {
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .crisis-box p {
+            margin-bottom: 20px;
+        }
+        
+        .hotline {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+        
+        /* Resources Section */
+        .resources {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 4rem;
+        }
+        
+        .resource-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--secondary);
+        }
+        
+        .resource-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .resource-card ul {
+            list-style-position: inside;
+            margin-bottom: 15px;
+        }
+        
+        .resource-card li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+        
+        /* Testimonial */
+        .testimonial {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .testimonial-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .testimonial-content p {
+            font-size: 1.3rem;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            margin-bottom: 4rem;
+        }
+        
+        .faq-item {
+            background: white;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .faq-question {
+            padding: 20px;
+            background-color: var(--light);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s, padding 0.3s;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            max-height: 500px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: var(--light);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                justify-content: center;
+            }
+            
+            nav li {
+                margin: 0 10px;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    @keyframes subtlePulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+      100% { transform: scale(1); }
+    }
+    @keyframes subtlePulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+      100% { transform: scale(1); }
+    }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <!-- In a real implementation, you would use your actual logo -->
+                <div style="width: 50px; height: 50px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                    <span style="color: var(--primary); font-weight: bold;">HFR</span>
+                </div>
+                <div>
+                    <h1>Hope for Recovery</h1>
+                    <span>Hope, Healing, Wholeness</span>
+                </div>
+            </div>
+                    </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>You Don't Have to Face This Alone</h2>
+            <p>Whether you're struggling with addiction, mental health challenges, or homelessness, Hope for Recovery offers compassionate support and practical help to guide you toward healing and wholeness.</p>
+                    </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container main-content">
+        <!-- Help Options -->
+        <section>
+            <div class="section-title">
+                <h2>How We Can Help You</h2>
+                <p>We offer multiple pathways to support your journey to recovery and stability</p>
+            </div>
+            
+            <div class="help-options">
+                <div class="help-card">
+                    <div class="card-icon">
+                        <i>👥</i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Join Our Recovery Groups</h3>
+                        <p>Our 12-week biblically-based courses provide practical tools and community support for overcoming addiction and building resilience.</p>
+                                            </div>
+                </div>
+                
+                <div class="help-card">
+                    <div class="card-icon">
+                        <i>🗣️</i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Confidential Support</h3>
+                        <p>Speak one-on-one with someone who understands. We offer compassionate, judgment-free listening and guidance.</p>
+                                            </div>
+                </div>
+                
+                <div class="help-card">
+                    <div class="card-icon">
+                        <i>🛒</i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Foodbank Assistance</h3>
+                        <p>If you're struggling to make ends meet, we provide essential groceries through our community foodbank.</p>
+                                            </div>
+                </div>
+                
+                <div class="help-card">
+                    <div class="card-icon">
+                        <i>🏥</i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Rehab Referrals</h3>
+                        <p>We can help connect you with rehabilitation services and support you through the referral process.</p>
+                                            </div>
+                </div>
+                
+                <div class="help-card">
+                    <div class="card-icon">
+                        <i>🏠</i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Housing Support</h3>
+                        <p>Facing homelessness? We offer guidance and connections to housing resources in our community.</p>
+                                            </div>
+                </div>
+                
+                <div class="help-card">
+                    <div class="card-icon">
+                        <i>💬</i>
+                    </div>
+                    <div class="card-content">
+                        <h3>For Family & Friends</h3>
+                        <p>If someone you love is struggling, we offer guidance on how to support them while caring for yourself.</p>
+                                            </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Crisis Section -->
+        <section class="crisis-section" id="immediate-help">
+            <div class="container">
+                <div class="crisis-box">
+                    <h3>Need Immediate Help?</h3>
+                    <p>If you're in crisis or having thoughts of self-harm, please reach out now. You are valuable and your life matters.</p>
+                    <div class="hotline">24/7 Crisis Helpline: 0800 123 4567</div>
+                    <p>Or text "HELP" to 85258 for immediate support</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recovery Programs -->
+        <section id="groups">
+            <div class="section-title">
+                <h2>Our Recovery Programs</h2>
+                <p>Structured, faith-based courses designed to address the root causes of addiction</p>
+            </div>
+            
+            <div class="resources">
+                <div class="resource-card">
+                    <h3>Holistic Health</h3>
+                    <p>A 12-week course exploring physical, emotional, mental, and spiritual health and how they interconnect.</p>
+                    <ul>
+                        <li>Spirit, soul & body connection</li>
+                        <li>Emotional health & regulation</li>
+                        <li>Mental health principles</li>
+                        <li>Spiritual awakening</li>
+                    </ul>
+                    <p><strong>When:</strong> Mondays, 11am - 1:30pm</p>
+                </div>
+                
+                <div class="resource-card">
+                    <h3>Fruit of Freedom</h3>
+                    <p>Based on the nine Fruit of the Spirit, this course helps replace negative behaviors with positive ones.</p>
+                    <ul>
+                        <li>Love, joy, and peace</li>
+                        <li>Patience and kindness</li>
+                        <li>Goodness and faithfulness</li>
+                        <li>Gentleness and self-control</li>
+                    </ul>
+                    <p><strong>Certificate:</strong> Available upon completion</p>
+                </div>
+                
+                <div class="resource-card">
+                    <h3>What to Expect</h3>
+                    <p>Our groups provide a safe, confidential space for healing and growth.</p>
+                    <ul>
+                        <li>Peer-to-peer support</li>
+                        <li>Biblical principles</li>
+                        <li>Practical life skills</li>
+                        <li>Non-judgmental environment</li>
+                        <li>Refreshments provided</li>
+                    </ul>
+                    <p><strong>All are welcome</strong> regardless of background or beliefs</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonial -->
+        <section class="testimonial">
+            <div class="container testimonial-content">
+                <p>"I walked into Hope for Recovery broken and hopeless. Through their programs and the support of the community, I found not just recovery, but a new purpose for my life. Today I'm living free from addiction."</p>
+                <div class="testimonial-author">- John, 2 years in recovery</div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Common questions about getting help</p>
+            </div>
+            
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>I'm nervous about coming to a group for the first time. What should I expect?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>It's completely normal to feel nervous! When you arrive, you'll be warmly welcomed in a non-judgmental environment. Our groups begin with establishing group guidelines to ensure everyone feels safe and respected. You can participate as much or as little as you're comfortable with - there's no pressure to share until you're ready.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do I need to be Christian to attend?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No, our programs are open to everyone regardless of religious background or beliefs. While our approach is biblically-based, we welcome people from all faiths or no faith at all. Our primary goal is to provide support and practical tools for recovery in a compassionate environment.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What if I relapse during the program?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Recovery is a journey with ups and downs. If you experience a setback, we encourage you to still come to the group. We offer grace and support, not judgment. Many of our facilitators have walked similar paths and understand the challenges of recovery. We'll help you learn from the experience and continue moving forward.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How do I access the foodbank?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our foodbank operates during our regular group hours. You can come to our Monday session and speak with one of our team members who can assist you with food provisions. We provide essential groceries with dignity and respect - no complicated paperwork or eligibility requirements.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I get help for someone else?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely. We offer guidance for family members and friends who are supporting someone with addiction issues. We can provide information about how to approach your loved one, set healthy boundaries, and take care of your own wellbeing during this challenging time.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Hope for Recovery</h3>
+                    <p>A community-based recovery pathway offering hope, healing, and wholeness through faith-based programs and practical support.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="programs.html">Our Programs</a></li>
+                        <li><a href="support.html">Find Help</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Get Help Now</h3>
+                    <ul>
+                        <li><a href="tel:08001234567">Crisis Helpline: 0800 123 4567</a></li>
+                        <li><a href="mailto:help@hopeforrecovery.org">help@hopeforrecovery.org</a></li>
+                        <li>Monday Group: 11am - 1:30pm</li>
+                        <li>Foodbank available during sessions</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Hope for Recovery. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ toggle functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentNode;
+                item.classList.toggle('active');
+                
+                // Change the plus/minus icon
+                const icon = question.querySelector('span:last-child');
+                icon.textContent = item.classList.contains('active') ? '−' : '+';
+            });
+        });
+        
+        // Simple smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
