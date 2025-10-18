@@ -439,22 +439,23 @@
         </div>
     </footer>
 
-    <script>
-        function goBack() {
-            if (document.referrer && document.referrer.includes(window.location.hostname)) {
-                window.history.back();
-            } else {
-                // If there's no previous page in the same site, redirect to home or a default page
-                window.location.href = '/'; // Change this to your home page URL
-            }
+
+<script>
+    function goBack() {
+        if (document.referrer && document.referrer.includes(window.location.hostname)) {
+            window.history.back();
+        } else {
+            // If there's no previous page in the same site, redirect to home page
+            window.location.href = 'index.html'; // Fixed: Relative path to index.html
         }
-        
-        // Add keyboard shortcut (Esc key) for going back
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                goBack();
-            }
-        });
-    </script>
+    }
+    
+    // Add keyboard shortcut (Esc key) for going back
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            goBack();
+        }
+    });
+</script>
 </body>
 </html>

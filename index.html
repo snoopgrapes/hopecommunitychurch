@@ -15,6 +15,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Poppins:wght@800&display=swap" rel="stylesheet">
 
+    <!-- Tailwind CSS (added for announcement/navbar compatibility; won't affect custom sections) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <style>
         /* Sunset Harmony Color Palette */
         :root {
@@ -58,182 +61,30 @@
             text-decoration: none;
         }
 
-        /* Header Styles - FIXED */
-        header {
-            background-color: #FFFFFF;
-            padding: 0;
-            position: fixed;
-            width: 100%;
-            z-index: 1000; /* Increased z-index */
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-            top: 0;
-            left: 0;
-        }
-
-        .header-container {
+        /* Custom CSS for logo and hover effects (kept for compatibility) */
+        .logo-container {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 10px 20px; /* Added vertical padding */
-            width: 100%;
+            height: 100%;
         }
 
-        nav {
-            display: flex;
-            transition: all 0.3s ease;
+        .logo-img {
+            height: 60px;
+            width: auto;
+            transition: transform 0.3s ease;
         }
 
-        nav a {
-            color: var(--dark);
-            margin: 0 1rem;
-            text-decoration: none;
-            font-weight: 600;
-            position: relative;
-            transition: color 0.3s;
-            white-space: nowrap;
-        }
-
-        nav a:hover {
-            color: var(--primary);
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            transition: width 0.3s;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        .login-link {
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            font-weight: bold;
-        }
-
-        .profile-link {
-            background: linear-gradient(90deg, var(--secondary), var(--primary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            font-weight: bold;
-        }
-
-        .logo-container img {
-            max-width: 120px;
-            height: auto;
-            transition: transform 0.3s;
-        }
-
-        .logo-container img:hover {
+        .logo-img:hover {
             transform: scale(1.05);
         }
 
-        /* Mobile Menu Styles - FIXED */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 30px;
-            height: 21px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            z-index: 1001; /* Higher than header */
+        /* Override Tailwind for custom theme in navbar (e.g., use your colors) */
+        nav a:hover {
+            color: var(--primary) !important;
         }
 
-        .menu-toggle span {
-            display: block;
-            width: 100%;
-            height: 3px;
-            background: var(--dark);
-            transition: all 0.3s ease;
-        }
-
-        .menu-toggle.active span:nth-child(1) {
-            transform: translateY(9px) rotate(45deg);
-        }
-
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .menu-toggle.active span:nth-child(3) {
-            transform: translateY(-9px) rotate(-45deg);
-        }
-
-@media (max-width: 900px) {
-            .header-container {
-                /* NEW: Center the logo by stacking items */
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                padding-top: 15px; 
-                padding-bottom: 15px;
-                padding-left: 15px; /* Keep side padding */
-                padding-right: 15px;
-                position: relative; /* Needed for toggle absolute position */
-            }
-
-            .menu-toggle {
-                /* REPOSITION: Place the toggle button on the side */
-                position: absolute; 
-                right: 15px;
-                top: 50%; /* Center vertically in the new header padding */
-                transform: translateY(-50%);
-                display: flex; /* Ensure it is visible */
-                z-index: 1001; /* Keep z-index high */
-            }
-
-            nav {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 280px; /* Fixed width */
-                height: 100vh;
-                background: white;
-                flex-direction: column;
-                align-items: flex-start;
-                justify-content: flex-start;
-                /* NEW: Adjust padding top for the now-taller header */
-                padding-top: 100px; 
-                padding-left: 30px;
-                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-                z-index: 999; 
-                transition: right 0.3s ease;
-            }
-
-            nav.active {
-                right: 0;
-            }
-
-            nav a {
-                margin: 1rem 0;
-                font-size: 1.2rem;
-                display: block;
-                width: 100%;
-                padding: 10px 0;
-            }
-
-            .logo-container img {
-                max-width: 100px;
-            }
-        }
-
-        /* Header/Hero Section - UPDATED */
+        /* Rest of your existing styles (hero, sections, etc.) remain unchanged... */
+                /* Header/Hero Section - UPDATED */
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
             background-size: cover;
@@ -256,7 +107,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('images/hero banner1.jpg');
+            background-image: url('images/hero banner.png');
             background-size: cover;
             background-position: center;
             z-index: -1;
@@ -276,7 +127,32 @@
             margin: 0 auto 30px;
             animation: fadeInUp 1s ease 0.3s both;
         }
+		.section-divider-scalloped {
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+}
+.hero-logo {
+    display: block;
+    margin: 0 auto 1rem; /* Centers horizontally; adds ~16px space below to the h1 */
+    max-width: 200px; /* Recommended width—adjust if your logo needs to be larger/smaller (e.g., 150px for compact, 250px for prominent) */
+    width: 100%; /* Allows responsive scaling up to max-width */
+    height: auto; /* Maintains aspect ratio */
+    opacity: 0; /* Starts hidden for animation */
+    animation: fadeInDown 1s ease 0.2s forwards; /* Fades/slides in slightly after page load, matching h1 timing */
+}
 
+/* Responsive adjustments (builds on your existing media queries) */
+@media (max-width: 768px) {
+    .hero-logo {
+        max-width: 150px; /* Scales down for mobile without feeling cramped */
+        margin-bottom: 0.75rem; /* Slightly less space on small screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-logo {
+        max-width: 120px; /* Even smaller for very small devices */
+    }
+}
         /* Buttons */
         .btn {
             display: inline-block;
@@ -359,6 +235,15 @@
             grid-template-columns: 1fr 1fr;
             gap: 40px;
             align-items: center;
+        }
+
+        .about-text {
+            text-align: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
         }
 
         /* Services */
@@ -772,6 +657,10 @@
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
+
+            .about-text h2 {
+                font-size: 2rem;
+            }
             
             .service-card {
                 height: auto;
@@ -813,6 +702,17 @@
                 width: 100%; /* Full width on very small screens */
                 max-width: 300px;
             }
+
+            .announcement-inner {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .announcement-left,
+            .announcement-right {
+                justify-content: center;
+                width: 100%;
+            }
         }
 
         @media (max-width: 480px) {
@@ -842,28 +742,97 @@
     </style>
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <div class="logo-container">
-                <a href="index.html">
-                    <img src="images/rsz_1hcc.png" alt="Hope For Recovery Logo">
+    <!-- Announcement Bar (copied from index.html, with your church links and custom colors integrated) -->
+    <div class="bg-gray-800 text-white py-2 px-4 text-center">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <a href="tel:07745-393649" class="flex items-center">
+                    <span class="mr-2">📞</span>
+                    <span>CALL NOW: 07745 393649</span>
                 </a>
             </div>
+            <div class="flex items-center space-x-4">
+                <a href="https://www.facebook.com/profile.php?id=61581172410948" class="text-white">
+                    <span class="sr-only">Facebook</span>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path>
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/hopecommunitychurchclydebank/" class="text-white">
+                    <span class="sr-only">Instagram</span>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"></path>
+                    </svg>
+                </a>
+                <a href="donate.html" class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-1 px-3 rounded">
+                    Give now
+                </a>
+            </div>
+        </div>
+    </div>
 
-            <button class="menu-toggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+    <!-- Header/Navbar (copied from index.html, adapted with your church nav links and logo) -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="logo-container">
+                    <a href="index.html" class="flex items-center">
+                        <img src="images/rsz_1hcc.png" alt="Hope Community Church Logo" class="logo-img">
+                    </a>
+                </div>
 
-            <nav>
-                <a href="recovery.html" target="blank">Hope for Recovery</a>                
-                <a href="#services">Worship</a>
-                <a href="#recovery">Support</a>
-                <a href="#testimonies">Testimonies</a>
-                <a href="#about">About</a>
-				<a href="intimations.html">Whats On</a>
-            </nav>
+                <!-- Desktop Navigation (your church links) -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="recovery.html" target="_blank" class="text-gray-700 hover:text-yellow-600 font-bold py-2 flex items-center">
+					Hope for Recovery
+					</a>
+                    <a href="#services" class="text-gray-700 hover:text-yellow-600 font-bold py-2 flex items-center">
+                        Worship
+                    </a>
+                    <a href="#recovery" class="text-gray-700 hover:text-yellow-600 font-bold py-2 flex items-center">
+                        Support
+                    </a>
+                    <a href="#testimonies" class="text-gray-700 hover:text-yellow-600 font-bold py-2 flex items-center">
+                        Testimonies
+                    </a>
+                    <a href="#about" class="text-gray-700 hover:text-yellow-600 font-bold py-2">About</a>
+                    <a href="intimations.html" class="text-gray-700 hover:text-yellow-600 font- py-2">What's On</a>
+                </nav>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-yellow-600 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation (adapted with your church links and sub-items where logical) -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white py-2 px-4 shadow-lg">
+            <div class="flex flex-col space-y-4">
+                <div>
+                    <a href="recovery.html" target="_blank" class="text-gray-700 hover:text-yellow-600 font-medium block py-2">Hope for Recovery</a>
+                </div>
+                <div>
+                    <a href="#services" class="text-gray-700 hover:text-yellow-600 font-medium block py-2">Worship</a>
+                </div>
+                <div>
+                    <a href="#recovery" class="text-gray-700 hover:text-yellow-600 font-medium block py-2">Support</a>
+                </div>
+                <div>
+                    <a href="#testimonies" class="text-gray-700 hover:text-yellow-600 font-medium block py-2">Testimonies</a>
+                </div>
+                <div>
+                    <a href="#about" class="text-gray-700 hover:text-yellow-600 font-medium block py-2">About</a>
+                </div>
+                <div>
+                    <a href="intimations.html" class="text-gray-700 hover:text-yellow-600 font-medium block py-2">What's On</a>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -871,23 +840,23 @@
         <span class="pulse"></span> LIVE: Sunday Service
     </div>
 
-    <section class="hero">
-        <div class="hero-image"></div>
-        <div class="container">
-            <h1>Hope Community Church</h1>
-            <p>A welcoming family in Clydebank where faith meets practical support and transformation.</p>
-            <div id="countdown" style="font-size: 1.5rem; margin: 20px 0; color: white;"></div>
-            <a href="#services" class="btn btn-primary">Join Us Sunday</a>
-            <a href="#recovery" class="btn btn-secondary">Recovery Support</a>
-        </div>
-    </section>
-
+<section class="hero section-divider-scalloped">
+    <div class="hero-image"></div>
+    <div class="container">
+        <img src="images/whitelogo.png" alt="Hope Community Church Logo" class="hero-logo">
+        <h1>Hope Community Church</h1>
+        <p>A welcoming family in Clydebank where faith meets practical support and transformation.</p>
+        <div id="countdown" style="font-size: 1.5rem; margin: 20px 0; color: white;"></div>
+        <a href="#services" class="btn btn-primary">Join Us Sunday</a>
+        <a href="#recovery" class="btn btn-secondary">Recovery Support</a>
+    </div>
+</section>
     <section class="section" id="about">
         <div class="container about-grid">
-            <div>
+            <div class="about-text">
                 <h2>Who We Are</h2>
-                <p>Hope Community Church, part of The Apostolic Church network, is led by Pastors Craig and Yvonne. We welcome everyone in Clydebank with open arms.</p>
-                <p>We believe in meeting people right where they are—whether you're exploring faith, seeking community, or need support through life's challenges. Our doors are open to all, no matter your background or current circumstances.</p>
+                <p style="text-align: left;">Hope Community Church, part of The Apostolic Church network, is led by Pastors Craig and Yvonne. We welcome everyone in Clydebank with open arms.</p>
+                <p style="text-align: left;">We believe in meeting people right where they are—whether you're exploring faith, seeking community, or need support through life's challenges. Our doors are open to all, no matter your background or current circumstances.</p>
                 <!--<button onclick="openPrayerForm()" class="btn btn-secondary">Submit Prayer Request</button>-->
             </div>
             <div>
@@ -1060,13 +1029,14 @@
     </footer>
 
     <div id="prayerForm" class="modal">
-        <div class="modal-content">
+        <form id="prayerRequestForm" class="modal-content" action="https://formspree.io/f/mjkazvvl" method="POST">
             <span class="close-modal" onclick="closeModal()">&times;</span>
             <h3>We'll Pray For You</h3>
             <p>Submit your prayer request and our team will pray for you this week.</p>
-            <textarea placeholder="Your prayer request..."></textarea>
-            <button class="btn btn-primary" onclick="submitPrayer()">Submit</button>
-        </div>
+            <input type="email" name="email" placeholder="Your email (optional)" style="width: 100%; margin: 15px 0; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+            <textarea name="message" placeholder="Your prayer request..." required></textarea>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
     </div>
     
     <!-- Directions Modal -->
@@ -1094,18 +1064,7 @@
     </div>
 
     <script>
-        // Header-Hero Alignment Function - NEW
-        function adjustHeroMargin() {
-            const header = document.querySelector('header');
-            const hero = document.querySelector('.hero');
-            
-            if (header && hero) {
-                const headerHeight = header.offsetHeight;
-                hero.style.marginTop = headerHeight + 'px';
-            }
-        }
-
-        // Mobile menu functionality
+        // Mobile Menu Toggle
         const menuToggle = document.querySelector('.menu-toggle');
         const nav = document.querySelector('nav');
 
@@ -1119,9 +1078,6 @@
             } else {
                 document.body.style.overflow = 'auto';
             }
-            
-            // Recalculate hero margin when menu opens/closes
-            setTimeout(adjustHeroMargin, 300);
         });
 
         // Close menu when clicking on a nav link (for mobile)
@@ -1132,8 +1088,6 @@
                     menuToggle.classList.remove('active');
                     nav.classList.remove('active');
                     document.body.style.overflow = 'auto';
-                    // Recalculate hero margin
-                    setTimeout(adjustHeroMargin, 100);
                 }
             });
         });
@@ -1148,8 +1102,6 @@
                 menuToggle.classList.remove('active');
                 nav.classList.remove('active');
                 document.body.style.overflow = 'auto';
-                // Recalculate hero margin
-                setTimeout(adjustHeroMargin, 100);
             }
         });
 
@@ -1160,17 +1112,33 @@
                 nav.classList.remove('active');
                 document.body.style.overflow = 'auto';
             }
-            // Recalculate hero margin on resize
-            adjustHeroMargin();
         });
 
-        // Initialize hero margin on load and after short delay to ensure DOM is ready
-        window.addEventListener('load', function() {
-            // Initial adjustment
-            adjustHeroMargin();
-            
-            // Secondary adjustment after a short delay to catch any dynamic content
-            setTimeout(adjustHeroMargin, 100);
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                // Only prevent default and smooth scroll if it's a menu link
+                if (e.currentTarget.closest('nav')) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+
+                        // Close mobile menu after clicking a link
+                        if (window.innerWidth <= 900) {
+                            menuToggle.classList.remove('active');
+                            nav.classList.remove('active');
+                            document.body.style.overflow = 'auto';
+                        }
+                    }
+                }
+            });
         });
 
         // Testimonial gallery
@@ -1221,16 +1189,33 @@
             document.getElementById('prayerForm').style.display = 'none';
         }
 
-        function submitPrayer() {
-            const textarea = document.querySelector('#prayerForm textarea');
-            if (textarea.value.trim() !== '') {
-                alert('Thank you for your prayer request. Our team will pray for you this week.');
-                textarea.value = '';
-                closeModal();
-            } else {
-                alert('Please enter your prayer request.');
-            }
-        }
+        // Handle form submission
+        document.getElementById('prayerRequestForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent default submission for now; Formspree handles it via action
+
+            // Optional: Add client-side validation or show loading state
+            const form = e.target;
+            const formData = new FormData(form);
+
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    alert('Thank you for your prayer request. Our team will pray for you this week.');
+                    form.reset();
+                    closeModal();
+                } else {
+                    alert('There was an error submitting your request. Please try again.');
+                }
+            }).catch(error => {
+                alert('There was an error submitting your request. Please try again.');
+                console.error('Error:', error);
+            });
+        });
 
         // Set current year in footer
         document.getElementById('year').textContent = new Date().getFullYear();

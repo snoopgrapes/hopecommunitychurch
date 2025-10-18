@@ -39,45 +39,6 @@
         .logo-img:hover {
             transform: scale(1.05);
         }
-        
-.knockout-text {
-    background: url('images/Fruit of Freedom Certs.jpg') center/cover;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    background-size: 120% auto;
-    text-shadow: 0 0 30px rgba(0, 0, 0, 0.6), 2px 2px 8px rgba(0, 0, 0, 0.5);
-    transition: background-position 0.2s ease-out;
-}
-
-
-
-@keyframes move-bg {
-    0% {
-        background-position: center top;
-    }
-    50% {
-        background-position: center bottom;
-    }
-    100% {
-        background-position: center top;
-    }
-}
-
-        
-        /* Alternative knockout effect */
-        .knockout-text-alt {
-            color: white;
-            mix-blend-mode: difference;
-        }
-        
-        /* Fallback for browsers that don't support background-clip: text */
-        @supports not (-webkit-background-clip: text) {
-            .knockout-text {
-                color: white;
-                text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
-            }
-        }
     </style>
 </head>
 <body class="font-['Poppins']">
@@ -197,22 +158,22 @@
     </header>
 
     <main>
-        <!-- Hero Section -->
-        <section class="relative bg-gray-900 text-white section-divider-scalloped" style="min-height: 80vh;">
-            <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('images/Fruit of Freedom Certs.jpg');"></div>
-            <div class="absolute inset-0 bg-black opacity-40"></div>
-            
-            <div class="relative container mx-auto px-4 py-24 flex flex-col justify-center items-center text-center">
-                <h1 class="text-4xl md:text-6xl font-bold mb-6 max-w-3xl knockout-text">
-                    Hope For Recovery: Finding Light in the Darkness
-                </h1>
-                <a href="/i-need-support" class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 mb-4">
-                    You Matter
-                </a>
-                <p class="text-white text-lg italic">"Romans 15:13"</p>
-            </div>
-        </section>
-
+<!-- Hero Section -->
+<section class="relative bg-gray-900 text-white section-divider-scalloped" style="min-height: 80vh;">
+    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-70" style="background-image: url('images/Fruit of Freedom Certs.jpg');"></div>
+    <div class="absolute inset-0 bg-black opacity-50"></div>
+    
+    <div class="relative container mx-auto px-4 py-24 flex flex-col justify-center items-center text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 max-w-3xl">
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300">Hope For Recovery:</span> 
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300">Finding Light in the Darkness</span>
+        </h1>
+        <a href="/i-need-support" class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 mb-4">
+            You Matter
+        </a>
+        <p class="text-white text-lg italic">"Now the God of hope fill you with all joy and peace in believing,<br> that ye may abound in hope,<br> through the power of the Holy Ghost"<br></p>  <p>Romans 15:13</p>
+    </div>
+</section>
         <!-- About Section -->
         <section id="about" class="py-20 bg-white section-divider-scalloped-inverted">
             <div class="container mx-auto px-4">
@@ -979,31 +940,6 @@
                 }
             });
         });
-		
-		<script>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const heading = document.querySelector('.knockout-text');
-    if (!heading) return;
-
-    let current = 0;   // current position
-    let target = 0;    // target position
-    const ease = 0.08; // smaller = smoother (try 0.05–0.1)
-
-    window.addEventListener('scroll', () => {
-        target = window.scrollY * 0.25; // adjust multiplier for stronger or softer effect
-    });
-
-    function animate() {
-        current += (target - current) * ease;
-        heading.style.backgroundPosition = `center ${current}px`;
-        requestAnimationFrame(animate);
-    }
-
-    animate();
-});
-</script>
-
-	</script>
+    </script>
 </body>
 </html>
