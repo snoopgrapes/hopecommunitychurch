@@ -21,6 +21,9 @@
             --dark: #343a40;
             --success: #28a745;
             --warning: #ffc107;
+            --christmas: #d32f2f;
+            --festive: #388e3c;
+            --info: #17a2b8;
         }
 
         body {
@@ -108,6 +111,33 @@
             background: linear-gradient(to right, #fff, #fff8f6);
         }
 
+        .day-card.christmas {
+            border-left-color: var(--christmas);
+            background: linear-gradient(to right, #fff, #ffebee);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .day-card.christmas::before {
+            content: "🎄";
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.2rem;
+            opacity: 0.7;
+        }
+
+        .day-card.off {
+            border-left-color: #ccc;
+            background: linear-gradient(to right, #f8f9fa, #e9ecef);
+            opacity: 0.9;
+        }
+
+        .day-card.info {
+            border-left-color: var(--info);
+            background: linear-gradient(to right, #fff, #e3f2fd);
+        }
+
         .day-header {
             display: flex;
             justify-content: space-between;
@@ -123,6 +153,14 @@
             color: var(--primary);
         }
 
+        .day-card.christmas .day-name {
+            color: var(--christmas);
+        }
+
+        .day-card.off .day-name {
+            color: #666;
+        }
+
         .day-time {
             background: var(--light);
             padding: 0.3rem 0.8rem;
@@ -130,6 +168,16 @@
             font-size: 0.9rem;
             font-weight: 600;
             color: var(--dark);
+        }
+
+        .day-time.off {
+            background: #ffebee;
+            color: var(--christmas);
+        }
+
+        .day-time.info {
+            background: #e3f2fd;
+            color: var(--info);
         }
 
         .event-title {
@@ -142,6 +190,15 @@
         .event-details {
             color: #555;
             margin-bottom: 0.5rem;
+        }
+
+        .event-note {
+            background: #fff8e1;
+            padding: 0.8rem;
+            border-radius: 8px;
+            margin-top: 0.8rem;
+            font-size: 0.95rem;
+            border-left: 3px solid #ffb300;
         }
 
         .event-leader {
@@ -179,6 +236,85 @@
             font-size: 1.1rem;
             margin-bottom: 1.5rem;
             max-width: 800px;
+        }
+
+        .festive-notice {
+            background: linear-gradient(to right, #e8f5e9, #f1f8e9);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid var(--festive);
+        }
+
+        .festive-notice h2 {
+            color: var(--festive);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .festive-notice h2 i {
+            color: var(--christmas);
+        }
+
+        .festive-period {
+            background: linear-gradient(to right, #fff3e0, #ffecb3);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .festive-period::before {
+            content: "🎁";
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            opacity: 0.3;
+        }
+
+        .festive-period h2 {
+            color: var(--christmas);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .festive-dates {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .current-week {
+            background: linear-gradient(to right, #f3e5f5, #f1e6ff);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .current-week h2 {
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .week-range {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            color: var(--dark);
         }
 
         .foodbank-section {
@@ -220,6 +356,14 @@
             color: var(--accent);
             margin-bottom: 0.5rem;
             font-size: 1.5rem;
+        }
+
+        .upcoming-events {
+            background: linear-gradient(to right, #fff3e0, #ffecb3);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
         }
 
         .prayer-request {
@@ -306,89 +450,179 @@
     </header>
 
     <div class="container">
-        <div class="highlight-section">
-            <h2 class="highlight-title">Welcome</h2>
-            <p class="highlight-details">
-                H.C.C Services this week 1st - 7th Dec.
+        <div class="current-week">
+            <h2>H.C.C Services this week 8th - 14th Dec</h2>
+            <p class="week-range">December 8th - 14th Schedule</p>
+            
+            <div class="week-grid">
+                <div class="day-card off">
+                    <div class="day-header">
+                        <div class="day-name">Monday</div>
+                        <div class="day-time off">Off</div>
+                    </div>
+                    <div class="event-title">H.F.R (Hope for Recovery)</div>
+                    <div class="event-details">Off due to decorating in main hall.</div>
+                </div>
+
+                <div class="day-card info">
+                    <div class="day-header">
+                        <div class="day-name">Tuesday</div>
+                        <div class="day-time info">All Day</div>
+                    </div>
+                    <div class="event-title">Electrical Cupboard Clearance</div>
+                    <div class="event-details">Hoping to clear the electrical cupboard, please let me know if you want anything kept.</div>
+                </div>
+
+                <div class="day-card">
+                    <div class="day-header">
+                        <div class="day-name">Wednesday</div>
+                        <div class="day-time">6:30pm - 8pm</div>
+                    </div>
+                    <div class="event-title">Prayer Meeting</div>
+                    <div class="event-details">Probably be in summer</div>
+                    <div class="event-leader">
+                        <i class="fas fa-user"></i>
+                        <span>Leading: Jane</span>
+                    </div>
+                </div>
+
+                <div class="day-card special">
+                    <div class="day-header">
+                        <div class="day-name">Thursday</div>
+                        <div class="day-time">12pm - 1:30pm</div>
+                    </div>
+                    <div class="event-title">Street Soccer Football Drop-In</div>
+                    <div class="event-details">Holm Park, Yoker</div>
+                    
+                    <div class="event-note">
+                        <strong>Also:</strong> Planned church tidy up, decorations, and table set up. Time to be confirmed.
+                    </div>
+                </div>
+
+                <div class="day-card off">
+                    <div class="day-header">
+                        <div class="day-name">Friday</div>
+                        <div class="day-time off">Off</div>
+                    </div>
+                    <div class="event-title">Cafe & Foodbank</div>
+                    <div class="event-details">Off due to graduation</div>
+                    
+                    <div class="event-note">
+                        <strong>Friday 7pm - 9pm</strong><br>
+                        HFR Graduation
+                    </div>
+                </div>
+
+                <div class="day-card special">
+                    <div class="day-header">
+                        <div class="day-name">Sunday</div>
+                        <div class="day-time">10:30am - Tea/Coffee</div>
+                    </div>
+                    <div class="event-title">*Worship Service*</div>
+                    <div class="event-details">Service starts at 11am</div>
+                    <div class="event-leader">
+                        <i class="fas fa-user"></i>
+                        <span>Leading: C. Halkett</span>
+                    </div>
+                    <div class="event-leader">
+                        <i class="fas fa-microphone"></i>
+                        <span>Speaking: Fisola</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="festive-notice">
+            <h2><i class="fas fa-holly-berry"></i> Christmas Schedule Notice</h2>
+            <p>Hi folks, With Christmas fast approaching, I thought it might be helpful to have a list of activities over the Christmas & New year period.</p>
+        </div>
+
+        <div class="festive-period">
+            <h2>H.C.C Services 21st Dec - 4th Jan</h2>
+            <p class="festive-dates">Christmas & New Year Period Schedule</p>
+            
+            <div class="week-grid">
+                <div class="day-card christmas">
+                    <div class="day-header">
+                        <div class="day-name">Sunday 21st Dec</div>
+                        <div class="day-time">11am</div>
+                    </div>
+                    <div class="event-title">Carol Service</div>
+                </div>
+
+                <div class="day-card christmas">
+                    <div class="day-header">
+                        <div class="day-name">Monday 22nd Dec</div>
+                        <div class="day-time off">HFR - Off</div>
+                    </div>
+                </div>
+
+                <div class="day-card christmas">
+                    <div class="day-header">
+                        <div class="day-name">Wednesday 24th Dec</div>
+                        <div class="day-time off">Prayer Meeting - Off</div>
+                    </div>
+                </div>
+
+                <div class="day-card christmas">
+                    <div class="day-header">
+                        <div class="day-name">Friday 26th Dec</div>
+                        <div class="day-time off">Cafe - Off</div>
+                    </div>
+                </div>
+
+                <div class="day-card christmas">
+                    <div class="day-header">
+                        <div class="day-name">Sunday 28th Dec</div>
+                        <div class="day-time">11am</div>
+                    </div>
+                    <div class="event-title">Sharing Time</div>
+                </div>
+
+                <div class="day-card christmas">
+                    <div class="day-header">
+                        <div class="day-name">Monday 29th Dec</div>
+                        <div class="day-time off">HFR - Off</div>
+                    </div>
+                </div>
+
+                <div class="day-card christmas">
+                    <div class="day-header">
+                        <div class="day-name">Wednesday 31st Dec</div>
+                        <div class="day-time off">Prayer Meeting - Off</div>
+                    </div>
+                </div>
+
+                <div class="day-card christmas">
+                    <div class="day-header">
+                        <div class="day-name">Friday 2nd Jan</div>
+                        <div class="day-time off">Cafe - Off</div>
+                    </div>
+                </div>
+
+                <div class="day-card christmas">
+                    <div class="day-header">
+                        <div class="day-name">Sunday 5th Jan</div>
+                        <div class="day-time">11am</div>
+                    </div>
+                    <div class="event-title">Worship Service</div>
+                </div>
+            </div>
+            
+            <p class="highlight-details" style="margin-top: 1.5rem; font-weight: 600;">
+                From 5th Jan, our schedule will be back to normal. 🎄🙏🎁
             </p>
         </div>
 
-        <div class="week-grid">
-            <div class="day-card">
-                <div class="day-header">
-                    <div class="day-name">Monday</div>
-                    <div class="day-time">11am - 1:30pm</div>
-                </div>
-                <div class="event-title">H.F.R (Hope for Recovery)</div>
-                <div class="event-details">Week 11 - Looking at the helmet of Salvation.</div>
+        <div class="upcoming-events">
+            <h2 class="section-title">Upcoming Events</h2>
+            <div style="text-align: center; font-size: 1.1rem;">
+                <p><strong>Sunday 21st Dec 11am</strong><br>
+                Carol Service</p>
+                
+                <p style="margin-top: 1rem;"><strong>Sunday 28th Dec 11am</strong><br>
+                Sharing Time</p>
             </div>
-
-            <div class="day-card">
-                <div class="day-header">
-                    <div class="day-name">Tuesday</div>
-                    <div class="day-time">All Day</div>
-                </div>
-                <div class="event-title">Schools Ministry</div>
-                <div class="event-details">Week 4 of 4</div>
-                <div class="event-details" style="margin-top: 0.8rem;">
-                    <strong>Prayer Meeting</strong><br>
-                    6:30pm - 8pm
-                </div>
-            </div>
-
-            <div class="day-card">
-                <div class="day-header">
-                    <div class="day-name">Wednesday</div>
-                    <div class="day-time">No Scheduled Services</div>
-                </div>
-                <div class="event-details">Check back next week for Wednesday activities</div>
-            </div>
-
-            <div class="day-card">
-                <div class="day-header">
-                    <div class="day-name">Thursday</div>
-                    <div class="day-time">12pm - 1:30pm</div>
-                </div>
-                <div class="event-title">Street Soccer Football Drop-In</div>
-                <div class="event-details">Holm Park, Yoker</div>
-            </div>
-
-            <div class="day-card">
-                <div class="day-header">
-                    <div class="day-name">Friday</div>
-                    <div class="day-time">12pm - 2pm</div>
-                </div>
-                <div class="event-title">Cafe & Foodbank</div>
-            </div>
-
-            <div class="day-card special">
-                <div class="day-header">
-                    <div class="day-name">Sunday</div>
-                    <div class="day-time">10:30am - Tea/Coffee</div>
-                </div>
-                <div class="event-title">*Worship Service*</div>
-                <div class="event-leader">
-                    <i class="fas fa-user"></i>
-                    <span>Leading: Jane</span>
-                </div>
-                <div class="event-leader">
-                    <i class="fas fa-microphone"></i>
-                    <span>Speaking: C. Halkett</span>
-                </div>
-                <div class="event-details" style="margin-top: 0.8rem;">
-                    <i class="fas fa-clock"></i> Service starts at 11am
-                </div>
-            </div>
-        </div>
-
-        <div class="highlight-section">
-            <h2 class="highlight-title">Upcoming Events</h2>
-            <p class="highlight-details">
-                <strong>Friday 12th Dec 7pm - 9pm</strong><br>
-                HFR - Graduation<br><br>
-                <strong>Sunday 21st Dec 11am</strong><br>
-                Carol Service
-            </p>
         </div>
 
         <div class="foodbank-section">
