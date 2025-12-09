@@ -44,6 +44,35 @@
         #success-modal {
             backdrop-filter: blur(4px);
         }
+		
+		    .story-card:hover .story-avatar {
+        transform: scale(1.1);
+    }
+    
+    /* Animation for story cards */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .story-card {
+        animation: fadeInUp 0.6s ease-out forwards;
+        opacity: 0;
+    }
+    
+    .story-card:nth-child(1) { animation-delay: 0.1s; }
+    .story-card:nth-child(2) { animation-delay: 0.2s; }
+    .story-card:nth-child(3) { animation-delay: 0.3s; }
+    .story-card:nth-child(4) { animation-delay: 0.4s; }
+    .story-card:nth-child(5) { animation-delay: 0.5s; }
+    .story-card:nth-child(6) { animation-delay: 0.6s; }
+    .story-card:nth-child(7) { animation-delay: 0.7s; }
     </style>
 </head>
 <body class="font-['Poppins']">
@@ -90,6 +119,9 @@
 
                 <!-- Desktop Navigation -->
                 <nav class="hidden md:flex space-x-8">
+				    <a href="index.html" class="text-gray-700 hover:text-yellow-600 font-medium py-2 flex items-center">
+                            H.C.C
+                    </a>
                     <a href="#about" class="text-gray-700 hover:text-yellow-600 font-medium py-2 flex items-center">
                             You Matter
                     </a>
@@ -170,7 +202,7 @@
     
     <div class="relative container mx-auto px-4 py-24 flex flex-col justify-center items-center text-center">
         <h1 class="text-4xl md:text-6xl font-bold mb-6 max-w-3xl">
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300">Hope For Recovery:<br></span> 
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300">Hope For Recovery<br></span> 
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300">Hope - Healing <br>Wholeness</span>
         </h1>
         <a href="#about" class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 mb-4">
@@ -281,7 +313,7 @@
                 </div>
 
                 <div class="text-center mt-12">
-                    <a href="/how-it-works" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 px-8 rounded-full transition duration-300">
+                    <a href="#contact" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 px-8 rounded-full transition duration-300">
                         Find out more
                     </a>
                 </div>
@@ -569,8 +601,8 @@
                                 <li><strong>Prayer Focuses:</strong> Please pray for our leaders, for wisdom and strength. Pray for participants in our recovery programs, for their healing and perseverance.</li>
                                 <li><strong>Prayer Updates:</strong> To pray with us regularly, subscribe to our weekly prayer updates.</li>
                             </ul>
-                            <a href="#" class="inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded transition duration-300">
-                                Subscribe to Prayer Updates
+                            <a href="#contact" class="bg-green-500 hover:bg-green-600 text-gray-900 font-bold py-1 px-3 rounded">
+                                Subscribe
                             </a>
                         </div>
                     </div>
@@ -590,8 +622,8 @@
                                 <li><strong>In-Kind Donations:</strong> We gratefully receive donations of food, furniture, and other goods.</li>
                                 <li><strong>Legacy Giving:</strong> Consider including Hope for Recovery in your will.</li>
                             </ul>
-                            <a href="#" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded transition duration-300">
-                                Make a Donation
+                            <a href="https://www.paypal.com/ncp/payment/J5G82D4QKUARL" target="_blank" class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-1 px-3 rounded">
+							Make a Donation
                             </a>
                         </div>
                     </div>
@@ -622,75 +654,396 @@
         </section>
 
         <!-- Success Stories Section -->
-        <section id="stories" class="py-20 bg-gray-100">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-800">
-                    Success Stories
-                </h2>
+		<!-- Replace the current Success Stories section with this -->
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Story 1 -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                        <div class="p-6">
-                            <div class="flex items-center mb-4">
-                                <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
-                                    J
+<section id="stories" class="py-20 bg-gradient-to-b from-gray-50 to-white">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <span class="inline-block bg-yellow-100 text-yellow-800 text-sm font-semibold px-4 py-2 rounded-full mb-4">
+                Real Stories • Real Transformation
+            </span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 to-orange-600">Hope in Their Own Words</span>
+            </h2>
+            <p class="text-gray-600 max-w-2xl mx-auto text-lg">
+                Real stories from people in our community who have found hope, healing, and wholeness.
+            </p>
+        </div>
+
+        <!-- Story Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            
+            <!-- Story 1 - John Evans -->
+            <div class="story-card group">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden h-full transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="relative">
+                                <div class="w-14 h-14 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                                    JE
                                 </div>
-                                <div class="ml-4">
-                                    <h4 class="font-bold text-gray-800">John's Journey</h4>
-                                    <p class="text-gray-600 text-sm">18 months in recovery</p>
-                                </div>
+                                <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-white"></div>
                             </div>
-                            <p class="text-gray-600 italic">
-                                "Hope Recovery gave me more than just a program - it gave me a family. The support and understanding I found here helped me rebuild my life from the ground up."
+                            <div class="ml-4">
+                                <h4 class="font-bold text-gray-800 text-lg">John Evans</h4>
+                                <p class="text-gray-600 text-sm">Transforming reactions</p>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <div class="text-6xl text-gray-100 absolute -top-4 -left-2 font-serif">"</div>
+                            <p class="text-gray-600 relative z-10 italic">
+                                "I was known to be someone who acts first and worries later and could be violent. Whilst in a situation of confrontation in the chemist I reversed that and spoke to the person confronting me (worked a treat)"
                             </p>
                         </div>
-                    </div>
-
-                    <!-- Story 2 -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                        <div class="p-6">
-                            <div class="flex items-center mb-4">
-                                <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
-                                    S
-                                </div>
-                                <div class="ml-4">
-                                    <h4 class="font-bold text-gray-800">Sarah's Story</h4>
-                                    <p class="text-gray-600 text-sm">2 years sober</p>
-                                </div>
+                        <div class="mt-4 pt-4 border-t border-gray-100">
+                            <div class="flex items-center">
+                                <!--<svg class="w-5 h-5 text-yellow-500 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                </svg>-->
+                                <span class="text-sm text-gray-600"></span>
                             </div>
-                            <p class="text-gray-600 italic">
-                                "I walked in broken and hopeless. Today, I'm a volunteer helping others find the same freedom I discovered. This program truly transforms lives."
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Story 3 -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                        <div class="p-6">
-                            <div class="flex items-center mb-4">
-                                <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
-                                    M
-                                </div>
-                                <div class="ml-4">
-                                    <h4 class="font-bold text-gray-800">Michael's Miracle</h4>
-                                    <p class="text-gray-600 text-sm">9 months clean</p>
-                                </div>
-                            </div>
-                            <p class="text-gray-600 italic">
-                                "The practical tools and spiritual foundation I gained through Hope Recovery helped me break a 15-year addiction. I finally have hope for the future."
-                            </p>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="text-center mt-12">
-                    <a href="/stories" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 px-8 rounded-full transition duration-300">
-                        Read more stories
+            <!-- Story 2 - Iain Purdy -->
+            <div class="story-card group">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden h-full transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="relative">
+                                <div class="w-14 h-14 bg-gradient-to-r from-green-500 to-teal-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                                    IP
+                                </div>
+                                <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-white"></div>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-bold text-gray-800 text-lg">Iain Purdy</h4>
+                                <p class="text-gray-600 text-sm">Escaped the darkness</p>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <div class="text-6xl text-gray-100 absolute -top-4 -left-2 font-serif">"</div>
+                            <p class="text-gray-600 relative z-10 italic">
+                                "Hope for Recovery helped me to escape the darkness of addiction. It reconnected me with my God who I rejected for so long. Wonderful fellowship and kind people making you feel at ease."
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-gray-100">
+                            <div class="text-sm text-gray-600">
+                                <span class="font-medium"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Story 3 - Josh Pilkington -->
+            <div class="story-card group">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden h-full transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="relative">
+                                <div class="w-14 h-14 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                                    JP
+                                </div>
+                                <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-white"></div>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-bold text-gray-800 text-lg">Josh Pilkington</h4>
+                                <p class="text-gray-600 text-sm">First graduation cohort</p>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <div class="text-6xl text-gray-100 absolute -top-4 -left-2 font-serif">"</div>
+                            <p class="text-gray-600 relative z-10 italic">
+                                "I came here a shambles and a shell of my former self. I have learned coping mechanisms, security, self worth and a much better understanding of myself. I now have a safe place and a second family."
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-gray-100">
+                            <div class="text-sm text-yellow-600 font-semibold">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Story 4 - Michelle McCallister -->
+            <div class="story-card group">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden h-full transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="relative">
+                                <div class="w-14 h-14 bg-gradient-to-r from-pink-500 to-rose-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                                    MM
+                                </div>
+                                <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-white"></div>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-bold text-gray-800 text-lg">Michelle McCallister</h4>
+                                <p class="text-gray-600 text-sm">Finding hope again</p>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <div class="text-6xl text-gray-100 absolute -top-4 -left-2 font-serif">"</div>
+                            <p class="text-gray-600 relative z-10 italic">
+                                "When I started coming to Hope for Recovery I was hopeless, broken and a mess. I have began to feel more hopeful, back to starting to see the real me coming back and being substance free."
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-gray-100">
+                            <div class="text-sm text-gray-600">
+                                <span class="font-medium"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Story 5 - Berny -->
+            <div class="story-card group">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden h-full transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="relative">
+                                <div class="w-14 h-14 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                                    B
+                                </div>
+                                <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-white"></div>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-bold text-gray-800 text-lg">Berny</h4>
+                                <p class="text-gray-600 text-sm">No longer alone</p>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <div class="text-6xl text-gray-100 absolute -top-4 -left-2 font-serif">"</div>
+                            <p class="text-gray-600 relative z-10 italic">
+                                "I am really enjoying the course. It's helped my recovery journey a lot — 2 months clean thanks to Hope Church and AA. I am no longer alone. I can be awake all day and sleep at night now :)"
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-gray-100">
+                            <div class="flex items-center">
+                                <span class="text-sm font-medium text-green-600"></span>
+                                <span class="mx-2"></span>
+                                <span class="text-sm text-gray-600"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Story 6 - Dawn Donaghy -->
+            <div class="story-card group">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden h-full transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="relative">
+                                <div class="w-14 h-14 bg-gradient-to-r from-amber-500 to-yellow-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                                    DD
+                                </div>
+                                <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-white"></div>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-bold text-gray-800 text-lg">Dawn Donaghy</h4>
+                                <p class="text-gray-600 text-sm">New joyful life</p>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <div class="text-6xl text-gray-100 absolute -top-4 -left-2 font-serif">"</div>
+                            <p class="text-gray-600 relative z-10 italic">
+                                "Since coming to Hope for Recovery it has given me hope which I never had. I have faith, I have a new life, a joyful life. Something wonderful happened through Hope for Recovery. Thank you Lord."
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-gray-100">
+                            <div class="text-sm text-yellow-600 font-semibold">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Story 7 - Laura Johnson -->
+ <div class="story-card group lg:col-start-2">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden h-full transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="relative">
+                                <div class="w-14 h-14 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                                    LJ
+                                </div>
+                                <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-white"></div>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-bold text-gray-800 text-lg">Laura Johnson</h4>
+                                <p class="text-gray-600 text-sm">Life-saving support</p>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <div class="text-6xl text-gray-100 absolute -top-4 -left-2 font-serif">"</div>
+                            <p class="text-gray-600 relative z-10 italic">
+                                "The recovery group has been a life saver for me. The group is very friendly and welcoming. If it wasn't for the group I don't know where I would be. Grateful for all the support and help I have received."
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-gray-100">
+                            <div class="text-sm text-blue-600 font-semibold">
+                                🤝 Active member • 9+ months
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Stats Banner -->
+        <div class="bg-gradient-to-r from-yellow-50 to-amber-50 border border-yellow-200 rounded-2xl p-8 mb-12">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div>
+                    <div class="text-3xl md:text-4xl font-bold text-yellow-700 mb-2">7</div>
+                    <div class="text-gray-700 font-medium">Real Stories</div>
+                </div>
+                <div>
+                    <div class="text-3xl md:text-4xl font-bold text-green-600 mb-2">100%</div>
+                    <div class="text-gray-700 font-medium">Authentic Voices</div>
+                </div>
+                <div>
+                    <div class="text-3xl md:text-4xl font-bold text-blue-600 mb-2">2-18</div>
+                    <div class="text-gray-700 font-medium">Months in Recovery</div>
+                </div>
+                <div>
+                    <div class="text-3xl md:text-4xl font-bold text-purple-600 mb-2">1st</div>
+                    <div class="text-gray-700 font-medium">Graduation Cohort</div>
+                </div>
+            </div>
+        </div>
+
+<!-- CTA Section -->
+<div class="text-center">
+    <a href="#contact" class="inline-block bg-gradient-to-r from-yellow-500 to-orange-500 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 hover:shadow-lg mb-4">
+        Ready to Start Your Journey?
+    </a>
+    <p class="text-gray-600 mb-8">
+        Join these inspiring individuals on the path to recovery.
+    </p>
+    <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="#contact" class="bg-white border-2 border-yellow-500 text-yellow-600 hover:bg-yellow-50 font-bold py-3 px-8 rounded-full transition duration-300">
+            Contact Us Today
+        </a>
+        <a href="#contact" class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 px-8 rounded-full transition duration-300">
+            Attend a Session
+        </a>
+    </div>
+</div>
+</section>
+
+<section id="schools-program" class="py-20 bg-gray-100">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-800">
+            School Awareness: Hope for the Next Generation
+        </h2>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <div class="lg:col-span-2 bg-white p-8 rounded-xl shadow-lg">
+                <h3 class="text-2xl font-bold mb-4 text-gray-800">
+                    4-Week Drug and Alcohol Awareness Program
+                </h3>
+                <p class="text-lg text-gray-600 mb-6">
+                    Our team recently completed our latest 4-week drug and alcohol awareness program at the Vale of Leven Academy, aiming to equip young people with the knowledge and resilience to avoid the dangers of addiction.
+                </p>
+
+                <h4 class="text-xl font-bold text-yellow-600 mb-3">
+                    Overwhelmingly Positive Pupil Feedback
+                </h4>
+                <div class="space-y-4">
+                    <p class="text-gray-700">
+                        The program received very positive feedback from the pupils, with three groups presenting us with thank-you cards. This outreach is clearly having a positive impact.
+                    </p>
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-lg">
+                        <p class="italic text-gray-800">
+                            A wee message from class teacher Julie: "Was sorry to say bye to Craig and his team today. Inspirational speakers! The kids have never looked so interested in any topc!"<br>Vale of Leven Academy.
+                        </p>
+                    </div>
+                </div>
+
+                <h4 class="text-xl font-bold text-yellow-600 mt-6 mb-3">
+                    Community Impact & Expansion
+                </h4>
+                <p class="text-gray-700 mb-6">
+                    Our work has gained traction within the community. The school invited their community police officer to one of the workshops, and she is now keen for us to roll the program out to other schools in the area.
+                </p>
+                <div class="text-center">
+                <a href="https://www.paypal.com/ncp/payment/J5G82D4QKUARL" class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-1 px-3 rounded">
+                    Support Our School Outreach
                     </a>
                 </div>
             </div>
-        </section>
+
+            <div class="lg:col-span-1 bg-white p-8 rounded-xl shadow-lg border-t-4 border-yellow-500">
+                <h3 class="text-2xl font-bold mb-6 text-center text-gray-800">
+                    Pupil Program Ratings
+                </h3>
+                <p class="text-center text-sm text-gray-500 mb-6">
+                    (Out of 62 feedback forms, 1 = Very Bad, 10 = Excellent)
+                </p>
+
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center">
+                        <span class="font-medium text-gray-800">Rating 10 (Excellent)</span>
+                        <span class="text-2xl font-bold text-green-600">35%</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="font-medium text-gray-800">Rating 9</span>
+                        <span class="text-2xl font-bold text-green-600">27%</span>
+                    </div>
+                    <div class="flex justify-between items-center pt-2 border-t border-gray-200">
+                        <span class="text-lg font-bold text-yellow-600">Total 9 or 10</span>
+                        <span class="text-3xl font-extrabold text-yellow-600">62%</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="font-medium text-gray-800">Rating 8</span>
+                        <span class="text-xl font-bold text-gray-700">24%</span>
+                    </div>
+                    <div class="pt-4 text-center">
+                        <p class="text-gray-500 font-semibold">An incredible 86% of pupils rated the program 8/10 or higher.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-16">
+            <h3 class="text-2xl font-bold text-center mb-8 text-gray-800">
+                Moments from the Academy
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div class="bg-white rounded-lg shadow-xl overflow-hidden aspect-video group cursor-pointer">
+                    <div class="w-full h-full flex items-center justify-center text-gray-400 bg-gray-200">
+                        <img src="images/school1.jpg" alt="School Workshop Photo" class="w-full h-full object-cover transition duration-300 group-hover:scale-105">
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-xl overflow-hidden aspect-video group cursor-pointer">
+                    <div class="w-full h-full flex items-center justify-center text-gray-400 bg-gray-200">
+                        <img src="images/school2.jpg" alt="Thank You Cards" class="w-full h-full object-cover transition duration-300 group-hover:scale-105">
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-xl overflow-hidden aspect-video group cursor-pointer">
+                    <div class="w-full h-full flex items-center justify-center text-gray-400 bg-gray-200">
+                        <img src="images/school3.jpg" alt="Team Speaker" class="w-full h-full object-cover transition duration-300 group-hover:scale-105">
+                    </div>
+                </div>
+                <div class="hidden lg:block bg-white rounded-lg shadow-xl overflow-hidden aspect-video group cursor-pointer">
+                    <div class="w-full h-full flex items-center justify-center text-gray-400 bg-gray-200">
+                        <img src="images/school5.jpg" alt="Group Discussion" class="w-full h-full object-cover transition duration-300 group-hover:scale-105">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
         <!-- Contact Section -->
         <section id="contact" class="py-20 bg-white">
@@ -822,7 +1175,7 @@
                                     <option value="support">I Need Support</option>
                                     <option value="volunteer">Volunteer Opportunity</option>
                                     <option value="donation">Donation Inquiry</option>
-                                    <option value="furniture">Furniture Donation</option>
+                                    <option value="subscribe">Subscribe for prayer updates</option>
                                     <option value="other">Other</option>
                                 </select>
                             </div>
@@ -885,9 +1238,9 @@
                     <h3 class="text-xl font-bold mb-4">Resources</h3>
                     <ul class="space-y-2">
                         <li><a href="/faq" class="text-gray-400 hover:text-white transition duration-300">FAQ</a></li>
-                        <li><a href="/privacy" class="text-gray-400 hover:text-white transition duration-300">Privacy Policy</a></li>
-                        <li><a href="/terms" class="text-gray-400 hover:text-white transition duration-300">Terms of Service</a></li>
-                        <li><a href="/donate" class="text-gray-400 hover:text-white transition duration-300">Donate</a></li>
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-white transition duration-300">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="text-gray-400 hover:text-white transition duration-300">Terms of Service</a></li>
+                        <li><a href="https://www.paypal.com/ncp/payment/J5G82D4QKUARL" class="text-gray-400 hover:text-white transition duration-300">Donate</a></li>
                     </ul>
                 </div>
 
