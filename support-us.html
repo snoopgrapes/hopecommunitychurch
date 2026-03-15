@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Support the Hope Mission | Hope Community Church Clydebank</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+<!-- Tailwind CSS (for navbar compatibility) -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- DonorBox Widget Script -->
+<script src="https://donorbox.org/widget.js" paypalExpress="true"></script>
+
+<style>
+
+:root{
+--primary:#4A5568;
+--primary-dark:#2D3748;
+--primary-light:#A0AEC0;
+--accent:#CBD5E0;
+--light:#F7FAFC;
+--text:#2D3748;
+--border-light:#E2E8F0;
+--coffee:#5F6B7A;
+--shadow-md:0 4px 6px rgba(0,0,0,0.1);
+--shadow-lg:0 10px 20px rgba(0,0,0,0.15);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+font-family:'Nunito Sans',sans-serif;
+background:white;
+color:var(--text);
+line-height:1.6;
+padding:0;  /* Remove padding to allow navbar full width */
+}
+
+h1,h2,h3,h4{
+font-family:'Poppins',sans-serif;
+color:var(--primary-dark);
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:0 20px;  /* Add padding back for content */
+}
+
+/* ===== NAVBAR STYLES (copied from index.html) ===== */
+header {
+    background: white;
+    border-bottom: 2px solid var(--border-light);
+    min-height: 80px;
+}
+
+.logo-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 5px 0;
+}
+
+.logo-img {
+    position: relative;
+    height: 80px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+}
+
+/* Desktop Navigation */
+nav a {
+    color: var(--primary) !important;
+    font-weight: 600 !important;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+nav a:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--primary-dark);
+    transition: width 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--primary-dark) !important;
+}
+
+nav a:hover:after {
+    width: 80%;
+}
+
+/* Mobile Navigation */
+#mobile-menu {
+    background: white;
+    border-top: 1px solid var(--border-light);
+}
+
+#mobile-menu a {
+    color: var(--primary);
+    font-weight: 500;
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+#mobile-menu a:hover {
+    background: var(--light);
+    color: var(--primary-dark);
+}
+
+/* Announcement Bar */
+.bg-gray-800 {
+    background-color: var(--primary-dark) !important;
+}
+
+/* LOGOS */
+.logo{
+height:80px;
+width:auto;
+display:block;
+margin:0 auto;
+object-fit:contain;
+}
+
+.logo-small{
+height:55px;
+width:auto;
+display:block;
+margin:0 auto 10px auto;
+object-fit:contain;
+}
+
+/* HEADER */
+.brand-header{
+text-align:center;
+margin:40px 0 40px;  /* Added top margin */
+}
+
+.brand-title{
+font-size:3rem;
+font-weight:800;
+margin-top:20px;
+}
+
+.brand-tagline{
+font-size:1.4rem;
+color:var(--primary);
+margin-top:10px;
+}
+
+.brand-subtitle{
+max-width:700px;
+margin:20px auto;
+font-size:1.1rem;
+color:#555;
+}
+
+/* STORY */
+.story{
+background:var(--light);
+padding:40px;
+border-radius:30px;
+text-align:center;
+margin-bottom:50px;
+}
+
+.story p{
+max-width:750px;
+margin:auto;
+font-size:1.1rem;
+}
+
+/* IMPACT */
+.impact{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:20px;
+margin:50px 0;
+text-align:center;
+}
+
+.impact-box{
+background:white;
+padding:25px;
+border-radius:20px;
+box-shadow:var(--shadow-md);
+}
+
+.impact-number{
+font-size:2rem;
+font-weight:800;
+color:var(--primary);
+}
+
+.impact-label{
+font-size:0.9rem;
+color:#666;
+}
+
+/* SUPPORT GRID */
+.support-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+margin-top:40px;
+}
+
+@media(max-width:768px){
+.support-grid{grid-template-columns:1fr}
+}
+
+/* CARDS */
+.support-card{
+background:white;
+border-radius:30px;
+padding:40px;
+box-shadow:var(--shadow-lg);
+display:flex;
+flex-direction:column;
+}
+
+.card-title{
+font-size:1.8rem;
+margin:10px 0;
+text-align:center;
+}
+
+.card-badge{
+display:inline-block;
+margin:auto;
+background:var(--primary-light);
+padding:6px 14px;
+border-radius:40px;
+font-size:0.8rem;
+font-weight:700;
+letter-spacing:1px;
+}
+
+.feature-list{
+margin:25px 0;
+list-style:none;
+}
+
+.feature-list li{
+margin-bottom:14px;
+}
+
+/* DONATION LEVELS */
+.donation-levels{
+background:var(--light);
+padding:20px;
+border-radius:20px;
+margin-bottom:20px;
+}
+
+.donation-levels p{
+margin-bottom:10px;
+font-weight:600;
+}
+
+.donation-levels ul{
+padding-left:18px;
+}
+
+/* BUTTONS */
+.btn{
+padding:16px;
+border:none;
+border-radius:40px;
+font-weight:700;
+cursor:pointer;
+font-family:'Poppins';
+margin-top:auto;
+font-size:1.1rem;
+transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-church{
+background:var(--primary);
+color:white;
+}
+
+.btn-coffee{
+background:white;
+border:2px solid var(--coffee);
+color:var(--coffee);
+}
+
+/* FOOTER */
+.footer{
+margin-top:80px;
+text-align:center;
+padding:40px;
+background:var(--light);
+border-radius:30px;
+}
+
+.footer p{
+color:#555;
+margin-top:10px;
+}
+
+/* ===== BACK LINK (keep but style nicely) ===== */
+.back-link {
+    display: inline-block;
+    margin: 20px 0;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 30px;
+    border: 1px solid var(--border-light);
+    transition: all 0.2s;
+}
+
+.back-link:hover {
+    background: var(--light);
+    border-color: var(--primary);
+}
+
+/* ===== LIVE BADGE (copied from index.html) ===== */
+.live-badge {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    background: var(--primary-dark);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    z-index: 900;
+    display: none;
+    animation: pulse 2s infinite;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    font-weight: 600;
+    box-shadow: var(--shadow-lg);
+    border: 2px solid white;
+}
+
+.live-badge:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(45, 55, 72, 0.5);
+    background: var(--primary);
+}
+
+.pulse {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: #FF4444;
+    border-radius: 50%;
+    margin-right: 8px;
+    animation: pulseOpacity 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes pulseOpacity {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+</style>
+</head>
+<body>
+
+
+    <!-- Main Content (from support-us.html) -->
+    <div class="container">
+
+        <a href="index.html" class="back-link">← Back to Home</a>
+
+        <header class="brand-header">
+
+            <img src="images/logo2.png" class="logo" alt="Hope Community Church Clydebank" loading="lazy">
+
+            <h1 class="brand-title">Support the Hope Mission</h1>
+
+            <p class="brand-tagline">
+                Bringing hope to Clydebank through faith, community and recovery
+            </p>
+
+            <p class="brand-subtitle">
+                Hope Community Church exists to serve Clydebank with practical support, faith and community.
+                Through our church family and our <strong>Hope for Recovery</strong> programme we walk alongside
+                people rebuilding their lives.
+            </p>
+
+        </header>
+
+        <section class="story">
+
+            <p>
+                <strong>One mission. Two ministries.</strong><br><br>
+                Hope Community Church is the heart of our community.
+                Hope for Recovery is a practical outreach helping people rebuild their lives
+                through friendship, structure and encouragement.
+                Your support fuels both.
+            </p>
+
+        </section>
+
+        <section class="impact">
+
+            <div class="impact-box">
+                <div class="impact-number">120+</div>
+                <div class="impact-label">Recovery participants</div>
+            </div>
+
+            <div class="impact-box">
+                <div class="impact-number">30+</div>
+                <div class="impact-label">Active volunteers</div>
+            </div>
+
+            <div class="impact-box">
+                <div class="impact-number">10 yrs</div>
+                <div class="impact-label">Serving Clydebank</div>
+            </div>
+
+            <div class="impact-box">
+                <div class="impact-number">Every Week</div>
+                <div class="impact-label">Community gatherings</div>
+            </div>
+
+        </section>
+
+        <section class="support-grid">
+
+            <div class="support-card">
+
+                <img src="images/logo2.png" class="logo-small" alt="Hope Community Church">
+
+                <h2 class="card-title">Hope Partnership</h2>
+
+                <div class="card-badge">FOUNDATIONAL GIVING</div>
+
+                <ul class="feature-list">
+                    <li>✓ Monthly or annual commitment</li>
+                    <li>✓ Gift Aid eligible</li>
+                    <li>✓ Impact updates</li>
+                    <li>✓ Support long-term ministry</li>
+                </ul>
+
+                <div class="donation-levels">
+                    <p>Example Impact</p>
+                    <ul>
+                        <li>£10 – supports children's materials</li>
+                        <li>£25 – helps fund community events</li>
+                        <li>£50 – supports pastoral care & outreach</li>
+                    </ul>
+                </div>
+
+                <button class="btn btn-church" onclick="openDonorboxModal()">
+                    Become a Church Partner
+                </button>
+
+            </div>
+
+            <div class="support-card">
+
+                <img src="images/grey logo.png" class="logo-small" alt="Hope for Recovery">
+
+                <h2 class="card-title">Buy us a Coffee</h2>
+
+                <div class="card-badge">SPONTANEOUS SUPPORT</div>
+
+                <ul class="feature-list">
+                    <li>☕ One-off support</li>
+                    <li>☕ Encourages recovery journeys</li>
+                    <li>☕ Personal messages included</li>
+                    <li>☕ Perfect for celebrations</li>
+                </ul>
+
+                <div class="donation-levels">
+                    <p>What it helps fund</p>
+                    <ul>
+                        <li>£5 – coffee for the group</li>
+                        <li>£15 – course materials</li>
+                        <li>£30 – graduation celebration</li>
+                    </ul>
+                </div>
+
+                <button class="btn btn-coffee" onclick="openBMACModal()">
+                    ☕ Buy us a Coffee
+                </button>
+
+            </div>
+
+        </section>
+
+        <footer class="footer">
+
+            <img src="images/logo2.png" class="logo-small" alt="Hope Community Church">
+
+            <p>
+                Hope Community Church Clydebank<br>
+                30 Shelley Drive, Clydebank G81 3EL
+            </p>
+
+            <p>
+                Faith • Recovery • Community
+            </p>
+
+        </footer>
+
+    </div>
+
+    <script>
+        // Mobile Menu Toggle (copied from index.html)
+        const menuToggle = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', function() {
+            menuToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('hidden');
+            
+            if (!mobileMenu.classList.contains('hidden')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Close menu when clicking on a mobile nav link
+        const mobileNavLinks = document.querySelectorAll('#mobile-menu a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                menuToggle.classList.remove('active');
+                mobileMenu.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const isClickInsideMenu = mobileMenu.contains(event.target);
+            const isClickOnToggle = menuToggle.contains(event.target);
+            
+            if (window.innerWidth <= 768 && !mobileMenu.classList.contains('hidden') && 
+                !isClickInsideMenu && !isClickOnToggle) {
+                menuToggle.classList.remove('active');
+                mobileMenu.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Close menu on window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                menuToggle.classList.remove('active');
+                mobileMenu.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    e.preventDefault();
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+
+                    if (window.innerWidth <= 768) {
+                        menuToggle.classList.remove('active');
+                        mobileMenu.classList.add('hidden');
+                        document.body.style.overflow = 'auto';
+                    }
+                }
+            });
+        });
+
+        // Donor functions
+        function openDonorboxModal(){
+            window.open("https://donorbox.org/hope-community-church-donor-page","_blank");
+        }
+
+        function openBMACModal(){
+            window.open("https://buymeacoffee.com/hopecommunitychurch","_blank");
+        }
+
+        // Live badge functionality (copied from index.html)
+        function openLiveStream() {
+            window.open('https://www.youtube.com/@HopeCommunityChurchClydebank', '_blank');
+        }
+
+        function checkLiveStatus() {
+            const now = new Date();
+            const day = now.getDay();
+            const hour = now.getHours();
+            
+            if (day === 0 && hour >= 10 && hour < 13) {
+                document.getElementById('liveBadge').style.display = 'block';
+            } else {
+                document.getElementById('liveBadge').style.display = 'none';
+            }
+        }
+
+        // Initialize
+        checkLiveStatus();
+        setInterval(checkLiveStatus, 60000);
+    </script>
+
+</body>
+</html>
