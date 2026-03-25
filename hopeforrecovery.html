@@ -2,599 +2,873 @@
 <html lang="en-GB">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Hope for Recovery | Addiction Recovery & Homelessness Support</title>
+
+    <!-- Favicon links (matching index) -->
+    <link rel="icon" type="image/x-icon" href="icons/favicon.ico">
+    <link rel="icon" type="image/png" href="icons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="icons/favicon-16x16.png" sizes="16x16">
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+
+    <!-- Fonts & Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        /* Smooth scrolling for the whole page */
-        html {
-            scroll-behavior: smooth;
+        /* Inherit all styles from index.html / silver-white brand theme */
+        :root {
+            --primary: #4A5568;
+            --primary-dark: #2D3748; /* Charcoal - for depth */
+            --primary-light: #A0AEC0;
+            --secondary: #718096;
+            --accent: #CBD5E0;
+            --light: #F7FAFC;
+            --dark: #1A202C;
+            --text: #2D3748;
+            --text-light: #FFFFFF;
+            --recovery-bg: #F0F4F8;
+            --services-bg: #F8FAFC;
+            --testimonies-bg: #F1F5F9;
+            --border-light: #E2E8F0;
+            --shadow-sm: 0 1px 2px 0 rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
         }
-        /* Custom styles for the side navigation active state */
-        .side-nav a.active {
-            @apply bg-yellow-50 text-yellow-700 border-l-4 border-yellow-500 font-medium;
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        /* Hide scrollbar for cleaner look on side nav if needed */
-        .no-scrollbar::-webkit-scrollbar {
+
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background-color: white;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    padding-bottom: 0.75rem;
+}
+
+h2:after {
+    display: none;
+}
+
+        /* Hero Section - Updated to match index.html */
+        .hero {
+            background: #707070; /* Match navbar color */
+            color: var(--text-light);
+            text-align: center;
+            padding: 40px 20px 30px;
+            position: relative;
+            overflow: hidden;
+            min-height: 30vh;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-image {
+            display: none; /* Hide the background image */
+        }
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--text-light);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    animation: fadeInDown 1s ease;
+    position: relative;
+}
+
+.hero h1:after {
+    display: none;
+}
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            animation: fadeInUp 1s ease 0.3s both;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        /* Animation Keyframes */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+/* Section Divider - Scalloped Bottom Edge */
+.section-divider-scalloped {
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+}
+        /* FIX: Added padding to sections to prevent heading overlap */
+        .section {
+            padding: 80px 20px;
+            width: 100%;
+        }
+
+        /* Extra bottom margin for heading container to ensure spacing */
+        .section-heading-wrapper {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-light {
+            background-color: white;
+        }
+
+        .section-alt {
+            background-color: var(--light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        /* For photo on left: normal order (text right, image left) */
+        .content-grid-photo-left {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        /* For photo on right: image column second */
+        .content-grid-photo-right {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .content-text {
+            text-align: left;
+        }
+
+        .content-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+
+        .content-text p {
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .content-text ul {
+            list-style: disc;
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .content-text li {
+            margin-bottom: 0.5rem;
+        }
+
+        .image-rounded {
+            border-radius: 10px;
+            box-shadow: var(--shadow-lg);
+            width: 100%;
+            object-fit: cover;
+            max-height: 450px;
+        }
+
+        .badge-list {
+            background: var(--recovery-bg);
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1rem 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            border: 2px solid var(--primary);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .walk-leaders {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            justify-content: center;
+        }
+
+        .leader-card {
+            text-align: center;
+            background: white;
+            padding: 0.75rem;
+            border-radius: 50px;
+            box-shadow: var(--shadow-sm);
+            width: 100px;
+        }
+
+        .leader-card img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 0.5rem;
+            border: 2px solid var(--primary-light);
+        }
+
+        @media (max-width: 768px) {
+            .content-grid-photo-left,
+            .content-grid-photo-right {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+            .content-text h3 {
+                font-size: 1.5rem;
+            }
+            .section {
+                padding: 60px 15px;
+            }
+            .walk-leaders {
+                justify-content: flex-start;
+            }
+            /* Hero responsive styles */
+            .hero {
+                padding: 80px 15px 60px;
+                min-height: 70vh;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero h1:after {
+                width: 80px;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 60px 10px 40px;
+                min-height: 60vh;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* header & footer from index matching */
+        header {
+            background: #707070;
+            min-height: 80px;
+        }
+        .logo-img {
+            height: 80px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+        .logo-img:hover {
+            transform: scale(1.05);
+        }
+        nav a {
+            color: white !important;
+            font-weight: 600 !important;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: var(--primary-dark) !important;
+        }
+        #mobile-menu {
+            background: #707070;
+        }
+        #mobile-menu a {
+            color: white !important;
+            font-weight: 600 !important;
+        }
+        footer {
+            background-color: var(--primary-dark);
+            color: white;
+            text-align: center;
+            padding: 60px 20px 40px;
+        }
+        .footer-links a {
+            color: white;
+            transition: color 0.3s ease;
+        }
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        .bg-gray-800 {
+            background-color: var(--primary-dark) !important;
+        }
+        .bg-yellow-500 {
+            background-color: var(--primary) !important;
+        }
+        .bg-yellow-500:hover {
+            background-color: var(--primary-dark) !important;
+        }
+        .live-badge {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background: var(--primary-dark);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            z-index: 900;
             display: none;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: var(--shadow-lg);
+            border: 2px solid white;
         }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+        .pulse {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: #FF4444;
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: pulseOpacity 1.5s infinite;
+        }
+        @keyframes pulseOpacity {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 antialiased">
+<body>
 
-<!-- Announcement Bar (Alternative - inline on mobile) -->
-<div class="bg-gray-800 text-white py-2 px-4 text-sm">
-    <div class="container mx-auto">
-        <div class="flex flex-wrap items-center justify-between gap-2">
-            
-            <!-- Left side - Call Now -->
-            <div class="flex items-center">
-                <a href="tel:07745-393649" class="flex items-center hover:text-yellow-300 transition text-xs sm:text-sm">
-                    <span class="mr-1 sm:mr-2">📞</span>
-                    <span class="hidden xs:inline">CALL NOW:</span>
-                    <span class="ml-1">07745 393649</span>
-                </a>
-            </div>
-            
-            <!-- Right side - Social Icons & Donate -->
-            <div class="flex items-center space-x-2 sm:space-x-4">
-                <a href="https://www.facebook.com/profile.php?id=61581172410948" target="_blank" class="text-white hover:text-yellow-300 transition">
-                    <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"/></svg>
-                </a>
-                <a href="https://www.instagram.com/hopecommunitychurchclydebank/" target="_blank" class="text-white hover:text-yellow-300 transition">
-                    <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"/></svg>
-                </a>
-                <a href="https://www.tiktok.com/@hopechurchclydebank" target="_blank" class="text-white hover:text-yellow-300 transition">
-                    <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
-                </a>
-                <a href="support-us.html" target="_blank" class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-1 px-2 sm:px-3 rounded text-xs sm:text-sm transition whitespace-nowrap">
-                    Donate
-                </a>
-            </div>
+<!-- Announcement Bar (Identical to index) -->
+<div class="bg-gray-800 text-white py-2 px-4">
+    <div class="container mx-auto flex justify-between items-center">
+        <div class="flex items-center">
+            <a href="tel:07745-393649" class="flex items-center text-sm hover:text-gray-300 transition">
+                <span class="mr-2">📞</span>
+                <span class="hidden sm:inline">07745 393649</span>
+            </a>
+        </div>
+        <div class="flex items-center space-x-4">
+            <a href="https://www.facebook.com/profile.php?id=61581172410948" target="_blank" class="text-white hover:text-gray-300 transition">
+                <span class="sr-only">Facebook</span>
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+            </a>
+<a href="https://www.instagram.com/hopecommunitychurchclydebank/" target="_blank" class="text-white hover:text-gray-300 transition">
+    <span class="sr-only">Instagram</span>
+    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"></path></svg>
+</a>
+            <a href="https://www.tiktok.com/@hopechurchclydebank" target="_blank" class="text-white hover:text-gray-300 transition">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+            </a>
         </div>
     </div>
 </div>
-    <!-- Header (Kept the same) -->
-    <header class="bg-white shadow-sm sticky top-0 z-40">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center py-3">
-                <div class="flex items-center">
-                    <a href="/" class="flex items-center">
-                        <img src="images/grey logo.png" alt="Hope for Recovery" class="h-12 md:h-14 w-auto transition-transform hover:scale-105">
-                    </a>
-                </div>
-                <nav class="hidden md:flex space-x-8 text-sm font-medium">
-                    <a href="index.html" class="text-gray-700 hover:text-yellow-600 py-2">Church</a>
-                    <a href="#about" class="text-gray-700 hover:text-yellow-600 py-2">You Matter</a>
-                    <a href="#services" class="text-gray-700 hover:text-yellow-600 py-2">What we do</a>
-                    <a href="#get-involved" class="text-gray-700 hover:text-yellow-600 py-2">Get Involved</a>
-                    <a href="#stories" class="text-gray-700 hover:text-yellow-600 py-2">Be Inspired</a>
-                    <a href="#contact" class="text-gray-700 hover:text-yellow-600 py-2">Contact</a>
-                </nav>
-                <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-gray-700 hover:text-yellow-600 focus:outline-none">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+
+<!-- Replace the existing header navbar section with this updated code -->
+<header class="shadow-sm sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center py-3">
+            <!-- Left Logo -->
+            <div class="logo-container">
+                <a href="index.html" class="flex items-center">
+                    <img src="images/logologo.png" alt="Hope Community Church Logo" class="logo-img">
+                </a>
+            </div>
+            
+            <!-- Center Navigation -->
+            <nav class="hidden xl:flex items-center space-x-1">
+                <a href="index.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Home</a>
+                <a href="vision.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Vision/Beliefs</a>
+                <a href="team.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">The Team</a>
+                <div class="relative group">
+                    <button class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded flex items-center gap-1">
+                        Hope for Recovery
+                        <svg class="w-3 h-3 mt-0.5 transition-transform group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
                     </button>
-                </div>
-            </div>
-        </div>
-        <!-- Mobile Navigation (Kept the same, but hidden by default) -->
-        <div id="mobile-menu" class="md:hidden hidden bg-white py-2 px-4 shadow-lg border-t">
-            <div class="flex flex-col space-y-3 text-sm">
-                <a href="index.html" class="text-gray-700 hover:text-yellow-600 py-2">Church</a>
-                <a href="#about" class="text-gray-700 hover:text-yellow-600 py-2">You Matter</a>
-                <a href="#services" class="text-gray-700 hover:text-yellow-600 py-2">What we do</a>
-                <a href="#get-involved" class="text-gray-700 hover:text-yellow-600 py-2">Get Involved</a>
-                <a href="#stories" class="text-gray-700 hover:text-yellow-600 py-2">Be Inspired</a>
-                <a href="#contact" class="text-gray-700 hover:text-yellow-600 py-2">Contact</a>
-            </div>
-        </div>
-    </header>
-
-    <!-- Main Content Area with Side Navigation -->
-    <div class="container mx-auto px-4 py-8 md:py-12 flex flex-col lg:flex-row gap-8">
-        
-        <!-- Sticky Side Navigation (Hidden on mobile) -->
-        <aside class="hidden lg:block lg:w-64 flex-shrink-0">
-            <div class="sticky top-24 bg-white p-5 rounded-xl shadow-sm border border-gray-200">
-                <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">On this page</h4>
-                <nav class="side-nav flex flex-col space-y-1 text-sm">
-                    <a href="#about" class="block py-2 px-3 rounded-md text-gray-600 hover:bg-gray-50 transition">🙌 You Matter</a>
-                    <a href="#services" class="block py-2 px-3 rounded-md text-gray-600 hover:bg-gray-50 transition">🤝 What we do</a>
-                    <a href="#get-involved" class="block py-2 px-3 rounded-md text-gray-600 hover:bg-gray-50 transition">❤️ Get Involved</a>
-                    <a href="#stories" class="block py-2 px-3 rounded-md text-gray-600 hover:bg-gray-50 transition">✨ Be Inspired</a>
-                    <a href="#schools-program" class="block py-2 px-3 rounded-md text-gray-600 hover:bg-gray-50 transition">📚 Schools Program</a>
-                    <a href="#contact" class="block py-2 px-3 rounded-md text-gray-600 hover:bg-gray-50 transition">📬 Contact</a>
-                </nav>
-                <div class="mt-6 pt-4 border-t border-gray-200">
-                    <a href="#contact" class="block w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold text-center py-2.5 px-4 rounded-lg transition text-sm">
-                        Get Help Now
-                    </a>
-                </div>
-            </div>
-        </aside>
-
-        <!-- Main Content Column -->
-        <main class="flex-1 max-w-4xl">
-
-<!-- Hero Section with Enhanced Background -->
-<section class="mb-16">
-    <div class="relative text-white rounded-3xl p-8 md:p-12 shadow-xl overflow-hidden">
-        <!-- Clear background image with higher opacity and no gradient overlay -->
-        <div class="absolute inset-0" style="background-image: url('images/Fruit of Freedom Certs.jpg'); background-size: cover; background-position: center;"></div>
-        <!-- Dark overlay for text readability - adjust opacity as needed -->
-        <div class="absolute inset-0 bg-black opacity-60"></div>
-        <div class="relative z-10">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4 leading-tight">
-                Hope. Healing. <br><span class="text-yellow-400">Wholeness.</span>
-            </h1>
-            <p class="text-lg md:text-xl text-gray-100 mb-6 max-w-2xl">
-                A community-driven path to freedom from addiction, rooted in faith and support.
-            </p>
-            <div class="flex flex-wrap gap-4">
-                <a href="#about" class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 px-8 rounded-full transition shadow-lg">
-                    Start Your Journey
-                </a>
-                <a href="#services" class="bg-transparent border-2 border-white hover:bg-white hover:text-gray-900 text-white font-bold py-3 px-8 rounded-full transition">
-                    Learn More
-                </a>
-            </div>
-            <p class="text-gray-300 text-sm mt-6 italic">"Now the God of hope fill you with all joy and peace... that ye may abound in hope." — Romans 15:13</p>
-        </div>
-    </div>
-</section>
-            <!-- About Section (Redesigned - Card style) -->
-            <section id="about" class="scroll-mt-24 mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-8 text-gray-800">You <span class="text-yellow-600">Matter</span></h2>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100">
-                        <h3 class="text-xl font-bold mb-3 text-gray-800">Your journey to freedom starts here</h3>
-                        <p class="text-gray-600 mb-4">Hope Recovery is a unique, community-driven program that blends faith with freedom, designed to help you overcome addiction and lead a more positive lifestyle. Whether you have no faith or are exploring, we provide a welcoming path toward healing.</p>
-                        <a href="#contact" class="inline-flex items-center text-yellow-600 font-medium hover:text-yellow-700">Get in touch <span class="ml-1">→</span></a>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100">
-                        <h3 class="text-xl font-bold mb-3 text-gray-800">You can make a big difference</h3>
-                        <p class="text-gray-600 mb-4">Join us in prayer, volunteering, or giving. Your support becomes a vital part of our mission to break the cycle of addiction and bring hope to those in need. Together, we can restore lives.</p>
-                        <a href="#get-involved" class="inline-flex items-center text-yellow-600 font-medium hover:text-yellow-700">Get involved <span class="ml-1">→</span></a>
+                    <div class="absolute top-full left-0 mt-1 w-52 bg-gray-700 rounded-lg shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        <a href="hopeforrecovery.html" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 rounded-t-lg font-medium border-b border-gray-100">Hope for Recovery</a>
+                        <a href="keywork.html" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Key Work</a>
+                        <a href="walktalk.html" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Walk & Talk Group</a>
+                        <a href="streetoutreach.html" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Street Outreach</a>
+                        <a href="communitycafe.html" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Community Café</a>
+                        <a href="rehab.html" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Rehab Referrals</a>
+                        <a href="schools.html" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 rounded-b-lg">Schools Program</a>
                     </div>
                 </div>
-                <div class="mt-6 rounded-2xl overflow-hidden shadow-md">
-                    <img src="images/group.jpg" alt="Recovery community" class="w-full h-64 object-cover">
+                <a href="stories.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Stories of Hope</a>
+                <a href="getinvolved.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Get Involved</a>
+                <a href="videos.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Videos</a>
+                <a href="#contact" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Find/Contact</a>
+                <!-- Donate Button -->
+                <a href="support-us.html" target="_blank" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-6 rounded-full transition duration-300 shadow-md">❤️ Donate</a>
+            </nav>
+            
+            <!-- Right Logo and Mobile Menu Button -->
+            <div class="flex items-center gap-3">
+                <!-- Right Side Logo -->
+                <div class="hidden xl:block">
+                    <img src="images/hfrlogo.png" alt="Hope for Recovery Logo" class="logo-img" onerror="this.style.display='none'">
                 </div>
-            </section>
-
-            <!-- Services Section (Redesigned - Tabbed) -->
-            <section id="services" class="scroll-mt-24 mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-8 text-gray-800">What <span class="text-yellow-600">We Do</span></h2>
                 
-                <!-- Tabs -->
-                <div class="bg-white rounded-2xl shadow-md border border-gray-200 overflow-hidden">
-                    <div class="flex border-b border-gray-200">
-                        <button onclick="showTab('recovery')" id="tab-recovery-btn" class="flex-1 py-4 px-2 text-center font-medium text-gray-700 hover:text-yellow-600 border-b-2 border-transparent data-[active=true]:border-yellow-500 data-[active=true]:text-yellow-700 transition" data-active="true">Recovery</button>
-                        <button onclick="showTab('prevention')" id="tab-prevention-btn" class="flex-1 py-4 px-2 text-center font-medium text-gray-700 hover:text-yellow-600 border-b-2 border-transparent data-[active=false]:border-transparent transition">Prevention</button>
-                        <button onclick="showTab('support')" id="tab-support-btn" class="flex-1 py-4 px-2 text-center font-medium text-gray-700 hover:text-yellow-600 border-b-2 border-transparent data-[active=false]:border-transparent transition">Support</button>
-                    </div>
-
-                    <!-- Tab Content: Recovery -->
-                    <div id="tab-recovery" class="p-6 md:p-8">
-                        <h3 class="text-2xl font-bold mb-4">Structured Recovery Courses</h3>
-                        <p class="text-gray-600 mb-6"><strong>A progressive journey of healing.</strong> Our program is built on six distinct, faith-based 12-week courses. Each course focuses on a different aspect, providing a clear pathway from initial hope to lasting freedom. Participants receive certificates for each course completed.</p>
-                        <div class="bg-gray-50 p-4 rounded-xl mb-4">
-                            <p class="font-semibold text-gray-800">⏰ When: Mondays, 11am - 1:30pm</p>
-                        </div>
-                        <div class="grid sm:grid-cols-2 gap-4">
-                            <div class="flex items-start gap-3">
-                                <span class="text-yellow-600 text-xl">🎓</span>
-                                <span class="text-gray-700">Certificates upon completion</span>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <span class="text-yellow-600 text-xl">🗣️</span>
-                                <span class="text-gray-700">Peer-to-peer discussions</span>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <span class="text-yellow-600 text-xl">📊</span>
-                                <span class="text-gray-700">Case studies & reflection</span>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <span class="text-yellow-600 text-xl">🤝</span>
-                                <span class="text-gray-700">Supportive community</span>
-                            </div>
-                        </div>
-                        <!-- Details toggle -->
-                        <details class="mt-6 group">
-                            <summary class="list-none flex justify-between items-center cursor-pointer text-yellow-600 font-medium hover:text-yellow-700">
-                                <span>Read more about the 2-year pathway</span>
-                                <span class="text-xl group-open:rotate-180 transition">▼</span>
-                            </summary>
-                            <div class="mt-4 p-4 bg-gray-50 rounded-lg text-gray-600 text-sm space-y-2">
-                                <p><span class="font-bold text-gray-800">Connection:</span> Welcome through our Community Cafe.</p>
-                                <p><span class="font-bold text-gray-800">Growth:</span> Six 12-week courses.</p>
-                                <p><span class="font-bold text-gray-800">Integration:</span> Join church life and small groups.</p>
-                                <p><span class="font-bold text-gray-800">Empowerment:</span> Volunteer, training, or employment.</p>
-                            </div>
-                        </details>
-                    </div>
-
-                    <!-- Tab Content: Prevention (hidden initially) -->
-                    <div id="tab-prevention" class="p-6 md:p-8 hidden">
-                        <h3 class="text-2xl font-bold mb-4">Prevention & Education</h3>
-                        <p class="text-gray-600 mb-6"><strong>Stopping addiction before it starts.</strong> We are expanding into schools with pilot programs that educate young people on the dangers of addiction. Through "This Is My Story" sessions and wellbeing workshops, we foster awareness and resilience.</p>
-                        <div class="bg-blue-50 p-4 rounded-xl">
-                            <p class="italic text-gray-700">"Inspirational speakers! The kids have never looked so interested in any topic!" — Teacher, Vale of Leven Academy</p>
-                        </div>
-                        <a href="#schools-program" class="mt-4 inline-block text-yellow-600 font-medium hover:text-yellow-700">See our school program →</a>
-                    </div>
-
-                    <!-- Tab Content: Support (hidden initially) -->
-                    <div id="tab-support" class="p-6 md:p-8 hidden">
-                        <h3 class="text-2xl font-bold mb-4">Interactive Peer Support</h3>
-                        <p class="text-gray-600 mb-6"><strong>You are not alone.</strong> We foster deep connections through peer-to-peer small group discussions, case studies, and personal reflection. This interactive approach allows you to gain insights from others who understand.</p>
-                        <div class="grid grid-cols-2 gap-4 text-center">
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <span class="text-3xl">👥</span>
-                                <p class="font-medium mt-2">Small Groups</p>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <span class="text-3xl">💬</span>
-                                <p class="font-medium mt-2">One-to-One</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Video Section (Simplified) -->
-            <section class="mb-16">
-                <div class="bg-white p-1 rounded-2xl shadow-md">
-                    <video controls class="w-full rounded-xl">
-                        <source src="videos/HFR.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-            </section>
-
-            <!-- Get Involved Section (Redesigned - Interactive Toggles) -->
-            <section id="get-involved" class="scroll-mt-24 mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-8 text-gray-800">Get <span class="text-yellow-600">Involved</span></h2>
-                <div class="bg-white rounded-2xl shadow-md border border-gray-200 divide-y">
-                    <!-- Pray -->
-                    <details class="group p-6 open:bg-green-50/30 transition">
-                        <summary class="list-none flex justify-between items-center cursor-pointer">
-                            <div class="flex items-center gap-4">
-                                <span class="text-3xl">🙏</span>
-                                <h3 class="text-xl font-bold text-gray-800">Pray</h3>
-                            </div>
-                            <span class="text-2xl text-green-600 group-open:rotate-180 transition">▼</span>
-                        </summary>
-                        <div class="mt-4 pl-14 text-gray-600">
-                            <p class="mb-3">Prayer is the foundational support for our mission. Your prayers make a powerful difference.</p>
-                            <ul class="list-disc pl-5 space-y-1 text-sm">
-                                <li><strong>Prayer Focuses:</strong> For our leaders, for participants' healing and perseverance.</li>
-                                <li><strong>Prayer Updates:</strong> Subscribe to our weekly prayer updates.</li>
-                            </ul>
-                            <a href="#contact" class="mt-4 inline-block bg-green-600 hover:bg-green-700 text-white text-sm font-bold py-2 px-5 rounded-full transition">Subscribe</a>
-                        </div>
-                    </details>
-                    <!-- Give -->
-                    <details class="group p-6 open:bg-yellow-50/30 transition">
-                        <summary class="list-none flex justify-between items-center cursor-pointer">
-                            <div class="flex items-center gap-4">
-                                <span class="text-3xl">💷</span>
-                                <h3 class="text-xl font-bold text-gray-800">Give</h3>
-                            </div>
-                            <span class="text-2xl text-yellow-600 group-open:rotate-180 transition">▼</span>
-                        </summary>
-                        <div class="mt-4 pl-14 text-gray-600">
-                            <p class="mb-3">Your financial and material gifts sustain our work and allow us to offer services free of charge.</p>
-                            <ul class="list-disc pl-5 space-y-1 text-sm">
-                                <li><strong>Financial Donations:</strong> One-off or recurring.</li>
-                                <li><strong>In-Kind Donations:</strong> Foodbank items welcome.</li>
-                                <li><strong>Legacy Giving:</strong> Consider including us in your will.</li>
-                            </ul>
-                            <a href="support-us.html" target="_blank" class="mt-4 inline-block bg-yellow-500 hover:bg-yellow-600 text-gray-900 text-sm font-bold py-2 px-5 rounded-full transition">Make a Donation</a>
-                        </div>
-                    </details>
-                    <!-- Volunteer -->
-                    <details class="group p-6 open:bg-pink-50/30 transition">
-                        <summary class="list-none flex justify-between items-center cursor-pointer">
-                            <div class="flex items-center gap-4">
-                                <span class="text-3xl">🤝</span>
-                                <h3 class="text-xl font-bold text-gray-800">Volunteer</h3>
-                            </div>
-                            <span class="text-2xl text-pink-600 group-open:rotate-180 transition">▼</span>
-                        </summary>
-                        <div class="mt-4 pl-14 text-gray-600">
-                            <p class="mb-3">Offer your time and skills to be a direct part of someone's journey to freedom.</p>
-                            <ul class="list-disc pl-5 space-y-1 text-sm">
-                                <li><strong>Direct Service:</strong> Recovery groups or community cafe.</li>
-                                <li><strong>Practical Help:</strong> Cleaning, gardening.</li>
-                                <li><strong>Skilled Support:</strong> Professional skills behind the scenes.</li>
-                            </ul>
-                            <a href="#contact" class="mt-4 inline-block bg-pink-500 hover:bg-pink-600 text-white text-sm font-bold py-2 px-5 rounded-full transition">Volunteer With Us</a>
-                        </div>
-                    </details>
-                </div>
-            </section>
-
- <!-- Success Stories Section (Redesigned - Card Grid with Images) -->
-<section id="stories" class="scroll-mt-24 mb-16">
-    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Be <span class="text-yellow-600">Inspired</span></h2>
-    <p class="text-gray-600 mb-8">Real stories from people in our community who have found hope, healing, and wholeness.</p>
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <!-- Story Card - Josh with image -->
-<!-- Story Card - Josh with image (top-aligned) -->
-<div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
-    <div class="flex items-center gap-3 mb-3">
-        <div class="w-12 h-12 rounded-full overflow-hidden bg-gradient-to-br from-yellow-500 to-orange-500 flex-shrink-0">
-            <img src="images/josh-graduation.jpg" alt="Josh" class="w-full h-full object-cover object-top">
-        </div>
-        <div>
-            <h4 class="font-bold">Josh Pilkington</h4>
-            <p class="text-xs text-gray-500">First graduate</p>
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="xl:hidden text-white hover:text-gray-200 focus:outline-none transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
         </div>
     </div>
-    <p class="text-gray-600 text-sm italic">"I came here a shambles and a shell of my former self. I have learned coping mechanisms, security, self worth..."</p>
-</div>
-        
-        <!-- Story Card - Laura with image -->
-        <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
-            <div class="flex items-center gap-3 mb-3">
-                <div class="w-12 h-12 rounded-full overflow-hidden bg-gradient-to-br from-blue-500 to-cyan-500 flex-shrink-0">
-                    <img src="images/laura-graduation.jpg" alt="Laura" class="w-full h-full object-cover object-top">
-                </div>
-                <div>
-                    <h4 class="font-bold">Laura Johnson</h4>
-                    <p class="text-xs text-gray-500">First graduate</p>
+    <div id="mobile-menu" class="xl:hidden hidden py-3 px-4 shadow-lg border-t border-white border-opacity-20">
+        <div class="flex flex-col space-y-1">
+            <a href="index.html">Home</a>
+            <a href="vision.html">Vision/Beliefs</a>
+            <a href="team.html">The Team</a>
+            <div>
+                <button onclick="toggleMobileDropdown()" class="text-white w-full text-left py-2 px-3 rounded flex justify-between items-center">Hope for Recovery <svg id="mobile-dropdown-arrow" class="w-4 h-4 transition-transform" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg></button>
+                <div id="mobile-dropdown" class="hidden pl-4 mt-1 space-y-1 border-l-2 border-white border-opacity-30 ml-3">
+                    <a href="hopeforrecovery.html">Hope for Recovery</a>
+                    <a href="keywork.html">Key Work</a>
+                    <a href="walktalk.html">Walk & Talk Group</a>
+                    <a href="streetoutreach.html">Street Outreach</a>
+                    <a href="communitycafe.html">Community Café</a>
+                    <a href="rehab.html">Rehab Referrals</a>
+                    <a href="schools.html">Schools Program</a>
                 </div>
             </div>
-            <p class="text-gray-600 text-sm italic">"The recovery group has been a life saver for me. The group is very friendly and welcoming..."</p>
+            <a href="stories.html">Stories of Hope</a>
+            <a href="getinvolved.html">Get Involved</a>
+            <a href="videos.html">Videos</a>
+            <a href="#contact">Find/Contact</a>
+            <a href="support-us.html" target="_blank" class="mt-2 bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-full text-center transition duration-300 inline-block">❤️ Donate</a>
         </div>
-        
-        <!-- Story Card - Iain (keeping initials style for variety) -->
-        <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
-            <div class="flex items-center gap-3 mb-3">
-                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-teal-500 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
-                    IP
+    </div>
+</header>
+
+<div class="live-badge" id="liveBadge" onclick="openLiveStream()"><span class="pulse"></span> LIVE: Sunday Service</div>
+
+<main>
+    <!-- Hero Section - Updated to match index.html -->
+    <section class="hero section-divider-scalloped">
+        <div class="container">
+            <h1>Hope For Recovery</h1>
+            <h2>Hope. Healing.Wholeness.</h2>
+			<p>A community-driven path to freedom from addiction, rooted in faith and support.to bring hope to our community.</p>
+			 <p><em>"Now may the God of all hope fill you with joy and peace... that ye may abound in hope." — Romans 15:13</em></p>
+			 </div>
+    </section>
+
+    <!-- History Section (Photo to the right) -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-heading-wrapper"><h2>Our History</h2></div>
+            <div class="content-grid-photo-right">
+                <div class="content-text">
+                    <p>Hope for Recovery was developed out of a stirring I felt in 2019 to put together a 12-week bible-based recovery group. The group was to be real and relevant & designed to meet the practical and spiritual needs of recovery without being too religious. I had no idea where to begin, but God took me on a journey, which ended with the development of not just 1 x 12-week group but 6 x 12-week groups which we now run as a 2-year community-based recovery program.</p>
+                    <p class="font-semibold mt-2">— Craig Halkett</p>
                 </div>
-                <div>
-                    <h4 class="font-bold">Iain Purdy</h4>
-                    <p class="text-xs text-gray-500">Escaped the darkness</p>
+                <div><img src="images/history1.jpeg" alt="History of Hope for Recovery" class="image-rounded" onerror="this.src='images/group.jpg'"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- You Matter Section (Photo to the left) -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-heading-wrapper"><h2>You <span style="color: var(--primary);">Matter</span></h2></div>
+            <div class="content-grid-photo-left">
+                <div><img src="images/discuss1.png" alt="You Matter community" class="image-rounded"></div>
+                <div class="content-text">
+                    <h3>Your journey to freedom starts here</h3>
+                    <p>Hope Recovery is a unique, faith to freedom recovery pathway, designed to help you overcome addiction. It's a great way to explore faith as a recovery pathway in a relaxed, friendly, fun atmosphere. Whether you have no faith or are exploring, we provide a welcoming path toward healing.</p>
+                    <a href="#contact" class="btn btn-primary">Get in touch →</a>
                 </div>
             </div>
-            <p class="text-gray-600 text-sm italic">"Hope for Recovery helped me to escape the darkness of addiction. It reconnected me with my God..."</p>
         </div>
-        
-        <!-- Story Card - Dawn (keeping initials style for variety) -->
-        <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
-            <div class="flex items-center gap-3 mb-3">
-                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
-                    DD
-                </div>
-                <div>
-                    <h4 class="font-bold">Dawn Donaghy</h4>
-                    <p class="text-xs text-gray-500">New joyful life</p>
-                </div>
-            </div>
-            <p class="text-gray-600 text-sm italic">"Since coming to Hope for Recovery it has given me hope which I never had. I have faith, a new life..."</p>
-        </div>
-    </div>
-    
-    <!-- Stats simplified -->
-    <div class="mt-6 bg-yellow-50 p-4 rounded-xl text-center text-sm text-gray-700">
-        ⭐ First cohort graduated December 2025 · 86% of pupils rated our school program 8/10 or higher
-    </div>
-</section>
+    </section>
 
-            <!-- Schools Program Section (Redesigned - Cleaner) -->
-            <section id="schools-program" class="scroll-mt-24 mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-8 text-gray-800">School <span class="text-yellow-600">Awareness</span></h2>
-                <div class="bg-white rounded-2xl shadow-md border border-gray-200 p-6 md:p-8">
-                    <h3 class="text-xl font-bold mb-2">4-Week Drug and Alcohol Awareness Program</h3>
-                    <p class="text-gray-600 mb-4">Our team recently completed a program at Vale of Leven Academy, equipping young people with knowledge and resilience.</p>
-                    <div class="bg-blue-50 p-4 rounded-xl mb-4">
-                        <p class="italic text-gray-700">"Inspirational speakers! The kids have never looked so interested." — Teacher Julie</p>
-                    </div>
-                    <p class="text-sm text-gray-600 mb-4"><span class="font-bold">62%</span> of pupils rated the program 9 or 10 (Excellent). <span class="font-bold">86%</span> rated it 8 or higher.</p>
-<a href="support-us.html" target="_blank" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-2 px-6 rounded-full transition text-sm">Support Our School Outreach</a>
-                    <!-- Image gallery simplified -->
-<div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-6">
-    <div class="aspect-[4/3] overflow-hidden rounded-lg bg-gray-100">
-        <img src="images/school1.jpg" alt="School program session" 
-             class="w-full h-full object-contain">
-    </div>
-    <div class="aspect-[4/3] overflow-hidden rounded-lg bg-gray-100">
-        <img src="images/school2.jpg" alt="School program session" 
-             class="w-full h-full object-cover">
-    </div>
-    <div class="aspect-[4/3] overflow-hidden rounded-lg bg-gray-100">
-        <img src="images/school3.jpg" alt="School program session" 
-             class="w-full h-full object-cover">
-    </div>
-    <div class="aspect-[4/3] overflow-hidden rounded-lg bg-gray-100">
-        <img src="images/school5.jpg" alt="School program session" 
-             class="w-full h-full object-cover">
-    </div>
-</div>
-                </div>
-            </section>
-
-            <!-- Contact Section (Redesigned - Cleaner, still has modal) -->
-            <section id="contact" class="scroll-mt-24 mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-8 text-gray-800">Get in <span class="text-yellow-600">Touch</span></h2>
-                <div class="bg-white rounded-2xl shadow-md border border-gray-200 p-6 md:p-8">
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <!-- Contact Info -->
-                        <div>
-                            <h3 class="text-xl font-bold mb-4">Contact Information</h3>
-                            <div class="space-y-4 text-sm">
-                                <p><span class="font-medium">📍</span> Hope Community Church, 30 Shelley Drive, Clydebank G81 3EL</p>
-                                <p><span class="font-medium">📞</span> <a href="tel:07745-393649" class="hover:text-yellow-600">07745 393649</a></p>
-                                <p><span class="font-medium">✉️</span> <a href="mailto:info@hopecommunity-church.co.uk" class="hover:text-yellow-600">info@hopecommunity-church.co.uk</a></p>
-                                <div>
-                        <span class="font-medium block mb-2">🕒 Opening Hours:</span>
-                        <ul class="list-disc pl-5 space-y-1 text-gray-600">
-                            <li>Monday: 10:00am - 5:00pm</li>
-                            <li>Tuesday: Closed</li>
-                            <li>Wednesday: 10:00am - 8:00pm</li>
-                            <li>Thursday: Closed</li>
-                            <li>Friday: 10:00am - 5:00pm</li>
-                            <li>Saturday: Closed</li>
-                            <li>Sunday: 10:30am - 1:00pm</li>
+    <!-- Structured Recovery Courses (Photo to the right) -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-heading-wrapper"><h2>Structured Recovery Courses</h2></div>
+            <div class="content-grid-photo-right">
+                <div class="content-text">
+                    <p><strong>A progressive journey of healing.</strong> Our program is built on six distinct, faith-based 12-week courses. Each course focuses on a different aspect, providing a clear pathway from initial hope to lasting freedom. Participants receive certificates for each course completed.</p>
+                    <div class="badge-list">
+                        <ul>
+                            <li>⭐ 3 Rs for Recovery – Restoring broken relationships</li>
+                            <li>⭐ Holistic Health – Fruit of Freedom</li>
+                            <li>⭐ Overcoming Temptation – 3 S's for Sobriety</li>
                         </ul>
                     </div>
-					</div>
-                        </div>
-                        <!-- Contact Form (simplified) -->
-                        <div>
-                            <h3 class="text-xl font-bold mb-4">Send a Message</h3>
-                            <form id="contact-form" class="space-y-4">
-                                <div class="grid grid-cols-2 gap-3">
-                                    <input type="text" placeholder="First Name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 text-sm" required>
-                                    <input type="text" placeholder="Last Name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 text-sm" required>
-                                </div>
-                                <input type="email" placeholder="Email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 text-sm" required>
-                                <textarea placeholder="Message" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 text-sm" required></textarea>
-                                <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-2 px-4 rounded-lg transition text-sm">Send Message</button>
-                            </form>
-                        </div>
+                    <p><strong>⏰ When:</strong> Mondays, 11am – 1:30pm</p>
+                    <div class="grid grid-cols-2 gap-2 mt-3 text-sm">
+                        <span>✓ Certificates upon completion</span>
+                        <span>✓ Peer-to-peer discussions</span>
+                        <span>✓ Case studies & reflection</span>
+                        <span>✓ Supportive community</span>
                     </div>
                 </div>
-            </section>
-
-            <!-- Success Modal (Kept the same) -->
-            <div id="success-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-                <div class="bg-white rounded-lg p-8 max-w-md mx-4">
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Message Sent Successfully!</h3>
-                        <p class="text-gray-600 mb-6">Thank you. Someone from our team will be in touch soon.</p>
-                        <button id="close-modal" class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 px-6 rounded-lg transition">Close</button>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </div>
-
-    <!-- Footer (Kept mostly the same, simplified) -->
-    <footer class="bg-gray-800 text-white py-12 mt-12">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-sm">
-                <div>
-                    <h3 class="text-lg font-bold mb-4">Hope for Recovery</h3>
-                    <p class="text-gray-400 mb-4">Transforming lives through faith-based recovery programs and community support.</p>
-                </div>
-                <div>
-                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#about" class="hover:text-white">You Matter</a></li>
-                        <li><a href="#services" class="hover:text-white">What we do</a></li>
-                        <li><a href="#get-involved" class="hover:text-white">Get Involved</a></li>
-                        <li><a href="#stories" class="hover:text-white">Success Stories</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-lg font-bold mb-4">Resources</h3>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="/faq" class="hover:text-white">FAQ</a></li>
-                        <li><a href="privacy.html" class="hover:text-white">Privacy Policy</a></li>
-                        <li><a href="https://www.paypal.com/ncp/payment/J5G82D4QKUARL" class="hover:text-white">Donate</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-lg font-bold mb-4">Contact Info</h3>
-                    <address class="text-gray-400 not-italic">
-                        <p>30 Shelley Drive, Clydebank G81 3EL</p>
-                        <p><a href="tel:07745-393649" class="hover:text-white">07745 393649</a></p>
-                        <p><a href="mailto:hopeforrecovery@outlook.com" class="hover:text-white">hopeforrecovery@outlook.com</a></p>
-                    </address>
-                </div>
-            </div>
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400 text-sm">
-                <p>&copy; 2024 Hope for Recovery. All rights reserved.</p>
+                <div><img src="images/Fruit of Freedom Certs.jpg" alt="Recovery courses" class="image-rounded"></div>
             </div>
         </div>
-    </footer>
+    </section>
 
-    <script>
-        // Mobile menu toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-        });
+    <!-- Key work (Photo to the left, text right, button centered) -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-heading-wrapper"><h2>Key Work</h2></div>
+            <div class="content-grid-photo-left">
+                <div><img src="images/keywork-placeholder.jpg" alt="Key work support" class="image-rounded" onerror="this.src='images/group.jpg'"></div>
+                <div class="content-text">
+                    <p>1 to 1 support is available every Wednesday by appointment. A safe space to share burdens, discuss challenges and work through dedicated outcomes. Whatever your needs are we are here to help.</p>
+                    <ul>
+                        <li><strong>Recovery Planning</strong> – Track your recovery journey using our personal centre goals and outcome booklet</li>
+                        <li><strong>Advocacy support</strong> – Practical support for everyday challenges</li>
+                        <li><strong>Befriending</strong> – Someone you can trust and confide in.</li>
+                        <li><strong>Pastoral Counselling</strong> – Learn & apply biblical truths to receive healing from the past & hope for the future.</li>
+                    </ul>
+                    <div style="text-align: center; margin-top: 1.5rem;">
+                        <a href="#contact" class="btn btn-primary">Get in touch to book</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        // Tab functionality
-        function showTab(tabName) {
-            // Hide all tabs
-            document.getElementById('tab-recovery').classList.add('hidden');
-            document.getElementById('tab-prevention').classList.add('hidden');
-            document.getElementById('tab-support').classList.add('hidden');
-            // Show selected tab
-            document.getElementById('tab-' + tabName).classList.remove('hidden');
+    <!-- Walk & Talk Community group (photo to the right, leaders under text) -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-heading-wrapper"><h2>Walk & Talk Community Group</h2></div>
+            <div class="content-grid-photo-right">
+                <div class="content-text">
+                    <p>Open to all the community, whether you're looking to get fit or seeking support, community, or friendship come along and join us for a relaxing walk every Wednesday at 11am. We meet & finish at Hope Community Church, Clydebank, 30 Shelly Drive, G81 3EL before enjoying light refreshments together.</p>
+                    
+                    <!-- Header for walking group leaders -->
+                    <h3 style="font-size: 1.5rem; margin: 1.5rem 0 1rem 0; text-align: center; color: var(--primary-dark);">Walking Group Leaders</h3>
+                    
+                    <!-- Centered leader images -->
+                    <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; justify-content: center;">
+                        <div class="leader-card">
+                            <img src="images/avatar-placeholder.jpg" alt="Jane" onerror="this.src='images/logo1.png'">
+                            <span>Jane</span>
+                        </div>
+                        <div class="leader-card">
+                            <img src="images/avatar-placeholder.jpg" alt="Carol" onerror="this.src='images/logo1.png'">
+                            <span>Carol</span>
+                        </div>
+                        <div class="leader-card">
+                            <img src="images/avatar-placeholder.jpg" alt="Dawn" onerror="this.src='images/logo1.png'">
+                            <span>Dawn</span>
+                        </div>
+                        <div class="leader-card">
+                            <img src="images/avatar-placeholder.jpg" alt="Laura" onerror="this.src='images/logo1.png'">
+                            <span>Laura</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Centered button -->
+                    <div style="text-align: center; margin-top: 1.5rem;">
+                        <a href="#contact" class="btn btn-primary">Get in touch</a>
+                    </div>
+                </div>
+                <div><img src="images/walktalk.jpg" alt="Walk and talk group" class="image-rounded" onerror="this.src='images/church_walk.jpg'"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Street Outreach (Photo to the left, text right, button centered) -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-heading-wrapper"><h2>Street Outreach</h2></div>
+            <div class="content-grid-photo-left">
+                <div><img src="images/streetoutreach.jpg" alt="Street Outreach" class="image-rounded" onerror="this.src='images/school1.jpg'"></div>
+                <div class="content-text">
+                    <p>Our street outreach team meets people where they are, offering practical support, a listening ear, and a pathway to services. We engage with those experiencing homelessness or struggling with addiction, building trust and connecting them with housing, recovery options, and community.</p>
+                    <p><strong>When:</strong> Fortnightly evenings – get in touch to join or support.</p>
+                    <div style="text-align: center; margin-top: 1.5rem;">
+                        <a href="#contact" class="btn btn-primary">Volunteer or Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Café & Emergency foodbank (Photo to the right, button centered) -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-heading-wrapper"><h2>Community Café & Emergency Foodbank</h2></div>
+            <div class="content-grid-photo-right">
+                <div class="content-text">
+                    <p>Hope community cafe & emergency foodbank is open to all every Friday 12pm – 2pm, no referral needed just turn up on the day. A warm hub to meet new friends or catch up with existing ones, free tea/coffee, soup and a warm pastie and beans. Relax after a busy week and have some fun in our pool competition.</p>
+                    <p><strong>Food parcel:</strong> £2 or 25p per item – No money no problem we are here to help.</p>
+                    <p>🍞 Foodbank donations welcome.</p>
+                    <div style="text-align: center; margin-top: 1.5rem;">
+                        <a href="support-us.html" target="_blank" class="btn btn-primary">Support Our Café</a>
+                    </div>
+                </div>
+                <div><img src="images/communitycafe.jpg" alt="Community Cafe" class="image-rounded" onerror="this.src='images/hfr4.jpg'"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rehab Referrals (Photo to the left, text right, button centered) -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-heading-wrapper"><h2>Rehab Referrals</h2></div>
+            <div class="content-grid-photo-left">
+                <div><img src="images/the haven.jpg" alt="Rehab Referrals support" class="image-rounded" onerror="this.src='images/hfr4.jpg'"></div>
+                <div class="content-text">
+                    <p>Working closely with several residential rehabilitation centres throughout the UK we are able to make referrals for males & females. We offer a support package to prepare individuals for rehab and offer aftercare & volunteer opportunities to help them settle back into society after their stay.</p>
+                    <div style="text-align: center; margin-top: 1.5rem;">
+                        <a href="#contact" class="btn btn-primary">Get in touch to apply</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Secondary Schools Drug & Alcohol Awareness Program -->
+    <section class="section section-light">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 2rem; padding-bottom: 0.75rem; position: relative;">Secondary Schools Drug & Alcohol Awareness Program</h2>
+            <style>
+                /* Target the h2 in this specific section for centered underline */
+                .section-light h2:after {
+                    left: 50% !important;
+                    transform: translateX(-50%) !important;
+                }
+            </style>
             
-            // Update button states
-            document.querySelectorAll('[id^="tab-"][id$="-btn"]').forEach(btn => btn.dataset.active = 'false');
-            document.getElementById('tab-' + tabName + '-btn').dataset.active = 'true';
+            <div class="content-text" style="max-width: 900px; margin: 0 auto;">
+                <h3 style="font-size: 1.8rem; margin-bottom: 1rem; color: var(--primary-dark); text-align: center;">Hope for Recovery within Secondary Schools</h3>
+                <p style="text-align: center;">The HFR resources have been adapted to produce a <strong>‘Drugs and Alcohol Awareness’</strong> package for use within secondary schools with a target audience of S4/S5/S6 pupils.</p>
+                
+                <p style="margin-top: 1.5rem; text-align: center;">The materials are delivered over <strong>4 (50 minute) lessons</strong> with each lesson following the format below:</p>
+                
+                <div style="background: var(--recovery-bg); padding: 1.5rem; border-radius: 12px; margin: 1.5rem 0;">
+                    <p style="font-weight: bold; margin-bottom: 1rem; text-align: center;">📖 Lesson Structure:</p>
+                    <ul style="list-style: disc; padding-left: 1.5rem; max-width: 800px; margin: 0 auto;">
+                        <li><strong>‘This is my Story’</strong> – A member of the HFR team with lived experience shares their personal story explaining: what led them into addiction; the impact addiction had on them; how they escaped from addiction; their hopes for the future.</li>
+                        <li style="margin-top: 0.75rem;"><strong>Q&A Session</strong> – Pupils are invited to ask questions and discuss the team member’s ‘story’ with them.</li>
+                        <li style="margin-top: 0.75rem;"><strong>Health and Wellbeing Workshop</strong> – Pupils are placed in small groups and supported by a team member to discuss and complete a worksheet on the relevant HWB topic. Pupils are encouraged to feedback their findings to the class before a summary of the main ‘take-away’ points is provided.</li>
+                    </ul>
+                </div>
+                
+                <p style="font-weight: bold; margin: 1.5rem 0 1rem 0; text-align: center;">The HWB workshops covered over the 4 lessons are entitled:</p>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+                    <span style="background: white; padding: 0.75rem 1rem; border-radius: 8px; border: 1px solid var(--border-light); text-align: center;">🌱 Root Causes of Addiction</span>
+                    <span style="background: white; padding: 0.75rem 1rem; border-radius: 8px; border: 1px solid var(--border-light); text-align: center;">🧘 Stress Management</span>
+                    <span style="background: white; padding: 0.75rem 1rem; border-radius: 8px; border: 1px solid var(--border-light); text-align: center;">🙏 Gratitude is the Best Attitude</span>
+                    <span style="background: white; padding: 0.75rem 1rem; border-radius: 8px; border: 1px solid var(--border-light); text-align: center;">💪 Alternative Responses to Challenging Events</span>
+                </div>
+                
+                <h3 style="font-size: 1.5rem; margin: 2rem 0 1rem 0; color: var(--primary-dark); text-align: center;">4-Week Drug and Alcohol Awareness Program</h3>
+                <p style="text-align: center;">Our team recently completed a program at Vale of Leven Academy, equipping young people with knowledge and resilience.</p>
+                
+                <div style="background: #EFF6FF; padding: 1.25rem; border-radius: 12px; margin: 1.5rem 0; border-left: 4px solid var(--primary); max-width: 700px; margin-left: auto; margin-right: auto;">
+                    <p style="font-style: italic; margin-bottom: 0.5rem; text-align: center;">"Inspirational speakers! The kids have never looked so interested."</p>
+                    <p style="font-weight: bold; text-align: center;">— Teacher Julie</p>
+                </div>
+                
+                <div style="background: var(--light); padding: 1.25rem; border-radius: 12px; margin: 1.5rem 0; text-align: center; max-width: 500px; margin-left: auto; margin-right: auto;">
+                    <p style="font-size: 1.1rem;"><strong>📊 Program Feedback</strong></p>
+                    <p><strong style="font-size: 1.5rem; color: var(--primary);">62%</strong> of pupils rated the program 9 or 10 (Excellent)</p>
+                    <p><strong style="font-size: 1.5rem; color: var(--primary);">86%</strong> rated it 8 or higher</p>
+                </div>
+                
+                <!-- Simple 2x2 Image Grid -->
+                <div style="margin: 2rem 0 1.5rem 0;">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--primary-dark); text-align: center;">📸 Schools Program in Action</h3>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem;">
+                        <div style="border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-md);">
+                            <img src="images/school1.jpg" alt="Students engaged in drug awareness workshop" style="width: 100%; height: 200px; object-fit: cover; display: block;" onerror="this.src='images/group.jpg'">
+                        </div>
+                        <div style="border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-md);">
+                            <img src="images/school2.jpg" alt="HFR team member sharing their story" style="width: 100%; height: 200px; object-fit: cover; display: block;" onerror="this.src='images/group.jpg'">
+                        </div>
+                        <div style="border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-md);">
+                            <img src="images/school3.jpg" alt="Students participating in group discussion" style="width: 100%; height: 200px; object-fit: cover; display: block;" onerror="this.src='images/group.jpg'">
+                        </div>
+                        <div style="border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-md);">
+                            <img src="images/school5.jpg" alt="Health and wellbeing workshop activity" style="width: 100%; height: 200px; object-fit: cover; display: block;" onerror="this.src='images/group.jpg'">
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 1rem;">
+                    <a href="support-us.html" target="_blank" class="btn btn-primary">Support Our School Outreach</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section section-alt">
+        <div class="container">
+            <div class="section-heading-wrapper"><h2>Get in <span style="color:var(--primary);">Touch</span></h2></div>
+            <div class="grid md:grid-cols-2 gap-8 bg-white p-8 rounded-2xl shadow-md">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact Information</h3>
+                    <p><strong>📍</strong> Hope Community Church, 30 Shelley Drive, Clydebank G81 3EL</p>
+                    <p><strong>📞</strong> <a href="tel:07745-393649" class="hover:text-yellow-600">07745 393649</a></p>
+                    <p><strong>✉️</strong> <a href="mailto:hopeforrecovery@outlook.com" class="hover:text-yellow-600">hopeforrecovery@outlook.com</a></p>
+                    <div class="mt-3"><strong>🕒 Opening Hours:</strong>
+                        <ul class="list-disc pl-5 mt-1"><li>Monday: 10am–5pm</li><li>Wednesday: 10am–8pm</li><li>Friday: 10am–5pm</li><li>Sunday: 10:30am–1pm</li></ul>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Send a Message</h3>
+                    <form id="contact-form" class="space-y-4">
+                        <div class="grid grid-cols-2 gap-3"><input type="text" placeholder="First Name" class="w-full p-2 border rounded-lg" required><input type="text" placeholder="Last Name" class="w-full p-2 border rounded-lg" required></div>
+                        <input type="email" placeholder="Email" class="w-full p-2 border rounded-lg" required>
+                        <textarea placeholder="Message" rows="3" class="w-full p-2 border rounded-lg" required></textarea>
+                        <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 rounded-lg transition">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <p>Hope Community Church Clydebank</p>
+        <p>30 Shelley Drive, Clydebank, G81 3EL</p>
+        <div class="footer-links flex justify-center gap-8 my-6 flex-wrap">
+            <a href="#services">Services</a>
+            <a href="#recovery">Recovery</a>
+            <a href="#contact">Contact</a>
+            <a href="#" onclick="openPrayerForm()">Prayer</a>
+        </div>
+        <p>Part of The Apostolic Church network</p>
+		<p>Scottish Charity Number: SC054414</p>
+        <p>&copy; <span id="year"></span> Hope Community Church. All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- Prayer Modal -->
+<div id="prayerForm" class="modal">
+    <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
+        <span class="float-right text-2xl cursor-pointer" onclick="closeModal()">&times;</span>
+        <h3 class="text-xl font-bold mb-2">We'll Pray For You</h3>
+        <form id="prayerRequestForm" action="https://formspree.io/f/xzzjwnkw" method="POST">
+            <input type="email" name="email" placeholder="Your email (optional)" class="w-full p-2 border rounded my-2">
+            <textarea name="message" placeholder="Your prayer request..." required class="w-full p-2 border rounded my-2"></textarea>
+            <button type="submit" class="btn btn-primary w-full">Submit</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    const menuToggle = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if(menuToggle) menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    function toggleMobileDropdown() {
+        const dropdown = document.getElementById('mobile-dropdown');
+        const arrow = document.getElementById('mobile-dropdown-arrow');
+        if(dropdown.classList.contains('hidden')) {
+            dropdown.classList.remove('hidden');
+            arrow.style.transform = 'rotate(180deg)';
+        } else {
+            dropdown.classList.add('hidden');
+            arrow.style.transform = 'rotate(0deg)';
         }
-
-        // Modal functionality
-        document.getElementById('contact-form').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
-            
-            try {
-                // Simulate success (replace with actual Formspree endpoint later)
-                setTimeout(() => {
-                    document.getElementById('success-modal').classList.remove('hidden');
-                    this.reset();
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                }, 800);
-            } catch (error) {
-                alert('Error. Please try again.');
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }
-        });
-
-        document.getElementById('close-modal').addEventListener('click', function() {
-            document.getElementById('success-modal').classList.add('hidden');
-        });
-        document.getElementById('success-modal').addEventListener('click', function(e) {
-            if (e.target === this) this.classList.add('hidden');
-        });
-
-        // Active state for side nav on scroll (simple version)
-        window.addEventListener('scroll', () => {
-            const sections = ['about', 'services', 'get-involved', 'stories', 'schools-program', 'contact'];
-            let current = '';
-            for (let section of sections) {
-                const el = document.getElementById(section);
-                if (el) {
-                    const rect = el.getBoundingClientRect();
-                    if (rect.top <= 150) {
-                        current = section;
-                    }
-                }
-            }
-            document.querySelectorAll('.side-nav a').forEach(a => {
-                a.classList.remove('active');
-                if (a.getAttribute('href') === '#' + current) {
-                    a.classList.add('active');
-                }
-            });
-        });
-    </script>
+    }
+    document.getElementById('year').innerText = new Date().getFullYear();
+    function openLiveStream() { window.open('https://www.youtube.com/@HopeCommunityChurchClydebank', '_blank'); }
+    function openPrayerForm() { document.getElementById('prayerForm').style.display = 'flex'; }
+    function closeModal() { document.getElementById('prayerForm').style.display = 'none'; }
+    window.onclick = function(e) { if(e.target === document.getElementById('prayerForm')) closeModal(); }
+    document.getElementById('contact-form')?.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        alert('Thank you! Someone will be in touch soon.');
+        this.reset();
+    });
+    document.getElementById('prayerRequestForm')?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Prayer request submitted. God bless you.');
+        closeModal();
+        this.reset();
+    });
+    function checkLiveStatus() {
+        const now = new Date();
+        const day = now.getDay();
+        const hour = now.getHours();
+        document.getElementById('liveBadge').style.display = (day === 0 && hour >= 10 && hour < 13) ? 'block' : 'none';
+    }
+    checkLiveStatus();
+    setInterval(checkLiveStatus, 60000);
+</script>
 </body>
 </html>

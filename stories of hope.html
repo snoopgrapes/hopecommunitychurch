@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Get Involved | Hope Community Church Clydebank</title>
+    <title>Stories of Hope | Hope Community Church Clydebank</title>
 
     <!-- Favicon links -->
     <link rel="icon" type="image/x-icon" href="icons/favicon.ico">
@@ -16,9 +16,6 @@
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- DonorBox Widget Script -->
-    <script src="https://donorbox.org/widget.js" paypalExpress="true"></script>
 
     <style>
         /* Hope Community Church - Silver & White Brand Theme */
@@ -83,7 +80,7 @@
             background: #707070; /* Match navbar color */
             color: var(--text-light);
             text-align: center;
-            padding: 50px 30px 40px;
+            padding: 40px 20px 30px;
             position: relative;
             overflow: hidden;
             min-height: 30vh;
@@ -91,48 +88,33 @@
             align-items: center;
             width: 100%;
         }
-		
-		
-.hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: var(--text-light);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    animation: fadeInDown 1s ease;
-}
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--text-light);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInDown 1s ease;
+            position: relative;
+        }
 
-.hero h1:after {
-    content: '';
-    position: absolute;
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 4px;
-    background: white;
-}
+        .hero h1:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: white;
+        }
 
-.hero p {
-    font-size: 1.1rem;
-    max-width: 700px;
-    margin: 30px auto 0;
-    animation: fadeInUp 1s ease 0.3s both;
-    color: rgba(255, 255, 255, 0.95);
-}
-
-.hero::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 40px;
-    background: radial-gradient(circle at 50% 100%, transparent 20px, #707070 21px);
-    background-size: 40px 40px;
-    background-repeat: repeat-x;
-    background-position: bottom;
-    pointer-events: none;
-}
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 30px auto 0;
+            animation: fadeInUp 1s ease 0.3s both;
+            color: rgba(255, 255, 255, 0.95);
+        }
 
 /* Section Divider Scalloped - Matching index.html */
 .section-divider-scalloped {
@@ -223,9 +205,18 @@
         .bg-yellow-500:hover {
             background-color: var(--primary-dark) !important;
         }
+		
+		        /* ADD THIS NEW STYLE - Increases space between h2 underline and paragraph */
+        .get-involved-section h2 {
+            margin-bottom: 1rem;
+        }
+        
+        .get-involved-section .section-description {
+            margin-top: 2rem;
+        }
 
-        /* Get Involved Section */
-        .get-involved-section {
+        /* Stories Section */
+        .stories-section {
             padding: 80px 20px;
             background: var(--light);
         }
@@ -236,144 +227,154 @@
             width: 100%;
         }
 
-        /* Section description paragraph styling with proper spacing */
-        .section-description {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-            margin-top: 1rem;
-            margin-bottom: 30px;
-            color: var(--text);
-            font-size: 1.1rem;
-        }
+/* Global spacing for h2 and description */
+.stories-section h2 {
+    margin-bottom: 1rem;
+}
 
-        .involvement-grid {
+.stories-section .section-description {
+    margin-top: 1.5rem;
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+}
+
+        /* Story Cards Grid */
+        .stories-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 30px;
         }
 
-        .involvement-card {
+        .story-card {
             background: white;
             border-radius: 20px;
             overflow: hidden;
             box-shadow: var(--shadow-md);
             transition: all 0.3s ease;
             border: 1px solid var(--border-light);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
-        .involvement-card:hover {
-            transform: translateY(-5px);
+        .story-card:hover {
+            transform: translateY(-8px);
             box-shadow: var(--shadow-lg);
         }
 
-        .card-header {
-            padding: 30px 30px 20px;
+        .story-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            padding: 30px 20px;
             text-align: center;
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .card-icon {
-            font-size: 3.5rem;
-            margin-bottom: 15px;
-            display: inline-block;
-        }
-
-        .card-header h3 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-        }
-
-        .card-content {
-            padding: 25px 30px;
-        }
-
-        .card-content p {
-            color: var(--text);
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-
-        .card-content ul {
-            list-style: none;
-            padding: 0;
-            margin-bottom: 25px;
-        }
-
-        .card-content li {
-            padding: 8px 0;
-            padding-left: 28px;
             position: relative;
-            color: var(--text);
         }
 
-        .card-content li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--primary);
-            font-weight: bold;
-        }
-
-        .btn-involve {
-            display: inline-block;
-            width: 100%;
-            padding: 14px;
-            text-align: center;
-            background: var(--primary);
-            color: white;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: 2px solid var(--primary);
-            cursor: pointer;
-            font-size: 1rem;
-            text-decoration: none;
-        }
-
-        .btn-involve:hover {
-            background: var(--primary-dark);
-            border-color: var(--primary-dark);
-            transform: translateY(-2px);
+        .story-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border: 4px solid white;
             box-shadow: var(--shadow-md);
+            overflow: hidden;
         }
 
-        .btn-pray {
-            background: #2F855A;
-            border-color: #2F855A;
+        .story-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .btn-pray:hover {
-            background: #276749;
-            border-color: #276749;
+        .story-avatar.initials {
+            background: linear-gradient(135deg, #F59E0B, #D97706);
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+            font-family: 'Poppins', sans-serif;
         }
 
-        .btn-give {
-            background: #D97706;
-            border-color: #D97706;
+        .story-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 5px;
         }
 
-        .btn-give:hover {
-            background: #B45309;
-            border-color: #B45309;
+        .story-role {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
         }
 
-        .btn-volunteer {
-            background: #7C3AED;
-            border-color: #7C3AED;
+        .story-quote-icon {
+            position: absolute;
+            bottom: -20px;
+            right: 20px;
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.2);
         }
 
-        .btn-volunteer:hover {
-            background: #6D28D9;
-            border-color: #6D28D9;
+        .story-content {
+            padding: 30px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .story-testimonial {
+            font-style: italic;
+            color: var(--text);
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            flex: 1;
+        }
+
+        .story-testimonial p {
+            margin-bottom: 15px;
+        }
+
+        .story-testimonial p:last-child {
+            margin-bottom: 0;
+        }
+
+        .story-footer {
+            border-top: 1px solid var(--border-light);
+            padding-top: 20px;
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .story-date {
+            font-size: 0.8rem;
+            color: var(--secondary);
+        }
+
+        .story-badge {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
         }
 
         /* Stats Section */
         .stats-section {
-            background: var(--primary-dark);
+            background: white;
             padding: 60px 20px;
-            color: white;
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
         }
 
         .stats-grid {
@@ -383,38 +384,80 @@
             text-align: center;
         }
 
+        .stat-card {
+            padding: 20px;
+        }
+
         .stat-number {
             font-size: 2.5rem;
             font-weight: 800;
-            color: white;
+            color: var(--primary);
+            font-family: 'Poppins', sans-serif;
             margin-bottom: 10px;
         }
 
         .stat-label {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        /* Quote Section */
-        .quote-section {
-            background: white;
-            padding: 60px 20px;
-            text-align: center;
-        }
-
-        .quote {
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 1.3rem;
-            font-style: italic;
             color: var(--text);
-            line-height: 1.8;
+            font-weight: 600;
         }
 
-        .quote-author {
-            margin-top: 20px;
+        /* Call to Action */
+        .cta-section {
+            background: var(--primary-dark);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .cta-section h2:after {
+            background: white;
+        }
+
+        .cta-section p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
             font-weight: 600;
-            color: var(--primary);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            border: 2px solid var(--primary);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-outline-light {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-outline-light:hover {
+            background: white;
+            color: var(--primary-dark);
+            transform: translateY(-3px);
         }
 
         /* Footer */
@@ -526,120 +569,11 @@
             }
         }
 
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(26, 32, 44, 0.8);
-            animation: fadeIn 0.3s;
-            overflow: auto;
-        }
-
-        .modal-content {
-            background: white;
-            margin: 10vh auto;
-            padding: 40px;
-            width: 90%;
-            max-width: 500px;
-            border-radius: 20px;
-            position: relative;
-            animation: slideDown 0.4s;
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 24px;
-            cursor: pointer;
-            color: var(--text);
-        }
-
-        .close-modal:hover {
-            color: var(--primary);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Contact Form Styles */
-        .contact-form-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border-light);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid var(--border-light);
-            border-radius: 10px;
-            font-family: inherit;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 14px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .submit-btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-
         /* Responsive */
         @media (max-width: 768px) {
             .hero {
                 padding: 80px 15px 60px;
+                min-height: 50vh;
             }
             .hero h1 {
                 font-size: 2rem;
@@ -650,21 +584,13 @@
             h2 {
                 font-size: 2rem;
             }
-            .involvement-grid {
+            .stories-grid {
                 grid-template-columns: 1fr;
-                gap: 25px;
-            }
-            .stats-grid {
                 gap: 30px;
             }
-            .stat-number {
-                font-size: 2rem;
-            }
-            .quote {
-                font-size: 1.1rem;
-            }
-            .contact-form-container {
-                padding: 30px 20px;
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
             }
         }
 
@@ -672,33 +598,21 @@
             .hero h1 {
                 font-size: 1.8rem;
             }
-            .hero::after {
-                height: 25px;
-                background: radial-gradient(circle at 50% 100%, transparent 12px, #707070 13px);
-                background-size: 25px 25px;
-            }
             .logo-img {
                 height: 55px;
             }
-            .card-header h3 {
-                font-size: 1.5rem;
+            .story-header {
+                padding: 25px 15px;
             }
-            .card-content {
+            .story-avatar {
+                width: 80px;
+                height: 80px;
+            }
+            .story-name {
+                font-size: 1.2rem;
+            }
+            .story-content {
                 padding: 20px;
-            }
-            h2 {
-                font-size: 1.8rem;
-                margin-bottom: 1.5rem;
-                padding-bottom: 0.5rem;
-            }
-            h2:after {
-                width: 60px;
-                bottom: -3px;
-            }
-            .section-description {
-                font-size: 1rem;
-                margin-top: 0.75rem;
-                margin-bottom: 20px;
             }
         }
     </style>
@@ -717,20 +631,18 @@
             <div class="flex items-center space-x-4">
                 <a href="https://www.facebook.com/profile.php?id=61581172410948" target="_blank" class="text-white hover:text-gray-300 transition">
                     <span class="sr-only">Facebook</span>
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path></svg>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
                 </a>
 <a href="https://www.instagram.com/hopecommunitychurchclydebank/" target="_blank" class="text-white hover:text-gray-300 transition">
     <span class="sr-only">Instagram</span>
     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"></path></svg>
 </a>
                 <a href="https://www.tiktok.com/@hopechurchclydebank" target="_blank" class="text-white hover:text-gray-300 transition">
-                    <span class="sr-only">TikTok</span>
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
                 </a>
             </div>
         </div>
     </div>
-
 
     <!-- Header/Navbar -->
     <header class="shadow-sm sticky top-0 z-50">
@@ -819,71 +731,143 @@
         <span class="pulse"></span> LIVE: Sunday Service
     </div>
 
+    <!-- Hero Section -->
 <!-- Hero Section with Scalloped Bottom -->
 <section class="hero section-divider-scalloped">
-    <div class="container">
-        <h1>Get Involved</h1>
-        <p>Your time, prayers, and resources can transform lives. Discover how you can be part of bringing hope to our community.</p>
-    </div>
-</section>
-    <!-- Get Involved Section -->
-    <section class="get-involved-section">
         <div class="container">
-            <h2>Ways to Make a Difference</h2>
-            <p class="section-description">Every contribution, no matter how small, helps us continue our mission of bringing hope, healing, and wholeness to those in need.</p>
-            
-            <div class="involvement-grid">
-                <!-- Pray Card -->
-                <div class="involvement-card">
-                    <div class="card-header">
-                        <div class="card-icon">🙏</div>
-                        <h3>Pray</h3>
+            <h1>Stories of Hope</h1>
+            <p>Real stories of transformation, healing, and new beginnings from our Hope Community Church family. Be inspired by those who have found freedom and hope.</p>
+        </div>
+    </section>
+
+<section class="stories-section">
+    <div class="container">
+        <h2>Be Inspired</h2>
+        <p class="section-description">Hear from people in our community who have experienced hope, healing, and wholeness through Hope for Recovery and Hope Community Church.</p>         
+            <div class="stories-grid">
+                <!-- Josh's Story -->
+                <div class="story-card">
+                    <div class="story-header">
+                        <div class="story-avatar">
+                            <img src="images/josh-graduation.jpg" alt="Josh Pilkington" onerror="this.parentElement.classList.add('initials'); this.parentElement.innerHTML='<span>JP</span>'; this.style.display='none'">
+                        </div>
+                        <h3 class="story-name">Josh Pilkington</h3>
+                        <p class="story-role">First Graduate • Hope for Recovery</p>
+                        <div class="story-quote-icon">❝</div>
                     </div>
-                    <div class="card-content">
-                        <p>Prayer is the foundational support for our mission. Your prayers make a powerful difference in the lives we serve.</p>
-                        <ul>
-                            <li>Pray for our leaders and volunteers</li>
-                            <li>Pray for participants' healing and perseverance</li>
-                            <li>Pray for our community outreach programs</li>
-                            <li>Subscribe to our weekly prayer updates</li>
-                        </ul>
-                        <button class="btn-involve btn-pray" onclick="openPrayerForm()">Submit a Prayer Request</button>
+                    <div class="story-content">
+                        <div class="story-testimonial">
+                            <p>"I came here a shambles and a shell of my former self. I have learned coping mechanisms, security, self worth, and most importantly—I found my faith again. Today, I stand as a testament that change is possible. The support I received here didn't just save my life; it gave me a life worth living."</p>
+                        </div>
+                        <div class="story-footer">
+                            <span class="story-date">Graduated December 2025</span>
+                            <span class="story-badge">Transformation</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Give Card -->
-                <div class="involvement-card">
-                    <div class="card-header">
-                        <div class="card-icon">💷</div>
-                        <h3>Give</h3>
+                <!-- Laura's Story -->
+                <div class="story-card">
+                    <div class="story-header">
+                        <div class="story-avatar">
+                            <img src="images/laura-graduation.jpg" alt="Laura Johnson" onerror="this.parentElement.classList.add('initials'); this.parentElement.innerHTML='<span>LJ</span>'; this.style.display='none'">
+                        </div>
+                        <h3 class="story-name">Laura Johnson</h3>
+                        <p class="story-role">First Graduate • Hope for Recovery</p>
+                        <div class="story-quote-icon">❝</div>
                     </div>
-                    <div class="card-content">
-                        <p>Your financial and material gifts sustain our work and allow us to offer services free of charge to those in need.</p>
-                        <ul>
-                            <li><strong>Financial Donations:</strong> One-off or recurring gifts</li>
-                            <li><strong>In-Kind Donations:</strong> Foodbank items welcome</li>
-                            <li><strong>Legacy Giving:</strong> Consider including us in your will</li>
-                            <li><strong>Monthly Support:</strong> Become a regular supporter</li>
-                        </ul>
-                        <a href="support-us.html" target="_blank" class="btn-involve btn-give">Make a Donation</a>
+                    <div class="story-content">
+                        <div class="story-testimonial">
+                            <p>"The recovery group has been a life saver for me. The group is very friendly and welcoming, and I've made friends who truly understand what I've been through. The practical tools and biblical wisdom I've gained have helped me rebuild my life. I now have hope for a future I never thought possible."</p>
+                        </div>
+                        <div class="story-footer">
+                            <span class="story-date">Graduated December 2025</span>
+                            <span class="story-badge">Hope Restored</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Volunteer Card -->
-                <div class="involvement-card">
-                    <div class="card-header">
-                        <div class="card-icon">🤝</div>
-                        <h3>Volunteer</h3>
+                <!-- Iain's Story -->
+                <div class="story-card">
+                    <div class="story-header">
+                        <div class="story-avatar initials">
+                            <span>IP</span>
+                        </div>
+                        <h3 class="story-name">Iain Purdy</h3>
+                        <p class="story-role">Escaped the Darkness</p>
+                        <div class="story-quote-icon">❝</div>
                     </div>
-                    <div class="card-content">
-                        <p>Offer your time and skills to be a direct part of someone's journey to freedom and transformation.</p>
-                        <ul>
-                            <li><strong>Direct Service:</strong> Recovery groups or community café</li>
-                            <li><strong>Practical Help:</strong> Cleaning, gardening, maintenance</li>
-                            <li><strong>Skilled Support:</strong> Administration, IT, marketing</li>
-                            <li><strong>Event Support:</strong> Help with community events</li>
-                        </ul>
-                        <button class="btn-involve btn-volunteer" onclick="openVolunteerForm()">Volunteer With Us</button>
+                    <div class="story-content">
+                        <div class="story-testimonial">
+                            <p>"Hope for Recovery helped me to escape the darkness of addiction. It reconnected me with my God and gave me a new purpose in life. For years I felt trapped, but through this program I found freedom. The community here never gave up on me, even when I had given up on myself."</p>
+                        </div>
+                        <div class="story-footer">
+                            <span class="story-date">Recovery Journey</span>
+                            <span class="story-badge">Freedom Found</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dawn's Story -->
+                <div class="story-card">
+                    <div class="story-header">
+                        <div class="story-avatar initials">
+                            <span>DD</span>
+                        </div>
+                        <h3 class="story-name">Dawn Donaghy</h3>
+                        <p class="story-role">New Joyful Life</p>
+                        <div class="story-quote-icon">❝</div>
+                    </div>
+                    <div class="story-content">
+                        <div class="story-testimonial">
+                            <p>"Since coming to Hope for Recovery it has given me hope which I never had. I have faith, a new life, and a community that supports me. The transformation in my life is nothing short of a miracle. I wake up every day with purpose and joy that I never thought possible."</p>
+                        </div>
+                        <div class="story-footer">
+                            <span class="story-date">Life Transformed</span>
+                            <span class="story-badge">New Beginning</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Story - Craig -->
+                <div class="story-card">
+                    <div class="story-header">
+                        <div class="story-avatar initials">
+                            <span>CH</span>
+                        </div>
+                        <h3 class="story-name">Craig Halkett</h3>
+                        <p class="story-role">Pastor & Hope for Recovery Lead</p>
+                        <div class="story-quote-icon">❝</div>
+                    </div>
+                    <div class="story-content">
+                        <div class="story-testimonial">
+                            <p>"I've seen countless lives transformed through this ministry. Every story of recovery is a testament to God's grace and the power of community. We believe no one is beyond hope, and every person deserves a chance to experience freedom."</p>
+                        </div>
+                        <div class="story-footer">
+                            <span class="story-date">Ministry Leader</span>
+                            <span class="story-badge">Hope Ambassador</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Story - Yvonne -->
+                <div class="story-card">
+                    <div class="story-header">
+                        <div class="story-avatar initials">
+                            <span>YH</span>
+                        </div>
+                        <h3 class="story-name">Yvonne Halkett</h3>
+                        <p class="story-role">Worship & Church Leader</p>
+                        <div class="story-quote-icon">❝</div>
+                    </div>
+                    <div class="story-content">
+                        <div class="story-testimonial">
+                            <p>"Witnessing the transformation in people's lives is why we do what we do. From brokenness to wholeness, from despair to hope—every testimony reminds us that with God, all things are possible. This is truly a place of second chances."</p>
+                        </div>
+                        <div class="story-footer">
+                            <span class="story-date">Serving Since Day One</span>
+                            <span class="story-badge">Heart of Service</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -894,68 +878,32 @@
     <section class="stats-section">
         <div class="container">
             <div class="stats-grid">
-                <div>
-                    <div class="stat-number">100+</div>
-                    <div class="stat-label">Lives Transformed</div>
+                <div class="stat-card">
+                    <div class="stat-number">6+</div>
+                    <div class="stat-label">Recovery Courses Completed</div>
                 </div>
-                <div>
-                    <div class="stat-number">12+</div>
-                    <div class="stat-label">Weekly Programs</div>
+                <div class="stat-card">
+                    <div class="stat-number">86%</div>
+                    <div class="stat-label">School Program Rating 8/10+</div>
                 </div>
-                <div>
-                    <div class="stat-number">50+</div>
-                    <div class="stat-label">Active Volunteers</div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Commitment to Your Journey</div>
                 </div>
-                <div>
-                    <div class="stat-number">6</div>
-                    <div class="stat-label">Recovery Courses</div>
+                <div class="stat-card">
+                    <div class="stat-number">2025</div>
+                    <div class="stat-label">First Cohort Graduated</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Quote Section -->
-    <section class="quote-section">
+    <!-- Call to Action Section -->
+    <section class="cta-section">
         <div class="container">
-            <div class="quote">
-                "I came here a shambles and a shell of my former self. I have learned coping mechanisms, security, self worth, and most importantly, I have found my faith again. The support I received changed my life."
-            </div>
-            <div class="quote-author">— Josh, First Graduate of Hope for Recovery</div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="get-involved-section" id="contact">
-        <div class="container">
-            <h2>Get in Touch</h2>
-            <p class="section-description">Have questions about how you can get involved? We'd love to hear from you.</p>
-            
-            <div class="contact-form-container">
-                <form id="contact-form">
-                    <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" id="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" id="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label>How would you like to get involved?</label>
-                        <select id="interest">
-                            <option value="pray">Prayer Team</option>
-                            <option value="volunteer">Volunteering</option>
-                            <option value="donate">Donations</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Message</label>
-                        <textarea id="message" rows="4"></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">Send Message</button>
-                </form>
-            </div>
+            <h2>Your Story Could Be Next</h2>
+            <p>Whether you're seeking recovery, looking to support others, or simply need prayer, we're here for you. Every journey starts with a single step.</p>
+            <a href="#contact" class="btn btn-outline-light" onclick="openContactForm()">Get In Touch</a>
         </div>
     </section>
 
@@ -977,27 +925,14 @@
     </footer>
 
     <!-- Prayer Form Modal -->
-    <div id="prayerForm" class="modal">
-        <form id="prayerRequestForm" class="modal-content" action="https://formspree.io/f/xzzjwnkw" method="POST">
-            <span class="close-modal" onclick="closePrayerModal()">&times;</span>
+    <div id="prayerForm" class="modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); align-items: center; justify-content: center; z-index: 1000;">
+        <form id="prayerRequestForm" class="modal-content" style="background: white; border-radius: 10px; padding: 40px; max-width: 500px; width: 90%; position: relative;" action="https://formspree.io/f/xzzjwnkw" method="POST">
+            <span class="close-modal" style="position: absolute; top: 20px; right: 20px; font-size: 24px; cursor: pointer;" onclick="closeModal()">&times;</span>
             <h3 style="margin-bottom: 20px;">We'll Pray For You</h3>
-            <p style="margin-bottom: 20px;">Submit your prayer request and our team will pray for you this week.</p>
+            <p>Submit your prayer request and our team will pray for you this week.</p>
             <input type="email" name="email" placeholder="Your email (optional)" style="width: 100%; margin: 15px 0; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
-            <textarea name="message" placeholder="Your prayer request..." required style="width: 100%; margin: 15px 0; padding: 10px; border: 1px solid #ddd; border-radius: 5px;"></textarea>
-            <button type="submit" style="background: var(--primary); color: white; padding: 12px 30px; border: none; border-radius: 50px; cursor: pointer; font-weight: 600;">Submit</button>
-        </form>
-    </div>
-
-    <!-- Volunteer Form Modal -->
-    <div id="volunteerForm" class="modal">
-        <form id="volunteerRequestForm" class="modal-content" action="https://formspree.io/f/xzzjwnkw" method="POST">
-            <span class="close-modal" onclick="closeVolunteerModal()">&times;</span>
-            <h3 style="margin-bottom: 20px;">Volunteer With Us</h3>
-            <p style="margin-bottom: 20px;">Fill out the form below and we'll get back to you about volunteering opportunities.</p>
-            <input type="text" name="name" placeholder="Your name" required style="width: 100%; margin: 15px 0; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
-            <input type="email" name="email" placeholder="Your email" required style="width: 100%; margin: 15px 0; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
-            <textarea name="message" placeholder="Tell us about your skills and how you'd like to help..." required style="width: 100%; margin: 15px 0; padding: 10px; border: 1px solid #ddd; border-radius: 5px;"></textarea>
-            <button type="submit" style="background: var(--primary); color: white; padding: 12px 30px; border: none; border-radius: 50px; cursor: pointer; font-weight: 600;">Submit</button>
+            <textarea name="message" placeholder="Your prayer request..." required style="width: 100%; margin: 15px 0; padding: 10px; border: 1px solid #ddd; border-radius: 5px; min-height: 100px;"></textarea>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Submit</button>
         </form>
     </div>
 
@@ -1031,20 +966,30 @@
         }
 
         function openPrayerForm() {
-            document.getElementById('prayerForm').style.display = 'block';
+            document.getElementById('prayerForm').style.display = 'flex';
         }
 
-        function closePrayerModal() {
+        function closeModal() {
             document.getElementById('prayerForm').style.display = 'none';
         }
 
-        function openVolunteerForm() {
-            document.getElementById('volunteerForm').style.display = 'block';
+        function openContactForm() {
+            window.location.href = 'index.html#contact';
         }
 
-        function closeVolunteerModal() {
-            document.getElementById('volunteerForm').style.display = 'none';
+        window.onclick = function(e) {
+            const prayerModal = document.getElementById('prayerForm');
+            if (e.target === prayerModal) {
+                closeModal();
+            }
         }
+
+        document.getElementById('prayerRequestForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Prayer request submitted. God bless you.');
+            closeModal();
+            this.reset();
+        });
 
         function checkLiveStatus() {
             const now = new Date();
@@ -1055,40 +1000,9 @@
                 badge.style.display = (day === 0 && hour >= 10 && hour < 13) ? 'block' : 'none';
             }
         }
-
+        
         checkLiveStatus();
         setInterval(checkLiveStatus, 60000);
-
-        // Contact form submission
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your interest! Someone from our team will be in touch soon.');
-            this.reset();
-        });
-
-        // Prayer form submission
-        document.getElementById('prayerRequestForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Prayer request submitted. God bless you.');
-            closePrayerModal();
-            this.reset();
-        });
-
-        // Volunteer form submission
-        document.getElementById('volunteerRequestForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for volunteering! We will contact you shortly.');
-            closeVolunteerModal();
-            this.reset();
-        });
-
-        // Close modals on outside click
-        window.onclick = function(event) {
-            const prayerModal = document.getElementById('prayerForm');
-            const volunteerModal = document.getElementById('volunteerForm');
-            if (event.target === prayerModal) closePrayerModal();
-            if (event.target === volunteerModal) closeVolunteerModal();
-        }
     </script>
 </body>
 </html>

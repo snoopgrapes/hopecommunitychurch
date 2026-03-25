@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Find & Contact | Hope Community Church Clydebank</title>
+
+    <!-- Favicon links (consistent with existing site) -->
+    <link rel="icon" type="image/x-icon" href="icons/favicon.ico">
+    <link rel="icon" type="image/png" href="icons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="icons/favicon-16x16.png" sizes="16x16">
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+
+    <!-- Fonts & Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Inherit all styles from original brand theme */
+        :root {
+            --primary: #4A5568;
+            --primary-dark: #2D3748;
+            --primary-light: #A0AEC0;
+            --secondary: #718096;
+            --accent: #CBD5E0;
+            --light: #F7FAFC;
+            --dark: #1A202C;
+            --text: #2D3748;
+            --text-light: #FFFFFF;
+            --border-light: #E2E8F0;
+            --shadow-sm: 0 1px 2px 0 rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background-color: white;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            text-align: center;
+            width: 100%;
+            padding-bottom: 0.75rem;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        /* Hero Section - Updated to match index.html */
+        .hero {
+            background: #707070; /* Match navbar color */
+            color: var(--text-light);
+            text-align: center;
+            padding: 40px 20px 30px;
+            position: relative;
+            overflow: hidden;
+            min-height: 30vh;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--text-light);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInDown 1s ease;
+            position: relative;
+        }
+
+        .hero h1:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: white;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 30px auto 0;
+            animation: fadeInUp 1s ease 0.3s both;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        /* Section Divider - same scalloped edge */
+        .section-divider-scalloped {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+        }
+
+        .section {
+            padding: 80px 20px;
+            width: 100%;
+        }
+
+        .section-light {
+            background-color: white;
+        }
+
+        .section-alt {
+            background-color: var(--light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            border: 2px solid var(--primary);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Map container styling */
+        .map-container {
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+            border: 0;
+            display: block;
+        }
+
+        .directions-btn {
+            background: #4285f4;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .directions-btn:hover {
+            background: #3367d6;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Header & Navigation - EXACTLY matching index.html */
+        header {
+            background: #707070;
+            min-height: 80px;
+        }
+
+        .logo-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            padding: 5px 0;
+        }
+
+        .logo-img {
+            height: 80px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Desktop Navigation */
+        nav a {
+            color: white !important;
+            font-weight: 600 !important;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--primary-dark);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary-dark) !important;
+        }
+
+        nav a:hover:after {
+            width: 80%;
+        }
+
+        /* Desktop Navigation - Dropdown Styles */
+        nav .relative .absolute {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s ease, visibility 0.2s ease;
+        }
+
+        nav .relative:hover .absolute,
+        nav .relative:focus-within .absolute {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        nav .relative .absolute {
+            transition-delay: 0.1s;
+        }
+
+        nav .relative:hover .absolute {
+            transition-delay: 0s;
+        }
+
+        /* Mobile Navigation */
+        #mobile-menu {
+            background: #707070;
+            border-top: none;
+        }
+
+        #mobile-menu a {
+            color: white !important;
+            font-weight: 600 !important;
+            padding: 12px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        #mobile-menu a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--primary-dark);
+            transition: width 0.3s ease;
+        }
+
+        #mobile-menu a:hover {
+            color: var(--primary-dark) !important;
+        }
+
+        #mobile-menu a:hover:after {
+            width: 80%;
+        }
+
+        #mobile-menu-button svg {
+            color: white;
+        }
+
+        /* Announcement Bar - EXACTLY matching index.html */
+        .bg-gray-800 {
+            background-color: var(--primary-dark) !important;
+            color: white !important;
+        }
+
+        .bg-yellow-500 {
+            background-color: var(--primary) !important;
+        }
+
+        .bg-yellow-500:hover {
+            background-color: var(--primary-dark) !important;
+        }
+
+        .hover\:bg-yellow-600:hover {
+            background-color: var(--primary-dark) !important;
+        }
+
+        .text-gray-900 {
+            color: white !important;
+        }
+
+        footer {
+            background-color: var(--primary-dark);
+            color: white;
+            text-align: center;
+            padding: 60px 20px 40px;
+        }
+
+        footer .container p {
+            margin-bottom: 15px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        footer p:first-child {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            transition: color 0.3s ease;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .footer-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-links a:hover:after {
+            width: 100%;
+        }
+
+        .live-badge {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background: var(--primary-dark);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            z-index: 900;
+            display: none;
+            animation: pulse 2s infinite;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            font-weight: 600;
+            box-shadow: var(--shadow-lg);
+            border: 2px solid white;
+        }
+
+        .live-badge:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(45, 55, 72, 0.5);
+            background: var(--primary);
+        }
+
+        .pulse {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: #FF4444;
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: pulseOpacity 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes pulseOpacity {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .info-badge {
+            background: var(--primary-light);
+            border-radius: 12px;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            h2 { font-size: 2rem; }
+            .hero { padding: 80px 15px 60px; min-height: 70vh; }
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+            .section { padding: 60px 15px; }
+            .map-container iframe { min-height: 300px; }
+            .logo-img { height: 65px; }
+            header { min-height: 70px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero { padding: 60px 10px 40px; min-height: 60vh; }
+            .hero h1 { font-size: 1.8rem; }
+            .logo-img { height: 55px; }
+            header { min-height: 60px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Announcement Bar - EXACTLY matching index.html -->
+<div class="bg-gray-800 text-white py-2 px-4">
+    <div class="container mx-auto flex justify-between items-center">
+        <div class="flex items-center">
+            <a href="tel:07745-393649" class="flex items-center text-sm hover:text-gray-300 transition">
+                <span class="mr-2">📞</span>
+                <span class="hidden sm:inline">07745 393649</span>
+            </a>
+        </div>
+        <div class="flex items-center space-x-4">
+            <a href="https://www.facebook.com/profile.php?id=61581172410948" target="_blank" class="text-white hover:text-gray-300 transition">
+                <span class="sr-only">Facebook</span>
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path></svg>
+            </a>
+            <a href="https://www.instagram.com/hopecommunitychurchclydebank/" target="_blank" class="text-white hover:text-gray-300 transition">
+                <span class="sr-only">Instagram</span>
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"></path></svg>
+            </a>
+            <a href="https://www.tiktok.com/@hopechurchclydebank" target="_blank" class="text-white hover:text-gray-300 transition">
+                <span class="sr-only">TikTok</span>
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Header/Navbar - EXACTLY matching index.html -->
+<header class="shadow-sm sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center py-3">
+            <!-- Left Logo -->
+            <div class="logo-container">
+                <a href="index.html" class="flex items-center">
+                    <img src="images/logologo.png" alt="Hope Community Church Logo" class="logo-img">
+                </a>
+            </div>
+            
+            <!-- Center Navigation -->
+            <nav class="hidden xl:flex items-center space-x-1">
+                <a href="index.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Home</a>
+                <a href="vision.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Vision/Beliefs</a>
+                <a href="team.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">The Team</a>
+                <div class="relative group">
+                    <button class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded flex items-center gap-1">
+                        Hope for Recovery
+                        <svg class="w-3 h-3 mt-0.5 transition-transform group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+                    </button>
+                    <div class="absolute top-full left-0 mt-1 w-52 bg-gray-700 rounded-lg shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        <a href="hopeforrecovery.html" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 rounded-t-lg font-medium border-b border-gray-100">Hope for Recovery</a>
+                        <a href="keywork.html" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Key Work</a>
+                        <a href="walktalk.html" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Walk & Talk Group</a>
+                        <a href="streetoutreach.html" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Street Outreach</a>
+                        <a href="communitycafe.html" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Community Café</a>
+                        <a href="rehab.html" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Rehab Referrals</a>
+                        <a href="schools.html" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 rounded-b-lg">Schools Program</a>
+                    </div>
+                </div>
+                <a href="stories.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Stories of Hope</a>
+                <a href="getinvolved.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Get Involved</a>
+                <a href="videos.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Videos</a>
+                <a href="find-contact.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Find/Contact</a>
+                <a href="support-us.html" target="_blank" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-6 rounded-full transition duration-300 shadow-md">❤️ Donate</a>
+            </nav>
+            
+            <!-- Right Logo and Mobile Menu Button -->
+            <div class="flex items-center gap-3">
+                <!-- Right Side Logo -->
+                <div class="hidden xl:block">
+                    <img src="images/hfrlogo.png" alt="Hope for Recovery Logo" class="logo-img" onerror="this.style.display='none'">
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="xl:hidden text-white hover:text-gray-200 focus:outline-none transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="mobile-menu" class="xl:hidden hidden py-3 px-4 shadow-lg border-t border-white border-opacity-20">
+        <div class="flex flex-col space-y-1">
+            <a href="index.html">Home</a>
+            <a href="vision.html">Vision/Beliefs</a>
+            <a href="team.html">The Team</a>
+            <div>
+                <button onclick="toggleMobileDropdown()" class="text-white w-full text-left py-2 px-3 rounded flex justify-between items-center">Hope for Recovery <svg id="mobile-dropdown-arrow" class="w-4 h-4 transition-transform" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg></button>
+                <div id="mobile-dropdown" class="hidden pl-4 mt-1 space-y-1 border-l-2 border-white border-opacity-30 ml-3">
+                    <a href="hopeforrecovery.html">Hope for Recovery</a>
+                    <a href="keywork.html">Key Work</a>
+                    <a href="walktalk.html">Walk & Talk Group</a>
+                    <a href="streetoutreach.html">Street Outreach</a>
+                    <a href="communitycafe.html">Community Café</a>
+                    <a href="rehab.html">Rehab Referrals</a>
+                    <a href="schools.html">Schools Program</a>
+                </div>
+            </div>
+            <a href="stories.html">Stories of Hope</a>
+            <a href="getinvolved.html">Get Involved</a>
+            <a href="videos.html">Videos</a>
+            <a href="find-contact.html">Find/Contact</a>
+            <a href="support-us.html" target="_blank" class="mt-2 bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-full text-center transition duration-300 inline-block">❤️ Donate</a>
+        </div>
+    </div>
+</header>
+
+<div class="live-badge" id="liveBadge" onclick="openLiveStream()">
+    <span class="pulse"></span> LIVE: Sunday Service
+</div>
+
+<main>
+    <!-- Hero Section -->
+    <section class="hero section-divider-scalloped">
+        <div class="container">
+            <h1>Find & Contact Us</h1>
+            <p>We'd love to welcome you. Whether you're seeking support, want to visit, or simply have questions — reach out or find your way to our church family.</p>
+        </div>
+    </section>
+
+    <!-- Main Content: Embedded Map with Interactive Pin & Contact Details -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="grid md:grid-cols-2 gap-12 items-start">
+                <!-- Left Column: Interactive Map + Directions Button -->
+                <div>
+                    <div class="mb-6">
+                        <h2 class="text-left text-3xl md:text-4xl mb-4" style="text-align: left; padding-bottom: 0;">📍 Visit Us</h2>
+                        <p class="text-gray-600 mb-4">Hope Community Church, 30 Shelley Drive, Clydebank G81 3EL</p>
+                    </div>
+<!-- Embedded Google Map with exact address -->
+<div class="map-container" style="height: auto;">
+    <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2241.000723751157!2d-4.409149523840294!3d55.90703157294781!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48885a4e574a6dbb%3A0x2b7ac6edca0383e9!2s30%20Shelley%20Drive%2C%20Clydebank%2C%20G81%203EL!5e0!3m2!1sen!2suk!4v1700000000000!5m2!1sen!2suk" 
+        width="100%" 
+        height="450" 
+        style="border:0; min-height: 400px;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+</div>
+                    <div class="mt-6 flex flex-wrap gap-4 items-center justify-between">
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=Hope+Community+Church+30+Shelley+Drive+Clydebank+G81+3EL" 
+                           target="_blank" 
+                           class="directions-btn">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            Get Directions (Open Google Maps)
+                        </a>
+                        <div class="info-badge flex items-center gap-2">
+                            <span>🚗</span> Free parking available nearby
+                        </div>
+                    </div>
+                    <div class="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-100">
+                        <p class="text-sm text-blue-800"><strong>🚌 Public transport:</strong> Clydebank train station is a 15-min walk; multiple bus routes stop on Shelley Drive / nearby.</p>
+                    </div>
+                </div>
+
+                <!-- Right Column: Contact Details + Form -->
+                <div>
+                    <div class="contact-card p-6 md:p-8 mb-8">
+                        <h3 class="text-2xl font-bold mb-4 flex items-center gap-2"><span>📞</span> Get in Touch</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-3">
+                                <span class="text-xl">📍</span>
+                                <div><strong>Address</strong><br>Hope Community Church, 30 Shelley Drive, Clydebank G81 3EL</div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="text-xl">📞</span>
+                                <div><strong>Phone</strong><br><a href="tel:07745-393649" class="hover:text-yellow-600">07745 393649</a></div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="text-xl">✉️</span>
+                                <div><strong>Email</strong><br><a href="mailto:hopeforrecovery@outlook.com" class="hover:text-yellow-600">hopeforrecovery@outlook.com</a></div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="text-xl">🕒</span>
+                                <div><strong>Opening Hours</strong>
+                                    <ul class="list-disc pl-5 mt-1">
+                                        <li>Monday: 10am – 5pm</li>
+                                        <li>Wednesday: 10am – 8pm</li>
+                                        <li>Friday: 10am – 5pm</li>
+                                        <li>Sunday: 10:30am – 1pm</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Message Form -->
+                    <div class="contact-card p-6 md:p-8">
+                        <h3 class="text-2xl font-bold mb-4">Send a Message</h3>
+                        <form id="contact-form" class="space-y-4">
+                            <div class="grid grid-cols-2 gap-3">
+                                <input type="text" placeholder="First Name" class="w-full p-2 border rounded-lg" required>
+                                <input type="text" placeholder="Last Name" class="w-full p-2 border rounded-lg" required>
+                            </div>
+                            <input type="email" placeholder="Email" class="w-full p-2 border rounded-lg" required>
+                            <textarea placeholder="Message" rows="4" class="w-full p-2 border rounded-lg" required></textarea>
+                            <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 rounded-lg transition">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Information: Accessibility & What to Expect -->
+    <section class="section section-alt">
+        <div class="container text-center max-w-4xl mx-auto">
+            <h2>Plan Your Visit</h2>
+            <div class="grid md:grid-cols-3 gap-6 mt-6">
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="text-4xl mb-3">♿</div>
+                    <h3 class="text-xl font-bold mb-2">Accessibility</h3>
+                    <p class="text-gray-600">Wheelchair accessible entrance, ground-floor facilities, and accessible toilets. Large print materials available on request.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="text-4xl mb-3">👨‍👩‍👧‍👦</div>
+                    <h3 class="text-xl font-bold mb-2">Family Friendly</h3>
+                    <p class="text-gray-600">Children welcome; we have a quiet corner and activities during Sunday services.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="text-4xl mb-3">☕</div>
+                    <h3 class="text-xl font-bold mb-2">Refreshments</h3>
+                    <p class="text-gray-600">Tea, coffee, and biscuits served after services and during café hours (Fri 12-2pm).</p>
+                </div>
+            </div>
+            <div class="mt-10">
+                <a href="support-us.html" target="_blank" class="btn btn-primary">Support Our Ministries ❤️</a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <p>Hope Community Church Clydebank</p>
+        <p>30 Shelley Drive, Clydebank, G81 3EL</p>
+        <div class="footer-links">
+            <a href="index.html#services">Services</a>
+            <a href="index.html#recovery">Recovery</a>
+            <a href="find-contact.html">Contact</a>
+            <a href="#" onclick="openPrayerForm()">Prayer</a>
+        </div>
+        <p>Part of The Apostolic Church network</p>
+        <p>Scottish Charity Number: SC054414</p>
+        <p>&copy; <span id="year"></span> Hope Community Church. All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- Prayer Modal -->
+<div id="prayerForm" class="modal">
+    <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4 relative">
+        <span class="absolute top-4 right-6 text-2xl cursor-pointer" onclick="closeModal()">&times;</span>
+        <h3 class="text-xl font-bold mb-2">We'll Pray For You</h3>
+        <p class="mb-4">Submit your prayer request and our team will pray for you this week.</p>
+        <form id="prayerRequestForm" action="https://formspree.io/f/xzzjwnkw" method="POST">
+            <input type="email" name="email" placeholder="Your email (optional)" class="w-full p-2 border rounded my-2">
+            <textarea name="message" placeholder="Your prayer request..." required class="w-full p-2 border rounded my-2" rows="4"></textarea>
+            <button type="submit" class="btn btn-primary w-full">Submit</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (menuToggle) {
+        menuToggle.addEventListener('click', function() {
+            menuToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('hidden');
+            
+            if (!mobileMenu.classList.contains('hidden')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        });
+    }
+
+    // Close menu when clicking on a mobile nav link
+    const mobileNavLinks = document.querySelectorAll('#mobile-menu a');
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            menuToggle.classList.remove('active');
+            mobileMenu.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+    });
+
+    function toggleMobileDropdown() {
+        const dropdown = document.getElementById('mobile-dropdown');
+        const arrow = document.getElementById('mobile-dropdown-arrow');
+        if(dropdown.classList.contains('hidden')) {
+            dropdown.classList.remove('hidden');
+            arrow.style.transform = 'rotate(180deg)';
+        } else {
+            dropdown.classList.add('hidden');
+            arrow.style.transform = 'rotate(0deg)';
+        }
+    }
+    
+    document.getElementById('year').innerText = new Date().getFullYear();
+    
+    function openLiveStream() { 
+        window.open('https://www.youtube.com/@HopeCommunityChurchClydebank', '_blank'); 
+    }
+    
+    function openPrayerForm() { 
+        document.getElementById('prayerForm').style.display = 'flex'; 
+    }
+    
+    function closeModal() { 
+        document.getElementById('prayerForm').style.display = 'none'; 
+    }
+    
+    // Close modal when clicking outside
+    window.onclick = function(e) { 
+        if(e.target === document.getElementById('prayerForm')) closeModal(); 
+    }
+    
+    // Contact form handler
+    document.getElementById('contact-form')?.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        alert('Thank you! Someone will be in touch soon.');
+        this.reset();
+    });
+    
+    // Prayer form submission
+    document.getElementById('prayerRequestForm')?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Prayer request submitted. God bless you.');
+        closeModal();
+        this.reset();
+    });
+    
+    // Live badge functionality - EXACTLY matching index.html
+    function checkLiveStatus() {
+        const now = new Date();
+        const day = now.getDay();
+        const hour = now.getHours();
+        const badge = document.getElementById('liveBadge');
+        if (badge) {
+            badge.style.display = (day === 0 && hour >= 10 && hour < 13) ? 'block' : 'none';
+        }
+    }
+    
+    checkLiveStatus();
+    setInterval(checkLiveStatus, 60000);
+</script>
+</body>
+</html>
