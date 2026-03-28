@@ -1268,6 +1268,56 @@ footer p:first-child {
         padding: 10px 15px;
     }
 }
+/* What to Expect Section - Desktop layout (image left, text right) */
+.what-to-expect-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.what-to-expect-text h2 {
+    text-align: left;
+    margin-bottom: 2rem;
+    padding-bottom: 0.75rem;
+}
+
+.what-to-expect-text h2:after {
+    left: 0;
+    transform: none;
+    bottom: -5px;
+}
+
+/* Mobile layout - text first, image second */
+@media (max-width: 768px) {
+    .what-to-expect-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    /* Reorder elements: text first, image second */
+    .what-to-expect-text {
+        order: 1;
+    }
+    
+    .what-to-expect-image {
+        order: 2;
+    }
+    
+    .what-to-expect-text h2 {
+        text-align: center;
+        margin-bottom: 1.75rem;
+    }
+    
+    .what-to-expect-text h2:after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .what-to-expect-text p {
+        text-align: center;
+    }
+}
 </style>
 </head>
 <body>
@@ -1423,18 +1473,20 @@ footer p:first-child {
     </div>
 </section>
 
+<!-- What to Expect Section - UPDATED -->
 <section class="section" id="what-to-expect">
-    <div class="container about-grid">
-        <div>
+    <div class="container what-to-expect-grid">
+        <div class="what-to-expect-image">
             <img src="images/who we are.png" alt="Worship at Hope Community Church" style="width:100%; border-radius:10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
         </div>
-        <div class="about-text">
+        <div class="what-to-expect-text">
             <h2>What to Expect</h2>
             <p>We are a loving, caring, family church with a relaxed, informal atmosphere. You will find lively, relevant, congregational worship with passionate, practical bible-based preaching.</p>
             <p>Everyone is welcome regardless of age or background with our kids' zone at the back with arts and crafts. Tea & coffee available from 10:30am before our service at 11am. Service normally lasts around 90 minutes.</p>
         </div>
     </div>
 </section>
+
     <section class="section section-services" id="services">
         <div class="container">
             <h2 style="text-align: center;">Our Weekly Services</h2>
