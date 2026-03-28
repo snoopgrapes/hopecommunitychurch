@@ -631,6 +631,30 @@
                 font-size: 0.85rem;
             }
         }
+		/* Mobile menu scroll fix - ADD THIS */
+@media (max-width: 768px) {
+    #mobile-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        max-height: calc(100vh - 80px);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        z-index: 50;
+    }
+    
+    /* Ensure the dropdown doesn't overflow */
+    #mobile-dropdown {
+        overflow: visible;
+    }
+    
+    /* Make dropdown links easier to tap */
+    #mobile-dropdown a {
+        margin: 5px 0;
+        padding: 10px 15px;
+    }
+}
     </style>
 </head>
 <body>
@@ -709,30 +733,39 @@
             </div>
         </div>
     </div>
-    <div id="mobile-menu" class="xl:hidden hidden py-3 px-4 shadow-lg border-t border-white border-opacity-20">
-        <div class="flex flex-col space-y-1">
-            <a href="index.html">Home</a>
-            <a href="vision.html">Vision/Beliefs</a>
-            <a href="team.html">The Team</a>
-            <div>
-                <button onclick="toggleMobileDropdown()" class="text-white w-full text-left py-2 px-3 rounded flex justify-between items-center">Our Services <svg id="mobile-dropdown-arrow" class="w-4 h-4 transition-transform" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg></button>
-                <div id="mobile-dropdown" class="hidden pl-4 mt-1 space-y-1 border-l-2 border-white border-opacity-30 ml-3">
-                    <a href="hopeforrecovery.html#structured-courses">Hope for Recovery</a>
-                    <a href="hopeforrecovery.html#keywork">Key Work</a>
-                    <a href="hopeforrecovery.html#walk-talk">Walk & Talk Group</a>
-                    <a href="hopeforrecovery.html#street-outreach">Street Outreach</a>
-                    <a href="hopeforrecovery.html#cafe">Community Café</a>
-                    <a href="hopeforrecovery.html#rehab">Rehab Referrals</a>
-                    <a href="hopeforrecovery.html#schools">Schools Program</a>
-                </div>
+	
+<div id="mobile-menu" class="xl:hidden hidden py-3 px-4 shadow-lg border-t border-white border-opacity-20" style="background: #707070;">
+    <div class="flex flex-col space-y-2">
+        <a href="index.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Home</a>
+        <a href="vision.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Vision/Beliefs</a>
+        <a href="team.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">The Team</a>
+        
+        <!-- Services Dropdown -->
+        <div>
+            <button onclick="toggleMobileDropdown()" class="text-white hover:text-gray-200 font-semibold w-full text-left py-2 px-3 rounded flex justify-between items-center transition">
+                Our Services
+                <svg id="mobile-dropdown-arrow" class="w-4 h-4 transition-transform duration-200" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
+                </svg>
+            </button>
+            <div id="mobile-dropdown" class="hidden mt-2 space-y-1 ml-3">
+                <a href="hopeforrecovery.html#structured-courses" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Hope for Recovery</a>
+                <a href="hopeforrecovery.html#keywork" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Key Work</a>
+                <a href="hopeforrecovery.html#walk-talk" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Walk & Talk Group</a>
+                <a href="hopeforrecovery.html#street-outreach" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Street Outreach</a>
+                <a href="hopeforrecovery.html#cafe" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Community Café</a>
+                <a href="hopeforrecovery.html#rehab" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Rehab Referrals</a>
+                <a href="hopeforrecovery.html#schools" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Schools Program</a>
             </div>
-            <a href="stories.html">Stories of Hope</a>
-            <a href="getinvolved.html">Get Involved</a>
-            <a href="videos.html">Videos</a>
-            <a href="#contact">Find/Contact</a>
-            <a href="support-us.html" target="_blank" class="mt-2 bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-full text-center transition duration-300 inline-block">❤️ Donate</a>
         </div>
+        
+        <a href="stories.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Stories of Hope</a>
+        <a href="getinvolved.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Get Involved</a>
+        <a href="videos.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Videos</a>
+        <a href="#contact" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Find/Contact</a>
+        <a href="support-us.html" target="_blank" class="mt-2 bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-full text-center transition duration-300 inline-block">❤️ Donate</a>
     </div>
+</div>
 </header>
 
     <div class="live-badge" id="liveBadge" onclick="openLiveStream()">
@@ -801,286 +834,353 @@
         </div>
     </footer>
 
-    <script>
-        // ==================== YOUTUBE API CONFIGURATION ====================
-        const API_KEY = 'AIzaSyAO9GelnTzi9XN-B4wtC0VWzaJdvZNilDQ';
-        const CHANNEL_ID = 'UC2Cypz6hJ48JidL74tHGyOw';
-        
-        let allVideos = [];
-        let currentFilter = 'all';
-        
-        // ==================== FETCH VIDEOS ====================
-        async function fetchVideos() {
-            try {
-                // Get uploads playlist ID
-                const channelResponse = await fetch(
-                    `https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=${CHANNEL_ID}&key=${API_KEY}`
-                );
-                const channelData = await channelResponse.json();
-                
-                if (!channelData.items || channelData.items.length === 0) {
-                    throw new Error('Channel not found');
-                }
-                
-                const uploadsPlaylistId = channelData.items[0].contentDetails.relatedPlaylists.uploads;
-                
-                // Fetch all videos from playlist
-                let allItems = [];
-                let nextPageToken = '';
-                
-                do {
-                    const videosResponse = await fetch(
-                        `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails&maxResults=50&playlistId=${uploadsPlaylistId}&key=${API_KEY}&pageToken=${nextPageToken}`
-                    );
-                    const videosData = await videosResponse.json();
-                    if (videosData.items) {
-                        allItems = [...allItems, ...videosData.items];
-                    }
-                    nextPageToken = videosData.nextPageToken;
-                } while (nextPageToken && allItems.length < 200);
-                
-                // Fetch video statistics in batches
-                const batchSize = 50;
-                const allVideoDetails = [];
-                
-                for (let i = 0; i < allItems.length; i += batchSize) {
-                    const batch = allItems.slice(i, i + batchSize);
-                    const videoIds = batch.map(item => item.contentDetails.videoId).join(',');
-                    
-                    const statsResponse = await fetch(
-                        `https://www.googleapis.com/youtube/v3/videos?part=statistics,contentDetails&id=${videoIds}&key=${API_KEY}`
-                    );
-                    const statsData = await statsResponse.json();
-                    
-                    if (statsData.items) {
-                        allVideoDetails.push(...statsData.items);
-                    }
-                    
-                    await new Promise(resolve => setTimeout(resolve, 100));
-                }
-                
-                // Combine data
-                allVideos = allItems.map(item => {
-                    const stats = allVideoDetails.find(s => s && s.id === item.contentDetails.videoId);
-                    return {
-                        id: item.contentDetails.videoId,
-                        title: item.snippet.title,
-                        description: item.snippet.description,
-                        thumbnail: item.snippet.thumbnails.maxres?.url || item.snippet.thumbnails.high.url,
-                        publishedAt: item.snippet.publishedAt,
-                        duration: formatDuration(stats?.contentDetails?.duration || 'PT0S'),
-                        views: parseInt(stats?.statistics?.viewCount || 0)
-                    };
-                });
-                
-                displayVideos(allVideos);
-                
-            } catch (error) {
-                console.error('Error fetching videos:', error);
-                document.getElementById('videoGrid').innerHTML = `
-                    <div class="no-results">
-                        ❌ Error loading videos: ${error.message}<br>
-                        <small>Please check your internet connection and try again.</small>
-                    </div>
-                `;
+<script>
+    // ==================== MOBILE MENU FUNCTIONS ====================
+    // SIMPLER APPROACH - No body scroll locking (matches index.html)
+    const menuToggle = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', function() {
+            menuToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('hidden');
+        });
+    }
+
+    // Close menu when clicking on a mobile nav link
+    const mobileNavLinks = document.querySelectorAll('#mobile-menu a');
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            if (menuToggle) menuToggle.classList.remove('active');
+            if (mobileMenu) mobileMenu.classList.add('hidden');
+        });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+        if (window.innerWidth <= 768 && mobileMenu && !mobileMenu.classList.contains('hidden')) {
+            const isClickInsideMenu = mobileMenu.contains(event.target);
+            const isClickOnToggle = menuToggle ? menuToggle.contains(event.target) : false;
+            
+            if (!isClickInsideMenu && !isClickOnToggle) {
+                if (menuToggle) menuToggle.classList.remove('active');
+                if (mobileMenu) mobileMenu.classList.add('hidden');
             }
         }
+    });
+
+    // Mobile dropdown toggle function
+    function toggleMobileDropdown() {
+        const dropdown = document.getElementById('mobile-dropdown');
+        const arrow = document.getElementById('mobile-dropdown-arrow');
         
-        // ==================== DISPLAY VIDEOS ====================
-        function displayVideos(videos) {
-            const grid = document.getElementById('videoGrid');
-            
-            if (!videos || videos.length === 0) {
-                grid.innerHTML = '<div class="no-results">🎬 No videos found</div>';
-                return;
-            }
-            
-            grid.innerHTML = videos.map(video => `
-                <div class="video-card" onclick="openVideo('${video.id}', '${escapeHtml(video.title)}', '${escapeHtml(video.description)}')">
-                    <div class="thumbnail">
-                        <img src="${video.thumbnail}" alt="${escapeHtml(video.title)}" loading="lazy">
-                        <span class="duration">${video.duration}</span>
-                    </div>
-                    <div class="video-info">
-                        <div class="video-title">${escapeHtml(video.title)}</div>
-                        <div class="video-meta">
-                            <span>👁️ ${formatNumber(video.views)} views</span>
-                            <span>📅 ${formatDate(video.publishedAt)}</span>
-                        </div>
-                        <div class="video-description">${escapeHtml(video.description.substring(0, 100))}${video.description.length > 100 ? '...' : ''}</div>
-                    </div>
-                </div>
-            `).join('');
-        }
-        
-        // ==================== FILTER FUNCTIONS ====================
-        function filterVideos() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            
-            let filtered = [...allVideos];
-            
-            if (searchTerm) {
-                filtered = filtered.filter(video => 
-                    video.title.toLowerCase().includes(searchTerm) || 
-                    video.description.toLowerCase().includes(searchTerm)
-                );
-            }
-            
-            if (currentFilter === 'recent') {
-                filtered.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
-            } else if (currentFilter === 'popular') {
-                filtered.sort((a, b) => b.views - a.views);
-            } else {
-                filtered.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
-            }
-            
-            displayVideos(filtered);
-        }
-        
-        function filterByCategory(category, button) {
-            currentFilter = category;
-            
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            button.classList.add('active');
-            
-            filterVideos();
-        }
-        
-        // ==================== MODAL FUNCTIONS ====================
-        function openVideo(videoId, title, description) {
-            const modal = document.getElementById('videoModal');
-            const iframe = document.getElementById('videoIframe');
-            const modalTitle = document.getElementById('modalTitle');
-            const modalDescription = document.getElementById('modalDescription');
-            
-            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
-            modalTitle.textContent = title;
-            modalDescription.textContent = description;
-            
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function closeModal() {
-            const modal = document.getElementById('videoModal');
-            const iframe = document.getElementById('videoIframe');
-            
-            iframe.src = '';
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-        
-        // ==================== HELPER FUNCTIONS ====================
-        function formatDuration(duration) {
-            const match = duration.match(/PT(\d+H)?(\d+M)?(\d+S)?/);
-            const hours = (match[1] || '').replace('H', '');
-            const minutes = (match[2] || '').replace('M', '');
-            const seconds = (match[3] || '').replace('S', '');
-            
-            if (hours) {
-                return `${hours}:${minutes.padStart(2, '0')}:${seconds.padStart(2, '0')}`;
-            }
-            return `${minutes}:${seconds.padStart(2, '0')}`;
-        }
-        
-        function formatNumber(num) {
-            if (num >= 1000000) {
-                return (num / 1000000).toFixed(1) + 'M';
-            }
-            if (num >= 1000) {
-                return (num / 1000).toFixed(1) + 'K';
-            }
-            return num.toString();
-        }
-        
-        function formatDate(dateString) {
-            const date = new Date(dateString);
-            const now = new Date();
-            const diffDays = Math.floor((now - date) / (1000 * 60 * 60 * 24));
-            
-            if (diffDays < 7) {
-                return `${diffDays} day${diffDays !== 1 ? 's' : ''} ago`;
-            } else if (diffDays < 30) {
-                const weeks = Math.floor(diffDays / 7);
-                return `${weeks} week${weeks !== 1 ? 's' : ''} ago`;
-            } else if (diffDays < 365) {
-                const months = Math.floor(diffDays / 30);
-                return `${months} month${months !== 1 ? 's' : ''} ago`;
-            } else {
-                const years = Math.floor(diffDays / 365);
-                return `${years} year${years !== 1 ? 's' : ''} ago`;
-            }
-        }
-        
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
-        
-        // ==================== UI FUNCTIONS ====================
-        function toggleMobileDropdown() {
-            const dropdown = document.getElementById('mobile-dropdown');
-            const arrow = document.getElementById('mobile-dropdown-arrow');
+        if (dropdown) {
             if (dropdown.classList.contains('hidden')) {
                 dropdown.classList.remove('hidden');
-                arrow.style.transform = 'rotate(180deg)';
+                if (arrow) arrow.style.transform = 'rotate(180deg)';
             } else {
                 dropdown.classList.add('hidden');
-                arrow.style.transform = 'rotate(0deg)';
+                if (arrow) arrow.style.transform = 'rotate(0deg)';
             }
         }
-        
-        function openLiveStream() {
-            window.open('https://www.youtube.com/@HopeCommunityChurchClydebank', '_blank');
-        }
-        
-        function openPrayerForm() {
-            alert('Prayer request form would open here. Please visit the homepage to submit prayer requests.');
-        }
-        
-        function checkLiveStatus() {
-            const now = new Date();
-            const day = now.getDay();
-            const hour = now.getHours();
-            const badge = document.getElementById('liveBadge');
-            if (badge) {
-                badge.style.display = (day === 0 && hour >= 10 && hour < 13) ? 'block' : 'none';
+    }
+
+    // ==================== YOUTUBE API CONFIGURATION ====================
+    const API_KEY = 'AIzaSyAO9GelnTzi9XN-B4wtC0VWzaJdvZNilDQ';
+    const CHANNEL_ID = 'UC2Cypz6hJ48JidL74tHGyOw';
+    
+    let allVideos = [];
+    let currentFilter = 'all';
+    
+    // ==================== FETCH VIDEOS ====================
+    async function fetchVideos() {
+        try {
+            // Get uploads playlist ID
+            const channelResponse = await fetch(
+                `https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=${CHANNEL_ID}&key=${API_KEY}`
+            );
+            const channelData = await channelResponse.json();
+            
+            if (!channelData.items || channelData.items.length === 0) {
+                throw new Error('Channel not found');
             }
-        }
-        
-        // ==================== INITIALIZE ====================
-        document.getElementById('year').innerText = new Date().getFullYear();
-        
-        // Mobile menu toggle
-        const menuToggle = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        if (menuToggle) {
-            menuToggle.addEventListener('click', function() {
-                mobileMenu.classList.toggle('hidden');
+            
+            const uploadsPlaylistId = channelData.items[0].contentDetails.relatedPlaylists.uploads;
+            
+            // Fetch all videos from playlist
+            let allItems = [];
+            let nextPageToken = '';
+            
+            do {
+                const videosResponse = await fetch(
+                    `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails&maxResults=50&playlistId=${uploadsPlaylistId}&key=${API_KEY}&pageToken=${nextPageToken}`
+                );
+                const videosData = await videosResponse.json();
+                if (videosData.items) {
+                    allItems = [...allItems, ...videosData.items];
+                }
+                nextPageToken = videosData.nextPageToken;
+            } while (nextPageToken && allItems.length < 200);
+            
+            // Fetch video statistics in batches
+            const batchSize = 50;
+            const allVideoDetails = [];
+            
+            for (let i = 0; i < allItems.length; i += batchSize) {
+                const batch = allItems.slice(i, i + batchSize);
+                const videoIds = batch.map(item => item.contentDetails.videoId).join(',');
+                
+                const statsResponse = await fetch(
+                    `https://www.googleapis.com/youtube/v3/videos?part=statistics,contentDetails&id=${videoIds}&key=${API_KEY}`
+                );
+                const statsData = await statsResponse.json();
+                
+                if (statsData.items) {
+                    allVideoDetails.push(...statsData.items);
+                }
+                
+                await new Promise(resolve => setTimeout(resolve, 100));
+            }
+            
+            // Combine data
+            allVideos = allItems.map(item => {
+                const stats = allVideoDetails.find(s => s && s.id === item.contentDetails.videoId);
+                return {
+                    id: item.contentDetails.videoId,
+                    title: item.snippet.title,
+                    description: item.snippet.description,
+                    thumbnail: item.snippet.thumbnails.maxres?.url || item.snippet.thumbnails.high.url,
+                    publishedAt: item.snippet.publishedAt,
+                    duration: formatDuration(stats?.contentDetails?.duration || 'PT0S'),
+                    views: parseInt(stats?.statistics?.viewCount || 0)
+                };
             });
+            
+            displayVideos(allVideos);
+            
+        } catch (error) {
+            console.error('Error fetching videos:', error);
+            document.getElementById('videoGrid').innerHTML = `
+                <div class="no-results">
+                    ❌ Error loading videos: ${error.message}<br>
+                    <small>Please check your internet connection and try again.</small>
+                </div>
+            `;
+        }
+    }
+    
+    // ==================== DISPLAY VIDEOS ====================
+    function displayVideos(videos) {
+        const grid = document.getElementById('videoGrid');
+        
+        if (!videos || videos.length === 0) {
+            grid.innerHTML = '<div class="no-results">🎬 No videos found</div>';
+            return;
         }
         
-        // Close modal on escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeModal();
+        grid.innerHTML = videos.map(video => `
+            <div class="video-card" onclick="openVideo('${video.id}', '${escapeHtml(video.title)}', '${escapeHtml(video.description)}')">
+                <div class="thumbnail">
+                    <img src="${video.thumbnail}" alt="${escapeHtml(video.title)}" loading="lazy">
+                    <span class="duration">${video.duration}</span>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">${escapeHtml(video.title)}</div>
+                    <div class="video-meta">
+                        <span>👁️ ${formatNumber(video.views)} views</span>
+                        <span>📅 ${formatDate(video.publishedAt)}</span>
+                    </div>
+                    <div class="video-description">${escapeHtml(video.description.substring(0, 100))}${video.description.length > 100 ? '...' : ''}</div>
+                </div>
+            </div>
+        `).join('');
+    }
+    
+    // ==================== FILTER FUNCTIONS ====================
+    function filterVideos() {
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+        
+        let filtered = [...allVideos];
+        
+        if (searchTerm) {
+            filtered = filtered.filter(video => 
+                video.title.toLowerCase().includes(searchTerm) || 
+                video.description.toLowerCase().includes(searchTerm)
+            );
+        }
+        
+        if (currentFilter === 'recent') {
+            filtered.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+        } else if (currentFilter === 'popular') {
+            filtered.sort((a, b) => b.views - a.views);
+        } else {
+            filtered.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+        }
+        
+        displayVideos(filtered);
+    }
+    
+    function filterByCategory(category, button) {
+        currentFilter = category;
+        
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        button.classList.add('active');
+        
+        filterVideos();
+    }
+    
+    // ==================== MODAL FUNCTIONS ====================
+    function openVideo(videoId, title, description) {
+        const modal = document.getElementById('videoModal');
+        const iframe = document.getElementById('videoIframe');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDescription = document.getElementById('modalDescription');
+        
+        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+        modalTitle.textContent = title;
+        modalDescription.textContent = description;
+        
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function closeModal() {
+        const modal = document.getElementById('videoModal');
+        const iframe = document.getElementById('videoIframe');
+        
+        iframe.src = '';
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+    
+    // ==================== HELPER FUNCTIONS ====================
+    function formatDuration(duration) {
+        const match = duration.match(/PT(\d+H)?(\d+M)?(\d+S)?/);
+        const hours = (match[1] || '').replace('H', '');
+        const minutes = (match[2] || '').replace('M', '');
+        const seconds = (match[3] || '').replace('S', '');
+        
+        if (hours) {
+            return `${hours}:${minutes.padStart(2, '0')}:${seconds.padStart(2, '0')}`;
+        }
+        return `${minutes}:${seconds.padStart(2, '0')}`;
+    }
+    
+    function formatNumber(num) {
+        if (num >= 1000000) {
+            return (num / 1000000).toFixed(1) + 'M';
+        }
+        if (num >= 1000) {
+            return (num / 1000).toFixed(1) + 'K';
+        }
+        return num.toString();
+    }
+    
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        const now = new Date();
+        const diffDays = Math.floor((now - date) / (1000 * 60 * 60 * 24));
+        
+        if (diffDays < 7) {
+            return `${diffDays} day${diffDays !== 1 ? 's' : ''} ago`;
+        } else if (diffDays < 30) {
+            const weeks = Math.floor(diffDays / 7);
+            return `${weeks} week${weeks !== 1 ? 's' : ''} ago`;
+        } else if (diffDays < 365) {
+            const months = Math.floor(diffDays / 30);
+            return `${months} month${months !== 1 ? 's' : ''} ago`;
+        } else {
+            const years = Math.floor(diffDays / 365);
+            return `${years} year${years !== 1 ? 's' : ''} ago`;
+        }
+    }
+    
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+    
+    // ==================== UI FUNCTIONS ====================
+    function openLiveStream() {
+        window.open('https://www.youtube.com/@HopeCommunityChurchClydebank', '_blank');
+    }
+    
+    function openPrayerForm() {
+        alert('Prayer request form would open here. Please visit the homepage to submit prayer requests.');
+    }
+    
+    function checkLiveStatus() {
+        const now = new Date();
+        const day = now.getDay();
+        const hour = now.getHours();
+        const badge = document.getElementById('liveBadge');
+        if (badge) {
+            badge.style.display = (day === 0 && hour >= 10 && hour < 13) ? 'block' : 'none';
+        }
+    }
+    
+    // ==================== DESKTOP DROPDOWN FOR TOUCH DEVICES ====================
+    const dropdownParent = document.querySelector('nav .relative');
+    if (dropdownParent) {
+        dropdownParent.addEventListener('click', function(e) {
+            if (window.innerWidth <= 1024) {
+                const dropdown = this.querySelector('.absolute');
+                const isOpen = dropdown.style.visibility === 'visible';
+                
+                document.querySelectorAll('nav .relative .absolute').forEach(drop => {
+                    drop.style.opacity = '0';
+                    drop.style.visibility = 'hidden';
+                });
+                
+                if (!isOpen) {
+                    dropdown.style.opacity = '1';
+                    dropdown.style.visibility = 'visible';
+                    e.stopPropagation();
+                } else {
+                    dropdown.style.opacity = '0';
+                    dropdown.style.visibility = 'hidden';
+                }
             }
         });
-        
-        // Close modal when clicking outside
-        const modal = document.getElementById('videoModal');
+    }
+    
+    document.addEventListener('click', function(e) {
+        if (window.innerWidth <= 1024) {
+            if (!e.target.closest('nav .relative')) {
+                document.querySelectorAll('nav .relative .absolute').forEach(dropdown => {
+                    dropdown.style.opacity = '0';
+                    dropdown.style.visibility = 'hidden';
+                });
+            }
+        }
+    });
+    
+    // ==================== INITIALIZE ====================
+    document.getElementById('year').innerText = new Date().getFullYear();
+    
+    // Close modal on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeModal();
+        }
+    });
+    
+    // Close modal when clicking outside
+    const modal = document.getElementById('videoModal');
+    if (modal) {
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
                 closeModal();
             }
         });
-        
-        checkLiveStatus();
-        setInterval(checkLiveStatus, 60000);
-        fetchVideos();
-    </script>
+    }
+    
+    checkLiveStatus();
+    setInterval(checkLiveStatus, 60000);
+    fetchVideos();
+</script>
 </body>
 </html>
