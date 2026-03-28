@@ -482,11 +482,12 @@
             z-index: 1000;
         }
 
-        @media (max-width: 768px) {
-            .content-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
+@media (max-width: 768px) {
+    .hero {
+        padding: 30px 15px 25px;
+        min-height: auto;  /* Let content determine height */
+    }
+}
             h2 {
                 font-size: 2rem;
             }
