@@ -55,7 +55,7 @@
             color: var(--primary-dark);
         }
 
-        /* Hero Section - EXACT match to stories.html (including responsive) */
+        /* Hero Section - EXACT match to stories.html */
         .hero {
             background: #707070; /* Match navbar color */
             color: var(--text-light);
@@ -586,7 +586,7 @@
         @media (max-width: 768px) {
             .hero {
                 padding: 30px 15px 25px;
-                min-height: auto;  /* Let content determine height - matches stories.html */
+                min-height: auto;
             }
             .hero h1 {
                 font-size: 2rem;
@@ -623,16 +623,14 @@
             }
         }
 
+        /* Critical: This matches stories.html exactly for smaller mobile devices */
         @media (max-width: 480px) {
             .hero {
-                padding: 30px 15px 25px;
-                min-height: auto;
+                padding: 60px 10px 40px;
+                min-height: 60vh;
             }
             .hero h1 {
                 font-size: 1.8rem;
-            }
-            .hero p {
-                font-size: 1rem;
             }
             .logo-img {
                 height: 55px;
@@ -782,7 +780,7 @@
         <span class="pulse"></span> LIVE: Sunday Service
     </div>
 
-    <!-- Hero Section - EXACT match to stories.html (same structure and spacing) -->
+    <!-- Hero Section - EXACT match to stories.html -->
     <section class="hero section-divider-scalloped">
         <div class="container">
             <h1>Video Gallery</h1>
