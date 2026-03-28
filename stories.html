@@ -659,6 +659,30 @@
 .close-modal:hover {
     color: var(--primary);
 }
+/* Mobile menu scroll fix - ADD THIS */
+@media (max-width: 768px) {
+    #mobile-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        max-height: calc(100vh - 80px);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        z-index: 50;
+    }
+    
+    /* Ensure the dropdown doesn't overflow */
+    #mobile-dropdown {
+        overflow: visible;
+    }
+    
+    /* Make dropdown links easier to tap */
+    #mobile-dropdown a {
+        margin: 5px 0;
+        padding: 10px 15px;
+    }
+}
     </style>
 </head>
 <body>
@@ -706,7 +730,7 @@
                 <a href="team.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">The Team</a>
                 <div class="relative group">
                     <button class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded flex items-center gap-1">
-                        Hope for Recovery
+                        Our Services
                         <svg class="w-3 h-3 mt-0.5 transition-transform group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
                     </button>
                     <div class="absolute top-full left-0 mt-1 w-52 bg-gray-700 rounded-lg shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
@@ -722,7 +746,7 @@
                 <a href="stories.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Stories of Hope</a>
                 <a href="getinvolved.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Get Involved</a>
                 <a href="videos.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Videos</a>
-                <a href="#contact" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Find/Contact</a>
+                <a href="contact.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Find/Contact</a>
                 <a href="support-us.html" target="_blank" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-6 rounded-full transition duration-300 shadow-md">❤️ Donate</a>
             </nav>
             
@@ -738,7 +762,7 @@
         </div>
     </div>
 	
- <div id="mobile-menu" class="xl:hidden hidden py-3 px-4 shadow-lg border-t border-white border-opacity-20" style="background: #707070;">
+<div id="mobile-menu" class="xl:hidden hidden py-3 px-4 shadow-lg border-t border-white border-opacity-20" style="background: #707070;">
     <div class="flex flex-col space-y-2">
         <a href="index.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Home</a>
         <a href="vision.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Vision/Beliefs</a>
@@ -766,7 +790,7 @@
         <a href="stories.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Stories of Hope</a>
         <a href="getinvolved.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Get Involved</a>
         <a href="videos.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Videos</a>
-        <a href="#contact" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Find/Contact</a>
+        <a href="contact.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Find/Contact</a>
         <a href="support-us.html" target="_blank" class="mt-2 bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-full text-center transition duration-300 inline-block">❤️ Donate</a>
     </div>
 </div>
@@ -1040,18 +1064,32 @@
     }
 
     function openPrayerForm() {
-        document.getElementById('prayerForm').style.display = 'flex';
+        document.getElementById('prayerForm').style.display = 'block';
     }
 
-    function closeModal() {
+    function closePrayerModal() {
         document.getElementById('prayerForm').style.display = 'none';
     }
 
-    function openContactForm() {
-        window.location.href = 'index.html#contact';
+    function openVolunteerForm() {
+        document.getElementById('volunteerForm').style.display = 'block';
     }
 
-    // Handle prayer form submission
+    function closeVolunteerModal() {
+        document.getElementById('volunteerForm').style.display = 'none';
+    }
+
+    function checkLiveStatus() {
+        const now = new Date();
+        const day = now.getDay();
+        const hour = now.getHours();
+        const badge = document.getElementById('liveBadge');
+        if (badge) {
+            badge.style.display = (day === 0 && hour >= 10 && hour < 13) ? 'block' : 'none';
+        }
+    }
+
+    // Handle prayer form submission with Formspree
     const prayerForm = document.getElementById('prayerRequestForm');
     if (prayerForm) {
         prayerForm.addEventListener('submit', function(e) {
@@ -1067,9 +1105,9 @@
                 }
             }).then(response => {
                 if (response.ok) {
-                    alert('Thank you for your prayer request. Our team will pray for you this week.');
+                    alert('Prayer request submitted. God bless you.');
                     form.reset();
-                    closeModal();
+                    closePrayerModal();
                 } else {
                     alert('There was an error submitting your request. Please try again.');
                 }
@@ -1080,22 +1118,51 @@
         });
     }
 
-    function checkLiveStatus() {
-        const now = new Date();
-        const day = now.getDay();
-        const hour = now.getHours();
-        const badge = document.getElementById('liveBadge');
-        if (badge) {
-            badge.style.display = (day === 0 && hour >= 10 && hour < 13) ? 'block' : 'none';
-        }
+    // Handle volunteer form submission
+    const volunteerForm = document.getElementById('volunteerRequestForm');
+    if (volunteerForm) {
+        volunteerForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const form = e.target;
+            const formData = new FormData(form);
+
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    alert('Thank you for volunteering! We will contact you shortly.');
+                    form.reset();
+                    closeVolunteerModal();
+                } else {
+                    alert('There was an error submitting your request. Please try again.');
+                }
+            }).catch(error => {
+                alert('There was an error submitting your request. Please try again.');
+                console.error('Error:', error);
+            });
+        });
     }
 
-    // Close modal if clicked outside
-    window.onclick = function(e) {
+    // Handle contact form submission
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your interest! Someone from our team will be in touch soon.');
+            this.reset();
+        });
+    }
+
+    // Close modals on outside click
+    window.onclick = function(event) {
         const prayerModal = document.getElementById('prayerForm');
-        if (e.target === prayerModal) {
-            closeModal();
-        }
+        const volunteerModal = document.getElementById('volunteerForm');
+        if (event.target === prayerModal) closePrayerModal();
+        if (event.target === volunteerModal) closeVolunteerModal();
     }
 
     // ==================== DESKTOP DROPDOWN FOR TOUCH DEVICES ====================
