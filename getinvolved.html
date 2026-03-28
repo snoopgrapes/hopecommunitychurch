@@ -78,12 +78,12 @@
             background: var(--primary);
         }
 
-        /* Hero Section - Updated to match index.html */
+        /* Hero Section - Updated to match stories.html and team.html */
         .hero {
             background: #707070; /* Match navbar color */
             color: var(--text-light);
             text-align: center;
-            padding: 50px 30px 40px;
+            padding: 40px 20px 30px;
             position: relative;
             overflow: hidden;
             min-height: 30vh;
@@ -91,53 +91,39 @@
             align-items: center;
             width: 100%;
         }
-		
-		
-.hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: var(--text-light);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    animation: fadeInDown 1s ease;
-}
 
-.hero h1:after {
-    content: '';
-    position: absolute;
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 4px;
-    background: white;
-}
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;  /* Increased from 20px to 30px to match stories.html */
+            color: var(--text-light);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInDown 1s ease;
+            position: relative;
+        }
 
-.hero p {
-    font-size: 1.1rem;
-    max-width: 700px;
-    margin: 30px auto 0;
-    animation: fadeInUp 1s ease 0.3s both;
-    color: rgba(255, 255, 255, 0.95);
-}
+        .hero h1:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;  /* Keeps the underline positioned */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: white;
+        }
 
-.hero::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 40px;
-    background: radial-gradient(circle at 50% 100%, transparent 20px, #707070 21px);
-    background-size: 40px 40px;
-    background-repeat: repeat-x;
-    background-position: bottom;
-    pointer-events: none;
-}
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 30px auto 30px;  /* Added top margin to push text below underline - matches stories.html */
+            animation: fadeInUp 1s ease 0.3s both;
+            color: rgba(255, 255, 255, 0.95);
+        }
 
-/* Section Divider Scalloped - Matching index.html */
-.section-divider-scalloped {
-    clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
-}
+        /* Section Divider Scalloped - Matching index.html */
+        .section-divider-scalloped {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+        }
 
         /* Header & Navigation */
         header {
@@ -638,12 +624,18 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-			    .hero {
-        padding: 30px 15px 25px;
-        min-height: auto;  /* Let content determine height */
-    }
+            .hero {
+                padding: 30px 15px 25px;
+                min-height: auto;
+            }
             .hero h1 {
                 font-size: 2rem;
+            }
+            .hero h1:after {
+                width: 80px;
+            }
+            .hero p {
+                font-size: 1rem;
             }
             .logo-img {
                 height: 65px;
@@ -670,13 +662,12 @@
         }
 
         @media (max-width: 480px) {
+            .hero {
+                padding: 60px 10px 40px;
+                min-height: 60vh;
+            }
             .hero h1 {
                 font-size: 1.8rem;
-            }
-            .hero::after {
-                height: 25px;
-                background: radial-gradient(circle at 50% 100%, transparent 12px, #707070 13px);
-                background-size: 25px 25px;
             }
             .logo-img {
                 height: 55px;
@@ -702,30 +693,29 @@
                 margin-bottom: 20px;
             }
         }
-		/* Mobile menu scroll fix - ADD THIS */
-@media (max-width: 768px) {
-    #mobile-menu {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        max-height: calc(100vh - 80px);
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        z-index: 50;
-    }
-    
-    /* Ensure the dropdown doesn't overflow */
-    #mobile-dropdown {
-        overflow: visible;
-    }
-    
-    /* Make dropdown links easier to tap */
-    #mobile-dropdown a {
-        margin: 5px 0;
-        padding: 10px 15px;
-    }
-}
+        
+        /* Mobile menu scroll fix */
+        @media (max-width: 768px) {
+            #mobile-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                max-height: calc(100vh - 80px);
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+                z-index: 50;
+            }
+            
+            #mobile-dropdown {
+                overflow: visible;
+            }
+            
+            #mobile-dropdown a {
+                margin: 5px 0;
+                padding: 10px 15px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -744,10 +734,10 @@
                     <span class="sr-only">Facebook</span>
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path></svg>
                 </a>
-<a href="https://www.instagram.com/hopecommunitychurchclydebank/" target="_blank" class="text-white hover:text-gray-300 transition">
-    <span class="sr-only">Instagram</span>
-    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"></path></svg>
-</a>
+                <a href="https://www.instagram.com/hopecommunitychurchclydebank/" target="_blank" class="text-white hover:text-gray-300 transition">
+                    <span class="sr-only">Instagram</span>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"></path></svg>
+                </a>
                 <a href="https://www.tiktok.com/@hopechurchclydebank" target="_blank" class="text-white hover:text-gray-300 transition">
                     <span class="sr-only">TikTok</span>
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
@@ -756,102 +746,102 @@
         </div>
     </div>
 
-
-<!-- Replace the existing header navbar section with this updated code -->
-<header class="shadow-sm sticky top-0 z-50">
-    <div class="container mx-auto px-4">
-        <div class="flex justify-between items-center py-3">
-            <!-- Left Logo -->
-            <div class="logo-container">
-                <a href="index.html" class="flex items-center">
-                    <img src="images/logologo.png" alt="Hope Community Church Logo" class="logo-img">
-                </a>
-            </div>
-            
-            <!-- Center Navigation -->
-            <nav class="hidden xl:flex items-center space-x-1">
-                <a href="index.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Home</a>
-                <a href="vision.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Vision/Beliefs</a>
-                <a href="team.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">The Team</a>
-                <div class="relative group">
-                    <button class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded flex items-center gap-1">
-                        Our Services
-                        <svg class="w-3 h-3 mt-0.5 transition-transform group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+    <!-- Header Navbar -->
+    <header class="shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-3">
+                <!-- Left Logo -->
+                <div class="logo-container">
+                    <a href="index.html" class="flex items-center">
+                        <img src="images/logologo.png" alt="Hope Community Church Logo" class="logo-img">
+                    </a>
+                </div>
+                
+                <!-- Center Navigation -->
+                <nav class="hidden xl:flex items-center space-x-1">
+                    <a href="index.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Home</a>
+                    <a href="vision.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Vision/Beliefs</a>
+                    <a href="team.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">The Team</a>
+                    <div class="relative group">
+                        <button class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded flex items-center gap-1">
+                            Our Services
+                            <svg class="w-3 h-3 mt-0.5 transition-transform group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+                        </button>
+                        <div class="absolute top-full left-0 mt-1 w-52 bg-gray-700 rounded-lg shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                            <a href="hopeforrecovery.html#structured-courses" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 rounded-t-lg font-medium border-b border-gray-100">Hope for Recovery</a>
+                            <a href="hopeforrecovery.html#keywork" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Key Work</a>
+                            <a href="hopeforrecovery.html#walk-talk" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Walk & Talk Group</a>
+                            <a href="hopeforrecovery.html#street-outreach" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Street Outreach</a>
+                            <a href="hopeforrecovery.html#cafe" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Community Café</a>
+                            <a href="hopeforrecovery.html#rehab" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Rehab Referrals</a>
+                            <a href="hopeforrecovery.html#schools" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 rounded-b-lg">Schools Program</a>
+                        </div>
+                    </div>
+                    <a href="stories.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Stories of Hope</a>
+                    <a href="getinvolved.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Get Involved</a>
+                    <a href="videos.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Videos</a>
+                    <a href="contact.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Find/Contact</a>
+                    <a href="support-us.html" target="_blank" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-6 rounded-full transition duration-300 shadow-md">❤️ Donate</a>
+                </nav>
+                
+                <!-- Right Logo and Mobile Menu Button -->
+                <div class="flex items-center gap-3">
+                    <div class="hidden xl:block">
+                        <img src="images/hfrlogo.png" alt="Hope for Recovery Logo" class="logo-img" onerror="this.style.display='none'">
+                    </div>
+                    <button id="mobile-menu-button" class="xl:hidden text-white hover:text-gray-200 focus:outline-none transition">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                     </button>
-                    <div class="absolute top-full left-0 mt-1 w-52 bg-gray-700 rounded-lg shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                        <a href="hopeforrecovery.html#structured-courses" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 rounded-t-lg font-medium border-b border-gray-100">Hope for Recovery</a>
-                        <a href="hopeforrecovery.html#keywork" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Key Work</a>
-                        <a href="hopeforrecovery.html#walk-talk" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Walk & Talk Group</a>
-                        <a href="hopeforrecovery.html#street-outreach" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Street Outreach</a>
-                        <a href="hopeforrecovery.html#cafe" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Community Café</a>
-                        <a href="hopeforrecovery.html#rehab" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Rehab Referrals</a>
-                        <a href="hopeforrecovery.html#schools" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 rounded-b-lg">Schools Program</a>
+                </div>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="xl:hidden hidden py-3 px-4 shadow-lg border-t border-white border-opacity-20" style="background: #707070;">
+            <div class="flex flex-col space-y-2">
+                <a href="index.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Home</a>
+                <a href="vision.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Vision/Beliefs</a>
+                <a href="team.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">The Team</a>
+                
+                <!-- Services Dropdown -->
+                <div>
+                    <button onclick="toggleMobileDropdown()" class="text-white hover:text-gray-200 font-semibold w-full text-left py-2 px-3 rounded flex justify-between items-center transition">
+                        Our Services
+                        <svg id="mobile-dropdown-arrow" class="w-4 h-4 transition-transform duration-200" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
+                        </svg>
+                    </button>
+                    <div id="mobile-dropdown" class="hidden mt-2 space-y-1 ml-3">
+                        <a href="hopeforrecovery.html#structured-courses" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Hope for Recovery</a>
+                        <a href="hopeforrecovery.html#keywork" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Key Work</a>
+                        <a href="hopeforrecovery.html#walk-talk" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Walk & Talk Group</a>
+                        <a href="hopeforrecovery.html#street-outreach" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Street Outreach</a>
+                        <a href="hopeforrecovery.html#cafe" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Community Café</a>
+                        <a href="hopeforrecovery.html#rehab" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Rehab Referrals</a>
+                        <a href="hopeforrecovery.html#schools" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Schools Program</a>
                     </div>
                 </div>
-                <a href="stories.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Stories of Hope</a>
-                <a href="getinvolved.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Get Involved</a>
-                <a href="videos.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Videos</a>
-                <a href="contact.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Find/Contact</a>
-                <a href="support-us.html" target="_blank" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-6 rounded-full transition duration-300 shadow-md">❤️ Donate</a>
-            </nav>
-            
-            <!-- Right Logo and Mobile Menu Button -->
-            <div class="flex items-center gap-3">
-                <div class="hidden xl:block">
-                    <img src="images/hfrlogo.png" alt="Hope for Recovery Logo" class="logo-img" onerror="this.style.display='none'">
-                </div>
-                <button id="mobile-menu-button" class="xl:hidden text-white hover:text-gray-200 focus:outline-none transition">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                </button>
+                
+                <a href="stories.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Stories of Hope</a>
+                <a href="getinvolved.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Get Involved</a>
+                <a href="videos.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Videos</a>
+                <a href="contact.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Find/Contact</a>
+                <a href="support-us.html" target="_blank" class="mt-2 bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-full text-center transition duration-300 inline-block">❤️ Donate</a>
             </div>
         </div>
-    </div>
-	
-<div id="mobile-menu" class="xl:hidden hidden py-3 px-4 shadow-lg border-t border-white border-opacity-20" style="background: #707070;">
-    <div class="flex flex-col space-y-2">
-        <a href="index.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Home</a>
-        <a href="vision.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Vision/Beliefs</a>
-        <a href="team.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">The Team</a>
-        
-        <!-- Services Dropdown -->
-        <div>
-            <button onclick="toggleMobileDropdown()" class="text-white hover:text-gray-200 font-semibold w-full text-left py-2 px-3 rounded flex justify-between items-center transition">
-                Our Services
-                <svg id="mobile-dropdown-arrow" class="w-4 h-4 transition-transform duration-200" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
-                </svg>
-            </button>
-            <div id="mobile-dropdown" class="hidden mt-2 space-y-1 ml-3">
-                <a href="hopeforrecovery.html#structured-courses" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Hope for Recovery</a>
-                <a href="hopeforrecovery.html#keywork" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Key Work</a>
-                <a href="hopeforrecovery.html#walk-talk" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Walk & Talk Group</a>
-                <a href="hopeforrecovery.html#street-outreach" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Street Outreach</a>
-                <a href="hopeforrecovery.html#cafe" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Community Café</a>
-                <a href="hopeforrecovery.html#rehab" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Rehab Referrals</a>
-                <a href="hopeforrecovery.html#schools" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Schools Program</a>
-            </div>
-        </div>
-        
-        <a href="stories.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Stories of Hope</a>
-        <a href="getinvolved.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Get Involved</a>
-        <a href="videos.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Videos</a>
-        <a href="contact.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Find/Contact</a>
-        <a href="support-us.html" target="_blank" class="mt-2 bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-full text-center transition duration-300 inline-block">❤️ Donate</a>
-    </div>
-</div>
-</header>
+    </header>
 
     <div class="live-badge" id="liveBadge" onclick="openLiveStream()">
         <span class="pulse"></span> LIVE: Sunday Service
     </div>
 
-<!-- Hero Section with Scalloped Bottom -->
-<section class="hero section-divider-scalloped">
-    <div class="container">
-        <h1>Get Involved</h1>
-        <p>Your time, prayers, and resources can transform lives. Discover how you can be part of bringing hope to our community.</p>
-    </div>
-</section>
+    <!-- Hero Section with Scalloped Bottom - Updated to match stories.html -->
+    <section class="hero section-divider-scalloped">
+        <div class="container">
+            <h1>Get Involved</h1>
+            <p>Your time, prayers, and resources can transform lives. Discover how you can be part of bringing hope to our community.</p>
+        </div>
+    </section>
+    
     <!-- Get Involved Section -->
     <section class="get-involved-section">
         <div class="container">
@@ -1027,204 +1017,200 @@
         </form>
     </div>
 
- <script>
-    // ==================== MOBILE MENU FUNCTIONS ====================
-    // SIMPLER APPROACH - No body scroll locking (matches index.html)
-    const menuToggle = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
+    <script>
+        // ==================== MOBILE MENU FUNCTIONS ====================
+        const menuToggle = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
 
-    if (menuToggle && mobileMenu) {
-        menuToggle.addEventListener('click', function() {
-            menuToggle.classList.toggle('active');
-            mobileMenu.classList.toggle('hidden');
-        });
-    }
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', function() {
+                menuToggle.classList.toggle('active');
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
 
-    // Close menu when clicking on a mobile nav link
-    const mobileNavLinks = document.querySelectorAll('#mobile-menu a');
-    mobileNavLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            if (menuToggle) menuToggle.classList.remove('active');
-            if (mobileMenu) mobileMenu.classList.add('hidden');
-        });
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', function(event) {
-        if (window.innerWidth <= 768 && mobileMenu && !mobileMenu.classList.contains('hidden')) {
-            const isClickInsideMenu = mobileMenu.contains(event.target);
-            const isClickOnToggle = menuToggle ? menuToggle.contains(event.target) : false;
-            
-            if (!isClickInsideMenu && !isClickOnToggle) {
+        const mobileNavLinks = document.querySelectorAll('#mobile-menu a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', function() {
                 if (menuToggle) menuToggle.classList.remove('active');
                 if (mobileMenu) mobileMenu.classList.add('hidden');
-            }
-        }
-    });
-
-    // Mobile dropdown toggle function
-    function toggleMobileDropdown() {
-        const dropdown = document.getElementById('mobile-dropdown');
-        const arrow = document.getElementById('mobile-dropdown-arrow');
-        
-        if (dropdown) {
-            if (dropdown.classList.contains('hidden')) {
-                dropdown.classList.remove('hidden');
-                if (arrow) arrow.style.transform = 'rotate(180deg)';
-            } else {
-                dropdown.classList.add('hidden');
-                if (arrow) arrow.style.transform = 'rotate(0deg)';
-            }
-        }
-    }
-
-    // ==================== UI FUNCTIONS ====================
-    document.getElementById('year').innerText = new Date().getFullYear();
-
-    function openLiveStream() {
-        window.open('https://www.youtube.com/@HopeCommunityChurchClydebank', '_blank');
-    }
-
-    function openPrayerForm() {
-        document.getElementById('prayerForm').style.display = 'block';
-    }
-
-    function closePrayerModal() {
-        document.getElementById('prayerForm').style.display = 'none';
-    }
-
-    function openVolunteerForm() {
-        document.getElementById('volunteerForm').style.display = 'block';
-    }
-
-    function closeVolunteerModal() {
-        document.getElementById('volunteerForm').style.display = 'none';
-    }
-
-    function checkLiveStatus() {
-        const now = new Date();
-        const day = now.getDay();
-        const hour = now.getHours();
-        const badge = document.getElementById('liveBadge');
-        if (badge) {
-            badge.style.display = (day === 0 && hour >= 10 && hour < 13) ? 'block' : 'none';
-        }
-    }
-
-    // Handle prayer form submission with Formspree
-    const prayerForm = document.getElementById('prayerRequestForm');
-    if (prayerForm) {
-        prayerForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const form = e.target;
-            const formData = new FormData(form);
-
-            fetch(form.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            }).then(response => {
-                if (response.ok) {
-                    alert('Prayer request submitted. God bless you.');
-                    form.reset();
-                    closePrayerModal();
-                } else {
-                    alert('There was an error submitting your request. Please try again.');
-                }
-            }).catch(error => {
-                alert('There was an error submitting your request. Please try again.');
-                console.error('Error:', error);
             });
         });
-    }
 
-    // Handle volunteer form submission
-    const volunteerForm = document.getElementById('volunteerRequestForm');
-    if (volunteerForm) {
-        volunteerForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const form = e.target;
-            const formData = new FormData(form);
-
-            fetch(form.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
+        document.addEventListener('click', function(event) {
+            if (window.innerWidth <= 768 && mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                const isClickInsideMenu = mobileMenu.contains(event.target);
+                const isClickOnToggle = menuToggle ? menuToggle.contains(event.target) : false;
+                
+                if (!isClickInsideMenu && !isClickOnToggle) {
+                    if (menuToggle) menuToggle.classList.remove('active');
+                    if (mobileMenu) mobileMenu.classList.add('hidden');
                 }
-            }).then(response => {
-                if (response.ok) {
-                    alert('Thank you for volunteering! We will contact you shortly.');
-                    form.reset();
-                    closeVolunteerModal();
+            }
+        });
+
+        function toggleMobileDropdown() {
+            const dropdown = document.getElementById('mobile-dropdown');
+            const arrow = document.getElementById('mobile-dropdown-arrow');
+            
+            if (dropdown) {
+                if (dropdown.classList.contains('hidden')) {
+                    dropdown.classList.remove('hidden');
+                    if (arrow) arrow.style.transform = 'rotate(180deg)';
                 } else {
-                    alert('There was an error submitting your request. Please try again.');
+                    dropdown.classList.add('hidden');
+                    if (arrow) arrow.style.transform = 'rotate(0deg)';
                 }
-            }).catch(error => {
-                alert('There was an error submitting your request. Please try again.');
-                console.error('Error:', error);
+            }
+        }
+
+        // ==================== UI FUNCTIONS ====================
+        document.getElementById('year').innerText = new Date().getFullYear();
+
+        function openLiveStream() {
+            window.open('https://www.youtube.com/@HopeCommunityChurchClydebank', '_blank');
+        }
+
+        function openPrayerForm() {
+            document.getElementById('prayerForm').style.display = 'block';
+        }
+
+        function closePrayerModal() {
+            document.getElementById('prayerForm').style.display = 'none';
+        }
+
+        function openVolunteerForm() {
+            document.getElementById('volunteerForm').style.display = 'block';
+        }
+
+        function closeVolunteerModal() {
+            document.getElementById('volunteerForm').style.display = 'none';
+        }
+
+        function checkLiveStatus() {
+            const now = new Date();
+            const day = now.getDay();
+            const hour = now.getHours();
+            const badge = document.getElementById('liveBadge');
+            if (badge) {
+                badge.style.display = (day === 0 && hour >= 10 && hour < 13) ? 'block' : 'none';
+            }
+        }
+
+        // Handle prayer form submission with Formspree
+        const prayerForm = document.getElementById('prayerRequestForm');
+        if (prayerForm) {
+            prayerForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const form = e.target;
+                const formData = new FormData(form);
+
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                }).then(response => {
+                    if (response.ok) {
+                        alert('Prayer request submitted. God bless you.');
+                        form.reset();
+                        closePrayerModal();
+                    } else {
+                        alert('There was an error submitting your request. Please try again.');
+                    }
+                }).catch(error => {
+                    alert('There was an error submitting your request. Please try again.');
+                    console.error('Error:', error);
+                });
             });
-        });
-    }
+        }
 
-    // Handle contact form submission
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your interest! Someone from our team will be in touch soon.');
-            this.reset();
-        });
-    }
+        // Handle volunteer form submission
+        const volunteerForm = document.getElementById('volunteerRequestForm');
+        if (volunteerForm) {
+            volunteerForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const form = e.target;
+                const formData = new FormData(form);
 
-    // Close modals on outside click
-    window.onclick = function(event) {
-        const prayerModal = document.getElementById('prayerForm');
-        const volunteerModal = document.getElementById('volunteerForm');
-        if (event.target === prayerModal) closePrayerModal();
-        if (event.target === volunteerModal) closeVolunteerModal();
-    }
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                }).then(response => {
+                    if (response.ok) {
+                        alert('Thank you for volunteering! We will contact you shortly.');
+                        form.reset();
+                        closeVolunteerModal();
+                    } else {
+                        alert('There was an error submitting your request. Please try again.');
+                    }
+                }).catch(error => {
+                    alert('There was an error submitting your request. Please try again.');
+                    console.error('Error:', error);
+                });
+            });
+        }
 
-    // ==================== DESKTOP DROPDOWN FOR TOUCH DEVICES ====================
-    const dropdownParent = document.querySelector('nav .relative');
-    if (dropdownParent) {
-        dropdownParent.addEventListener('click', function(e) {
+        // Handle contact form submission
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your interest! Someone from our team will be in touch soon.');
+                this.reset();
+            });
+        }
+
+        // Close modals on outside click
+        window.onclick = function(event) {
+            const prayerModal = document.getElementById('prayerForm');
+            const volunteerModal = document.getElementById('volunteerForm');
+            if (event.target === prayerModal) closePrayerModal();
+            if (event.target === volunteerModal) closeVolunteerModal();
+        }
+
+        // ==================== DESKTOP DROPDOWN FOR TOUCH DEVICES ====================
+        const dropdownParent = document.querySelector('nav .relative');
+        if (dropdownParent) {
+            dropdownParent.addEventListener('click', function(e) {
+                if (window.innerWidth <= 1024) {
+                    const dropdown = this.querySelector('.absolute');
+                    const isOpen = dropdown.style.visibility === 'visible';
+                    
+                    document.querySelectorAll('nav .relative .absolute').forEach(drop => {
+                        drop.style.opacity = '0';
+                        drop.style.visibility = 'hidden';
+                    });
+                    
+                    if (!isOpen) {
+                        dropdown.style.opacity = '1';
+                        dropdown.style.visibility = 'visible';
+                        e.stopPropagation();
+                    } else {
+                        dropdown.style.opacity = '0';
+                        dropdown.style.visibility = 'hidden';
+                    }
+                }
+            });
+        }
+
+        document.addEventListener('click', function(e) {
             if (window.innerWidth <= 1024) {
-                const dropdown = this.querySelector('.absolute');
-                const isOpen = dropdown.style.visibility === 'visible';
-                
-                document.querySelectorAll('nav .relative .absolute').forEach(drop => {
-                    drop.style.opacity = '0';
-                    drop.style.visibility = 'hidden';
-                });
-                
-                if (!isOpen) {
-                    dropdown.style.opacity = '1';
-                    dropdown.style.visibility = 'visible';
-                    e.stopPropagation();
-                } else {
-                    dropdown.style.opacity = '0';
-                    dropdown.style.visibility = 'hidden';
+                if (!e.target.closest('nav .relative')) {
+                    document.querySelectorAll('nav .relative .absolute').forEach(dropdown => {
+                        dropdown.style.opacity = '0';
+                        dropdown.style.visibility = 'hidden';
+                    });
                 }
             }
         });
-    }
-
-    document.addEventListener('click', function(e) {
-        if (window.innerWidth <= 1024) {
-            if (!e.target.closest('nav .relative')) {
-                document.querySelectorAll('nav .relative .absolute').forEach(dropdown => {
-                    dropdown.style.opacity = '0';
-                    dropdown.style.visibility = 'hidden';
-                });
-            }
-        }
-    });
-    
-    checkLiveStatus();
-    setInterval(checkLiveStatus, 60000);
-</script>
+        
+        checkLiveStatus();
+        setInterval(checkLiveStatus, 60000);
+    </script>
 </body>
 </html>
