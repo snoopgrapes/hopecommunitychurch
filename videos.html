@@ -1,3 +1,5 @@
+Here is the HTML code that updates the hero banner in your `videos.html` file to match the exact style, structure, and spacing of the one in `stories.html`.
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,7 +57,7 @@
             color: var(--primary-dark);
         }
 
-        /* Hero Section - Updated to match stories.html and team.html */
+        /* Hero Section - EXACT match to stories.html (updated to match team.html style) */
         .hero {
             background: #707070; /* Match navbar color */
             color: var(--text-light);
@@ -71,7 +73,7 @@
 
         .hero h1 {
             font-size: 2.5rem;
-            margin-bottom: 30px;  /* Increased from 20px to 30px to match stories.html */
+            margin-bottom: 30px;  /* Increased from 20px to 30px to match stories.html/team.html */
             color: var(--text-light);
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
             animation: fadeInDown 1s ease;
@@ -92,7 +94,7 @@
         .hero p {
             font-size: 1.1rem;
             max-width: 700px;
-            margin: 30px auto 30px;  /* Added top margin to push text below underline - matches stories.html */
+            margin: 30px auto 30px;  /* Added top margin to push text below underline - matches stories.html/team.html */
             animation: fadeInUp 1s ease 0.3s both;
             color: rgba(255, 255, 255, 0.95);
         }
@@ -583,10 +585,10 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-    .hero {
-        padding: 30px 15px 25px;
-        min-height: auto;  /* Let content determine height */
-    }
+            .hero {
+                padding: 30px 15px 25px;
+                min-height: auto;  /* Let content determine height */
+            }
             .hero h1 {
                 font-size: 2rem;
             }
@@ -631,30 +633,30 @@
                 font-size: 0.85rem;
             }
         }
-		/* Mobile menu scroll fix - ADD THIS */
-@media (max-width: 768px) {
-    #mobile-menu {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        max-height: calc(100vh - 80px);
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        z-index: 50;
-    }
-    
-    /* Ensure the dropdown doesn't overflow */
-    #mobile-dropdown {
-        overflow: visible;
-    }
-    
-    /* Make dropdown links easier to tap */
-    #mobile-dropdown a {
-        margin: 5px 0;
-        padding: 10px 15px;
-    }
-}
+        /* Mobile menu scroll fix - ADD THIS */
+        @media (max-width: 768px) {
+            #mobile-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                max-height: calc(100vh - 80px);
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+                z-index: 50;
+            }
+            
+            /* Ensure the dropdown doesn't overflow */
+            #mobile-dropdown {
+                overflow: visible;
+            }
+            
+            /* Make dropdown links easier to tap */
+            #mobile-dropdown a {
+                margin: 5px 0;
+                padding: 10px 15px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -772,8 +774,8 @@
         <span class="pulse"></span> LIVE: Sunday Service
     </div>
 
-    <!-- Hero Section -->
- <section class="hero section-divider-scalloped">
+    <!-- Hero Section - EXACT MATCH to stories.html (same structure, spacing, and styling) -->
+    <section class="hero section-divider-scalloped">
         <div class="container">
             <h1>Video Gallery</h1>
             <p>Watch our latest sermons, worship experiences, and testimonies of hope from Hope Community Church Clydebank.</p>
@@ -1184,3 +1186,4 @@
 </script>
 </body>
 </html>
+```
