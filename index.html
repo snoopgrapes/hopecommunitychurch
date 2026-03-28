@@ -1318,6 +1318,56 @@ footer p:first-child {
         text-align: center;
     }
 }
+/* Welcome Section - Desktop layout (image left, text right) */
+.welcome-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.welcome-text h2 {
+    text-align: left;
+    margin-bottom: 2rem;
+    padding-bottom: 0.75rem;
+}
+
+.welcome-text h2:after {
+    left: 0;
+    transform: none;
+    bottom: -5px;
+}
+
+/* Mobile layout - text first, image second */
+@media (max-width: 768px) {
+    .welcome-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    /* Reorder elements: text first, image second */
+    .welcome-text {
+        order: 1;
+    }
+    
+    .welcome-image {
+        order: 2;
+    }
+    
+    .welcome-text h2 {
+        text-align: center;
+        margin-bottom: 1.75rem;
+    }
+    
+    .welcome-text h2:after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .welcome-text p {
+        text-align: center;
+    }
+}
 </style>
 </head>
 <body>
@@ -1442,12 +1492,13 @@ footer p:first-child {
     </div>
 </section>
 
+<!-- Updated About/Welcome Section -->
 <section class="section" id="about">
-    <div class="container about-grid">
-        <div>
+    <div class="container welcome-grid">
+        <div class="welcome-image">
             <img src="images/hero banner.jpeg" alt="Welcome to Hope Community Church" style="width:100%; border-radius:10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
         </div>
-        <div class="about-text">
+        <div class="welcome-text">
             <h2>Welcome to Hope Community Church Clydebank</h2>
             <p>HCC is part of the Apostolic Church Network (ACUK). We meet every Sunday for praise & worship and Wednesday evening for fortnightly prayer & Bible Studies, as well as our community projects throughout the week.</p>
             <p>We hold steadfast to the truth of God's word & believe in meeting people right where they are—whether you're exploring faith, seeking community, or need support through life's challenges. Our doors are open to all, no matter your background or current circumstances.</p>
