@@ -55,7 +55,7 @@
             color: var(--primary-dark);
         }
 
-        /* Hero Section - Updated to match index.html */
+        /* Hero Section - Updated to match stories.html and team.html */
         .hero {
             background: #707070; /* Match navbar color */
             color: var(--text-light);
@@ -68,9 +68,10 @@
             align-items: center;
             width: 100%;
         }
+
         .hero h1 {
             font-size: 2.5rem;
-            margin-bottom: 20px;
+            margin-bottom: 30px;  /* Increased from 20px to 30px to match stories.html */
             color: var(--text-light);
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
             animation: fadeInDown 1s ease;
@@ -80,7 +81,7 @@
         .hero h1:after {
             content: '';
             position: absolute;
-            bottom: -15px;
+            bottom: -15px;  /* Keeps the underline positioned */
             left: 50%;
             transform: translateX(-50%);
             width: 100px;
@@ -91,16 +92,15 @@
         .hero p {
             font-size: 1.1rem;
             max-width: 700px;
-            margin: 30px auto 0;
+            margin: 30px auto 30px;  /* Added top margin to push text below underline - matches stories.html */
             animation: fadeInUp 1s ease 0.3s both;
             color: rgba(255, 255, 255, 0.95);
         }
-		
-		/* Section Divider Scalloped - Matching index.html */
-.section-divider-scalloped {
-    clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
-}
 
+        /* Section Divider Scalloped - Matching index.html */
+        .section-divider-scalloped {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+        }
         /* Header & Navigation */
         header {
             background: #707070;
