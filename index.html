@@ -1243,6 +1243,31 @@ footer p:first-child {
         text-decoration: underline;
     }
 }
+
+/* Mobile menu scroll fix - ADD THIS */
+@media (max-width: 768px) {
+    #mobile-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        max-height: calc(100vh - 80px);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        z-index: 50;
+    }
+    
+    /* Ensure the dropdown doesn't overflow */
+    #mobile-dropdown {
+        overflow: visible;
+    }
+    
+    /* Make dropdown links easier to tap */
+    #mobile-dropdown a {
+        margin: 5px 0;
+        padding: 10px 15px;
+    }
+}
 </style>
 </head>
 <body>
@@ -1565,164 +1590,139 @@ footer p:first-child {
         </div>
     </div>
 
-    <script>
-        // Mobile Menu Toggle - FIXED: Target #mobile-menu and toggle 'hidden' class
-        const menuToggle = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
+<script>
+    // SIMPLER APPROACH - No body scroll locking
+    const menuToggle = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
 
+    if (menuToggle && mobileMenu) {
         menuToggle.addEventListener('click', function() {
             menuToggle.classList.toggle('active');
             mobileMenu.classList.toggle('hidden');
-            
-            // Toggle body scroll
-            if (!mobileMenu.classList.contains('hidden')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = 'auto';
-            }
         });
+    }
 
-        // Close menu when clicking on a mobile nav link
-        const mobileNavLinks = document.querySelectorAll('#mobile-menu a');
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                menuToggle.classList.remove('active');
-                mobileMenu.classList.add('hidden');
-                document.body.style.overflow = 'auto';
-            });
+    // Close menu when clicking on a mobile nav link
+    const mobileNavLinks = document.querySelectorAll('#mobile-menu a');
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            if (menuToggle) menuToggle.classList.remove('active');
+            if (mobileMenu) mobileMenu.classList.add('hidden');
         });
+    });
 
-        // Close menu when clicking outside (for mobile)
-        document.addEventListener('click', function(event) {
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+        if (window.innerWidth <= 768 && mobileMenu && !mobileMenu.classList.contains('hidden')) {
             const isClickInsideMenu = mobileMenu.contains(event.target);
-            const isClickOnToggle = menuToggle.contains(event.target);
+            const isClickOnToggle = menuToggle ? menuToggle.contains(event.target) : false;
             
-            if (window.innerWidth <= 768 && !mobileMenu.classList.contains('hidden') && 
-                !isClickInsideMenu && !isClickOnToggle) {
-                menuToggle.classList.remove('active');
-                mobileMenu.classList.add('hidden');
-                document.body.style.overflow = 'auto';
+            if (!isClickInsideMenu && !isClickOnToggle) {
+                if (menuToggle) menuToggle.classList.remove('active');
+                if (mobileMenu) mobileMenu.classList.add('hidden');
             }
-        });
+        }
+    });
 
-        // Close menu on window resize if it becomes larger than mobile
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 768) {
-                menuToggle.classList.remove('active');
-                mobileMenu.classList.add('hidden');
-                document.body.style.overflow = 'auto';
+    // Mobile dropdown toggle function
+    function toggleMobileDropdown() {
+        const dropdown = document.getElementById('mobile-dropdown');
+        const arrow = document.getElementById('mobile-dropdown-arrow');
+        
+        if (dropdown) {
+            if (dropdown.classList.contains('hidden')) {
+                dropdown.classList.remove('hidden');
+                if (arrow) arrow.style.transform = 'rotate(180deg)';
+            } else {
+                dropdown.classList.add('hidden');
+                if (arrow) arrow.style.transform = 'rotate(0deg)';
             }
-        });
-
-        // Smooth scrolling for anchor links (updated for both desktop and mobile)
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-
-                if (targetElement) {
-                    e.preventDefault();
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-
-                    // Close mobile menu after clicking a link
-                    if (window.innerWidth <= 768) {
-                        menuToggle.classList.remove('active');
-                        mobileMenu.classList.add('hidden');
-                        document.body.style.overflow = 'auto';
-                    }
-                }
-            });
-        });
-
-        // Testimonial gallery
-        function showTestimonial(index) {
-            const testimonials = document.querySelectorAll('.testimonial');
-            const dots = document.querySelectorAll('.dot');
-            
-            testimonials.forEach(testimonial => testimonial.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            
-            testimonials[index].classList.add('active');
-            dots[index].classList.add('active');
         }
+    }
 
-        // Auto-rotate testimonials
-        let testimonialIndex = 0;
-        setInterval(() => {
-            testimonialIndex = (testimonialIndex + 1) % 3;
-            showTestimonial(testimonialIndex);
-        }, 5000);
-
-        // Image carousel
-        let currentCarouselImage = 0;
+    // Keep all your existing functions (these remain unchanged)
+    // Testimonial gallery
+    function showTestimonial(index) {
+        const testimonials = document.querySelectorAll('.testimonial');
+        const dots = document.querySelectorAll('.dot');
         
-        function showCarouselImage(index) {
-            const carouselImages = document.querySelector('.carousel-images');
-            const dots = document.querySelectorAll('.carousel-dot');
-            
-            currentCarouselImage = index;
-            carouselImages.style.transform = `translateX(-${index * 33.333}%)`;
-            
-            dots.forEach(dot => dot.classList.remove('active'));
-            dots[index].classList.add('active');
-        }
+        testimonials.forEach(testimonial => testimonial.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
         
-        // Auto-rotate carousel
-        setInterval(() => {
-            currentCarouselImage = (currentCarouselImage + 1) % 3;
-            showCarouselImage(currentCarouselImage);
-        }, 4000);
+        testimonials[index].classList.add('active');
+        dots[index].classList.add('active');
+    }
 
-        // Prayer form modal
-        function openPrayerForm() {
-            document.getElementById('prayerForm').style.display = 'block';
-        }
+    // Auto-rotate testimonials
+    let testimonialIndex = 0;
+    setInterval(() => {
+        testimonialIndex = (testimonialIndex + 1) % 3;
+        showTestimonial(testimonialIndex);
+    }, 5000);
 
-        function closeModal() {
-            document.getElementById('prayerForm').style.display = 'none';
-            closeDonorboxModal(); // Also close donorbox modal if open
-        }
+    // Image carousel
+    let currentCarouselImage = 0;
+    
+    function showCarouselImage(index) {
+        const carouselImages = document.querySelector('.carousel-images');
+        const dots = document.querySelectorAll('.carousel-dot');
+        
+        currentCarouselImage = index;
+        carouselImages.style.transform = `translateX(-${index * 33.333}%)`;
+        
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[index].classList.add('active');
+    }
+    
+    // Auto-rotate carousel
+    setInterval(() => {
+        currentCarouselImage = (currentCarouselImage + 1) % 3;
+        showCarouselImage(currentCarouselImage);
+    }, 4000);
 
-        // DonorBox Modal Functions
-        function openDonorboxModal() {
-            const modal = document.getElementById('donorboxModal');
-            const widgetContainer = document.getElementById('donorboxWidget');
-            
-            // Clear previous content
-            widgetContainer.innerHTML = '';
-            
-            // Create the DonorBox iframe
-            const iframe = document.createElement('iframe');
-            iframe.src = 'https://donorbox.org/embed/donate-a-coffee?';
-            iframe.name = 'donorbox';
-            iframe.allowPaymentRequest = true;
-            iframe.setAttribute('frameborder', '0');
-            iframe.scrolling = 'yes';
-            iframe.height = '80vh';
-            iframe.width = '100%';
-            iframe.style = 'width:100%; height:80vh; max-width: 600px; min-width: 250px; border: 0;';
-            iframe.allow = 'payment';
-            
-            widgetContainer.appendChild(iframe);
-            modal.style.display = 'block';
-            
-            // Prevent body scrolling when modal is open
-            document.body.style.overflow = 'hidden';
-        }
+    // Prayer form modal
+    function openPrayerForm() {
+        document.getElementById('prayerForm').style.display = 'block';
+    }
 
-        function closeDonorboxModal() {
-            document.getElementById('donorboxModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
+    function closeModal() {
+        document.getElementById('prayerForm').style.display = 'none';
+        closeDonorboxModal();
+    }
 
-        // Handle form submission
-        document.getElementById('prayerRequestForm').addEventListener('submit', function(e) {
-            e.preventDefault(); // Prevent default submission for now; Formspree handles it via action
+    // DonorBox Modal Functions
+    function openDonorboxModal() {
+        const modal = document.getElementById('donorboxModal');
+        const widgetContainer = document.getElementById('donorboxWidget');
+        
+        widgetContainer.innerHTML = '';
+        
+        const iframe = document.createElement('iframe');
+        iframe.src = 'https://donorbox.org/embed/donate-a-coffee?';
+        iframe.name = 'donorbox';
+        iframe.allowPaymentRequest = true;
+        iframe.setAttribute('frameborder', '0');
+        iframe.scrolling = 'yes';
+        iframe.height = '80vh';
+        iframe.width = '100%';
+        iframe.style = 'width:100%; height:80vh; max-width: 600px; min-width: 250px; border: 0;';
+        iframe.allow = 'payment';
+        
+        widgetContainer.appendChild(iframe);
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
 
-            // Optional: Add client-side validation or show loading state
+    function closeDonorboxModal() {
+        document.getElementById('donorboxModal').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    // Handle form submission
+    const prayerForm = document.getElementById('prayerRequestForm');
+    if (prayerForm) {
+        prayerForm.addEventListener('submit', function(e) {
+            e.preventDefault();
             const form = e.target;
             const formData = new FormData(form);
 
@@ -1745,166 +1745,138 @@ footer p:first-child {
                 console.error('Error:', error);
             });
         });
+    }
 
-        // Set current year in footer
-        document.getElementById('year').textContent = new Date().getFullYear();
+    // Set current year in footer
+    const yearElement = document.getElementById('year');
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+    }
 
-        // Live badge functionality
-        function openLiveStream() {
-            window.open('https://www.youtube.com/@HopeCommunityChurchClydebank', '_blank');
-        }
+    // Live badge functionality
+    function openLiveStream() {
+        window.open('https://www.youtube.com/@HopeCommunityChurchClydebank', '_blank');
+    }
 
-        // Show live badge during Sunday service hours
-        function checkLiveStatus() {
-            const now = new Date();
-            const day = now.getDay(); // 0 = Sunday, 1 = Monday, etc.
-            const hour = now.getHours();
-            
-            // Show badge on Sundays between 10:30 AM and 1:00 PM
+    // Show live badge during Sunday service hours
+    function checkLiveStatus() {
+        const now = new Date();
+        const day = now.getDay();
+        const hour = now.getHours();
+        const liveBadge = document.getElementById('liveBadge');
+        
+        if (liveBadge) {
             if (day === 0 && hour >= 10 && hour < 13) {
-                document.getElementById('liveBadge').style.display = 'block';
+                liveBadge.style.display = 'block';
             } else {
-                document.getElementById('liveBadge').style.display = 'none';
+                liveBadge.style.display = 'none';
             }
         }
+    }
 
-        // Mobile dropdown toggle function
-        function toggleMobileDropdown() {
-            const dropdown = document.getElementById('mobile-dropdown');
-            const arrow = document.getElementById('mobile-dropdown-arrow');
-            
-            if (dropdown.classList.contains('hidden')) {
-                dropdown.classList.remove('hidden');
-                arrow.style.transform = 'rotate(180deg)';
+    // Countdown to next Sunday service
+    function updateCountdown() {
+        const now = new Date();
+        const day = now.getDay();
+        const nextSunday = new Date(now);
+        
+        let daysUntilSunday = 7 - day;
+        if (day === 0) {
+            if (now.getHours() >= 13) {
+                daysUntilSunday = 7;
             } else {
-                dropdown.classList.add('hidden');
-                arrow.style.transform = 'rotate(0deg)';
+                daysUntilSunday = 0;
             }
         }
-
-        // Countdown to next Sunday service
-        function updateCountdown() {
-            const now = new Date();
-            const day = now.getDay();
-            const nextSunday = new Date(now);
-            
-            // Calculate days until next Sunday (0 = Sunday, so if today is Sunday, we need to check the time)
-            let daysUntilSunday = 7 - day;
-            if (day === 0) {
-                // Today is Sunday, check if service has passed
-                if (now.getHours() >= 13) {
-                    daysUntilSunday = 7; // Next Sunday is 7 days away
-                } else {
-                    daysUntilSunday = 0; // Today is Sunday, service hasn't happened yet
-                }
-            }
-            
-            nextSunday.setDate(now.getDate() + daysUntilSunday);
-            nextSunday.setHours(11, 0, 0, 0); // Set to 11:00 AM
-            
-            const diff = nextSunday - now;
-            
-            if (diff <= 0) {
-                // Don't show countdown, just skip
-                return;
-            }
-            
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            
-            // Optional: If you have a countdown element, uncomment and use
-            // const countdownElement = document.getElementById('countdown');
-            // if (countdownElement) {
-            //     if (days === 0) {
-            //         countdownElement.innerHTML = `Next service in ${hours}h ${minutes}m`;
-            //     } else {
-            //         countdownElement.innerHTML = `Next service in ${days}d ${hours}h ${minutes}m`;
-            //     }
-            // }
+        
+        nextSunday.setDate(now.getDate() + daysUntilSunday);
+        nextSunday.setHours(11, 0, 0, 0);
+        
+        const diff = nextSunday - now;
+        
+        if (diff <= 0) {
+            return;
         }
+        
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    }
 
-        // Initialize functions
-        checkLiveStatus();
-        updateCountdown();
-        setInterval(updateCountdown, 60000); // Update every minute
-        setInterval(checkLiveStatus, 60000); // Check live status every minute
+    // Initialize functions
+    checkLiveStatus();
+    updateCountdown();
+    setInterval(updateCountdown, 60000);
+    setInterval(checkLiveStatus, 60000);
 
-        // Close modal if clicked outside
-        window.onclick = function(event) {
-            const prayerModal = document.getElementById('prayerForm');
-            const donorboxModal = document.getElementById('donorboxModal');
-            
-            if (event.target === prayerModal) {
-                closeModal();
-            }
-            if (event.target === donorboxModal) {
-                closeDonorboxModal();
+    // Close modal if clicked outside
+    window.onclick = function(event) {
+        const prayerModal = document.getElementById('prayerForm');
+        const donorboxModal = document.getElementById('donorboxModal');
+        
+        if (event.target === prayerModal) {
+            closeModal();
+        }
+        if (event.target === donorboxModal) {
+            closeDonorboxModal();
+        }
+    }
+
+    // Simple authentication simulation
+    function checkAuthStatus() {
+        const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
+        const authLink = document.getElementById('authLink');
+        
+        if (authLink) {
+            if (isLoggedIn) {
+                authLink.textContent = 'Profile';
+                authLink.href = 'profile.html';
+                authLink.className = 'profile-link';
+            } else {
+                authLink.textContent = 'Login';
+                authLink.href = 'login.html';
+                authLink.className = 'login-link';
             }
         }
+    }
 
-        // Simple authentication simulation
-        function checkAuthStatus() {
-            // This is a simplified version - in a real app, you'd check with a server
-            const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
-            const authLink = document.getElementById('authLink');
-            
-            if (authLink) {
-                if (isLoggedIn) {
-                    authLink.textContent = 'Profile';
-                    authLink.href = 'profile.html';
-                    authLink.className = 'profile-link';
-                } else {
-                    authLink.textContent = 'Login';
-                    authLink.href = 'login.html';
-                    authLink.className = 'login-link';
-                }
-            }
-        }
+    checkAuthStatus();
 
-        // Initialize auth status
-        checkAuthStatus();
-
-        // Optional: Add click-to-open functionality for touch devices
-        // This makes the dropdown work on click for tablets/touch screens
-        const dropdownParent = document.querySelector('nav .relative');
-        if (dropdownParent) {
-            dropdownParent.addEventListener('click', function(e) {
-                // Only handle on touch devices (screen width less than 1024px)
-                if (window.innerWidth <= 1024) {
-                    const dropdown = this.querySelector('.absolute');
-                    const isOpen = dropdown.style.visibility === 'visible';
-                    
-                    // Close all other dropdowns first
-                    document.querySelectorAll('nav .relative .absolute').forEach(drop => {
-                        drop.style.opacity = '0';
-                        drop.style.visibility = 'hidden';
-                    });
-                    
-                    // Toggle current dropdown
-                    if (!isOpen) {
-                        dropdown.style.opacity = '1';
-                        dropdown.style.visibility = 'visible';
-                        e.stopPropagation();
-                    } else {
-                        dropdown.style.opacity = '0';
-                        dropdown.style.visibility = 'hidden';
-                    }
-                }
-            });
-        }
-
-        // Close dropdowns when clicking elsewhere on touch devices
-        document.addEventListener('click', function(e) {
+    // Dropdown for touch devices
+    const dropdownParent = document.querySelector('nav .relative');
+    if (dropdownParent) {
+        dropdownParent.addEventListener('click', function(e) {
             if (window.innerWidth <= 1024) {
-                if (!e.target.closest('nav .relative')) {
-                    document.querySelectorAll('nav .relative .absolute').forEach(dropdown => {
-                        dropdown.style.opacity = '0';
-                        dropdown.style.visibility = 'hidden';
-                    });
+                const dropdown = this.querySelector('.absolute');
+                const isOpen = dropdown.style.visibility === 'visible';
+                
+                document.querySelectorAll('nav .relative .absolute').forEach(drop => {
+                    drop.style.opacity = '0';
+                    drop.style.visibility = 'hidden';
+                });
+                
+                if (!isOpen) {
+                    dropdown.style.opacity = '1';
+                    dropdown.style.visibility = 'visible';
+                    e.stopPropagation();
+                } else {
+                    dropdown.style.opacity = '0';
+                    dropdown.style.visibility = 'hidden';
                 }
             }
         });
-    </script>
+    }
+
+    document.addEventListener('click', function(e) {
+        if (window.innerWidth <= 1024) {
+            if (!e.target.closest('nav .relative')) {
+                document.querySelectorAll('nav .relative .absolute').forEach(dropdown => {
+                    dropdown.style.opacity = '0';
+                    dropdown.style.visibility = 'hidden';
+                });
+            }
+        }
+    });
+</script>
 </body>
 </html>
