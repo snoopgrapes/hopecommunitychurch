@@ -496,13 +496,19 @@
             .logo-img { height: 65px; }
             header { min-height: 70px; }
         }
-
+    .hero {
+        padding: 30px 15px 25px;
+        min-height: auto;  /* Let content determine height */
+    }
         @media (max-width: 480px) {
             .hero { padding: 60px 10px 40px; min-height: 60vh; }
             .hero h1 { font-size: 1.8rem; }
             .logo-img { height: 55px; }
             header { min-height: 60px; }
-        }/* Mobile menu scroll fix - ADD THIS */
+			
+        }
+		
+		/* Mobile menu scroll fix - ADD THIS */
 @media (max-width: 768px) {
     #mobile-menu {
         position: absolute;
@@ -579,7 +585,6 @@
         </div>
     </div>
 </div>
-
 <!-- Replace the existing header navbar section with this updated code -->
 <header class="shadow-sm sticky top-0 z-50">
     <div class="container mx-auto px-4">
@@ -603,12 +608,12 @@
                     </button>
                     <div class="absolute top-full left-0 mt-1 w-52 bg-gray-700 rounded-lg shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                         <a href="hopeforrecovery.html#structured-courses" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 rounded-t-lg font-medium border-b border-gray-100">Hope for Recovery</a>
-                        <a href="hopeforrecovery.html#keywork" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Key Work</a>
-                        <a href="hopeforrecovery.html#walk-talk" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Walk & Talk Group</a>
-                        <a href="hopeforrecovery.html#street-outreach" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Street Outreach</a>
-                        <a href="hopeforrecovery.html#cafe" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Community Café</a>
-                        <a href="hopeforrecovery.html#rehab" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Rehab Referrals</a>
-                        <a href="hopeforrecovery.html#schools" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 rounded-b-lg">Schools Program</a>
+                        <a href="keywork.html" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Key Work</a>
+                        <a href="walktalk.html" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Walk & Talk Group</a>
+                        <a href="streetoutreach.html" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Street Outreach</a>
+                        <a href="cafe.html" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Community Café</a>
+                        <a href="rehab.html" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Rehab Referrals</a>
+                        <a href="schools.html" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 rounded-b-lg">Schools Program</a>
                     </div>
                 </div>
                 <a href="stories.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Stories of Hope</a>
@@ -630,13 +635,14 @@
         </div>
     </div>
 	
- <div id="mobile-menu" class="xl:hidden hidden py-3 px-4 shadow-lg border-t border-white border-opacity-20" style="background: #707070;">
+	
+<div id="mobile-menu" class="xl:hidden hidden py-3 px-4 shadow-lg border-t border-white border-opacity-20" style="background: #707070;">
     <div class="flex flex-col space-y-2">
         <a href="index.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Home</a>
         <a href="vision.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Vision/Beliefs</a>
         <a href="team.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">The Team</a>
         
-        <!-- Services Dropdown -->
+        <!-- Recovery Dropdown -->
         <div>
             <button onclick="toggleMobileDropdown()" class="text-white hover:text-gray-200 font-semibold w-full text-left py-2 px-3 rounded flex justify-between items-center transition">
                 Our Services
@@ -646,12 +652,12 @@
             </button>
             <div id="mobile-dropdown" class="hidden mt-2 space-y-1 ml-3">
                 <a href="hopeforrecovery.html#structured-courses" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Hope for Recovery</a>
-                <a href="hopeforrecovery.html#keywork" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Key Work</a>
-                <a href="hopeforrecovery.html#walk-talk" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Walk & Talk Group</a>
-                <a href="hopeforrecovery.html#street-outreach" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Street Outreach</a>
-                <a href="hopeforrecovery.html#cafe" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Community Café</a>
-                <a href="hopeforrecovery.html#rehab" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Rehab Referrals</a>
-                <a href="hopeforrecovery.html#schools" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Schools Program</a>
+                <a href="keywork.html" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Key Work</a>
+                <a href="walktalk.html" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Walk & Talk Group</a>
+                <a href="streetoutreach.html" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Street Outreach</a>
+                <a href="cafe.html" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Community Café</a>
+                <a href="rehab.html" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Rehab Referrals</a>
+                <a href="schools.html" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Schools Program</a>
             </div>
         </div>
         
