@@ -77,7 +77,7 @@
 
         /* Hero Section - Updated to match team.html */
         .hero {
-            background: #707070; /* Match navbar color */
+            background: #707070;
             color: var(--text-light);
             text-align: center;
             padding: 40px 20px 30px;
@@ -91,7 +91,7 @@
 
         .hero h1 {
             font-size: 2.5rem;
-            margin-bottom: 30px;  /* Increased from 20px to 30px to match team.html */
+            margin-bottom: 30px;
             color: var(--text-light);
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
             animation: fadeInDown 1s ease;
@@ -101,7 +101,7 @@
         .hero h1:after {
             content: '';
             position: absolute;
-            bottom: -15px;  /* Keeps the underline positioned */
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
             width: 100px;
@@ -112,12 +112,12 @@
         .hero p {
             font-size: 1.1rem;
             max-width: 700px;
-            margin: 30px auto 30px;  /* Added top margin to push text below underline - matches team.html */
+            margin: 30px auto 30px;
             animation: fadeInUp 1s ease 0.3s both;
             color: rgba(255, 255, 255, 0.95);
         }
 
-        /* Section Divider Scalloped - Matching index.html */
+        /* Section Divider Scalloped */
         .section-divider-scalloped {
             clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
         }
@@ -206,15 +206,6 @@
         .bg-yellow-500:hover {
             background-color: var(--primary-dark) !important;
         }
-        
-        /* Get Involved Section */
-        .get-involved-section h2 {
-            margin-bottom: 1rem;
-        }
-        
-        .get-involved-section .section-description {
-            margin-top: 2rem;
-        }
 
         /* Stories Section */
         .stories-section {
@@ -228,7 +219,6 @@
             width: 100%;
         }
 
-        /* Global spacing for h2 and description */
         .stories-section h2 {
             margin-bottom: 1rem;
         }
@@ -251,7 +241,6 @@
         }
 
         .story-card {
-            background: white;
             border-radius: 20px;
             overflow: hidden;
             box-shadow: var(--shadow-md);
@@ -272,6 +261,7 @@
             padding: 30px 20px;
             text-align: center;
             position: relative;
+            overflow: visible;
         }
 
         .story-avatar {
@@ -328,6 +318,7 @@
             flex: 1;
             display: flex;
             flex-direction: column;
+            background: transparent;
         }
 
         .story-testimonial {
@@ -362,13 +353,22 @@
         }
 
         .story-badge {
-            background: var(--primary-light);
-            color: var(--primary-dark);
             padding: 4px 12px;
             border-radius: 20px;
             font-size: 0.7rem;
             font-weight: 600;
         }
+
+        /* Different badge colors for variety */
+        .story-card:nth-child(1) .story-badge { background: #e6f7e6; color: #2e7d32; }
+        .story-card:nth-child(2) .story-badge { background: #e3f2fd; color: #1565c0; }
+        .story-card:nth-child(3) .story-badge { background: #fff3e0; color: #ef6c00; }
+        .story-card:nth-child(4) .story-badge { background: #f3e5f5; color: #7b1fa2; }
+        .story-card:nth-child(5) .story-badge { background: #e8f5e9; color: #2e7d32; }
+        .story-card:nth-child(6) .story-badge { background: #ffebee; color: #c62828; }
+        .story-card:nth-child(7) .story-badge { background: #e0f2fe; color: #0284c7; }
+        .story-card:nth-child(8) .story-badge { background: #fef9e6; color: #b45309; }
+        .story-card:nth-child(9) .story-badge { background: #fce4ec; color: #c2185b; }
 
         /* Stats Section */
         .stats-section {
@@ -626,7 +626,7 @@
                 padding: 20px;
             }
         }
-        
+
         /* Modal Styles */
         .modal {
             display: none;
@@ -671,7 +671,7 @@
         .close-modal:hover {
             color: var(--primary);
         }
-        
+
         /* Mobile menu scroll fix */
         @media (max-width: 768px) {
             #mobile-menu {
@@ -684,16 +684,44 @@
                 -webkit-overflow-scrolling: touch;
                 z-index: 50;
             }
-            
+
             #mobile-dropdown {
                 overflow: visible;
             }
-            
+
             #mobile-dropdown a {
                 margin: 5px 0;
                 padding: 10px 15px;
             }
         }
+/* Different vibrant header colors for each story card */
+.stories-grid > .story-card:nth-child(1) .story-header {
+    background: linear-gradient(135deg, #4A5568, #2D3748) !important;
+}
+.stories-grid > .story-card:nth-child(2) .story-header {
+    background: linear-gradient(135deg, #2C5282, #1A365D) !important;
+}
+.stories-grid > .story-card:nth-child(3) .story-header {
+    background: linear-gradient(135deg, #2F855A, #22543D) !important;
+}
+.stories-grid > .story-card:nth-child(4) .story-header {
+    background: linear-gradient(135deg, #B7791F, #744210) !important;
+}
+.stories-grid > .story-card:nth-child(5) .story-header {
+    background: linear-gradient(135deg, #6B46C1, #44337A) !important;
+}
+.stories-grid > .story-card:nth-child(6) .story-header {
+    background: linear-gradient(135deg, #C53030, #742A2A) !important;
+}
+.stories-grid > .story-card:nth-child(7) .story-header {
+    background: linear-gradient(135deg, #319795, #234E52) !important;
+}
+.stories-grid > .story-card:nth-child(8) .story-header {
+    background: linear-gradient(135deg, #D69E2E, #975A16) !important;
+}
+.stories-grid > .story-card:nth-child(9) .story-header {
+    background: linear-gradient(135deg, #805AD5, #553C9A) !important;
+}
     </style>
 </head>
 <body>
@@ -727,14 +755,12 @@
     <header class="shadow-sm sticky top-0 z-50">
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center py-3">
-                <!-- Left Logo -->
                 <div class="logo-container">
                     <a href="index.html" class="flex items-center">
                         <img src="images/logologo.png" alt="Hope Community Church Logo" class="logo-img">
                     </a>
                 </div>
                 
-                <!-- Center Navigation -->
                 <nav class="hidden xl:flex items-center space-x-1">
                     <a href="index.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Home</a>
                     <a href="vision.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Vision/Beliefs</a>
@@ -761,7 +787,6 @@
                     <a href="support-us.html" target="_blank" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-6 rounded-full transition duration-300 shadow-md">❤️ Donate</a>
                 </nav>
                 
-                <!-- Right Logo and Mobile Menu Button -->
                 <div class="flex items-center gap-3">
                     <div class="hidden xl:block">
                         <img src="images/hfrlogo.png" alt="Hope for Recovery Logo" class="logo-img" onerror="this.style.display='none'">
@@ -779,7 +804,6 @@
                 <a href="vision.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Vision/Beliefs</a>
                 <a href="team.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">The Team</a>
                 
-                <!-- Services Dropdown -->
                 <div>
                     <button onclick="toggleMobileDropdown()" class="text-white hover:text-gray-200 font-semibold w-full text-left py-2 px-3 rounded flex justify-between items-center transition">
                         Our Services
@@ -811,7 +835,7 @@
         <span class="pulse"></span> LIVE: Sunday Service
     </div>
 
-    <!-- Hero Section with Scalloped Bottom - Updated to match team.html -->
+    <!-- Hero Section -->
     <section class="hero section-divider-scalloped">
         <div class="container">
             <h1>Stories of Hope</h1>
@@ -825,7 +849,7 @@
             <p class="section-description">Hear from people in our community who have experienced hope, healing, and wholeness through Hope for Recovery and Hope Community Church.</p>         
             <div class="stories-grid">
                 <!-- Josh's Story -->
-                <div class="story-card">
+                <div class="story-card" >
                     <div class="story-header">
                         <div class="story-avatar">
                             <img src="images/josh-graduation.jpg" alt="Josh Pilkington" onerror="this.parentElement.classList.add('initials'); this.parentElement.innerHTML='<span>JP</span>'; this.style.display='none'">
@@ -908,7 +932,70 @@
                     </div>
                 </div>
 
-                <!-- Additional Story - Craig -->
+                <!-- John Evans Story -->
+                <div class="story-card">
+                    <div class="story-header">
+                        <div class="story-avatar initials">
+                            <span>JE</span>
+                        </div>
+                        <h3 class="story-name">John Evans</h3>
+                        <p class="story-role">Walking in Peace</p>
+                        <div class="story-quote-icon">❝</div>
+                    </div>
+                    <div class="story-content">
+                        <div class="story-testimonial">
+                            <p>"I was known to be someone who acts first and worries later and could be violent. Whilst in a situation of confrontation in the chemist, I reversed that and spoke to the person confronting me—worked a treat! Also when I came, it seemed as though it was away. God is transforming my responses and giving me peace."</p>
+                        </div>
+                        <div class="story-footer">
+                            <span class="story-date">Newfound Peace</span>
+                            <span class="story-badge">Transformed Heart</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Michelle McCallister Story -->
+                <div class="story-card">
+                    <div class="story-header">
+                        <div class="story-avatar initials">
+                            <span>MM</span>
+                        </div>
+                        <h3 class="story-name">Michelle McCallister</h3>
+                        <p class="story-role">Finding Hope Again</p>
+                        <div class="story-quote-icon">❝</div>
+                    </div>
+                    <div class="story-content">
+                        <div class="story-testimonial">
+                            <p>"When I started coming to Hope for Recovery I was homeless, broken, and a mess. During my time here, I have began to feel more hopeful, back to starting to see the real me coming back, being substance free, and beginning to trust God more."</p>
+                        </div>
+                        <div class="story-footer">
+                            <span class="story-date">Journey to Wholeness</span>
+                            <span class="story-badge">Hope Restored</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recovery Journey Story -->
+                <div class="story-card">
+                    <div class="story-header">
+                        <div class="story-avatar initials">
+                            <span>RC</span>
+                        </div>
+                        <h3 class="story-name">Recovery Journey</h3>
+                        <p class="story-role">2 Months Clean</p>
+                        <div class="story-quote-icon">❝</div>
+                    </div>
+                    <div class="story-content">
+                        <div class="story-testimonial">
+                            <p>"I am really enjoying the course—it's helped my recovery journey a lot. 2 months clean thanks to Hope Church and AA. I am no longer alone. I can be awake all day and sleep at night now!"</p>
+                        </div>
+                        <div class="story-footer">
+                            <span class="story-date">2 Months Free</span>
+                            <span class="story-badge">Victory</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Craig's Story -->
                 <div class="story-card">
                     <div class="story-header">
                         <div class="story-avatar initials">
@@ -929,7 +1016,7 @@
                     </div>
                 </div>
 
-                <!-- Additional Story - Yvonne -->
+                <!-- Yvonne's Story -->
                 <div class="story-card">
                     <div class="story-header">
                         <div class="story-avatar initials">
@@ -938,7 +1025,7 @@
                         <h3 class="story-name">Yvonne Halkett</h3>
                         <p class="story-role">Worship & Church Leader</p>
                         <div class="story-quote-icon">❝</div>
-                    </div>
+                    </div>.story-card
                     <div class="story-content">
                         <div class="story-testimonial">
                             <p>"Witnessing the transformation in people's lives is why we do what we do. From brokenness to wholeness, from despair to hope—every testimony reminds us that with God, all things are possible. This is truly a place of second chances."</p>
@@ -982,7 +1069,7 @@
         <div class="container">
             <h2>Your Story Could Be Next</h2>
             <p>Whether you're seeking recovery, looking to support others, or simply need prayer, we're here for you. Every journey starts with a single step.</p>
-            <a href="#contact" class="btn btn-outline-light" onclick="openContactForm()">Get In Touch</a>
+            <a href="contact.html" class="btn btn-outline-light">Get In Touch</a>
         </div>
     </section>
 
@@ -994,7 +1081,7 @@
             <div class="footer-links">
                 <a href="index.html#services">Services</a>
                 <a href="index.html#recovery">Recovery</a>
-                <a href="#contact">Contact</a>
+                <a href="contact.html">Contact</a>
                 <a href="#" onclick="openPrayerForm()">Prayer</a>
             </div>
             <p>Part of The Apostolic Church network</p>
@@ -1004,9 +1091,9 @@
     </footer>
 
     <!-- Prayer Form Modal -->
-    <div id="prayerForm" class="modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); align-items: center; justify-content: center; z-index: 1000;">
-        <form id="prayerRequestForm" class="modal-content" style="background: white; border-radius: 10px; padding: 40px; max-width: 500px; width: 90%; position: relative;" action="https://formspree.io/f/xzzjwnkw" method="POST">
-            <span class="close-modal" style="position: absolute; top: 20px; right: 20px; font-size: 24px; cursor: pointer;" onclick="closeModal()">&times;</span>
+    <div id="prayerForm" class="modal" style="display: none;">
+        <form id="prayerRequestForm" class="modal-content" action="https://formspree.io/f/xzzjwnkw" method="POST">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
             <h3 style="margin-bottom: 20px;">We'll Pray For You</h3>
             <p>Submit your prayer request and our team will pray for you this week.</p>
             <input type="email" name="email" placeholder="Your email (optional)" style="width: 100%; margin: 15px 0; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
@@ -1016,7 +1103,7 @@
     </div>
 
     <script>
-        // ==================== MOBILE MENU FUNCTIONS ====================
+        // Mobile Menu Functions
         const menuToggle = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
 
@@ -1062,7 +1149,7 @@
             }
         }
 
-        // ==================== UI FUNCTIONS ====================
+        // UI Functions
         document.getElementById('year').innerText = new Date().getFullYear();
 
         function openLiveStream() {
@@ -1070,15 +1157,11 @@
         }
 
         function openPrayerForm() {
-            document.getElementById('prayerForm').style.display = 'block';
+            document.getElementById('prayerForm').style.display = 'flex';
         }
 
         function closeModal() {
             document.getElementById('prayerForm').style.display = 'none';
-        }
-
-        function openContactForm() {
-            window.location.href = 'contact.html';
         }
 
         function checkLiveStatus() {
