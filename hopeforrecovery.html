@@ -432,31 +432,24 @@ h2:after {
     }
 }
 
-/* Mobile fix for Graduation section - alternates photo/text correctly */
+/* Graduation section - mobile: photo then text (alternating correctly) */
 @media (max-width: 768px) {
-    /* Force all grid items to stack in order of HTML */
-    .content-grid-photo-left,
-    .content-grid-photo-right {
+    .graduation-section .content-grid-photo-left,
+    .graduation-section .content-grid-photo-right {
         display: flex;
         flex-direction: column;
         gap: 20px;
+        margin-bottom: 50px;
     }
     
-    /* Ensure image comes first, text second in ALL graduation grids */
-    .content-grid-photo-left > div:first-child,
-    .content-grid-photo-right > div:first-child {
-        order: 1;  /* Image first */
+    .graduation-section .content-grid-photo-left > div:first-child,
+    .graduation-section .content-grid-photo-right > div:first-child {
+        order: 1;
     }
     
-    .content-grid-photo-left > div:last-child,
-    .content-grid-photo-right > div:last-child {
-        order: 2;  /* Text second */
-    }
-    
-    /* Add spacing between sections */
-    .graduation-section .content-grid-photo-left,
-    .graduation-section .content-grid-photo-right {
-        margin-bottom: 40px;
+    .graduation-section .content-grid-photo-left > div:last-child,
+    .graduation-section .content-grid-photo-right > div:last-child {
+        order: 2;
     }
 }
     </style>
@@ -652,7 +645,8 @@ h2:after {
 </section>
 
 <!-- Graduation Section -->
-<section class="section section-light">
+<!-- Graduation Section -->
+<section class="section section-light graduation-section">
     <div class="container">
         <div class="section-heading-wrapper">
             <h2>Graduation Celebration</h2>
