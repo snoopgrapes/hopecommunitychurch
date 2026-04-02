@@ -431,6 +431,34 @@ h2:after {
         padding: 10px 15px;
     }
 }
+
+/* Mobile fix for Graduation section - alternates photo/text correctly */
+@media (max-width: 768px) {
+    /* Force all grid items to stack in order of HTML */
+    .content-grid-photo-left,
+    .content-grid-photo-right {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    /* Ensure image comes first, text second in ALL graduation grids */
+    .content-grid-photo-left > div:first-child,
+    .content-grid-photo-right > div:first-child {
+        order: 1;  /* Image first */
+    }
+    
+    .content-grid-photo-left > div:last-child,
+    .content-grid-photo-right > div:last-child {
+        order: 2;  /* Text second */
+    }
+    
+    /* Add spacing between sections */
+    .graduation-section .content-grid-photo-left,
+    .graduation-section .content-grid-photo-right {
+        margin-bottom: 40px;
+    }
+}
     </style>
 </head>
 <body>
