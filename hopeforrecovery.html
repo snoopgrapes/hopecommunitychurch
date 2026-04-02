@@ -432,21 +432,22 @@ h2:after {
     }
 }
 
-/* Graduation section - mobile: text then photo (explicit ordering) */
+/* Graduation section - mobile: text then photo (FORCED override) */
 @media (max-width: 768px) {
-    .graduation-section .grad-block {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        margin-bottom: 50px;
+    .graduation-section .content-grid-photo-left.grad-block,
+    .graduation-section .content-grid-photo-right.grad-block {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+        margin-bottom: 50px !important;
     }
     
     .graduation-section .grad-block .grad-text {
-        order: 1;  /* Text first on mobile */
+        order: 1 !important;
     }
     
     .graduation-section .grad-block .grad-image {
-        order: 2;  /* Image second on mobile */
+        order: 2 !important;
     }
 }
     </style>
