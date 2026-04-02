@@ -206,14 +206,15 @@ h2:after {
         .content-text li {
             margin-bottom: 0.5rem;
         }
-
-        .image-rounded {
-            border-radius: 10px;
-            box-shadow: var(--shadow-lg);
-            width: 100%;
-            object-fit: cover;
-            max-height: 450px;
-        }
+.image-rounded {
+    border-radius: 10px;
+    box-shadow: var(--shadow-lg);
+    width: 100%;
+    height: auto;
+    max-height: 450px;
+    object-fit: contain;  /* Changed from 'cover' to 'contain' */
+    background-color: #f5f5f5;  /* Adds background for any letterboxing */
+}
 
         .badge-list {
             background: var(--recovery-bg);
@@ -566,7 +567,7 @@ h2:after {
                     <p>Hope for Recovery was developed out of a stirring I felt in 2019 to put together a 12-week bible-based recovery group. The group was to be real and relevant & designed to meet the practical and spiritual needs of recovery without being too religious. I had no idea where to begin, but God took me on a journey, which ended with the development of not just 1 x 12-week group but 6 x 12-week groups which we now run as a 2-year community-based recovery program.</p>
                     <p class="font-semibold mt-2">— Craig Halkett</p>
                 </div>
-                <div><img src="images/history1.jpeg" alt="History of Hope for Recovery" class="image-rounded" onerror="this.src='images/group.jpg'"></div>
+                <div><img src="images/HFR- History.jpg" alt="History of Hope for Recovery" class="image-rounded" onerror="this.src='images/group.jpg'"></div>
             </div>
         </div>
     </section>
@@ -576,43 +577,125 @@ h2:after {
         <div class="container">
             <div class="section-heading-wrapper"><h2>You <span style="color: var(--primary);">Matter</span></h2></div>
             <div class="content-grid-photo-left">
-                <div><img src="images/discuss1.png" alt="You Matter community" class="image-rounded"></div>
+                <div><img src="images/HFR- You matter.jpg"p alt="You Matter community" class="image-rounded"></div>
                 <div class="content-text">
                     <h3>Your journey to freedom starts here</h3>
-                    <p>Hope Recovery is a unique, faith to freedom recovery pathway, designed to help you overcome addiction. It's a great way to explore faith as a recovery pathway in a relaxed, friendly, fun atmosphere. Whether you have no faith or are exploring, we provide a welcoming path toward healing.</p>
+                    <p>Hope for Recovery is a unique, faith to freedom recovery pathway, designed to help you overcome addiction. It's a great way to explore faith as a recovery pathway in a relaxed, friendly, fun atmosphere. Whether you have no faith or are exploring, we provide a welcoming path toward healing.</p>
                     <a href="#contact" class="btn btn-primary">Get in touch →</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Structured Recovery Courses (Photo to the right) -->
-    <section class="section section-light">
-        <div class="container">
-            <div class="section-heading-wrapper"><h2>Structured Recovery Courses</h2></div>
-            <div class="content-grid-photo-right">
-                <div class="content-text">
-                    <p><strong>A progressive journey of healing.</strong> Our program is built on six distinct, faith-based 12-week courses. Each course focuses on a different aspect, providing a clear pathway from initial hope to lasting freedom. Participants receive certificates for each course completed.</p>
-                    <div class="badge-list">
-                        <ul>
-                            <li>⭐ 3 Rs for Recovery – Restoring broken relationships</li>
-                            <li>⭐ Holistic Health – Fruit of Freedom</li>
-                            <li>⭐ Overcoming Temptation – 3 S's for Sobriety</li>
-                        </ul>
-                    </div>
-                    <p><strong>⏰ When:</strong> Mondays, 11am – 1:30pm</p>
-                    <div class="grid grid-cols-2 gap-2 mt-3 text-sm">
-                        <span>✓ Certificates upon completion</span>
-                        <span>✓ Peer-to-peer discussions</span>
-                        <span>✓ Case studies & reflection</span>
-                        <span>✓ Supportive community</span>
-                    </div>
+<!-- Structured Recovery Courses (Photo to the right) -->
+<section class="section section-light">
+    <div class="container">
+        <div class="section-heading-wrapper">
+            <h2>Structured Recovery Courses</h2>
+        </div>
+        <div class="content-grid-photo-right">
+            <div class="content-text">
+                <p><strong>A progressive journey of healing.</strong> Our program is built on six distinct, faith-based 12-week courses. Each course focuses on a different aspect, providing a clear pathway from initial hope to lasting freedom. Participants receive certificates for each course completed.</p>
+                
+                <!-- Six Recovery Courses -->
+                <div class="recovery-courses-list">
+                    <p><strong>📘 3 R's for Recovery</strong> – Identify root causes & learn practical ways to recover and be released from them.</p>
+                    <p><strong>🕊️ Restoring Broken Relationships</strong> – Looking at ways to mend damaged relationships with others, myself & God.</p>
+                    <p><strong>🌿 Holistic Health</strong> – Overall health package covering our mental, emotional, physical & spiritual health.</p>
+                    <p><strong>🍇 Fruit of Fruits</strong> – Putting off our old attitudes and behaviours and replacing them with more healthy ones like love, joy & peace.</p>
+                    <p><strong>⚔️ Overcoming Temptation</strong> – Learn how to apply practical biblical battle strategies to help in the fight against addiction.</p>
+                    <p><strong>🔐 3 S's for Sobriety</strong> – Covering security (our sense of belonging), self-worth and significance (meaning & purpose).</p>
                 </div>
-                <div><img src="images/Fruit of Freedom Certs.jpg" alt="Recovery courses" class="image-rounded"></div>
+                
+                <p><strong>⏰ When:</strong> Mondays, 11am – 1:30pm</p>
+                
+                <div class="grid grid-cols-2 gap-2 mt-3 text-sm">
+                    <span>✓ Certificates upon completion</span>
+                    <span>✓ Peer-to-peer discussions</span>
+                    <span>✓ Case studies & reflection</span>
+                    <span>✓ Supportive community</span>
+                </div>
+            </div>
+            <div>
+                <img src="images/Fruit of Freedom Certs.jpg" alt="Recovery courses" class="image-rounded">
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
+<!-- Graduation Section -->
+<section class="section section-light">
+    <div class="container">
+        <div class="section-heading-wrapper">
+            <h2>Graduation Celebration</h2>
+        </div>
+
+        <!-- Introductory paragraph with photo placeholder (left) -->
+        <div class="content-grid-photo-left">
+            <div>
+                <img src="images/Graduation 5.jpg" alt="Graduation ceremony" class="image-rounded">
+            </div>
+            <div class="content-text">
+                <p><strong>A milestone of lasting recovery.</strong> If anyone goes on to complete all 6 courses, a final graduation certificate is presented. Each course can be done on its own or as part of the 2‑year program.</p>
+                <p>To graduate, participants must pass all 6 courses. This could take 2 years if each course is done back‑to‑back, or longer if participants dip in and out. A course record is kept, and once all 6 courses have been completed successfully, a final graduation certificate is presented on the night.</p>
+            </div>
+        </div>
+
+        <!-- First graduation event paragraph with photo placeholder (right) -->
+        <div class="content-grid-photo-right">
+            <div class="content-text">
+                <p><strong>December 2025 – Our first ever graduation.</strong> We held our inaugural celebration with 80 people attending to cheer our successful candidates on. There was great joy as many of their friends and family came along to support them on their big night.</p>
+                <p><strong>Nicky Low</strong> from Clydebank F.C. was our guest of honour as he shared his powerful testimony and presented the certificates to our success graduates. Local MP <strong>Douglas McAllister</strong> presented a motion passed in Parliament acknowledging the work that Hope for Recovery & Hope Community Church is having upon the community.</p>
+            </div>
+            <div>
+                <img src="images/1.jpg" alt="Nicky Low presenting certificates" class="image-rounded">
+            </div>
+        </div>
+
+        <!-- Next graduation and photo gallery -->
+        <div class="content-grid-photo-left">
+            <div>
+                <img src="images/Graduation 1.jpg" alt="Graduates with certificates" class="image-rounded">
+            </div>
+            <div class="content-text">
+                <p><strong>📅 Looking ahead.</strong> Our next graduation is planned for <strong>Friday 4th December 2026</strong>, with 4 participants so far on track to graduate.</p>
+                <p>We look forward to celebrating another night of hope, transformation, and community recognition.</p>
+            </div>
+        </div>
+
+        <!-- Optional photo gallery row
+        <div class="photo-gallery" style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
+            <img src="images/grad-photo-1.jpg" alt="Graduation group photo" style="width: calc(33% - 0.7rem); border-radius: 12px; object-fit: cover;">
+            <img src="images/grad-photo-2.jpg" alt="Certificate presentation" style="width: calc(33% - 0.7rem); border-radius: 12px; object-fit: cover;">
+            <img src="images/grad-photo-3.jpg" alt="Celebration crowd" style="width: calc(33% - 0.7rem); border-radius: 12px; object-fit: cover;">
+        </div>
+        <p style="text-align: center; margin-top: 0.75rem; font-size: 0.85rem; color: #666;">Celebrating our graduates and their journey to lasting freedom</p>
+    </div> -->
+</section>
+
+<!-- Skip a Coffee – Support Recovery Section -->
+<section class="section section-alt" style="background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);">
+    <div class="container" style="text-align: center;">
+        <div class="skip-coffee-content" style="max-width: 700px; margin: 0 auto;">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">☕</div>
+            <h2 style="color: white; margin-bottom: 1rem;">Skip a Coffee – Support Recovery</h2>
+            <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.1rem; margin-bottom: 1.5rem;">
+                Instead of your next coffee, consider donating that amount to help someone on their journey to freedom from addiction. 
+                Every small gift fuels our recovery programs, street outreach, and community support.
+            </p>
+            <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.95rem; margin-bottom: 2rem;">
+                £3 buys a warm meal | £10 supports a recovery session | £25 helps someone access resources
+            </p>
+            <a href="https://buymeacoffee.com/hopecommunitychurch" target="_blank" class="btn" style="background-color: #FFDD00; color: #333; border: none; font-weight: bold; padding: 14px 40px; font-size: 1.2rem; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                <span>☕</span> Buy Me a Coffee
+                <span>→</span>
+            </a>
+            <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.8rem; margin-top: 1.5rem;">
+                Every donation goes directly to Hope for Recovery programs
+            </p>
+        </div>
+    </div>
+</section>
 
     <!-- Contact Section -->
     <section id="contact" class="section section-alt">
