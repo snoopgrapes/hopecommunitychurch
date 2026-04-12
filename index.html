@@ -232,28 +232,27 @@ nav .relative:hover .absolute {
 }
 
 /* ===== ANNOUNCEMENT BAR ===== */
-/* Option 2: Muted Teal */
 .bg-gray-800 {
-    background-color: var(--primary-dark) !important;  /* #2D3748 - Charcoal */
+    background-color: var(--primary-dark) !important;
     color: white !important;
 }
 
-        /* Hero Section - Updated to match index.html */
-        .hero {
-            background: #707070; /* Match navbar color */
-            color: var(--text-light);
-            text-align: center;
-            padding: 40px 20px 30px;
-            position: relative;
-            overflow: hidden;
-            min-height: 30vh;
-            display: flex;
-            align-items: center;
-            width: 100%;
-        }
+/* Hero Section */
+.hero {
+    background: #707070;
+    color: var(--text-light);
+    text-align: center;
+    padding: 40px 20px 30px;
+    position: relative;
+    overflow: hidden;
+    min-height: 30vh;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
 
 .hero-image {
-    display: none; /* Hide the background image */
+    display: none;
 }
 
 .hero h1 {
@@ -278,6 +277,7 @@ nav .relative:hover .absolute {
     animation: fadeInUp 1s ease 0.3s both;
     color: rgba(255, 255, 255, 0.95);
 }
+
 /* ===== BUTTONS ===== */
 .btn {
     display: inline-block;
@@ -351,31 +351,7 @@ nav .relative:hover .absolute {
     border-color: var(--primary-dark);
 }
 
-/* Map section button */
-.map-container .btn-primary {
-    background-color: var(--primary);
-    color: white;
-    border: 2px solid var(--primary);
-}
-
-.map-container .btn-primary:hover {
-    background-color: var(--primary-dark);
-    border-color: var(--primary-dark);
-}
-
-/* Modal button */
-.modal-content .btn-primary {
-    background-color: var(--primary);
-    color: white;
-    border: 2px solid var(--primary);
-}
-
-.modal-content .btn-primary:hover {
-    background-color: var(--primary-dark);
-    border-color: var(--primary-dark);
-}
-
-/* Donate button in announcement bar */
+/* Donate button */
 .bg-yellow-500 {
     background-color: var(--primary) !important;
     color: white !important;
@@ -387,6 +363,15 @@ nav .relative:hover .absolute {
     border-color: var(--primary-dark) !important;
     color: white !important;
 }
+
+.hover\:bg-yellow-600:hover {
+    background-color: var(--primary-dark) !important;
+}
+
+.text-gray-900 {
+    color: white !important;
+}
+
 /* ===== SECTIONS ===== */
 .section {
     padding: 80px 20px;
@@ -468,27 +453,29 @@ html {
     font-size: 1.1rem;
 }
 
-/* ===== SERVICES CARDS ===== */
+/* ===== SERVICES CARDS - FIXED GRID LAYOUT ===== */
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     margin-top: 50px;
 }
 
+/* Consistent card styling */
 .service-card {
     perspective: 1000px;
-    height: 300px;
+    height: 360px;
+    width: 100%;
 }
 
 .card-inner {
     position: relative;
     width: 100%;
     height: 100%;
-    transition: transform 0.8s;
+    transition: transform 0.6s;
     transform-style: preserve-3d;
+    border-radius: 16px;
     box-shadow: var(--shadow-md);
-    border-radius: 10px;
 }
 
 .service-card:hover .card-inner {
@@ -500,44 +487,68 @@ html {
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    padding: 30px;
-    box-sizing: border-box;
-    border-radius: 10px;
+    border-radius: 16px;
+    padding: 24px 20px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    overflow-y: auto;
 }
 
 .card-front {
     background: white;
     border: 1px solid var(--border-light);
+    transform: rotateY(0deg);
 }
 
 .card-back {
-    background-color: var(--primary);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
     color: white;
     transform: rotateY(180deg);
 }
 
-.card-back h3 {
-    color: white;
-    margin-bottom: 15px;
-}
-
-.card-back h3:after {
-    background: white;
-    left: 0;
-    transform: none;
-    width: 50px;
-}
-
 .card-front h3 {
     color: var(--primary-dark);
-    margin-bottom: 15px;
+    font-size: 1.4rem;
+    margin-bottom: 16px;
+    line-height: 1.3;
+}
+
+.card-back h3 {
+    color: white;
+    font-size: 1.4rem;
+    margin-bottom: 16px;
+    border-bottom: 2px solid rgba(255,255,255,0.3);
+    display: inline-block;
+    padding-bottom: 8px;
 }
 
 .card-front p, .card-back p {
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.card-back p {
+    color: rgba(255,255,255,0.95);
+}
+
+/* Strong tags inside cards */
+.card-front strong {
+    color: var(--primary);
+}
+
+/* Scrollbar styling for card content */
+.card-front::-webkit-scrollbar, .card-back::-webkit-scrollbar {
+    width: 4px;
+}
+.card-front::-webkit-scrollbar-track {
+    background: var(--border-light);
+    border-radius: 4px;
+}
+.card-front::-webkit-scrollbar-thumb {
+    background: var(--primary-light);
+    border-radius: 4px;
 }
 
 /* ===== TESTIMONIALS ===== */
@@ -776,20 +787,18 @@ html {
     transform: translateY(-3px);
 }
 
-/* Individual icon hover colors (optional) */
 .social-icon.instagram:hover svg {
-    fill: #E4405F; /* Instagram brand color */
+    fill: #E4405F;
 }
 
 .social-icon.facebook:hover svg {
-    fill: #1877F2; /* Facebook brand color */
+    fill: #1877F2;
 }
 
 .social-icon.tiktok:hover svg {
-    fill: #000000; /* TikTok brand color */
+    fill: #000000;
 }
 
-/* Screen reader only */
 .sr-only {
     position: absolute;
     width: 1px;
@@ -802,35 +811,6 @@ html {
     border-width: 0;
 }
 
-/* Responsive adjustments */
-@media (max-width: 480px) {
-    .social-icons-container {
-        gap: 20px;
-    }
-    
-    .social-icon svg {
-        width: 28px;
-        height: 28px;
-    }
-}
-
-/* Responsive adjustment for mobile */
-@media (max-width: 768px) {
-    .section-contact .btn-container {
-        flex-direction: column;
-        gap: 10px;
-    }
-    
-    .section-contact .btn {
-        margin: 5px 0;
-        width: 100%;
-        max-width: 250px;
-    }
-}
-    .hero {
-        padding: 30px 15px 25px;
-        min-height: auto;  /* Let content determine height */
-    }
 /* ===== FOOTER ===== */
 footer {
     background-color: var(--primary-dark);
@@ -991,23 +971,6 @@ footer p:first-child {
     animation: pulseOpacity 1.5s infinite;
 }
 
-/* ===== DONATE BUTTON ===== */
-.bg-yellow-500 {
-    background-color: var(--primary) !important;
-}
-
-.bg-yellow-500:hover {
-    background-color: var(--primary-dark) !important;
-}
-
-.hover\:bg-yellow-600:hover {
-    background-color: var(--primary-dark) !important;
-}
-
-.text-gray-900 {
-    color: white !important;
-}
-
 /* ===== SECTION DIVIDER ===== */
 .section-divider-scalloped {
     clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
@@ -1064,7 +1027,61 @@ footer p:first-child {
     100% { opacity: 1; }
 }
 
+/* ===== WHAT TO EXPECT SECTION ===== */
+.what-to-expect-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.what-to-expect-text h2 {
+    text-align: left;
+    margin-bottom: 2rem;
+    padding-bottom: 0.75rem;
+}
+
+.what-to-expect-text h2:after {
+    left: 0;
+    transform: none;
+    bottom: -5px;
+}
+
+/* ===== WELCOME SECTION ===== */
+.welcome-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.welcome-text h2 {
+    text-align: left;
+    margin-bottom: 2rem;
+    padding-bottom: 0.75rem;
+}
+
+.welcome-text h2:after {
+    left: 0;
+    transform: none;
+    bottom: -5px;
+}
+
 /* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1024px) {
+    .services-grid {
+        gap: 20px;
+    }
+    
+    .service-card {
+        height: 380px;
+    }
+    
+    .card-front, .card-back {
+        padding: 20px;
+    }
+}
+
 @media (max-width: 768px) {
     .logo-img {
         height: 65px;
@@ -1075,8 +1092,8 @@ footer p:first-child {
     }
     
     .hero {
-        padding: 80px 15px 60px;
-        min-height: 80vh;
+        padding: 30px 15px 25px;
+        min-height: auto;
     }
     
     .hero h1 {
@@ -1122,9 +1139,19 @@ footer p:first-child {
         text-align: center;
     }
     
+    /* Responsive services grid: 1 column on mobile */
+    .services-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        gap: 25px;
+    }
+    
     .service-card {
         height: auto;
-        min-height: 250px;
+        min-height: 320px;
+        perspective: none;
     }
     
     .card-inner {
@@ -1144,6 +1171,61 @@ footer p:first-child {
     .service-card .card-front {
         position: relative;
         min-height: auto;
+        transform: none;
+    }
+    
+    .what-to-expect-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .what-to-expect-text {
+        order: 1;
+    }
+    
+    .what-to-expect-image {
+        order: 2;
+    }
+    
+    .what-to-expect-text h2 {
+        text-align: center;
+        margin-bottom: 1.75rem;
+    }
+    
+    .what-to-expect-text h2:after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .what-to-expect-text p {
+        text-align: center;
+    }
+    
+    .welcome-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .welcome-text {
+        order: 1;
+    }
+    
+    .welcome-image {
+        order: 2;
+    }
+    
+    .welcome-text h2 {
+        text-align: center;
+        margin-bottom: 1.75rem;
+    }
+    
+    .welcome-text h2:after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .welcome-text p {
+        text-align: center;
     }
     
     .image-carousel {
@@ -1165,6 +1247,26 @@ footer p:first-child {
     
     .footer-links a {
         font-size: 0.95rem;
+    }
+    
+    #mobile-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        max-height: calc(100vh - 80px);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        z-index: 50;
+    }
+    
+    #mobile-dropdown {
+        overflow: visible;
+    }
+    
+    #mobile-dropdown a {
+        margin: 5px 0;
+        padding: 10px 15px;
     }
 }
 
@@ -1198,10 +1300,6 @@ footer p:first-child {
         padding-bottom: 0.5rem;
     }
     
-    .services-grid {
-        grid-template-columns: 1fr;
-    }
-    
     .testimonial {
         padding: 30px 20px;
     }
@@ -1224,6 +1322,26 @@ footer p:first-child {
         padding: 8px 16px;
         font-size: 0.9rem;
     }
+    
+    .social-icons-container {
+        gap: 20px;
+    }
+    
+    .social-icon svg {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .section-contact .btn-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .section-contact .btn {
+        margin: 5px 0;
+        width: 100%;
+        max-width: 250px;
+    }
 }
 
 /* ===== PRINT STYLES ===== */
@@ -1244,131 +1362,6 @@ footer p:first-child {
     a {
         color: black;
         text-decoration: underline;
-    }
-}
-
-/* Mobile menu scroll fix - ADD THIS */
-@media (max-width: 768px) {
-    #mobile-menu {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        max-height: calc(100vh - 80px);
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        z-index: 50;
-    }
-    
-    /* Ensure the dropdown doesn't overflow */
-    #mobile-dropdown {
-        overflow: visible;
-    }
-    
-    /* Make dropdown links easier to tap */
-    #mobile-dropdown a {
-        margin: 5px 0;
-        padding: 10px 15px;
-    }
-}
-/* What to Expect Section - Desktop layout (image left, text right) */
-.what-to-expect-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
-    align-items: center;
-}
-
-.what-to-expect-text h2 {
-    text-align: left;
-    margin-bottom: 2rem;
-    padding-bottom: 0.75rem;
-}
-
-.what-to-expect-text h2:after {
-    left: 0;
-    transform: none;
-    bottom: -5px;
-}
-
-/* Mobile layout - text first, image second */
-@media (max-width: 768px) {
-    .what-to-expect-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-    
-    /* Reorder elements: text first, image second */
-    .what-to-expect-text {
-        order: 1;
-    }
-    
-    .what-to-expect-image {
-        order: 2;
-    }
-    
-    .what-to-expect-text h2 {
-        text-align: center;
-        margin-bottom: 1.75rem;
-    }
-    
-    .what-to-expect-text h2:after {
-        left: 50%;
-        transform: translateX(-50%);
-    }
-    
-    .what-to-expect-text p {
-        text-align: center;
-    }
-}
-/* Welcome Section - Desktop layout (image left, text right) */
-.welcome-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
-    align-items: center;
-}
-
-.welcome-text h2 {
-    text-align: left;
-    margin-bottom: 2rem;
-    padding-bottom: 0.75rem;
-}
-
-.welcome-text h2:after {
-    left: 0;
-    transform: none;
-    bottom: -5px;
-}
-
-/* Mobile layout - text first, image second */
-@media (max-width: 768px) {
-    .welcome-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-    
-    /* Reorder elements: text first, image second */
-    .welcome-text {
-        order: 1;
-    }
-    
-    .welcome-image {
-        order: 2;
-    }
-    
-    .welcome-text h2 {
-        text-align: center;
-        margin-bottom: 1.75rem;
-    }
-    
-    .welcome-text h2:after {
-        left: 50%;
-        transform: translateX(-50%);
-    }
-    
-    .welcome-text p {
-        text-align: center;
     }
 }
 </style>
@@ -1400,264 +1393,325 @@ footer p:first-child {
         </div>
     </div>
 
-<!-- Replace the existing header navbar section with this updated code -->
-<header class="shadow-sm sticky top-0 z-50">
-    <div class="container mx-auto px-4">
-        <div class="flex justify-between items-center py-3">
-            <!-- Left Logo -->
-            <div class="logo-container">
-                <a href="index.html" class="flex items-center">
-                    <img src="images/logologo.png" alt="Hope Community Church Logo" class="logo-img">
-                </a>
-            </div>
-            
-            <!-- Center Navigation -->
-            <nav class="hidden xl:flex items-center space-x-1">
-                <a href="index.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Home</a>
-                <a href="vision.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Vision/Beliefs</a>
-                <a href="team.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">The Team</a>
-                <div class="relative group">
-                    <button class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded flex items-center gap-1">
-                        Our Services
-                        <svg class="w-3 h-3 mt-0.5 transition-transform group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+    <!-- Header Navbar -->
+    <header class="shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-3">
+                <!-- Left Logo -->
+                <div class="logo-container">
+                    <a href="index.html" class="flex items-center">
+                        <img src="images/logologo.png" alt="Hope Community Church Logo" class="logo-img">
+                    </a>
+                </div>
+                
+                <!-- Center Navigation -->
+                <nav class="hidden xl:flex items-center space-x-1">
+                    <a href="index.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Home</a>
+                    <a href="vision.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Vision/Beliefs</a>
+                    <a href="team.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">The Team</a>
+                    <div class="relative group">
+                        <button class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded flex items-center gap-1">
+                            Our Services
+                            <svg class="w-3 h-3 mt-0.5 transition-transform group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+                        </button>
+                        <div class="absolute top-full left-0 mt-1 w-52 bg-gray-700 rounded-lg shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                            <a href="hopeforrecovery.html#structured-courses" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 rounded-t-lg font-medium border-b border-gray-100">Hope for Recovery</a>
+                            <a href="keywork.html" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Key Work</a>
+                            <a href="walktalk.html" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Walk & Talk Group</a>
+                            <a href="streetoutreach.html" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Street Outreach</a>
+                            <a href="cafe.html" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Community Café</a>
+                            <a href="rehab.html" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Rehab Referrals</a>
+                            <a href="schools.html" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 rounded-b-lg">Schools Program</a>
+                        </div>
+                    </div>
+                    <a href="stories.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Stories of Hope</a>
+                    <a href="getinvolved.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Get Involved</a>
+                    <a href="videos.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Videos</a>
+                    <a href="contact.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Find/Contact</a>
+                    <a href="https://donorbox.org/hope-community-church-donor-page" target="_blank" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-6 rounded-full transition duration-300 shadow-md">❤️ Donate</a>
+                </nav>
+                
+                <!-- Right Logo and Mobile Menu Button -->
+                <div class="flex items-center gap-3">
+                    <div class="hidden xl:block">
+                        <img src="images/hfrlogo.png" alt="Hope for Recovery Logo" class="logo-img" onerror="this.style.display='none'">
+                    </div>
+                    <button id="mobile-menu-button" class="xl:hidden text-white hover:text-gray-200 focus:outline-none transition">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                     </button>
-                    <div class="absolute top-full left-0 mt-1 w-52 bg-gray-700 rounded-lg shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                        <a href="hopeforrecovery.html#structured-courses" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 rounded-t-lg font-medium border-b border-gray-100">Hope for Recovery</a>
-                        <a href="keywork.html" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Key Work</a>
-                        <a href="walktalk.html" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Walk & Talk Group</a>
-                        <a href="streetoutreach.html" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Street Outreach</a>
-                        <a href="cafe.html" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Community Café</a>
-                        <a href="rehab.html" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">Rehab Referrals</a>
-                        <a href="schools.html" target="_blank" class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 rounded-b-lg">Schools Program</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="xl:hidden hidden py-3 px-4 shadow-lg border-t border-white border-opacity-20" style="background: #707070;">
+            <div class="flex flex-col space-y-2">
+                <a href="index.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Home</a>
+                <a href="vision.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Vision/Beliefs</a>
+                <a href="team.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">The Team</a>
+                
+                <div>
+                    <button onclick="toggleMobileDropdown()" class="text-white hover:text-gray-200 font-semibold w-full text-left py-2 px-3 rounded flex justify-between items-center transition">
+                        Our Services
+                        <svg id="mobile-dropdown-arrow" class="w-4 h-4 transition-transform duration-200" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
+                        </svg>
+                    </button>
+                    <div id="mobile-dropdown" class="hidden mt-2 space-y-1 ml-3">
+                        <a href="hopeforrecovery.html#structured-courses" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Hope for Recovery</a>
+                        <a href="keywork.html" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Key Work</a>
+                        <a href="walktalk.html" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Walk & Talk Group</a>
+                        <a href="streetoutreach.html" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Street Outreach</a>
+                        <a href="cafe.html" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Community Café</a>
+                        <a href="rehab.html" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Rehab Referrals</a>
+                        <a href="schools.html" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Schools Program</a>
                     </div>
                 </div>
-                <a href="stories.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Stories of Hope</a>
-                <a href="getinvolved.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Get Involved</a>
-                <a href="videos.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Videos</a>
-                <a href="contact.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Find/Contact</a>
+                
+                <a href="stories.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Stories of Hope</a>
+                <a href="getinvolved.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Get Involved</a>
+                <a href="videos.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Videos</a>
+                <a href="contact.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Find/Contact</a>
                 <a href="https://donorbox.org/hope-community-church-donor-page" target="_blank" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-6 rounded-full transition duration-300 shadow-md">❤️ Donate</a>
-            </nav>
-            
-            <!-- Right Logo and Mobile Menu Button -->
-            <div class="flex items-center gap-3">
-                <div class="hidden xl:block">
-                    <img src="images/hfrlogo.png" alt="Hope for Recovery Logo" class="logo-img" onerror="this.style.display='none'">
-                </div>
-                <button id="mobile-menu-button" class="xl:hidden text-white hover:text-gray-200 focus:outline-none transition">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                </button>
             </div>
         </div>
-    </div>
-	
-	
-<div id="mobile-menu" class="xl:hidden hidden py-3 px-4 shadow-lg border-t border-white border-opacity-20" style="background: #707070;">
-    <div class="flex flex-col space-y-2">
-        <a href="index.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Home</a>
-        <a href="vision.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Vision/Beliefs</a>
-        <a href="team.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">The Team</a>
-        
-        <!-- Recovery Dropdown -->
-        <div>
-            <button onclick="toggleMobileDropdown()" class="text-white hover:text-gray-200 font-semibold w-full text-left py-2 px-3 rounded flex justify-between items-center transition">
-                Our Services
-                <svg id="mobile-dropdown-arrow" class="w-4 h-4 transition-transform duration-200" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
-                </svg>
-            </button>
-            <div id="mobile-dropdown" class="hidden mt-2 space-y-1 ml-3">
-                <a href="hopeforrecovery.html#structured-courses" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Hope for Recovery</a>
-                <a href="keywork.html" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Key Work</a>
-                <a href="walktalk.html" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Walk & Talk Group</a>
-                <a href="streetoutreach.html" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Street Outreach</a>
-                <a href="cafe.html" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Community Café</a>
-                <a href="rehab.html" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Rehab Referrals</a>
-                <a href="schools.html" class="block py-2 px-3 text-white hover:text-gray-200 transition rounded">Schools Program</a>
-            </div>
-        </div>
-        
-        <a href="stories.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Stories of Hope</a>
-        <a href="getinvolved.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Get Involved</a>
-        <a href="videos.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Videos</a>
-        <a href="contact.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Find/Contact</a>
-        <a href="https://donorbox.org/hope-community-church-donor-page" target="_blank" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-6 rounded-full transition duration-300 shadow-md">❤️ Donate</a>
-            </div>
-</div>
-</header>
+    </header>
+
     <div class="live-badge" id="liveBadge" onclick="openLiveStream()">
         <span class="pulse"></span> LIVE: Sunday Service
     </div>
 
-<section class="hero section-divider-scalloped">
-    <div class="container">
-        <h1>Hope for Our Community.<br>Two Ministries - One Mission </h1>
-        <p>Two powerful ministries—Hope Community Church and Hope for Recovery—united by one mission: to bring hope to our community. Through outreach, schools ministry, a welcoming drop-in cafe, and more, we're building a hub where everyone belongs.</p>
-    </div>
-</section>
-
-<!-- Updated About/Welcome Section -->
-<section class="section" id="about">
-    <div class="container welcome-grid">
-        <div class="welcome-image">
-            <img src="images/hero banner.jpeg" alt="Welcome to Hope Community Church" style="width:100%; border-radius:10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+    <!-- Hero Section -->
+    <section class="hero section-divider-scalloped">
+        <div class="container">
+            <h1>Hope for Our Community.<br>Two Ministries - One Mission</h1>
+            <p>Two powerful ministries—Hope Community Church and Hope for Recovery—united by one mission: to bring hope to our community. Through outreach, schools ministry, a welcoming drop-in cafe, and more, we're building a hub where everyone belongs.</p>
         </div>
-        <div class="welcome-text">
-            <h2>Welcome to Hope Community Church Clydebank</h2>
-            <p>HCC is part of the Apostolic Church Network (ACUK). We meet every Sunday for praise & worship and Wednesday evening for fortnightly prayer & Bible Studies, as well as our community projects throughout the week.</p>
-            <p>We hold steadfast to the truth of God's word & believe in meeting people right where they are—whether you're exploring faith, seeking community, or need support through life's challenges. Our doors are open to all, no matter your background or current circumstances.</p>
-        </div>
-    </div>
-</section>
+    </section>
 
-Here is the updated HTML section with the detailed history you provided, replacing the previous placeholder text.
-```html
-<section class="section section-accent" id="history">
-    <div class="container about-grid">
-        <div class="about-text">
-            <h2>Our History</h2>
-            <p><strong>Hope Community Church</strong> is a name change of <strong>Park Christian Fellowship</strong>, which has been serving the community of Clydebank and Christ since <strong>28th October 1995</strong> at 30 Shelley Drive, Parkhall, Clydebank.</p>
-
-            <p>Park Christian Fellowship was itself a coming together of two Clydebank churches: <strong>The Bethel Church</strong> located in Faifley and <strong>The Apostolic Church</strong> of Green Street, Clydebank. The building in Faifley burned down, probably due to an electrical failure, and the building in Green Street needed much remedial work. Since both churches had similar hearts for service and worship, it was agreed that they should merge and become one church as part of The Apostolic Church UK. The people initially met in a primary school in Faifley, and then when The Brethren Victoria Hall at 30 Shelley Drive became available due to the hall closing because of falling numbers, the building was purchased at market value. The church located there as <strong>Park Christian Fellowship</strong>.</p>
-
-            <p>The name change to <strong>Hope Community Church</strong> came out of a sense that the church should seek to try to bring more hope back into the heart of the community of Clydebank. That’s our aim and purpose to date: that through any means possible we can offer hope to everybody and anybody we can. This we do through our <strong>Sunday worship service</strong>, <strong>Monday Hope for Recovery meetings</strong>, <strong>Wednesday 1-to-1 support service & Community walk & talk group</strong>, and <strong>Friday Community café and foodbank</strong>.</p>
+    <!-- Welcome Section -->
+    <section class="section" id="about">
+        <div class="container welcome-grid">
+            <div class="welcome-image">
+                <img src="images/hero banner.jpeg" alt="Welcome to Hope Community Church" style="width:100%; border-radius:10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+            </div>
+            <div class="welcome-text">
+                <h2>Welcome to Hope Community Church Clydebank</h2>
+                <p>HCC is part of the Apostolic Church Network (ACUK). We meet every Sunday for praise & worship and Wednesday evening for fortnightly prayer & Bible Studies, as well as our community projects throughout the week.</p>
+                <p>We hold steadfast to the truth of God's word & believe in meeting people right where they are—whether you're exploring faith, seeking community, or need support through life's challenges. Our doors are open to all, no matter your background or current circumstances.</p>
+            </div>
         </div>
-        <div>
-            <img src="images/history1.jpeg" alt="Church history - Hope Community Church Clydebank" style="width:100%; border-radius:10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-        </div>
-    </div>
-</section>
-```
+    </section>
 
-<!-- What to Expect Section - UPDATED -->
-<section class="section" id="what-to-expect">
-    <div class="container what-to-expect-grid">
-        <div class="what-to-expect-image">
-            <img src="images/who we are.png" alt="Worship at Hope Community Church" style="width:100%; border-radius:10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+    <!-- History Section -->
+    <section class="section section-accent" id="history">
+        <div class="container about-grid">
+            <div class="about-text">
+                <h2>Our History</h2>
+                <p><strong>Hope Community Church</strong> is a name change of <strong>Park Christian Fellowship</strong>, which has been serving the community of Clydebank and Christ since <strong>28th October 1995</strong> at 30 Shelley Drive, Parkhall, Clydebank.</p>
+                <p>Park Christian Fellowship was itself a coming together of two Clydebank churches: <strong>The Bethel Church</strong> located in Faifley and <strong>The Apostolic Church</strong> of Green Street, Clydebank. The building in Faifley burned down, probably due to an electrical failure, and the building in Green Street needed much remedial work. Since both churches had similar hearts for service and worship, it was agreed that they should merge and become one church as part of The Apostolic Church UK. The people initially met in a primary school in Faifley, and then when The Brethren Victoria Hall at 30 Shelley Drive became available due to the hall closing because of falling numbers, the building was purchased at market value. The church located there as <strong>Park Christian Fellowship</strong>.</p>
+                <p>The name change to <strong>Hope Community Church</strong> came out of a sense that the church should seek to try to bring more hope back into the heart of the community of Clydebank. That's our aim and purpose to date: that through any means possible we can offer hope to everybody and anybody we can. This we do through our <strong>Sunday worship service</strong>, <strong>Monday Hope for Recovery meetings</strong>, <strong>Wednesday 1-to-1 support service & Community walk & talk group</strong>, and <strong>Friday Community café and foodbank</strong>.</p>
+            </div>
+            <div>
+                <img src="images/history1.jpeg" alt="Church history - Hope Community Church Clydebank" style="width:100%; border-radius:10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+            </div>
         </div>
-        <div class="what-to-expect-text">
-            <h2>What to Expect</h2>
-            <p>We are a loving, caring, family church with a relaxed, informal atmosphere. You will find lively, relevant, congregational worship with passionate, practical bible-based preaching.</p>
-            <p>Everyone is welcome regardless of age or background with our kids' zone at the back with arts and crafts. Tea & coffee available from 10:30am before our service at 11am. Service normally lasts around 90 minutes.</p>
-        </div>
-    </div>
-</section>
+    </section>
 
+    <!-- What to Expect Section -->
+    <section class="section" id="what-to-expect">
+        <div class="container what-to-expect-grid">
+            <div class="what-to-expect-image">
+                <img src="images/who we are.png" alt="Worship at Hope Community Church" style="width:100%; border-radius:10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+            </div>
+            <div class="what-to-expect-text">
+                <h2>What to Expect</h2>
+                <p>We are a loving, caring, family church with a relaxed, informal atmosphere. You will find lively, relevant, congregational worship with passionate, practical bible-based preaching.</p>
+                <p>Everyone is welcome regardless of age or background with our kids' zone at the back with arts and crafts. Tea & coffee available from 10:30am before our service at 11am. Service normally lasts around 90 minutes.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section - Fixed Layout -->
     <section class="section section-services" id="services">
         <div class="container">
             <h2 style="text-align: center;">Our Weekly Services</h2>
             <div class="services-grid">
-                <div class="service-card">
-                    <div class="card-inner">
-                        <div class="card-front">
-                            <h3>Sunday Worship Service</h3>
-                            <p><strong>Every Sunday at 11:00 AM</strong></p>
-                            <p>Join us for worship, teaching from the Bible, and fellowship.</p>
-							<p>Tea and coffee served from 10:30 AM.</p>
-                            <p><strong>Location:</strong> 30 Shelley Drive, Clydebank, G81 3EL</p>
-                        </div>
-                        <div class="card-back">
-                            <h3>What to Expect</h3>
-                            <p>Casual atmosphere</p>
-                            <p>Engaging worship</p>
-                            <p>Practical Bible teaching</p>
-                            <p>Friendly people</p>
-                        </div>
-                    </div>
-                </div>
+                <!-- Monday - Hope for Recovery -->
                 <div class="service-card">
                     <div class="card-inner">
                         <div class="card-front">
                             <h3>Hope for Recovery</h3>
                             <p><strong>Monday 11am to 1:30pm</strong></p>
-                            <p>Running weekly 12- wk recovery groups as part of a 2-year community based, faith to freedom, recovery pathway.</p>
-							<p style="margin-top: 15px;">Current group Overcoming temptation offers helpful & practical battle strategies to help build resilience for long-lasting change.</p>
+                            <p>Running weekly 12-wk recovery groups as part of a 2-year community based, faith to freedom, recovery pathway.</p>
+                            <p>Current group "Overcoming Temptation" offers helpful & practical battle strategies to build resilience for lasting change.</p>
                         </div>
                         <div class="card-back">
-                            <h3>Community based recovery</h3>
-                            <p>Safe environment</p>
-                            <p>Peer support</p>
-                            <p>Trained volunteers</p>
-                            <p>Everyone welcome</p>
+                            <h3>Community Recovery</h3>
+                            <p>✓ Safe environment</p>
+                            <p>✓ Peer support</p>
+                            <p>✓ Trained volunteers</p>
+                            <p>✓ Everyone welcome</p>
                         </div>
                     </div>
                 </div>
+                
+                <!-- Wednesday Morning - Walk & Talk -->
                 <div class="service-card">
                     <div class="card-inner">
                         <div class="card-front">
-                            <h3>Community Cafe & Emergency foodbank</h3>
-                            <p><strong>Fridays 12pm to 2pm</strong></p>
-                            <p>A warm, friendly hub to catch up with existing friends or meet new ones. Free homemade soup, pasties & beans, and tea/coffee available.  Everyone welcome, no referral required.</p>
+                            <h3>Walk & Talk Group</h3>
+                            <p><strong>Every Wednesday at 11:00 AM</strong></p>
+                            <p>Join us for a relaxing community walk, whether you're looking to get fit or seeking support and friendship.</p>
+                            <p>Meet at the church, enjoy a gentle walk together, then return for light refreshments.</p>
+                            <p><strong>Location:</strong> 30 Shelley Drive, Clydebank</p>
                         </div>
                         <div class="card-back">
-                            <h3>Free Food</h3>
-                            <p>Pool competitions</p>
-                            <p>Friendly welcome</p>
-                            <p>Support</p>
-                            <p>Foodbank</p>
+                            <h3>What to Expect</h3>
+                            <p>✓ Gentle community walk</p>
+                            <p>✓ Supportive atmosphere</p>
+                            <p>✓ Friendly conversation</p>
+                            <p>✓ Refreshments after</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Wednesday Evening - Bible Study -->
+                <div class="service-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <h3>Wednesday Bible Study</h3>
+                            <p><strong>Every Wednesday 6:30pm – 8:00pm</strong></p>
+                            <p>Join us midweek as we dive deeper into God's word in a relaxed, conversational setting.</p>
+                            <p>A great opportunity to ask questions, grow in faith, and connect with others.</p>
+                            <p><strong>Location:</strong> 30 Shelley Drive, Clydebank</p>
+                        </div>
+                        <div class="card-back">
+                            <h3>What to Expect</h3>
+                            <p>✓ Interactive discussion</p>
+                            <p>✓ Verse-by-verse study</p>
+                            <p>✓ Prayer & fellowship</p>
+                            <p>✓ All are welcome</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Thursday - Street Soccer -->
+                <div class="service-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <h3>Street Soccer Drop-In</h3>
+                            <p><strong>Every Thursday 12pm – 1:30pm</strong></p>
+                            <p>Join us for a friendly kickabout at Holm Park. All skill levels welcome — whether you're a seasoned player or just want some fresh air and exercise.</p>
+                            <p>A great way to stay active, meet new people, and be part of a supportive community.</p>
+                            <p><strong>Location:</strong> Holm Park, Clydebank</p>
+                        </div>
+                        <div class="card-back">
+                            <h3>What to Expect</h3>
+                            <p>✓ Friendly kickabout</p>
+                            <p>✓ All skill levels welcome</p>
+                            <p>✓ Supportive atmosphere</p>
+                            <p>✓ Stay active & connect</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Friday - Community Cafe -->
+                <div class="service-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <h3>Community Cafe & Foodbank</h3>
+                            <p><strong>Fridays 12pm to 2pm</strong></p>
+                            <p>A warm, friendly hub to catch up with existing friends or meet new ones. Free homemade soup, pasties & beans, and tea/coffee available. Everyone welcome, no referral required.</p>
+                        </div>
+                        <div class="card-back">
+                            <h3>Free Services</h3>
+                            <p>✓ Homemade soup & snacks</p>
+                            <p>✓ Pool competitions</p>
+                            <p>✓ Friendly welcome</p>
+                            <p>✓ Emergency foodbank</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sunday - Worship Service -->
+                <div class="service-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <h3>Sunday Worship Service</h3>
+                            <p><strong>Every Sunday at 11:00 AM</strong></p>
+                            <p>Join us for worship, teaching from the Bible, and fellowship. Tea and coffee served from 10:30 AM.</p>
+                            <p><strong>Location:</strong> 30 Shelley Drive, Clydebank</p>
+                        </div>
+                        <div class="card-back">
+                            <h3>What to Expect</h3>
+                            <p>✓ Casual atmosphere</p>
+                            <p>✓ Engaging worship</p>
+                            <p>✓ Practical Bible teaching</p>
+                            <p>✓ Friendly people</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-	
-<!-- Skip a Coffee – Support Recovery Section -->
-<section class="section section-alt" style="background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);">
-    <div class="container" style="text-align: center;">
-        <div class="skip-coffee-content" style="max-width: 700px; margin: 0 auto;">
-            <div style="font-size: 3rem; margin-bottom: 1rem;">☕</div>
-            <h2 style="color: white; margin-bottom: 1rem;">Skip a Coffee – Support Recovery</h2>
-            <p style="color: rgba(255, 255, 255, 0.95); font-size: 1.1rem; margin-bottom: 1.5rem; line-height: 1.6;">
-                At Hope for Recovery, we believe that big changes often start with small moments.
-            </p>
-            <p style="color: rgba(255, 255, 255, 0.9); font-size: 1rem; margin-bottom: 1.5rem;">
-                Would you consider donating the price of a daily coffee to Hope for Recovery by becoming one of our monthly donors or as a one-off gift to help sustain and develop our community-based recovery and schools program?
-            </p>
-            <p style="color: rgba(255, 255, 255, 0.85); font-size: 1rem; margin-bottom: 2rem; font-style: italic;">
-                Thank you for partnering with us — together we can make a difference.
-            </p>
-            <a href="https://buymeacoffee.com/hopecommunitychurch" target="_blank" class="btn" style="background-color: #FFDD00; color: #333; border: none; font-weight: bold; padding: 14px 40px; font-size: 1.2rem; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: transform 0.3s ease, box-shadow 0.3s ease;">
-                <span>☕</span> Donate Today
-                <span>→</span>
-            </a>
-            <p style="color: rgba(255, 255, 255, 0.5); font-size: 0.75rem; margin-top: 1.5rem;">
-                Every donation goes directly to Hope for Recovery programs
-            </p>
+
+    <!-- Skip a Coffee Section -->
+    <section class="section section-alt" style="background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);">
+        <div class="container" style="text-align: center;">
+            <div class="skip-coffee-content" style="max-width: 700px; margin: 0 auto;">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">☕</div>
+                <h2 style="color: white; margin-bottom: 1rem;">Skip a Coffee – Support Recovery</h2>
+                <p style="color: rgba(255, 255, 255, 0.95); font-size: 1.1rem; margin-bottom: 1.5rem; line-height: 1.6;">
+                    At Hope for Recovery, we believe that big changes often start with small moments.
+                </p>
+                <p style="color: rgba(255, 255, 255, 0.9); font-size: 1rem; margin-bottom: 1.5rem;">
+                    Would you consider donating the price of a daily coffee to Hope for Recovery by becoming one of our monthly donors or as a one-off gift to help sustain and develop our community-based recovery and schools program?
+                </p>
+                <p style="color: rgba(255, 255, 255, 0.85); font-size: 1rem; margin-bottom: 2rem; font-style: italic;">
+                    Thank you for partnering with us — together we can make a difference.
+                </p>
+                <a href="https://buymeacoffee.com/hopecommunitychurch" target="_blank" class="btn" style="background-color: #FFDD00; color: #333; border: none; font-weight: bold; padding: 14px 40px; font-size: 1.2rem; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                    <span>☕</span> Donate Today
+                    <span>→</span>
+                </a>
+                <p style="color: rgba(255, 255, 255, 0.5); font-size: 0.75rem; margin-top: 1.5rem;">
+                    Every donation goes directly to Hope for Recovery programs
+                </p>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-
-<section class="section section-contact" id="contact">
-    <div class="container">
-        <h2>Connect with Us</h2>
-        <div class="social-icons-container">
-            <a href="https://www.instagram.com/hopecommunitychurchclydebank/" target="_blank" class="social-icon instagram" aria-label="Instagram">
-                <svg viewBox="0 0 24 24" width="32" height="32">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1112.324 0 6.162 6.162 0 01-12.324 0zM12 16a4 4 0 110-8 4 4 0 010 8zm4.965-10.405a1.44 1.44 0 112.881.001 1.44 1.44 0 01-2.881-.001z"/>
-                </svg>
-                <span class="sr-only">Instagram</span>
-            </a>
-            
-            <a href="https://www.facebook.com/profile.php?id=61581172410948" target="_blank" class="social-icon facebook" aria-label="Facebook">
-                <svg viewBox="0 0 24 24" width="32" height="32">
-                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                </svg>
-                <span class="sr-only">Facebook</span>
-            </a>
-            
-            <a href="https://www.tiktok.com/@hopechurchclydebank" target="_blank" class="social-icon tiktok" aria-label="TikTok">
-                <svg viewBox="0 0 24 24" width="32" height="32">
-                    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
-                </svg>
-                <span class="sr-only">TikTok</span>
-            </a>
+    <!-- Connect Section -->
+    <section class="section section-contact" id="contact">
+        <div class="container">
+            <h2>Connect with Us</h2>
+            <div class="social-icons-container">
+                <a href="https://www.instagram.com/hopecommunitychurchclydebank/" target="_blank" class="social-icon instagram" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" width="32" height="32">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1112.324 0 6.162 6.162 0 01-12.324 0zM12 16a4 4 0 110-8 4 4 0 010 8zm4.965-10.405a1.44 1.44 0 112.881.001 1.44 1.44 0 01-2.881-.001z"/>
+                    </svg>
+                    <span class="sr-only">Instagram</span>
+                </a>
+                
+                <a href="https://www.facebook.com/profile.php?id=61581172410948" target="_blank" class="social-icon facebook" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24" width="32" height="32">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                    <span class="sr-only">Facebook</span>
+                </a>
+                
+                <a href="https://www.tiktok.com/@hopechurchclydebank" target="_blank" class="social-icon tiktok" aria-label="TikTok">
+                    <svg viewBox="0 0 24 24" width="32" height="32">
+                        <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                    </svg>
+                    <span class="sr-only">TikTok</span>
+                </a>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-
-
+    <!-- Footer -->
     <footer>
         <div class="container">
             <p>Hope Community Church Clydebank</p>
@@ -1669,7 +1723,7 @@ Here is the updated HTML section with the detailed history you provided, replaci
                 <a href="#" onclick="openPrayerForm()">Prayer</a>
             </div>
             <p>Part of The Apostolic Church network</p>
-			<p>Scottish Charity Number: SC054414</p>
+            <p>Scottish Charity Number: SC054414</p>
             <p>&copy; <span id="year"></span> Hope Community Church. All rights reserved.</p>
         </div>
     </footer>
@@ -1691,323 +1745,226 @@ Here is the updated HTML section with the detailed history you provided, replaci
         <div class="modal-content" style="max-width: 600px; padding: 20px;">
             <span class="close-modal" onclick="closeDonorboxModal()">&times;</span>
             <h3 style="text-align: center; margin-bottom: 20px;">Support Our Church</h3>
-            <div id="donorboxWidget">
-                <!-- DonorBox iframe will be loaded here -->
-            </div>
-        </div>
-    </div>
-    
-    <!-- Directions Modal -->
-    <div id="directionsModal" class="directions-modal" style="display: none;">
-        <div class="directions-modal-content">
-            <span class="close-directions-modal" onclick="closeDirectionsModal()">&times;</span>
-            <h3>Get Directions</h3>
-            <p>Choose how you'd like to get directions to our church:</p>
-            
-            <button class="directions-option-btn" onclick="openGoogleMapsDirections()">
-                <strong>Open in Google Maps</strong><br>
-                <small>Get turn-by-turn navigation on your device</small>
-            </button>
-            
-            <button class="directions-option-btn" onclick="openAppleMapsDirections()">
-                <strong>Open in Apple Maps</strong><br>
-                <small>For iPhone and Mac users</small>
-            </button>
-            
-            <button class="directions-option-btn" onclick="showPublicTransportInfo()">
-                <strong>Public Transport Options</strong><br>
-                <small>View bus and train routes</small>
-            </button>
+            <div id="donorboxWidget"></div>
         </div>
     </div>
 
-<script>
-    // SIMPLER APPROACH - No body scroll locking
-    const menuToggle = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
 
-    if (menuToggle && mobileMenu) {
-        menuToggle.addEventListener('click', function() {
-            menuToggle.classList.toggle('active');
-            mobileMenu.classList.toggle('hidden');
-        });
-    }
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', function() {
+                menuToggle.classList.toggle('active');
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
 
-    // Close menu when clicking on a mobile nav link
-    const mobileNavLinks = document.querySelectorAll('#mobile-menu a');
-    mobileNavLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            if (menuToggle) menuToggle.classList.remove('active');
-            if (mobileMenu) mobileMenu.classList.add('hidden');
-        });
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', function(event) {
-        if (window.innerWidth <= 768 && mobileMenu && !mobileMenu.classList.contains('hidden')) {
-            const isClickInsideMenu = mobileMenu.contains(event.target);
-            const isClickOnToggle = menuToggle ? menuToggle.contains(event.target) : false;
-            
-            if (!isClickInsideMenu && !isClickOnToggle) {
+        // Close menu when clicking on a mobile nav link
+        const mobileNavLinks = document.querySelectorAll('#mobile-menu a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', function() {
                 if (menuToggle) menuToggle.classList.remove('active');
                 if (mobileMenu) mobileMenu.classList.add('hidden');
-            }
-        }
-    });
-
-    // Mobile dropdown toggle function
-    function toggleMobileDropdown() {
-        const dropdown = document.getElementById('mobile-dropdown');
-        const arrow = document.getElementById('mobile-dropdown-arrow');
-        
-        if (dropdown) {
-            if (dropdown.classList.contains('hidden')) {
-                dropdown.classList.remove('hidden');
-                if (arrow) arrow.style.transform = 'rotate(180deg)';
-            } else {
-                dropdown.classList.add('hidden');
-                if (arrow) arrow.style.transform = 'rotate(0deg)';
-            }
-        }
-    }
-
-    // Keep all your existing functions (these remain unchanged)
-    // Testimonial gallery
-    function showTestimonial(index) {
-        const testimonials = document.querySelectorAll('.testimonial');
-        const dots = document.querySelectorAll('.dot');
-        
-        testimonials.forEach(testimonial => testimonial.classList.remove('active'));
-        dots.forEach(dot => dot.classList.remove('active'));
-        
-        testimonials[index].classList.add('active');
-        dots[index].classList.add('active');
-    }
-
-    // Auto-rotate testimonials
-    let testimonialIndex = 0;
-    setInterval(() => {
-        testimonialIndex = (testimonialIndex + 1) % 3;
-        showTestimonial(testimonialIndex);
-    }, 5000);
-
-    // Image carousel
-    let currentCarouselImage = 0;
-    
-    function showCarouselImage(index) {
-        const carouselImages = document.querySelector('.carousel-images');
-        const dots = document.querySelectorAll('.carousel-dot');
-        
-        currentCarouselImage = index;
-        carouselImages.style.transform = `translateX(-${index * 33.333}%)`;
-        
-        dots.forEach(dot => dot.classList.remove('active'));
-        dots[index].classList.add('active');
-    }
-    
-    // Auto-rotate carousel
-    setInterval(() => {
-        currentCarouselImage = (currentCarouselImage + 1) % 3;
-        showCarouselImage(currentCarouselImage);
-    }, 4000);
-
-    // Prayer form modal
-    function openPrayerForm() {
-        document.getElementById('prayerForm').style.display = 'block';
-    }
-
-    function closeModal() {
-        document.getElementById('prayerForm').style.display = 'none';
-        closeDonorboxModal();
-    }
-
-    // DonorBox Modal Functions
-    function openDonorboxModal() {
-        const modal = document.getElementById('donorboxModal');
-        const widgetContainer = document.getElementById('donorboxWidget');
-        
-        widgetContainer.innerHTML = '';
-        
-        const iframe = document.createElement('iframe');
-        iframe.src = 'https://donorbox.org/embed/donate-a-coffee?';
-        iframe.name = 'donorbox';
-        iframe.allowPaymentRequest = true;
-        iframe.setAttribute('frameborder', '0');
-        iframe.scrolling = 'yes';
-        iframe.height = '80vh';
-        iframe.width = '100%';
-        iframe.style = 'width:100%; height:80vh; max-width: 600px; min-width: 250px; border: 0;';
-        iframe.allow = 'payment';
-        
-        widgetContainer.appendChild(iframe);
-        modal.style.display = 'block';
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeDonorboxModal() {
-        document.getElementById('donorboxModal').style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }
-
-    // Handle form submission
-    const prayerForm = document.getElementById('prayerRequestForm');
-    if (prayerForm) {
-        prayerForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const form = e.target;
-            const formData = new FormData(form);
-
-            fetch(form.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            }).then(response => {
-                if (response.ok) {
-                    alert('Thank you for your prayer request. Our team will pray for you this week.');
-                    form.reset();
-                    closeModal();
-                } else {
-                    alert('There was an error submitting your request. Please try again.');
-                }
-            }).catch(error => {
-                alert('There was an error submitting your request. Please try again.');
-                console.error('Error:', error);
             });
         });
-    }
 
-    // Set current year in footer
-    const yearElement = document.getElementById('year');
-    if (yearElement) {
-        yearElement.textContent = new Date().getFullYear();
-    }
-
-    // Live badge functionality
-    function openLiveStream() {
-        window.open('https://www.youtube.com/@HopeCommunityChurchClydebank', '_blank');
-    }
-
-    // Show live badge during Sunday service hours
-    function checkLiveStatus() {
-        const now = new Date();
-        const day = now.getDay();
-        const hour = now.getHours();
-        const liveBadge = document.getElementById('liveBadge');
-        
-        if (liveBadge) {
-            if (day === 0 && hour >= 10 && hour < 13) {
-                liveBadge.style.display = 'block';
-            } else {
-                liveBadge.style.display = 'none';
-            }
-        }
-    }
-
-    // Countdown to next Sunday service
-    function updateCountdown() {
-        const now = new Date();
-        const day = now.getDay();
-        const nextSunday = new Date(now);
-        
-        let daysUntilSunday = 7 - day;
-        if (day === 0) {
-            if (now.getHours() >= 13) {
-                daysUntilSunday = 7;
-            } else {
-                daysUntilSunday = 0;
-            }
-        }
-        
-        nextSunday.setDate(now.getDate() + daysUntilSunday);
-        nextSunday.setHours(11, 0, 0, 0);
-        
-        const diff = nextSunday - now;
-        
-        if (diff <= 0) {
-            return;
-        }
-        
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    }
-
-    // Initialize functions
-    checkLiveStatus();
-    updateCountdown();
-    setInterval(updateCountdown, 60000);
-    setInterval(checkLiveStatus, 60000);
-
-    // Close modal if clicked outside
-    window.onclick = function(event) {
-        const prayerModal = document.getElementById('prayerForm');
-        const donorboxModal = document.getElementById('donorboxModal');
-        
-        if (event.target === prayerModal) {
-            closeModal();
-        }
-        if (event.target === donorboxModal) {
-            closeDonorboxModal();
-        }
-    }
-
-    // Simple authentication simulation
-    function checkAuthStatus() {
-        const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
-        const authLink = document.getElementById('authLink');
-        
-        if (authLink) {
-            if (isLoggedIn) {
-                authLink.textContent = 'Profile';
-                authLink.href = 'profile.html';
-                authLink.className = 'profile-link';
-            } else {
-                authLink.textContent = 'Login';
-                authLink.href = 'login.html';
-                authLink.className = 'login-link';
-            }
-        }
-    }
-
-    checkAuthStatus();
-
-    // Dropdown for touch devices
-    const dropdownParent = document.querySelector('nav .relative');
-    if (dropdownParent) {
-        dropdownParent.addEventListener('click', function(e) {
-            if (window.innerWidth <= 1024) {
-                const dropdown = this.querySelector('.absolute');
-                const isOpen = dropdown.style.visibility === 'visible';
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (window.innerWidth <= 768 && mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                const isClickInsideMenu = mobileMenu.contains(event.target);
+                const isClickOnToggle = menuToggle ? menuToggle.contains(event.target) : false;
                 
-                document.querySelectorAll('nav .relative .absolute').forEach(drop => {
-                    drop.style.opacity = '0';
-                    drop.style.visibility = 'hidden';
-                });
-                
-                if (!isOpen) {
-                    dropdown.style.opacity = '1';
-                    dropdown.style.visibility = 'visible';
-                    e.stopPropagation();
-                } else {
-                    dropdown.style.opacity = '0';
-                    dropdown.style.visibility = 'hidden';
+                if (!isClickInsideMenu && !isClickOnToggle) {
+                    if (menuToggle) menuToggle.classList.remove('active');
+                    if (mobileMenu) mobileMenu.classList.add('hidden');
                 }
             }
         });
-    }
 
-    document.addEventListener('click', function(e) {
-        if (window.innerWidth <= 1024) {
-            if (!e.target.closest('nav .relative')) {
-                document.querySelectorAll('nav .relative .absolute').forEach(dropdown => {
-                    dropdown.style.opacity = '0';
-                    dropdown.style.visibility = 'hidden';
-                });
+        // Mobile dropdown toggle function
+        function toggleMobileDropdown() {
+            const dropdown = document.getElementById('mobile-dropdown');
+            const arrow = document.getElementById('mobile-dropdown-arrow');
+            
+            if (dropdown) {
+                if (dropdown.classList.contains('hidden')) {
+                    dropdown.classList.remove('hidden');
+                    if (arrow) arrow.style.transform = 'rotate(180deg)';
+                } else {
+                    dropdown.classList.add('hidden');
+                    if (arrow) arrow.style.transform = 'rotate(0deg)';
+                }
             }
         }
-    });
-</script>
+
+        // Prayer form modal
+        function openPrayerForm() {
+            document.getElementById('prayerForm').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('prayerForm').style.display = 'none';
+            closeDonorboxModal();
+        }
+
+        // DonorBox Modal Functions
+        function openDonorboxModal() {
+            const modal = document.getElementById('donorboxModal');
+            const widgetContainer = document.getElementById('donorboxWidget');
+            
+            widgetContainer.innerHTML = '';
+            
+            const iframe = document.createElement('iframe');
+            iframe.src = 'https://donorbox.org/embed/donate-a-coffee?';
+            iframe.name = 'donorbox';
+            iframe.allowPaymentRequest = true;
+            iframe.setAttribute('frameborder', '0');
+            iframe.scrolling = 'yes';
+            iframe.height = '80vh';
+            iframe.width = '100%';
+            iframe.style = 'width:100%; height:80vh; max-width: 600px; min-width: 250px; border: 0;';
+            iframe.allow = 'payment';
+            
+            widgetContainer.appendChild(iframe);
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDonorboxModal() {
+            document.getElementById('donorboxModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Handle form submission
+        const prayerForm = document.getElementById('prayerRequestForm');
+        if (prayerForm) {
+            prayerForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const form = e.target;
+                const formData = new FormData(form);
+
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                }).then(response => {
+                    if (response.ok) {
+                        alert('Thank you for your prayer request. Our team will pray for you this week.');
+                        form.reset();
+                        closeModal();
+                    } else {
+                        alert('There was an error submitting your request. Please try again.');
+                    }
+                }).catch(error => {
+                    alert('There was an error submitting your request. Please try again.');
+                    console.error('Error:', error);
+                });
+            });
+        }
+
+        // Set current year in footer
+        const yearElement = document.getElementById('year');
+        if (yearElement) {
+            yearElement.textContent = new Date().getFullYear();
+        }
+
+        // Live badge functionality
+        function openLiveStream() {
+            window.open('https://www.youtube.com/@HopeCommunityChurchClydebank', '_blank');
+        }
+
+        // Show live badge during Sunday service hours
+        function checkLiveStatus() {
+            const now = new Date();
+            const day = now.getDay();
+            const hour = now.getHours();
+            const liveBadge = document.getElementById('liveBadge');
+            
+            if (liveBadge) {
+                if (day === 0 && hour >= 10 && hour < 13) {
+                    liveBadge.style.display = 'block';
+                } else {
+                    liveBadge.style.display = 'none';
+                }
+            }
+        }
+
+        function updateCountdown() {
+            const now = new Date();
+            const day = now.getDay();
+            const nextSunday = new Date(now);
+            
+            let daysUntilSunday = 7 - day;
+            if (day === 0) {
+                if (now.getHours() >= 13) {
+                    daysUntilSunday = 7;
+                } else {
+                    daysUntilSunday = 0;
+                }
+            }
+            
+            nextSunday.setDate(now.getDate() + daysUntilSunday);
+            nextSunday.setHours(11, 0, 0, 0);
+        }
+
+        // Initialize functions
+        checkLiveStatus();
+        updateCountdown();
+        setInterval(updateCountdown, 60000);
+        setInterval(checkLiveStatus, 60000);
+
+        // Close modal if clicked outside
+        window.onclick = function(event) {
+            const prayerModal = document.getElementById('prayerForm');
+            const donorboxModal = document.getElementById('donorboxModal');
+            
+            if (event.target === prayerModal) {
+                closeModal();
+            }
+            if (event.target === donorboxModal) {
+                closeDonorboxModal();
+            }
+        }
+
+        // Dropdown for touch devices
+        const dropdownParent = document.querySelector('nav .relative');
+        if (dropdownParent) {
+            dropdownParent.addEventListener('click', function(e) {
+                if (window.innerWidth <= 1024) {
+                    const dropdown = this.querySelector('.absolute');
+                    const isOpen = dropdown.style.visibility === 'visible';
+                    
+                    document.querySelectorAll('nav .relative .absolute').forEach(drop => {
+                        drop.style.opacity = '0';
+                        drop.style.visibility = 'hidden';
+                    });
+                    
+                    if (!isOpen) {
+                        dropdown.style.opacity = '1';
+                        dropdown.style.visibility = 'visible';
+                        e.stopPropagation();
+                    } else {
+                        dropdown.style.opacity = '0';
+                        dropdown.style.visibility = 'hidden';
+                    }
+                }
+            });
+        }
+
+        document.addEventListener('click', function(e) {
+            if (window.innerWidth <= 1024) {
+                if (!e.target.closest('nav .relative')) {
+                    document.querySelectorAll('nav .relative .absolute').forEach(dropdown => {
+                        dropdown.style.opacity = '0';
+                        dropdown.style.visibility = 'hidden';
+                    });
+                }
+            }
+        });
+    </script>
 </body>
 </html>
