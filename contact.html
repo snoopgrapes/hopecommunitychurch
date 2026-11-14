@@ -2,8 +2,19 @@
 <html lang="en-GB">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Find & Contact | Hope Community Church Clydebank</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find &amp; Contact Us | Hope Community Church Clydebank</title>
+    <meta name="description" content="Find us at 30 Shelley Drive, Clydebank G81 3EL. Call 07745 393649 or email info@hopecommunity-church.co.uk. Wheelchair accessible, with free parking nearby.">
+    <link rel="canonical" href="https://www.hopecommunity-church.co.uk/contact.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:site_name" content="Hope Community Church Clydebank">
+    <meta property="og:title" content="Find &amp; Contact Us | Hope Community Church Clydebank">
+    <meta property="og:description" content="Find us at 30 Shelley Drive, Clydebank G81 3EL. Call 07745 393649 or email info@hopecommunity-church.co.uk. Wheelchair accessible, with free parking nearby.">
+    <meta property="og:url" content="https://www.hopecommunity-church.co.uk/contact.html">
+    <meta property="og:image" content="https://www.hopecommunity-church.co.uk/images/church1.webp">
+    <meta property="og:image:alt" content="Hope Community Church Clydebank, 30 Shelley Drive">
+    <meta name="twitter:card" content="summary_large_image">
 
     <!-- Favicon links (consistent with existing site) -->
     <link rel="icon" type="image/x-icon" href="icons/favicon.ico">
@@ -12,7 +23,6 @@
     <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
 
     <!-- Fonts & Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     
     <style>
@@ -557,8 +567,12 @@
     }
 }
     </style>
+    <link rel="stylesheet" href="css/tailwind.css">
+    <link rel="stylesheet" href="css/site.css">
+    <!-- ANALYTICS: paste your analytics snippet here. See SETUP-NOTES.md -->
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
 <!-- Announcement Bar - EXACTLY matching index.html -->
 <div class="bg-gray-800 text-white py-2 px-4">
@@ -597,7 +611,7 @@
             </div>
             
             <!-- Center Navigation -->
-            <nav class="hidden xl:flex items-center space-x-1">
+            <nav aria-label="Main" class="hidden xl:flex items-center space-x-1">
                 <a href="index.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Home</a>
                 <a href="vision.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Vision/Beliefs</a>
                 <a href="team.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">The Team</a>
@@ -620,7 +634,7 @@
                 <a href="getinvolved.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Get Involved</a>
                 <a href="videos.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Videos</a>
                 <a href="contact.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Find/Contact</a>
-                <a href="https://donorbox.org/hope-community-church-donor-page" target="_blank" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-6 rounded-full transition duration-300 shadow-md">❤️ Donate</a>
+                <a href="support-us.html" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-6 rounded-full transition duration-300 shadow-md">Support Us</a>
             </nav>
             
             <!-- Right Logo and Mobile Menu Button -->
@@ -628,7 +642,7 @@
                 <div class="hidden xl:block">
                     <img src="images/hfrlogo.png" alt="Hope for Recovery Logo" class="logo-img" onerror="this.style.display='none'">
                 </div>
-                <button id="mobile-menu-button" class="xl:hidden text-white hover:text-gray-200 focus:outline-none transition">
+                <button id="mobile-menu-button" aria-label="Open menu" aria-controls="mobile-menu" class="xl:hidden text-white hover:text-gray-200 focus:outline-none transition">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
             </div>
@@ -665,16 +679,18 @@
         <a href="getinvolved.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Get Involved</a>
         <a href="videos.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Videos</a>
         <a href="contact.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Find/Contact</a>
-        <a href="https://donorbox.org/hope-community-church-donor-page" target="_blank" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-6 rounded-full transition duration-300 shadow-md">❤️ Donate</a>
+        <a href="support-us.html" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-6 rounded-full transition duration-300 shadow-md">Support Us</a>
             </div>
 </div>
 </header>
+
+    <main id="main-content" tabindex="-1">
 
 <div class="live-badge" id="liveBadge" onclick="openLiveStream()">
     <span class="pulse"></span> LIVE: Sunday Service
 </div>
 
-<main>
+<div>
     <!-- Hero Section -->
     <section class="hero section-divider-scalloped">
         <div class="container">
@@ -760,13 +776,15 @@
                     <!-- Message Form -->
                     <div class="contact-card p-6 md:p-8">
                         <h3 class="text-2xl font-bold mb-4">Send a Message</h3>
-                        <form id="contact-form" class="space-y-4">
+                        <form id="contact-form" class="space-y-4" action="https://formspree.io/f/xzzjwnkw" method="POST">
+                            <input type="hidden" name="_subject" value="Website enquiry (Contact page)">
+                            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
                             <div class="grid grid-cols-2 gap-3">
-                                <input type="text" placeholder="First Name" class="w-full p-2 border rounded-lg" required>
-                                <input type="text" placeholder="Last Name" class="w-full p-2 border rounded-lg" required>
+                                <input type="text" name="first_name" autocomplete="given-name" aria-label="First name" placeholder="First Name" class="w-full p-2 border rounded-lg" required>
+                                <input type="text" name="last_name" autocomplete="family-name" aria-label="Last name" placeholder="Last Name" class="w-full p-2 border rounded-lg" required>
                             </div>
-                            <input type="email" placeholder="Email" class="w-full p-2 border rounded-lg" required>
-                            <textarea placeholder="Message" rows="4" class="w-full p-2 border rounded-lg" required></textarea>
+                            <input type="email" name="email" autocomplete="email" aria-label="Email address" placeholder="Email" class="w-full p-2 border rounded-lg" required>
+                            <textarea name="message" aria-label="Your message" placeholder="Message" rows="4" class="w-full p-2 border rounded-lg" required></textarea>
                             <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 rounded-lg transition">Send Message</button>
                         </form>
                     </div>
@@ -797,24 +815,28 @@
                 </div>
             </div>
 <div class="mt-10">
-    <a href="https://donorbox.org/hope-community-church-donor-page" target="_blank" class="btn btn-primary">
-        Support Our Ministries ❤️
-    </a>
+    <a href="support-us.html" class="btn btn-primary">
+        Support Our Ministries</a>
 </div>
     </section>
-</main>
+</div>
 
 <!-- Footer -->
-<footer>
+</main>
+
+    <footer>
     <div class="container">
         <p>Hope Community Church Clydebank</p>
         <p>30 Shelley Drive, Clydebank, G81 3EL</p>
         <div class="footer-links">
-            <a href="index.html#services">Services</a>
-            <a href="index.html#recovery">Recovery</a>
-            <a href="find-contact.html">Contact</a>
-            <a href="#" onclick="openPrayerForm()">Prayer</a>
-        </div>
+                <a href="index.html#services">Services</a>
+                <a href="hopeforrecovery.html">Recovery</a>
+                <a href="contact.html">Contact</a>
+                <a href="support-us.html">Support Us</a>
+                <a href="#" onclick="openPrayerForm()">Prayer</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+            </div>
         <p>Part of The Apostolic Church network</p>
         <p>Scottish Charity Number: SC054414</p>
         <p>&copy; <span id="year"></span> Hope Community Church. All rights reserved.</p>
@@ -898,16 +920,48 @@
     // Contact form handler
     document.getElementById('contact-form')?.addEventListener('submit', async function(e) {
         e.preventDefault();
-        alert('Thank you! Someone will be in touch soon.');
-        this.reset();
+        const form = this;
+        const btn = form.querySelector('button[type="submit"]');
+        if (btn) btn.disabled = true;
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+            });
+            if (!response.ok) throw new Error('Form service returned ' + response.status);
+            alert('Thank you! Someone will be in touch soon.');
+            form.reset();
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Sorry, that did not send. Please try again, or call us on 07745 393649.');
+        } finally {
+            if (btn) btn.disabled = false;
+        }
     });
     
     // Prayer form submission
-    document.getElementById('prayerRequestForm')?.addEventListener('submit', function(e) {
+    document.getElementById('prayerRequestForm')?.addEventListener('submit', async function(e) {
         e.preventDefault();
-        alert('Prayer request submitted. God bless you.');
+        const form = this;
+        const btn = form.querySelector('button[type="submit"]');
+        if (btn) btn.disabled = true;
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+            });
+            if (!response.ok) throw new Error('Form service returned ' + response.status);
+            alert('Thank you for your prayer request. Our team will pray for you this week.');
+            form.reset();
         closeModal();
-        this.reset();
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Sorry, that did not send. Please try again, or call us on 07745 393649.');
+        } finally {
+            if (btn) btn.disabled = false;
+        }
     });
     
     // Live badge functionality - EXACTLY matching index.html

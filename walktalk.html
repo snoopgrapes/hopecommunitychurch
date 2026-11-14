@@ -2,8 +2,19 @@
 <html lang="en-GB">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>WalkTalk | Hope for Recovery</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walk &amp; Talk Group Clydebank | Wednesday Community Walk</title>
+    <meta name="description" content="Join our gentle community walk every Wednesday at 11am, followed by refreshments. All welcome. Starts at 30 Shelley Drive, Clydebank.">
+    <link rel="canonical" href="https://www.hopecommunity-church.co.uk/walktalk.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:site_name" content="Hope Community Church Clydebank">
+    <meta property="og:title" content="Walk &amp; Talk Group Clydebank | Wednesday Community Walk">
+    <meta property="og:description" content="Join our gentle community walk every Wednesday at 11am, followed by refreshments. All welcome. Starts at 30 Shelley Drive, Clydebank.">
+    <meta property="og:url" content="https://www.hopecommunity-church.co.uk/walktalk.html">
+    <meta property="og:image" content="https://www.hopecommunity-church.co.uk/images/church1.webp">
+    <meta property="og:image:alt" content="Hope Community Church Clydebank, 30 Shelley Drive">
+    <meta name="twitter:card" content="summary_large_image">
 
     <!-- Favicon links -->
     <link rel="icon" type="image/x-icon" href="icons/favicon.ico">
@@ -12,7 +23,6 @@
     <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
 
     <!-- Fonts & Tailwind -->
-    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     
     <style>
@@ -433,8 +443,12 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="css/tailwind.css">
+    <link rel="stylesheet" href="css/site.css">
+    <!-- ANALYTICS: paste your analytics snippet here. See SETUP-NOTES.md -->
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
 <!-- Announcement Bar -->
 <div class="bg-gray-800 text-white py-2 px-4">
@@ -472,7 +486,7 @@
             </div>
             
            <!-- Center Navigation -->
-            <nav class="hidden xl:flex items-center space-x-1">
+            <nav aria-label="Main" class="hidden xl:flex items-center space-x-1">
                 <a href="index.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Home</a>
                 <a href="vision.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Vision/Beliefs</a>
                 <a href="team.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">The Team</a>
@@ -495,7 +509,7 @@
                 <a href="getinvolved.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Get Involved</a>
                 <a href="videos.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Videos</a>
                 <a href="contact.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Find/Contact</a>
-                <a href="https://donorbox.org/hope-community-church-donor-page" target="_blank" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-6 rounded-full transition duration-300 shadow-md">❤️ Donate</a>
+                <a href="support-us.html" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-6 rounded-full transition duration-300 shadow-md">Support Us</a>
             </nav>
             
             <!-- Right Logo and Mobile Menu Button -->
@@ -503,7 +517,7 @@
                 <div class="hidden xl:block">
                     <img src="images/hfrlogo.png" alt="Hope for Recovery Logo" class="logo-img" onerror="this.style.display='none'">
                 </div>
-                <button id="mobile-menu-button" class="xl:hidden text-white hover:text-gray-200 focus:outline-none transition">
+                <button id="mobile-menu-button" aria-label="Open menu" aria-controls="mobile-menu" class="xl:hidden text-white hover:text-gray-200 focus:outline-none transition">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
             </div>
@@ -540,14 +554,16 @@
         <a href="getinvolved.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Get Involved</a>
         <a href="videos.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Videos</a>
         <a href="contact.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Find/Contact</a>
-        <a href="https://donorbox.org/hope-community-church-donor-page" target="_blank" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-6 rounded-full transition duration-300 shadow-md">❤️ Donate</a>
+        <a href="support-us.html" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-6 rounded-full transition duration-300 shadow-md">Support Us</a>
             </div>
 </div>
 </header>
 
+    <main id="main-content" tabindex="-1">
+
 <div class="live-badge" id="liveBadge" onclick="openLiveStream()"><span class="pulse"></span> LIVE: Sunday Service</div>
 
-<main>
+<div>
     <!-- Hero Section (page-specific) -->
     <section class="hero section-divider-scalloped">
         <div class="container">
@@ -562,11 +578,11 @@
             <div class="section-heading-wrapper"><h2>Walk & Talk Community Group</h2></div>
             <div class="content-grid-photo-right">
                 <div class="content-text">
-                    <p>Open to all the community, whether you're looking to get fit or seeking support, community, or friendship come along and join us for a relaxing walk every Wednesday at 11am.</p><p> We meet & finish at Hope Community Church, Clydebank, 30 Shelly Drive, G81 3EL before enjoying light refreshments together.</p>
+                    <p>Open to all the community, whether you're looking to get fit or seeking support, community, or friendship come along and join us for a relaxing walk every Wednesday at 11am.</p><p> We meet & finish at Hope Community Church, Clydebank, 30 Shelley Drive, G81 3EL before enjoying light refreshments together.</p>
                     
                     <!-- Centered button -->
                     <div style="text-align: center; margin-top: 1.5rem;">
-                        <a href="#contact" class="btn btn-primary">Get in touch</a>
+                        <a href="contact.html" class="btn btn-primary">Get in touch</a>
                     </div>
                 </div>
                 <div><img src="images/walktalk.jpg" alt="Walk and talk group" class="image-rounded" onerror="this.src='images/church_walk.jpg'"></div>
@@ -607,19 +623,24 @@
             </div>
         </div>
     </section>
-</main>
+</div>
 
 <!-- Footer -->
-<footer>
+</main>
+
+    <footer>
     <div class="container">
         <p>Hope Community Church Clydebank</p>
         <p>30 Shelley Drive, Clydebank, G81 3EL</p>
         <div class="footer-links flex justify-center gap-8 my-6 flex-wrap">
-            <a href="hopeforrecovery.html">Services</a>
-            <a href="hopeforrecovery.html">Recovery</a>
-            <a href="contact.html">Contact</a>
-            <a href="#" onclick="openPrayerForm()">Prayer</a>
-        </div>
+                <a href="index.html#services">Services</a>
+                <a href="hopeforrecovery.html">Recovery</a>
+                <a href="contact.html">Contact</a>
+                <a href="support-us.html">Support Us</a>
+                <a href="#" onclick="openPrayerForm()">Prayer</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+            </div>
         <p>Part of The Apostolic Church network</p>
         <p>Scottish Charity Number: SC054414</p>
         <p>&copy; <span id="year"></span> Hope Community Church. All rights reserved.</p>

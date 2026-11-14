@@ -1,9 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Hope Community Church | Clydebank</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hope Community Church Clydebank | Church, Café &amp; Recovery Support</title>
+    <meta name="description" content="A welcoming church in Clydebank with Sunday worship, a Friday community café and foodbank, and Hope for Recovery groups. Everyone welcome. Call 07745 393649.">
+    <link rel="canonical" href="https://www.hopecommunity-church.co.uk/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:site_name" content="Hope Community Church Clydebank">
+    <meta property="og:title" content="Hope Community Church Clydebank | Church, Café &amp; Recovery Support">
+    <meta property="og:description" content="A welcoming church in Clydebank with Sunday worship, a Friday community café and foodbank, and Hope for Recovery groups. Everyone welcome. Call 07745 393649.">
+    <meta property="og:url" content="https://www.hopecommunity-church.co.uk/">
+    <meta property="og:image" content="https://www.hopecommunity-church.co.uk/images/church1.webp">
+    <meta property="og:image:alt" content="Hope Community Church Clydebank, 30 Shelley Drive">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Church",
+  "name": "Hope Community Church Clydebank",
+  "alternateName": "Park Christian Fellowship",
+  "url": "https://www.hopecommunity-church.co.uk/",
+  "logo": "https://www.hopecommunity-church.co.uk/images/logologo.png",
+  "image": "https://www.hopecommunity-church.co.uk/images/church1.webp",
+  "telephone": "+44 7745 393649",
+  "email": "info@hopecommunity-church.co.uk",
+  "foundingDate": "1995-10-28",
+  "description": "A welcoming church and community hub in Clydebank, home to Hope for Recovery, a community café and foodbank, street outreach and a schools programme.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "30 Shelley Drive",
+    "addressLocality": "Clydebank",
+    "postalCode": "G81 3EL",
+    "addressCountry": "GB"
+  },
+  "parentOrganization": {
+    "@type": "Organization",
+    "name": "The Apostolic Church UK"
+  },
+  "sameAs": [
+    "https://www.facebook.com/profile.php?id=61581172410948",
+    "https://www.instagram.com/hopecommunitychurchclydebank/",
+    "https://www.tiktok.com/@hopechurchclydebank"
+  ]
+}
+    </script>
 
     <!-- Favicon links -->
     <link rel="icon" type="image/x-icon" href="icons/favicon.ico">
@@ -16,10 +58,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Poppins:wght@800&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS (added for announcement/navbar compatibility; won't affect custom sections) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- DonorBox Widget Script -->
-    <script src="https://donorbox.org/widget.js" paypalExpress="true"></script>
 
 <style>
 /* Hope Community Church - Silver & White Brand Theme
@@ -1364,9 +1402,43 @@ footer p:first-child {
         text-decoration: underline;
     }
 }
+
+/* ===== Homepage hero actions, banner and support cards ===== */
+.hero { padding-bottom: 75px; }
+.hero-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 10px; }
+.hero-btn { display: inline-block; padding: 13px 28px; border-radius: 50px; font-weight: 700; font-size: 1rem; border: 2px solid #fff; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease; }
+.hero-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 14px rgba(0,0,0,.25); }
+.hero-btn-solid { background: #fff; color: #2D3748; }
+.hero-btn-outline { background: transparent; color: #fff; }
+.hero-btn-outline:hover { background: rgba(255,255,255,.12); }
+.hero-btn-gold { background: #FFDD00; border-color: #FFDD00; color: #1A202C; }
+.grad-banner { background: #2D3748; color: #fff; text-align: center; padding: 12px 16px; font-size: 1rem; }
+.grad-banner p { margin: 0; }
+.grad-banner a { color: #FFDD00; text-decoration: underline; font-weight: 600; margin-left: 8px; }
+.section-support { background: var(--light); padding-top: 60px; padding-bottom: 60px; }
+.section-support h2 { margin-bottom: 2.25rem; }
+.support-intro { text-align: center; max-width: 700px; margin: 0 auto 30px; font-size: 1.1rem; }
+.support-intro a { text-decoration: underline; font-weight: 600; }
+.support-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; width: 100%; }
+.support-card { background: #fff; border: 1px solid var(--border-light); border-radius: 16px; padding: 24px; box-shadow: var(--shadow-sm); text-align: left; display: flex; flex-direction: column; }
+.support-card h3 { font-size: 1.25rem; margin-bottom: 4px; color: var(--primary-dark); }
+.support-card p { margin-bottom: 12px; }
+.support-card-when { font-weight: 700; color: var(--primary); font-size: .95rem; }
+.support-card-link { margin-top: auto; font-weight: 700; color: var(--primary-dark); text-decoration: underline; }
+.support-card-featured { grid-column: span 4; flex-direction: column; align-items: flex-start; border: 2px solid var(--primary); background: #fff; }
+.support-card-logo { height: 64px; width: auto; margin-bottom: 12px; background: #707070; border-radius: 10px; padding: 6px; }
+.support-card-featured h3 { font-size: 1.6rem; }
+.support-card-btn { margin: 6px 0 0; }
+.support-card-featured p { max-width: 760px; }
+@media (max-width: 1024px) { .support-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } .support-card-featured { grid-column: span 2; } }
+@media (max-width: 640px) { .support-cards { grid-template-columns: 1fr; } .support-card-featured { grid-column: span 1; } .hero-btn { width: 100%; text-align: center; } .hero-actions { padding: 0 10px; } }
 </style>
+    <link rel="stylesheet" href="css/tailwind.css">
+    <link rel="stylesheet" href="css/site.css">
+    <!-- ANALYTICS: paste your analytics snippet here. See SETUP-NOTES.md -->
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <!-- Announcement Bar -->
     <div class="bg-gray-800 text-white py-2 px-4">
         <div class="container mx-auto flex justify-between items-center">
@@ -1405,7 +1477,7 @@ footer p:first-child {
                 </div>
                 
                 <!-- Center Navigation -->
-                <nav class="hidden xl:flex items-center space-x-1">
+                <nav aria-label="Main" class="hidden xl:flex items-center space-x-1">
                     <a href="index.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Home</a>
                     <a href="vision.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Vision/Beliefs</a>
                     <a href="team.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">The Team</a>
@@ -1428,7 +1500,7 @@ footer p:first-child {
                     <a href="getinvolved.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Get Involved</a>
                     <a href="videos.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Videos</a>
                     <a href="contact.html" class="text-white hover:text-gray-200 font-semibold py-2 px-2.5 text-sm transition rounded">Find/Contact</a>
-                    <a href="https://donorbox.org/hope-community-church-donor-page" target="_blank" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-6 rounded-full transition duration-300 shadow-md">Partner</a>
+                    <a href="support-us.html" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-6 rounded-full transition duration-300 shadow-md">Support Us</a>
                 </nav>
                 
                 <!-- Right Logo and Mobile Menu Button -->
@@ -1436,7 +1508,7 @@ footer p:first-child {
                     <div class="hidden xl:block">
                         <img src="images/hfrlogo.png" alt="Hope for Recovery Logo" class="logo-img" onerror="this.style.display='none'">
                     </div>
-                    <button id="mobile-menu-button" class="xl:hidden text-white hover:text-gray-200 focus:outline-none transition">
+                    <button id="mobile-menu-button" aria-label="Open menu" aria-controls="mobile-menu" class="xl:hidden text-white hover:text-gray-200 focus:outline-none transition">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                     </button>
                 </div>
@@ -1472,18 +1544,81 @@ footer p:first-child {
                 <a href="getinvolved.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Get Involved</a>
                 <a href="videos.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Videos</a>
                 <a href="contact.html" class="text-white hover:text-gray-200 font-semibold py-2 px-3 rounded transition">Find/Contact</a>
-                <a href="https://donorbox.org/hope-community-church-donor-page" target="_blank" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-6 rounded-full transition duration-300 shadow-md">Partner</a>
+                <a href="support-us.html" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-6 rounded-full transition duration-300 shadow-md">Support Us</a>
             </div>
         </div>
     </header>
+
+    <main id="main-content" tabindex="-1">
 
     <!-- Hero Section -->
     <section class="hero section-divider-scalloped">
         <div class="container">
             <h1>Hope for Our Community.<br>Two Ministries - One Mission</h1>
-            <p>Two powerful ministries—Hope Community Church and Hope for Recovery—united by one mission: to bring hope to our community. Through outreach, schools ministry, a welcoming drop-in cafe, and more, we're building a hub where everyone belongs.</p>
+            <p>A welcoming church and community hub in Clydebank. Join us on Sunday, drop in to our Friday café and foodbank, or find recovery support through Hope for Recovery. Everyone is welcome, and no referral is needed.</p>
+            <div class="hero-actions">
+                <a href="#find-support" class="hero-btn hero-btn-solid">Find Support</a>
+                <a href="#what-to-expect" class="hero-btn hero-btn-outline">Visit Us This Sunday</a>
+                <a href="support-us.html" class="hero-btn hero-btn-gold">Support Us</a>
+            </div>
         </div>
     </section>
+
+        <!-- Graduation banner: hides itself after the event. Remove this block after 4 December 2026 if you prefer. -->
+    <div class="grad-banner" id="gradBanner">
+        <p><strong>Friday 27th November 2026:</strong> our next Hope for Recovery graduation night. Help us celebrate.
+        <a href="hopeforrecovery.html#graduation">Find out more</a></p>
+    </div>
+
+    <!-- Find Support Section -->
+    <section class="section section-support" id="find-support">
+        <div class="container">
+            <h2 style="text-align: center;">Find Support in Clydebank</h2>
+            <p class="support-intro">Everyone is welcome here, whatever your background or situation. Not sure where to start? Call us on <a href="tel:07745393649">07745 393649</a>.</p>
+            <div class="support-cards">
+                <article class="support-card support-card-featured">
+                    <img src="images/hfrlogo.png" alt="" class="support-card-logo" onerror="this.style.display='none'">
+                    <h3>Hope for Recovery</h3>
+                    <p class="support-card-when">Mondays, 11am to 1:30pm</p>
+                    <p>Our flagship two-year recovery pathway for anyone affected by addiction. Six 12-week courses, peer support and certificates along the way, in a relaxed and friendly setting. You do not need a faith to join us.</p>
+                    <a href="hopeforrecovery.html" class="btn btn-primary support-card-btn">Find out about Hope for Recovery</a>
+                </article>
+                <article class="support-card">
+                    <h3>Community Café &amp; Foodbank</h3>
+                    <p class="support-card-when">Fridays, 12pm to 2pm</p>
+                    <p>Free tea, coffee and soup. Emergency foodbank. No referral needed, just turn up.</p>
+                    <a href="cafe.html" class="support-card-link">About the café<span class="sr-only"> and foodbank</span> &rarr;</a>
+                </article>
+                <article class="support-card">
+                    <h3>One-to-One Support</h3>
+                    <p class="support-card-when">Wednesdays, by appointment</p>
+                    <p>A safe space to talk, plan your recovery and get practical help.</p>
+                    <a href="keywork.html" class="support-card-link">About key work<span class="sr-only"> and one-to-one support</span> &rarr;</a>
+                </article>
+                <article class="support-card">
+                    <h3>Walk &amp; Talk</h3>
+                    <p class="support-card-when">Wednesdays, 11am</p>
+                    <p>A gentle community walk with friendly conversation and refreshments afterwards.</p>
+                    <a href="walktalk.html" class="support-card-link">About Walk &amp; Talk &rarr;</a>
+                </article>
+                <article class="support-card">
+                    <h3>Street Outreach</h3>
+                    <p class="support-card-when">Wednesdays, Dalmuir and Clydebank</p>
+                    <p>We come to you with a listening ear, practical support and a pathway to services.</p>
+                    <a href="streetoutreach.html" class="support-card-link">About street outreach &rarr;</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        (function () {
+            try {
+                var el = document.getElementById('gradBanner');
+                if (el && new Date() > new Date('2026-12-05T00:00:00')) { el.style.display = 'none'; }
+            } catch (e) {}
+        })();
+    </script>
 
     <!-- Welcome Section -->
     <section class="section" id="about">
@@ -1499,20 +1634,6 @@ footer p:first-child {
         </div>
     </section>
 
-    <!-- History Section -->
-    <section class="section section-accent" id="history">
-        <div class="container about-grid">
-            <div class="about-text">
-                <h2>Our History</h2>
-                <p><strong>Hope Community Church</strong> is a name change of <strong>Park Christian Fellowship</strong>, which has been serving the community of Clydebank and Christ since <strong>28th October 1995</strong> at 30 Shelley Drive, Parkhall, Clydebank.</p>
-                <p>Park Christian Fellowship was itself a coming together of two Clydebank churches: <strong>The Bethel Church</strong> located in Faifley and <strong>The Apostolic Church</strong> of Green Street, Clydebank. The building in Faifley burned down, probably due to an electrical failure, and the building in Green Street needed much remedial work. Since both churches had similar hearts for service and worship, it was agreed that they should merge and become one church as part of The Apostolic Church UK. The people initially met in a primary school in Faifley, and then when The Brethren Victoria Hall at 30 Shelley Drive became available due to the hall closing because of falling numbers, the building was purchased at market value. The church located there as <strong>Park Christian Fellowship</strong>.</p>
-                <p>The name change to <strong>Hope Community Church</strong> came out of a sense that the church should seek to try to bring more hope back into the heart of the community of Clydebank. That's our aim and purpose to date: that through any means possible we can offer hope to everybody and anybody we can. This we do through our <strong>Sunday worship service</strong>, <strong>Monday Hope for Recovery meetings</strong>, <strong>Wednesday 1-to-1 support service & Community walk & talk group</strong>, and <strong>Friday Community café and foodbank</strong>.</p>
-            </div>
-            <div>
-                <img src="images/history.png" alt="Church history - Hope Community Church Clydebank" style="width:100%; border-radius:10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-            </div>
-        </div>
-    </section>
 
     <!-- What to Expect Section -->
     <section class="section" id="what-to-expect">
@@ -1563,7 +1684,7 @@ footer p:first-child {
                             <p><strong>Location:</strong> 30 Shelley Drive, Clydebank</p>
                         </div>
                         <div class="card-back">
-                            <h3>What to Expect</h3>
+                            <h3>What to Expect at Walk &amp; Talk</h3>
                             <p>✓ Gentle community walk</p>
                             <p>✓ Supportive atmosphere</p>
                             <p>✓ Friendly conversation</p>
@@ -1590,7 +1711,7 @@ footer p:first-child {
             <p><strong>Location:</strong> 30 Shelley Drive, Clydebank</p>
         </div>
         <div class="card-back">
-            <h3>What to Expect</h3>
+            <h3>What to Expect at Bible Study and Prayer</h3>
             <p>✓ Interactive discussion</p>
             <p>✓ Verse-by-verse study</p>
             <p>✓ Prayer & fellowship</p>
@@ -1610,7 +1731,7 @@ footer p:first-child {
                             <p><strong>Location:</strong> Holm Park, Clydebank</p>
                         </div>
                         <div class="card-back">
-                            <h3>What to Expect</h3>
+                            <h3>What to Expect at Street Soccer</h3>
                             <p>✓ Friendly kickabout</p>
                             <p>✓ All skill levels welcome</p>
                             <p>✓ Supportive atmosphere</p>
@@ -1647,7 +1768,7 @@ footer p:first-child {
                             <p><strong>Location:</strong> 30 Shelley Drive, Clydebank</p>
                         </div>
                         <div class="card-back">
-                            <h3>What to Expect</h3>
+                            <h3>What to Expect on Sunday</h3>
                             <p>✓ Casual atmosphere</p>
                             <p>✓ Engaging worship</p>
                             <p>✓ Practical Bible teaching</p>
@@ -1655,6 +1776,21 @@ footer p:first-child {
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History Section -->
+    <section class="section section-accent" id="history">
+        <div class="container about-grid">
+            <div class="about-text">
+                <h2>Our History</h2>
+                <p><strong>Hope Community Church</strong> is a name change of <strong>Park Christian Fellowship</strong>, which has been serving the community of Clydebank and Christ since <strong>28th October 1995</strong> at 30 Shelley Drive, Parkhall, Clydebank.</p>
+                <p>Park Christian Fellowship was itself a coming together of two Clydebank churches: <strong>The Bethel Church</strong> located in Faifley and <strong>The Apostolic Church</strong> of Green Street, Clydebank. The building in Faifley burned down, probably due to an electrical failure, and the building in Green Street needed much remedial work. Since both churches had similar hearts for service and worship, it was agreed that they should merge and become one church as part of The Apostolic Church UK. The people initially met in a primary school in Faifley, and then when The Brethren Victoria Hall at 30 Shelley Drive became available due to the hall closing because of falling numbers, the building was purchased at market value. The church located there as <strong>Park Christian Fellowship</strong>.</p>
+                <p>The name change to <strong>Hope Community Church</strong> came out of a sense that the church should seek to try to bring more hope back into the heart of the community of Clydebank. That's our aim and purpose to date: that through any means possible we can offer hope to everybody and anybody we can. This we do through our <strong>Sunday worship service</strong>, <strong>Monday Hope for Recovery meetings</strong>, <strong>Wednesday 1-to-1 support service & Community walk & talk group</strong>, and <strong>Friday Community café and foodbank</strong>.</p>
+            </div>
+            <div>
+                <img src="images/history.png" alt="Church history - Hope Community Church Clydebank" style="width:100%; border-radius:10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
             </div>
         </div>
     </section>
@@ -1669,14 +1805,14 @@ footer p:first-child {
                     At Hope for Recovery, we believe that big changes often start with small moments.
                 </p>
                 <p style="color: rgba(255, 255, 255, 0.9); font-size: 1rem; margin-bottom: 1.5rem;">
-                    Would you consider donating the price of a daily coffee to Hope for Recovery by becoming one of our monthly donors or as a one-off gift to help sustain and develop our community-based recovery and schools program?
+                    Would you consider giving the price of a daily coffee to Hope for Recovery by becoming one of our monthly donors or as a one-off gift to help sustain and develop our community-based recovery and schools program?
                 </p>
                 <p style="color: rgba(255, 255, 255, 0.85); font-size: 1rem; margin-bottom: 2rem; font-style: italic;">
                     Thank you for partnering with us — together we can make a difference.
                 </p>
-                <a href="https://buymeacoffee.com/hopecommunitychurch" target="_blank" class="btn" style="background-color: #FFDD00; color: #333; border: none; font-weight: bold; padding: 14px 40px; font-size: 1.2rem; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: transform 0.3s ease, box-shadow 0.3s ease;">
-                    <span>☕</span> Give Today
-                    <span>→</span>
+                <a href="support-us.html#give" class="btn" style="background-color: #FFDD00; color: #333; border: none; font-weight: bold; padding: 14px 40px; font-size: 1.2rem; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                    <span aria-hidden="true">☕</span> Give Today
+                    <span aria-hidden="true">→</span>
                 </a>
                 <p style="color: rgba(255, 255, 255, 0.5); font-size: 0.75rem; margin-top: 1.5rem;">
                     Every donation goes directly to Hope for Recovery programs
@@ -1715,15 +1851,20 @@ footer p:first-child {
     </section>
 
     <!-- Footer -->
+    </main>
+
     <footer>
         <div class="container">
             <p>Hope Community Church Clydebank</p>
             <p>30 Shelley Drive, Clydebank, G81 3EL</p>
             <div class="footer-links">
-                <a href="#services">Services</a>
-                <a href="#recovery">Recovery</a>
-                <a href="#contact">Contact</a>
+                <a href="index.html#services">Services</a>
+                <a href="hopeforrecovery.html">Recovery</a>
+                <a href="contact.html">Contact</a>
+                <a href="support-us.html">Support Us</a>
                 <a href="#" onclick="openPrayerForm()">Prayer</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
             </div>
             <p>Part of The Apostolic Church network</p>
             <p>Scottish Charity Number: SC054414</p>
