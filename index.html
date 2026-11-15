@@ -1431,6 +1431,23 @@ footer p:first-child {
 .support-card-btn { margin: 6px 0 0; }
 .support-card-featured p { max-width: 760px; }
 @media (max-width: 1024px) { .support-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } .support-card-featured { grid-column: span 2; } }
+/* ===== Hope for Recovery promo video (inside the featured card) ===== */
+.hfr-feature { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 36px; align-items: center; width: 100%; }
+.hfr-feature-text { display: flex; flex-direction: column; align-items: flex-start; }
+.hfr-video-intro { font-style: italic; color: var(--secondary); }
+.hfr-video { position: relative; margin: 0; border-radius: 14px; overflow: hidden; background: #1A202C; aspect-ratio: 16 / 9; box-shadow: var(--shadow-lg); }
+.hfr-video video { display: block; width: 100%; height: 100%; object-fit: cover; background: #1A202C; }
+.hfr-video-controls { position: absolute; left: 0; right: 0; top: 0; display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; padding: 12px; background: linear-gradient(to bottom, rgba(26,32,44,.6), rgba(26,32,44,0)); pointer-events: none; }
+.hfr-video-controls[hidden] { display: none; }
+.hfr-video-controls button { pointer-events: auto; display: inline-flex; align-items: center; gap: 8px; border: 2px solid #fff; border-radius: 50px; font: inherit; font-weight: 700; cursor: pointer; transition: transform .2s ease, background-color .2s ease; }
+.hfr-video-controls button:hover { transform: translateY(-2px); }
+.hfr-video-controls button:focus-visible { outline: 3px solid #FFDD00; outline-offset: 3px; }
+.hfr-video-sound { background: #fff; color: #2D3748; padding: 9px 16px; font-size: .95rem; white-space: nowrap; }
+.hfr-video-length { font-weight: 600; opacity: .7; }
+.hfr-video-pause { background: rgba(26,32,44,.55); color: #fff; width: 44px; height: 44px; justify-content: center; padding: 0; }
+.hfr-video-pause:hover { background: rgba(26,32,44,.85); }
+@media (max-width: 900px) { .hfr-feature { grid-template-columns: 1fr; gap: 24px; } }
+@media (max-width: 480px) { .hfr-video-controls { padding: 8px; } .hfr-video-sound { padding: 7px 12px; font-size: .85rem; } .hfr-video-pause { width: 38px; height: 38px; } }
 @media (max-width: 640px) { .support-cards { grid-template-columns: 1fr; } .support-card-featured { grid-column: span 1; } .hero-btn { width: 100%; text-align: center; } .hero-actions { padding: 0 10px; } }
 </style>
     <link rel="stylesheet" href="css/tailwind.css">
@@ -1577,11 +1594,41 @@ footer p:first-child {
             <p class="support-intro">Everyone is welcome here, whatever your background or situation. Not sure where to start? Call us on <a href="tel:07745393649">07745 393649</a>.</p>
             <div class="support-cards">
                 <article class="support-card support-card-featured">
-                    <img src="images/hfrlogo.png" alt="" class="support-card-logo" onerror="this.style.display='none'">
-                    <h3>Hope for Recovery</h3>
-                    <p class="support-card-when">Mondays, 11am to 1:30pm</p>
-                    <p>Our flagship two-year recovery pathway for anyone affected by addiction. Six 12-week courses, peer support and certificates along the way, in a relaxed and friendly setting. You do not need a faith to join us.</p>
-                    <a href="hopeforrecovery.html" class="btn btn-primary support-card-btn">Find out about Hope for Recovery</a>
+                    <div class="hfr-feature">
+                        <div class="hfr-feature-text">
+                            <img src="images/hfrlogo.png" alt="" class="support-card-logo" onerror="this.style.display='none'">
+                            <h3>Hope for Recovery</h3>
+                            <p class="support-card-when">Mondays, 11am to 1:30pm</p>
+                            <p>Our flagship two-year recovery pathway for anyone affected by addiction. Six 12-week courses, peer support and certificates along the way, in a relaxed and friendly setting. You do not need a faith to join us.</p>
+                            <p class="hfr-video-intro">Hear from the people who lead and take part in Hope for Recovery in our short film.</p>
+                            <a href="hopeforrecovery.html" class="btn btn-primary support-card-btn">Find out about Hope for Recovery</a>
+                        </div>
+
+                        <!-- Hope for Recovery promo video.
+                             Plays silently when scrolled into view; visitors tap "Watch with sound" to start from the beginning with audio.
+                             Does not autoplay for visitors who have "reduce motion" or "data saver" switched on. -->
+                        <figure class="hfr-video" id="hfrVideoWrap">
+                            <video id="hfrVideo"
+                                   src="videos/hfr-promo-2026.mp4"
+                                   poster="images/hfr-promo-poster.jpg"
+                                   muted playsinline loop controls preload="none"
+                                   aria-label="Hope for Recovery film: course leaders and participants talk about the programme">
+                                <!-- When you have captions, add them here, e.g.:
+                                <track kind="captions" src="videos/hfr-promo-2026.en.vtt" srclang="en" label="English" default> -->
+                                Your browser cannot play this video. <a href="videos/hfr-promo-2026.mp4">Download the Hope for Recovery film</a>.
+                            </video>
+                            <div class="hfr-video-controls" id="hfrVideoControls" hidden>
+                                <button type="button" class="hfr-video-sound" id="hfrSoundBtn">
+                                    <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M3 10v4h4l5 5V5L7 10H3zm13.5 2A4.5 4.5 0 0 0 14 8v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>
+                                    <span id="hfrSoundLabel">Watch with sound</span> <span class="hfr-video-length">(5:41)</span>
+                                </button>
+                                <button type="button" class="hfr-video-pause" id="hfrPauseBtn" aria-label="Pause video">
+                                    <svg id="hfrPauseIcon" aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+                                    <svg id="hfrPlayIcon" aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" style="display:none"><path fill="currentColor" d="M7 4v16l13-8z"/></svg>
+                                </button>
+                            </div>
+                        </figure>
+                    </div>
                 </article>
                 <article class="support-card">
                     <h3>Community Café &amp; Foodbank</h3>
@@ -1617,6 +1664,76 @@ footer p:first-child {
                 var el = document.getElementById('gradBanner');
                 if (el && new Date() > new Date('2026-12-05T00:00:00')) { el.style.display = 'none'; }
             } catch (e) {}
+        })();
+
+        // Hope for Recovery video: silent preview when on screen, tap for sound from the start
+        (function () {
+            var video = document.getElementById('hfrVideo');
+            var controls = document.getElementById('hfrVideoControls');
+            var soundBtn = document.getElementById('hfrSoundBtn');
+            var soundLabel = document.getElementById('hfrSoundLabel');
+            var pauseBtn = document.getElementById('hfrPauseBtn');
+            var pauseIcon = document.getElementById('hfrPauseIcon');
+            var playIcon = document.getElementById('hfrPlayIcon');
+            if (!video || !controls) return;
+
+            var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            var saveData = navigator.connection && navigator.connection.saveData;
+            var canPreview = !reduceMotion && !saveData && 'IntersectionObserver' in window;
+            var userPaused = false;
+            var soundMode = false;
+
+            // Swap the browser's own controls for our simple overlay during the silent preview
+            video.controls = false;
+            video.muted = true;
+            controls.hidden = false;
+
+            function updatePauseButton() {
+                var paused = video.paused;
+                pauseIcon.style.display = paused ? 'none' : '';
+                playIcon.style.display = paused ? '' : 'none';
+                pauseBtn.setAttribute('aria-label', paused ? 'Play video silently' : 'Pause video');
+            }
+
+            if (!canPreview) {
+                // No autoplay: show the still image with the buttons
+                soundLabel.textContent = 'Play with sound';
+                video.preload = 'none';
+            } else {
+                video.preload = 'metadata';
+                var observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (soundMode) return;
+                        if (entry.isIntersecting && !userPaused) {
+                            var p = video.play();
+                            if (p && p.catch) p.catch(function () { updatePauseButton(); });
+                        } else if (!entry.isIntersecting) {
+                            video.pause();
+                        }
+                    });
+                }, { threshold: 0.5 });
+                observer.observe(video);
+            }
+
+            pauseBtn.addEventListener('click', function () {
+                if (video.paused) { userPaused = false; video.play(); }
+                else { userPaused = true; video.pause(); }
+            });
+
+            soundBtn.addEventListener('click', function () {
+                soundMode = true;
+                controls.hidden = true;
+                video.loop = false;
+                video.muted = false;
+                video.currentTime = 0;
+                video.controls = true;
+                video.play();
+                video.focus();
+            });
+
+            video.addEventListener('play', updatePauseButton);
+            video.addEventListener('pause', updatePauseButton);
+            updatePauseButton();
         })();
     </script>
 
