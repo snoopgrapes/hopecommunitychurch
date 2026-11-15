@@ -29,6 +29,6 @@ Every page has a line `<!-- ANALYTICS: paste your analytics snippet here -->` ju
 - **Giving routes:** the old PayPal "Give now" link on the Privacy and Terms pages is gone. DonorBox is the main route and Buy Me a Coffee is a small secondary link on the Support Us page. Tell me if you want PayPal added back.
 
 ## 5. Housekeeping
-- The graduation banner on the home page hides itself after 4 December 2026.
+- The graduation banner on the home page hides itself after 27 November 2026.
 - The old DonorBox pop-up code in `index.html` is no longer used and can be deleted later.
 - The home page "Our Weekly Services" cards flip on mouse hover only, so keyboard and touch users never see the back of each card. Worth redesigning later.

@@ -14,7 +14,7 @@
 
 ## Home page
 - New hero text and three buttons: Find Support, Visit Us This Sunday, Support Us.
-- Graduation banner for 4 December 2026 and a "Find Support in Clydebank" section led by a Hope for Recovery card.
+- Graduation banner for 27 November 2026 and a "Find Support in Clydebank" section led by a Hope for Recovery card.
 - Our History moved below the weekly services. Repeated "What to Expect" card headings made unique.
 
 ## Other fixes
