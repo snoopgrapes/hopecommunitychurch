@@ -1966,15 +1966,6 @@ footer p:first-child {
         </form>
     </div>
 
-    <!-- DonorBox Modal -->
-    <div id="donorboxModal" class="modal" style="display: none;">
-        <div class="modal-content" style="max-width: 600px; padding: 20px;">
-            <span class="close-modal" onclick="closeDonorboxModal()">&times;</span>
-            <h3 style="text-align: center; margin-bottom: 20px;">Support Our Church</h3>
-            <div id="donorboxWidget"></div>
-        </div>
-    </div>
-
     <script>
         // Mobile menu toggle
         const menuToggle = document.getElementById('mobile-menu-button');
@@ -2032,35 +2023,6 @@ footer p:first-child {
 
         function closeModal() {
             document.getElementById('prayerForm').style.display = 'none';
-            closeDonorboxModal();
-        }
-
-        // DonorBox Modal Functions
-        function openDonorboxModal() {
-            const modal = document.getElementById('donorboxModal');
-            const widgetContainer = document.getElementById('donorboxWidget');
-            
-            widgetContainer.innerHTML = '';
-            
-            const iframe = document.createElement('iframe');
-            iframe.src = 'https://donorbox.org/embed/donate-a-coffee?';
-            iframe.name = 'donorbox';
-            iframe.allowPaymentRequest = true;
-            iframe.setAttribute('frameborder', '0');
-            iframe.scrolling = 'yes';
-            iframe.height = '80vh';
-            iframe.width = '100%';
-            iframe.style = 'width:100%; height:80vh; max-width: 600px; min-width: 250px; border: 0;';
-            iframe.allow = 'payment';
-            
-            widgetContainer.appendChild(iframe);
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeDonorboxModal() {
-            document.getElementById('donorboxModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
         }
 
         // Handle form submission
@@ -2146,13 +2108,9 @@ footer p:first-child {
         // Close modal if clicked outside
         window.onclick = function(event) {
             const prayerModal = document.getElementById('prayerForm');
-            const donorboxModal = document.getElementById('donorboxModal');
             
             if (event.target === prayerModal) {
                 closeModal();
-            }
-            if (event.target === donorboxModal) {
-                closeDonorboxModal();
             }
         }
 

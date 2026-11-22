@@ -22,7 +22,6 @@ Every page has a line `<!-- ANALYTICS: paste your analytics snippet here -->` ju
 ## 4. Things only you or the trustees can supply
 - **Gift Aid:** add a line on the Support Us page if you are registered.
 - **"What your gift does":** add real examples such as "£X pays for Y" once trustees have agreed them.
-- **"Every donation goes directly to Hope for Recovery programs":** this appears in the Skip a Coffee sections on the home and Hope for Recovery pages. Check it is accurate before you keep it.
 - **Team bios:** the ten "[Bio to be added]" lines are hidden. Send the bios and they can go back in.
 - **Privacy policy and terms:** I updated the wording to match the services the site actually uses. Please have a trustee review it, as this is not legal advice.
 - **Share image:** pages use `images/church1.webp` as the preview picture. Some social networks handle that format poorly, so add a 1200 x 630 JPG and update the `og:image` line.
@@ -30,5 +29,4 @@ Every page has a line `<!-- ANALYTICS: paste your analytics snippet here -->` ju
 
 ## 5. Housekeeping
 - The graduation banner on the home page hides itself after 27 November 2026.
-- The old DonorBox pop-up code in `index.html` is no longer used and can be deleted later.
 - The home page "Our Weekly Services" cards flip on mouse hover only, so keyboard and touch users never see the back of each card. Worth redesigning later.

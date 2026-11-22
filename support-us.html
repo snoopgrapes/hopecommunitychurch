@@ -464,39 +464,6 @@
             width: 100%;
         }
 
-        /* Live Badge */
-        .live-badge {
-            position: fixed;
-            bottom: 100px;
-            right: 30px;
-            background: var(--primary-dark);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 30px;
-            z-index: 900;
-            display: none;
-            cursor: pointer;
-            font-weight: 600;
-            box-shadow: var(--shadow-lg);
-            border: 2px solid white;
-        }
-
-        .pulse {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            background: #FF4444;
-            border-radius: 50%;
-            margin-right: 8px;
-            animation: pulseOpacity 1.5s infinite;
-        }
-
-        @keyframes pulseOpacity {
-            0% { opacity: 1; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
-        }
-
         @keyframes fadeInDown {
             from {
                 opacity: 0;
@@ -573,62 +540,6 @@
             }
         }
 
-        /* Contact Form Styles */
-        .contact-form-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border-light);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid var(--border-light);
-            border-radius: 10px;
-            font-family: inherit;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 14px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .submit-btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-
         /* Responsive */
         @media (max-width: 768px) {
             .hero {
@@ -662,9 +573,6 @@
             }
             .quote {
                 font-size: 1.1rem;
-            }
-            .contact-form-container {
-                padding: 30px 20px;
             }
         }
 
@@ -746,7 +654,11 @@
         .ps-trust { margin-top: 18px; padding: 14px 16px; background: #F7FAFC; border-left: 5px solid #4A5568; border-radius: 8px; font-size: .95rem; color: var(--text); text-align: left; }
         .ps-tier-grid, .ps-proof-grid, .ps-strip-grid { display: grid; gap: 24px; margin-top: 30px; width: 100%; }
         .ps-tier-grid, .ps-proof-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-        .ps-strip-grid { grid-template-columns: 1fr; max-width: 640px; margin: 0 auto; }
+        .ps-strip-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 980px; margin: 0 auto; }
+        .ps-strip-card a.ps-btn { color: #2D3748; text-decoration: none; margin-top: auto; }
+        .ps-oneoff { flex-basis: 100%; margin: 0; font-size: .95rem; }
+        .ps-oneoff a, .ps-oneoff-give a { text-decoration: underline; font-weight: 600; }
+        .ps-oneoff-give { text-align: center; margin-top: 14px; font-size: 1rem; }
         .ps-tier, .ps-proof-card { background: #fff; border: 1px solid var(--border-light); border-radius: 18px; padding: 28px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; text-align: left; margin: 0; }
         .ps-tier { background: #F7FAFC; }
         .ps-price { font-family: 'Poppins', sans-serif; font-size: 2.4rem; font-weight: 700; color: #4A5568; line-height: 1.1; margin: 0 0 4px; }
@@ -912,9 +824,6 @@
 
     <main id="main-content" tabindex="-1">
 
-    <div class="live-badge" id="liveBadge" onclick="openLiveStream()">
-        <span class="pulse"></span> LIVE: Sunday Service
-    </div>
 
     <!-- Hero -->
     <section class="hero section-divider-scalloped">
@@ -944,6 +853,7 @@
                 <div class="ps-offer">
                     <p class="ps-price">&pound;15 <span>/ month</span></p>
                     <a href="#give" class="ps-btn">Sponsor a participant</a>
+                    <p class="ps-oneoff">Prefer to give once? <a href="https://donorbox.org/hope-community-church-donor-page?default_interval=o" target="_blank" rel="noopener">Make a one-off gift</a></p>
                 </div>
             </div>
         </div>
@@ -1027,6 +937,7 @@
                 <iframe id="donorbox-frame" title="Sponsor a Hope for Recovery participant (secure DonorBox form)" src="https://donorbox.org/embed/hope-community-church-donor-page?default_interval=m&amp;amount=15" name="donorbox" allow="payment" allowpaymentrequest="allowpaymentrequest" seamless="seamless" frameborder="0" scrolling="no" height="900" width="100%"></iframe>
                 <noscript><p class="ps-fallback"><a href="https://donorbox.org/hope-community-church-donor-page" target="_blank" rel="noopener">Give securely on DonorBox</a></p></noscript>
                 <p class="ps-fallback">Form not showing? <a href="https://donorbox.org/hope-community-church-donor-page" target="_blank" rel="noopener">Give securely on DonorBox</a>.</p>
+                <p class="ps-oneoff-give">Would you rather give once? A one-off gift of any amount also goes straight to supporting the group. <a href="https://donorbox.org/hope-community-church-donor-page?default_interval=o" target="_blank" rel="noopener">Make a one-off gift on DonorBox</a>.</p>
                 <p class="ps-trust"><span aria-hidden="true">&#10003;</span> Hope Community Church Clydebank is a registered Scottish charity (SC054414).</p>
             </div>
         </div>
@@ -1057,15 +968,21 @@
     <!-- Dual-audience strip -->
     <section class="ps-section ps-strip" id="other-ways" aria-labelledby="strip-heading">
         <div class="container">
-            <h2 id="strip-heading" class="sr-only">Other ways to stand with us</h2>
+            <h2 id="strip-heading" class="sr-only">Pray, volunteer and other ways to stand with us</h2>
             <div class="ps-strip-grid">
                 <div class="ps-strip-card">
-                    <h3>Standing with us in prayer?</h3>
-                    <p>Our weekly prayer meeting runs every other Wednesday (6:30pm&ndash;8:00pm) at 30 Shelley Drive. Thank you for praying for lasting spiritual freedom across Clydebank.</p>
-                    <button type="button" class="ps-btn ps-btn-light" onclick="openPrayerForm()">Send a prayer request</button>
+                    <h3>Become a prayer partner</h3>
+                    <p>Would you stand with us in prayer? We&rsquo;re inviting prayer partners to pray with us for the Hope for Recovery group, for each participant on their journey to lasting freedom, and for God to release the funding this work needs.</p>
+                    <p>Sign up for our quarterly newsletter to receive group news and prayer points. You&rsquo;re also welcome at our prayer meeting every other Wednesday, 6:30pm&ndash;8:00pm, at 30 Shelley Drive.</p>
+                    <a href="mailto:info@hopecommunity-church.co.uk?subject=Quarterly%20newsletter%20sign-up&amp;body=Please%20add%20me%20to%20the%20Hope%20for%20Recovery%20quarterly%20newsletter.%0D%0A%0D%0AName%3A%20" class="ps-btn ps-btn-light">Sign up for the quarterly newsletter</a>
+                </div>
+                <div class="ps-strip-card">
+                    <h3>Volunteer with us</h3>
+                    <p>From the Friday caf&eacute; to helping behind the scenes, there are lots of ways to give your time. Drop us an email and we&rsquo;ll be in touch.</p>
+                    <a href="mailto:info@hopecommunity-church.co.uk?subject=Volunteering%20with%20Hope%20Community%20Church&amp;body=Hi%2C%20I%27d%20like%20to%20volunteer.%0D%0A%0D%0AName%3A%20%0D%0AHow%20I%27d%20like%20to%20help%3A%20" class="ps-btn ps-btn-light">Email us about volunteering</a>
                 </div>
             </div>
-            <p class="ps-more">Prefer to help another way? You can bring food to our Friday caf&eacute;, leave a gift in your will or volunteer. Local businesses can email <a href="mailto:info@hopecommunity-church.co.uk">info@hopecommunity-church.co.uk</a> or call <a href="tel:07745393649">07745 393649</a>. For more ideas, see <a href="getinvolved.html">Get Involved</a>.</p>
+            <p class="ps-more">Prefer to help another way? You can bring food to our Friday caf&eacute; or leave a gift in your will. Local businesses can email <a href="mailto:info@hopecommunity-church.co.uk">info@hopecommunity-church.co.uk</a> or call <a href="tel:07745393649">07745 393649</a>. For more ideas, see <a href="getinvolved.html">Get Involved</a>.</p>
         </div>
     </section>
 
@@ -1101,19 +1018,6 @@
             <p style="margin-bottom: 20px;">Submit your prayer request and our team will pray for you this week.</p>
             <input type="email" name="email" placeholder="Your email (optional)" style="width: 100%; margin: 15px 0; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
             <textarea name="message" placeholder="Your prayer request..." required style="width: 100%; margin: 15px 0; padding: 10px; border: 1px solid #ddd; border-radius: 5px;"></textarea>
-            <button type="submit" style="background: var(--primary); color: white; padding: 12px 30px; border: none; border-radius: 50px; cursor: pointer; font-weight: 600;">Submit</button>
-        </form>
-    </div>
-
-    <!-- Volunteer Form Modal -->
-    <div id="volunteerForm" class="modal">
-        <form id="volunteerRequestForm" class="modal-content" action="https://formspree.io/f/xzzjwnkw" method="POST">
-            <span class="close-modal" onclick="closeVolunteerModal()">&times;</span>
-            <h3 style="margin-bottom: 20px;">Volunteer With Us</h3>
-            <p style="margin-bottom: 20px;">Fill out the form below and we'll get back to you about volunteering opportunities.</p>
-            <input type="text" name="name" placeholder="Your name" required style="width: 100%; margin: 15px 0; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
-            <input type="email" name="email" placeholder="Your email" required style="width: 100%; margin: 15px 0; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
-            <textarea name="message" placeholder="Tell us about your skills and how you'd like to help..." required style="width: 100%; margin: 15px 0; padding: 10px; border: 1px solid #ddd; border-radius: 5px;"></textarea>
             <button type="submit" style="background: var(--primary); color: white; padding: 12px 30px; border: none; border-radius: 50px; cursor: pointer; font-weight: 600;">Submit</button>
         </form>
     </div>
@@ -1168,34 +1072,12 @@
         // ==================== UI FUNCTIONS ====================
         document.getElementById('year').innerText = new Date().getFullYear();
 
-        function openLiveStream() {
-            window.open('https://www.youtube.com/@HopeCommunityChurchClydebank', '_blank');
-        }
-
         function openPrayerForm() {
             document.getElementById('prayerForm').style.display = 'block';
         }
 
         function closePrayerModal() {
             document.getElementById('prayerForm').style.display = 'none';
-        }
-
-        function openVolunteerForm() {
-            document.getElementById('volunteerForm').style.display = 'block';
-        }
-
-        function closeVolunteerModal() {
-            document.getElementById('volunteerForm').style.display = 'none';
-        }
-
-        function checkLiveStatus() {
-            const now = new Date();
-            const day = now.getDay();
-            const hour = now.getHours();
-            const badge = document.getElementById('liveBadge');
-            if (badge) {
-                badge.style.display = (day === 0 && hour >= 10 && hour < 13) ? 'block' : 'none';
-            }
         }
 
         // Handle prayer form submission with Formspree
@@ -1227,67 +1109,10 @@
             });
         }
 
-        // Handle volunteer form submission
-        const volunteerForm = document.getElementById('volunteerRequestForm');
-        if (volunteerForm) {
-            volunteerForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const form = e.target;
-                const formData = new FormData(form);
-
-                fetch(form.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                }).then(response => {
-                    if (response.ok) {
-                        alert('Thank you for volunteering! We will contact you shortly.');
-                        form.reset();
-                        closeVolunteerModal();
-                    } else {
-                        alert('There was an error submitting your request. Please try again.');
-                    }
-                }).catch(error => {
-                    alert('There was an error submitting your request. Please try again.');
-                    console.error('Error:', error);
-                });
-            });
-        }
-
-        // Handle contact form submission
-        const contactForm = document.getElementById('contact-form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        const form = this;
-        const btn = form.querySelector('button[type="submit"]');
-        if (btn) btn.disabled = true;
-        try {
-            const response = await fetch(form.action, {
-                method: 'POST',
-                body: new FormData(form),
-                headers: { 'Accept': 'application/json' }
-            });
-            if (!response.ok) throw new Error('Form service returned ' + response.status);
-            alert('Thank you! Someone from our team will be in touch soon.');
-            form.reset();
-        } catch (error) {
-            console.error('Error:', error);
-            alert('Sorry, that did not send. Please try again, or call us on 07745 393649.');
-        } finally {
-            if (btn) btn.disabled = false;
-        }
-    });
-        }
-
         // Close modals on outside click
         window.onclick = function(event) {
             const prayerModal = document.getElementById('prayerForm');
-            const volunteerModal = document.getElementById('volunteerForm');
             if (event.target === prayerModal) closePrayerModal();
-            if (event.target === volunteerModal) closeVolunteerModal();
         }
 
         // ==================== DESKTOP DROPDOWN FOR TOUCH DEVICES ====================
@@ -1325,9 +1150,7 @@
                 }
             }
         });
-        
-        checkLiveStatus();
-        setInterval(checkLiveStatus, 60000);
+
     </script>
 </body>
 </html>
