@@ -655,7 +655,23 @@
         .ps-tier-grid, .ps-proof-grid, .ps-strip-grid { display: grid; gap: 24px; margin-top: 30px; width: 100%; }
         .ps-tier-grid, .ps-proof-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
         .ps-strip-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 980px; margin: 0 auto; }
-        .ps-strip-card a.ps-btn { color: #2D3748; text-decoration: none; margin-top: auto; }
+        .ps-strip-card .ps-btn-light { color: #2D3748; text-decoration: none; margin-top: auto; }
+        button.close-modal { background: none; border: 0; line-height: 1; padding: 4px; }
+        .hcc-form label { display: block; font-weight: 600; margin: 14px 0 6px; }
+        .hcc-form label .hcc-opt { font-weight: 400; color: #718096; }
+        .hcc-form input[type="text"], .hcc-form input[type="email"], .hcc-form input[type="tel"], .hcc-form textarea { width: 100%; padding: 10px 12px; border: 1px solid #CBD5E0; border-radius: 8px; font: inherit; }
+        .hcc-form textarea { min-height: 110px; }
+        .hcc-form input:focus, .hcc-form textarea:focus { outline: 3px solid #FFDD00; outline-offset: 1px; border-color: #4A5568; }
+        .hcc-form .hcc-check { display: flex; gap: 10px; align-items: flex-start; font-weight: 400; margin-top: 16px; }
+        .hcc-form .hcc-check input { margin-top: 5px; flex: none; }
+        .hcc-form .hcc-small { font-size: .9rem; color: #4A5568; margin-top: 12px; }
+        .hcc-form .hcc-small a { text-decoration: underline; }
+        .hcc-form button[type="submit"] { margin-top: 18px; background: #4A5568; color: #fff; padding: 12px 30px; border: none; border-radius: 50px; cursor: pointer; font-weight: 700; font-size: 1rem; }
+        .hcc-form button[type="submit"]:hover { background: #2D3748; }
+        .hcc-form button[disabled] { opacity: .6; cursor: wait; }
+        .hcc-form-status { margin-top: 12px; font-weight: 600; }
+        .hcc-form-status.ok { color: #276749; }
+        .hcc-form-status.err { color: #C53030; }
         .ps-oneoff { flex-basis: 100%; margin: 0; font-size: .95rem; }
         .ps-oneoff a, .ps-oneoff-give a { text-decoration: underline; font-weight: 600; }
         .ps-oneoff-give { text-align: center; margin-top: 14px; font-size: 1rem; }
@@ -974,12 +990,12 @@
                     <h3>Become a prayer partner</h3>
                     <p>Would you stand with us in prayer? We&rsquo;re inviting prayer partners to pray with us for the Hope for Recovery group, for each participant on their journey to lasting freedom, and for God to release the funding this work needs.</p>
                     <p>Sign up for our quarterly newsletter to receive group news and prayer points. You&rsquo;re also welcome at our prayer meeting every other Wednesday, 6:30pm&ndash;8:00pm, at 30 Shelley Drive.</p>
-                    <a href="mailto:info@hopecommunity-church.co.uk?subject=Quarterly%20newsletter%20sign-up&amp;body=Please%20add%20me%20to%20the%20Hope%20for%20Recovery%20quarterly%20newsletter.%0D%0A%0D%0AName%3A%20" class="ps-btn ps-btn-light">Sign up for the quarterly newsletter</a>
+                    <button type="button" class="ps-btn ps-btn-light" onclick="openFormModal('newsletterModal')">Sign up for the quarterly newsletter</button>
                 </div>
                 <div class="ps-strip-card">
                     <h3>Volunteer with us</h3>
-                    <p>From the Friday caf&eacute; to helping behind the scenes, there are lots of ways to give your time. Drop us an email and we&rsquo;ll be in touch.</p>
-                    <a href="mailto:info@hopecommunity-church.co.uk?subject=Volunteering%20with%20Hope%20Community%20Church&amp;body=Hi%2C%20I%27d%20like%20to%20volunteer.%0D%0A%0D%0AName%3A%20%0D%0AHow%20I%27d%20like%20to%20help%3A%20" class="ps-btn ps-btn-light">Email us about volunteering</a>
+                    <p>From the Friday caf&eacute; to helping behind the scenes, there are lots of ways to give your time. Fill in a short form and we&rsquo;ll be in touch.</p>
+                    <button type="button" class="ps-btn ps-btn-light" onclick="openFormModal('volunteerModal')">Volunteer with us</button>
                 </div>
             </div>
             <p class="ps-more">Prefer to help another way? You can bring food to our Friday caf&eacute; or leave a gift in your will. Local businesses can email <a href="mailto:info@hopecommunity-church.co.uk">info@hopecommunity-church.co.uk</a> or call <a href="tel:07745393649">07745 393649</a>. For more ideas, see <a href="getinvolved.html">Get Involved</a>.</p>
@@ -1019,6 +1035,47 @@
             <input type="email" name="email" placeholder="Your email (optional)" style="width: 100%; margin: 15px 0; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
             <textarea name="message" placeholder="Your prayer request..." required style="width: 100%; margin: 15px 0; padding: 10px; border: 1px solid #ddd; border-radius: 5px;"></textarea>
             <button type="submit" style="background: var(--primary); color: white; padding: 12px 30px; border: none; border-radius: 50px; cursor: pointer; font-weight: 600;">Submit</button>
+        </form>
+    </div>
+
+    <!-- Newsletter sign-up modal (sent to info@ via Formspree) -->
+    <div id="newsletterModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="newsletterTitle">
+        <form class="modal-content hcc-form" action="https://formspree.io/f/xzzjwnkw" method="POST" data-success="Thank you, you&rsquo;re signed up. Look out for our next quarterly newsletter.">
+            <button type="button" class="close-modal" aria-label="Close" onclick="closeFormModal('newsletterModal')">&times;</button>
+            <h3 id="newsletterTitle">Quarterly newsletter</h3>
+            <p>Join our prayer partners. Every three months we&rsquo;ll send you news from the Hope for Recovery group and prayer points for the participants and for funding.</p>
+            <input type="hidden" name="_subject" value="Quarterly newsletter sign-up">
+            <input type="hidden" name="form" value="Newsletter sign-up (Support Us page)">
+            <label for="nlName">Your name</label>
+            <input type="text" id="nlName" name="name" autocomplete="name" required>
+            <label for="nlEmail">Your email</label>
+            <input type="email" id="nlEmail" name="email" autocomplete="email" required>
+            <label class="hcc-check"><input type="checkbox" name="consent" value="Yes, send me the quarterly newsletter" required> <span>Yes, please send me the quarterly newsletter. I can unsubscribe at any time.</span></label>
+            <p class="hcc-small">We&rsquo;ll only use your details to send the newsletter. See our <a href="privacy.html">privacy policy</a>.</p>
+            <button type="submit">Sign me up</button>
+            <p class="hcc-form-status" role="status" aria-live="polite"></p>
+        </form>
+    </div>
+
+    <!-- Volunteer modal (sent to info@ via Formspree) -->
+    <div id="volunteerModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="volunteerTitle">
+        <form class="modal-content hcc-form" action="https://formspree.io/f/xzzjwnkw" method="POST" data-success="Thank you for offering to volunteer. Someone from our team will be in touch soon.">
+            <button type="button" class="close-modal" aria-label="Close" onclick="closeFormModal('volunteerModal')">&times;</button>
+            <h3 id="volunteerTitle">Volunteer with us</h3>
+            <p>Tell us a little about yourself and how you&rsquo;d like to help, and we&rsquo;ll get back to you.</p>
+            <input type="hidden" name="_subject" value="Volunteering enquiry">
+            <input type="hidden" name="form" value="Volunteer enquiry (Support Us page)">
+            <label for="volName">Your name</label>
+            <input type="text" id="volName" name="name" autocomplete="name" required>
+            <label for="volEmail">Your email</label>
+            <input type="email" id="volEmail" name="email" autocomplete="email" required>
+            <label for="volPhone">Phone number <span class="hcc-opt">(optional)</span></label>
+            <input type="tel" id="volPhone" name="phone" autocomplete="tel">
+            <label for="volMessage">How would you like to help?</label>
+            <textarea id="volMessage" name="message" required></textarea>
+            <p class="hcc-small">We&rsquo;ll only use your details to reply about volunteering. See our <a href="privacy.html">privacy policy</a>.</p>
+            <button type="submit">Send</button>
+            <p class="hcc-form-status" role="status" aria-live="polite"></p>
         </form>
     </div>
 
@@ -1109,10 +1166,59 @@
             });
         }
 
+        // Newsletter and volunteer form modals
+        var lastFormTrigger = null;
+        function openFormModal(id) {
+            var m = document.getElementById(id);
+            if (!m) return;
+            lastFormTrigger = document.activeElement;
+            m.style.display = 'block';
+            var first = m.querySelector('input:not([type="hidden"]), textarea');
+            if (first) first.focus();
+        }
+        function closeFormModal(id) {
+            var m = document.getElementById(id);
+            if (!m) return;
+            m.style.display = 'none';
+            if (lastFormTrigger) lastFormTrigger.focus();
+        }
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                ['newsletterModal', 'volunteerModal'].forEach(function (id) {
+                    var m = document.getElementById(id);
+                    if (m && m.style.display === 'block') closeFormModal(id);
+                });
+            }
+        });
+        document.querySelectorAll('form.hcc-form').forEach(function (form) {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                var btn = form.querySelector('button[type="submit"]');
+                var status = form.querySelector('.hcc-form-status');
+                if (btn) btn.disabled = true;
+                status.className = 'hcc-form-status';
+                status.textContent = 'Sending\u2026';
+                fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
+                    .then(function (r) {
+                        if (!r.ok) throw new Error('Form service returned ' + r.status);
+                        form.reset();
+                        status.className = 'hcc-form-status ok';
+                        status.innerHTML = form.getAttribute('data-success');
+                    })
+                    .catch(function (err) {
+                        console.error(err);
+                        status.className = 'hcc-form-status err';
+                        status.textContent = 'Sorry, that did not send. Please try again, or email info@hopecommunity-church.co.uk.';
+                    })
+                    .finally(function () { if (btn) btn.disabled = false; });
+            });
+        });
+
         // Close modals on outside click
         window.onclick = function(event) {
             const prayerModal = document.getElementById('prayerForm');
             if (event.target === prayerModal) closePrayerModal();
+            if (event.target && (event.target.id === 'newsletterModal' || event.target.id === 'volunteerModal')) closeFormModal(event.target.id);
         }
 
         // ==================== DESKTOP DROPDOWN FOR TOUCH DEVICES ====================
