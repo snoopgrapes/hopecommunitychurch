@@ -1625,155 +1625,6 @@ footer p:first-child {
         </div>
     </section>
 
-    <!-- Find Support Section -->
-    <section class="section section-support" id="find-support">
-        <div class="container">
-            <h2 style="text-align: center;">Find Support in Clydebank</h2>
-            <p class="support-intro">Everyone is welcome here, whatever your background or situation. Not sure where to start? Call us on <a href="tel:07745393649">07745 393649</a>.</p>
-            <div class="support-cards">
-                <article class="support-card support-card-featured">
-                    <div class="hfr-feature">
-                        <div class="hfr-feature-text">
-                            <img src="images/hfrlogo.png" alt="" class="support-card-logo" onerror="this.style.display='none'">
-                            <h3>Hope for Recovery</h3>
-                            <p class="support-card-when">Mondays, 11am to 1:30pm</p>
-                            <p>Our flagship two-year recovery pathway for anyone affected by addiction. Six 12-week courses, peer support and certificates along the way, in a relaxed and friendly setting. You do not need a faith to join us.</p>
-                            <p class="hfr-video-intro">Hear from the people who lead and take part in Hope for Recovery in our short film.</p>
-                            <a href="hopeforrecovery.html" class="btn btn-primary support-card-btn">Find out about Hope for Recovery</a>
-                        </div>
-
-                        <!-- Hope for Recovery promo video.
-                             Plays silently when scrolled into view; visitors tap "Watch with sound" to start from the beginning with audio.
-                             Does not autoplay for visitors who have "reduce motion" or "data saver" switched on. -->
-                        <figure class="hfr-video" id="hfrVideoWrap">
-                            <video id="hfrVideo"
-                                   src="videos/hfr-promo-2026.mp4"
-                                   poster="images/hfr-promo-poster.jpg"
-                                   muted playsinline loop controls preload="none"
-                                   aria-label="Hope for Recovery film: course leaders and participants talk about the programme">
-                                <!-- When you have captions, add them here, e.g.:
-                                <track kind="captions" src="videos/hfr-promo-2026.en.vtt" srclang="en" label="English" default> -->
-                                Your browser cannot play this video. <a href="videos/hfr-promo-2026.mp4">Download the Hope for Recovery film</a>.
-                            </video>
-                            <div class="hfr-video-controls" id="hfrVideoControls" hidden>
-                                <button type="button" class="hfr-video-sound" id="hfrSoundBtn">
-                                    <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M3 10v4h4l5 5V5L7 10H3zm13.5 2A4.5 4.5 0 0 0 14 8v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>
-                                    <span id="hfrSoundLabel">Watch with sound</span> <span class="hfr-video-length">(5:41)</span>
-                                </button>
-                                <button type="button" class="hfr-video-pause" id="hfrPauseBtn" aria-label="Pause video">
-                                    <svg id="hfrPauseIcon" aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
-                                    <svg id="hfrPlayIcon" aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" style="display:none"><path fill="currentColor" d="M7 4v16l13-8z"/></svg>
-                                </button>
-                            </div>
-                        </figure>
-                    </div>
-                </article>
-                <article class="support-card">
-                    <h3>Community Café &amp; Foodbank</h3>
-                    <p class="support-card-when">Fridays, 12pm to 2pm</p>
-                    <p>Free tea, coffee and soup. Emergency foodbank. No referral needed, just turn up.</p>
-                    <a href="cafe.html" class="support-card-link">About the café<span class="sr-only"> and foodbank</span> &rarr;</a>
-                </article>
-                <article class="support-card">
-                    <h3>One-to-One Support</h3>
-                    <p class="support-card-when">Wednesdays, by appointment</p>
-                    <p>A safe space to talk, plan your recovery and get practical help.</p>
-                    <a href="keywork.html" class="support-card-link">About key work<span class="sr-only"> and one-to-one support</span> &rarr;</a>
-                </article>
-                <article class="support-card">
-                    <h3>Walk &amp; Talk</h3>
-                    <p class="support-card-when">Wednesdays, 11am</p>
-                    <p>A gentle community walk with friendly conversation and refreshments afterwards.</p>
-                    <a href="walktalk.html" class="support-card-link">About Walk &amp; Talk &rarr;</a>
-                </article>
-                <article class="support-card">
-                    <h3>Street Outreach</h3>
-                    <p class="support-card-when">Wednesdays, Dalmuir and Clydebank</p>
-                    <p>We come to you with a listening ear, practical support and a pathway to services.</p>
-                    <a href="streetoutreach.html" class="support-card-link">About street outreach &rarr;</a>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            try {
-                var el = document.getElementById('gradBanner');
-                if (el && new Date() > new Date('2026-11-28T00:00:00')) { el.style.display = 'none'; }
-            } catch (e) {}
-        });
-
-        // Hope for Recovery video: silent preview when on screen, tap for sound from the start
-        (function () {
-            var video = document.getElementById('hfrVideo');
-            var controls = document.getElementById('hfrVideoControls');
-            var soundBtn = document.getElementById('hfrSoundBtn');
-            var soundLabel = document.getElementById('hfrSoundLabel');
-            var pauseBtn = document.getElementById('hfrPauseBtn');
-            var pauseIcon = document.getElementById('hfrPauseIcon');
-            var playIcon = document.getElementById('hfrPlayIcon');
-            if (!video || !controls) return;
-
-            var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            var saveData = navigator.connection && navigator.connection.saveData;
-            var canPreview = !reduceMotion && !saveData && 'IntersectionObserver' in window;
-            var userPaused = false;
-            var soundMode = false;
-
-            // Swap the browser's own controls for our simple overlay during the silent preview
-            video.controls = false;
-            video.muted = true;
-            controls.hidden = false;
-
-            function updatePauseButton() {
-                var paused = video.paused;
-                pauseIcon.style.display = paused ? 'none' : '';
-                playIcon.style.display = paused ? '' : 'none';
-                pauseBtn.setAttribute('aria-label', paused ? 'Play video silently' : 'Pause video');
-            }
-
-            if (!canPreview) {
-                // No autoplay: show the still image with the buttons
-                soundLabel.textContent = 'Play with sound';
-                video.preload = 'none';
-            } else {
-                video.preload = 'metadata';
-                var observer = new IntersectionObserver(function (entries) {
-                    entries.forEach(function (entry) {
-                        if (soundMode) return;
-                        if (entry.isIntersecting && !userPaused) {
-                            var p = video.play();
-                            if (p && p.catch) p.catch(function () { updatePauseButton(); });
-                        } else if (!entry.isIntersecting) {
-                            video.pause();
-                        }
-                    });
-                }, { threshold: 0.5 });
-                observer.observe(video);
-            }
-
-            pauseBtn.addEventListener('click', function () {
-                if (video.paused) { userPaused = false; video.play(); }
-                else { userPaused = true; video.pause(); }
-            });
-
-            soundBtn.addEventListener('click', function () {
-                soundMode = true;
-                controls.hidden = true;
-                video.loop = false;
-                video.muted = false;
-                video.currentTime = 0;
-                video.controls = true;
-                video.play();
-                video.focus();
-            });
-
-            video.addEventListener('play', updatePauseButton);
-            video.addEventListener('pause', updatePauseButton);
-            updatePauseButton();
-        })();
-    </script>
 
     <!-- Services Section - Fixed Layout -->
     <section class="section section-services" id="services">
@@ -1805,6 +1656,7 @@ footer p:first-child {
                         <div class="card-front">
                             <h3>Walk & Talk Group</h3>
                             <p><strong>Every Wednesday at 11:00 AM</strong></p>
+                            <p><strong>Taking a winter break:</strong> the group is off for the winter and will be back in the spring.</p>
                             <p>Join us for a relaxing community walk, whether you're looking to get fit or seeking support and friendship.</p>
                             <p>Meet at the church, enjoy a gentle walk together, then return for light refreshments.</p>
                             <p><strong>Location:</strong> 30 Shelley Drive, Clydebank</p>
@@ -1921,31 +1773,131 @@ footer p:first-child {
         </div>
     </section>
 
-    <!-- Skip a Coffee Section -->
-    <section class="section section-alt" style="background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);">
-        <div class="container" style="text-align: center;">
-            <div class="skip-coffee-content" style="max-width: 700px; margin: 0 auto;">
-                <div style="font-size: 3rem; margin-bottom: 1rem;">☕</div>
-                <h2 style="color: white; margin-bottom: 1rem;">Skip a Coffee – Support Recovery</h2>
-                <p style="color: rgba(255, 255, 255, 0.95); font-size: 1.1rem; margin-bottom: 1.5rem; line-height: 1.6;">
-                    At Hope for Recovery, we believe that big changes often start with small moments.
-                </p>
-                <p style="color: rgba(255, 255, 255, 0.9); font-size: 1rem; margin-bottom: 1.5rem;">
-                    Would you consider giving the price of a daily coffee to Hope for Recovery by becoming one of our monthly donors or as a one-off gift to help sustain and develop our community-based recovery and schools program?
-                </p>
-                <p style="color: rgba(255, 255, 255, 0.85); font-size: 1rem; margin-bottom: 2rem; font-style: italic;">
-                    Thank you for partnering with us — together we can make a difference.
-                </p>
-                <a href="support-us.html#give" class="btn" style="background-color: #FFDD00; color: #333; border: none; font-weight: bold; padding: 14px 40px; font-size: 1.2rem; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: transform 0.3s ease, box-shadow 0.3s ease;">
-                    <span aria-hidden="true">☕</span> Give Today
-                    <span aria-hidden="true">→</span>
-                </a>
-                <p style="color: rgba(255, 255, 255, 0.5); font-size: 0.75rem; margin-top: 1.5rem;">
-                    Every donation goes directly to Hope for Recovery programs
-                </p>
+    <!-- Find Support Section -->
+    <section class="section section-support" id="find-support">
+        <div class="container">
+            <h2 style="text-align: center;">Find Support in Clydebank</h2>
+            <p class="support-intro">Everyone is welcome here, whatever your background or situation. Not sure where to start? Call us on <a href="tel:07745393649">07745 393649</a>.</p>
+            <div class="support-cards">
+                <article class="support-card support-card-featured">
+                    <div class="hfr-feature">
+                        <div class="hfr-feature-text">
+                            <img src="images/hfrlogo.png" alt="" class="support-card-logo" onerror="this.style.display='none'">
+                            <h3>Hope for Recovery</h3>
+                            <p class="support-card-when">Mondays, 11am to 1:30pm</p>
+                            <p>Our flagship two-year recovery pathway for anyone affected by addiction. Six 12-week courses, peer support and certificates along the way, in a relaxed and friendly setting. You do not need a faith to join us.</p>
+                            <p class="hfr-video-intro">Hear from the people who lead and take part in Hope for Recovery in our short film.</p>
+                            <a href="hopeforrecovery.html" class="btn btn-primary support-card-btn">Find out about Hope for Recovery</a>
+                        </div>
+
+                        <!-- Hope for Recovery promo video.
+                             Plays silently when scrolled into view; visitors tap "Watch with sound" to start from the beginning with audio.
+                             Does not autoplay for visitors who have "reduce motion" or "data saver" switched on. -->
+                        <figure class="hfr-video" id="hfrVideoWrap">
+                            <video id="hfrVideo"
+                                   src="videos/hfr-promo-2026.mp4"
+                                   poster="images/hfr-promo-poster.jpg"
+                                   muted playsinline loop controls preload="none"
+                                   aria-label="Hope for Recovery film: course leaders and participants talk about the programme">
+                                <!-- When you have captions, add them here, e.g.:
+                                <track kind="captions" src="videos/hfr-promo-2026.en.vtt" srclang="en" label="English" default> -->
+                                Your browser cannot play this video. <a href="videos/hfr-promo-2026.mp4">Download the Hope for Recovery film</a>.
+                            </video>
+                            <div class="hfr-video-controls" id="hfrVideoControls" hidden>
+                                <button type="button" class="hfr-video-sound" id="hfrSoundBtn">
+                                    <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M3 10v4h4l5 5V5L7 10H3zm13.5 2A4.5 4.5 0 0 0 14 8v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>
+                                    <span id="hfrSoundLabel">Watch with sound</span> <span class="hfr-video-length">(5:41)</span>
+                                </button>
+                                <button type="button" class="hfr-video-pause" id="hfrPauseBtn" aria-label="Pause video">
+                                    <svg id="hfrPauseIcon" aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+                                    <svg id="hfrPlayIcon" aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" style="display:none"><path fill="currentColor" d="M7 4v16l13-8z"/></svg>
+                                </button>
+                            </div>
+                        </figure>
+                    </div>
+                </article>
             </div>
         </div>
     </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            try {
+                var el = document.getElementById('gradBanner');
+                if (el && new Date() > new Date('2026-11-28T00:00:00')) { el.style.display = 'none'; }
+            } catch (e) {}
+        });
+
+        // Hope for Recovery video: silent preview when on screen, tap for sound from the start
+        (function () {
+            var video = document.getElementById('hfrVideo');
+            var controls = document.getElementById('hfrVideoControls');
+            var soundBtn = document.getElementById('hfrSoundBtn');
+            var soundLabel = document.getElementById('hfrSoundLabel');
+            var pauseBtn = document.getElementById('hfrPauseBtn');
+            var pauseIcon = document.getElementById('hfrPauseIcon');
+            var playIcon = document.getElementById('hfrPlayIcon');
+            if (!video || !controls) return;
+
+            var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            var saveData = navigator.connection && navigator.connection.saveData;
+            var canPreview = !reduceMotion && !saveData && 'IntersectionObserver' in window;
+            var userPaused = false;
+            var soundMode = false;
+
+            // Swap the browser's own controls for our simple overlay during the silent preview
+            video.controls = false;
+            video.muted = true;
+            controls.hidden = false;
+
+            function updatePauseButton() {
+                var paused = video.paused;
+                pauseIcon.style.display = paused ? 'none' : '';
+                playIcon.style.display = paused ? '' : 'none';
+                pauseBtn.setAttribute('aria-label', paused ? 'Play video silently' : 'Pause video');
+            }
+
+            if (!canPreview) {
+                // No autoplay: show the still image with the buttons
+                soundLabel.textContent = 'Play with sound';
+                video.preload = 'none';
+            } else {
+                video.preload = 'metadata';
+                var observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (soundMode) return;
+                        if (entry.isIntersecting && !userPaused) {
+                            var p = video.play();
+                            if (p && p.catch) p.catch(function () { updatePauseButton(); });
+                        } else if (!entry.isIntersecting) {
+                            video.pause();
+                        }
+                    });
+                }, { threshold: 0.5 });
+                observer.observe(video);
+            }
+
+            pauseBtn.addEventListener('click', function () {
+                if (video.paused) { userPaused = false; video.play(); }
+                else { userPaused = true; video.pause(); }
+            });
+
+            soundBtn.addEventListener('click', function () {
+                soundMode = true;
+                controls.hidden = true;
+                video.loop = false;
+                video.muted = false;
+                video.currentTime = 0;
+                video.controls = true;
+                video.play();
+                video.focus();
+            });
+
+            video.addEventListener('play', updatePauseButton);
+            video.addEventListener('pause', updatePauseButton);
+            updatePauseButton();
+        })();
+    </script>
 
     <!-- Connect Section -->
     <section class="section section-contact" id="contact">
