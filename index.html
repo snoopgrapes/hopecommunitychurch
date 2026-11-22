@@ -1429,6 +1429,8 @@ footer p:first-child {
 .support-card-logo { height: 64px; width: auto; margin-bottom: 12px; background: #707070; border-radius: 10px; padding: 6px; }
 .support-card-featured h3 { font-size: 1.6rem; }
 .support-card-btn { margin: 6px 0 0; }
+.support-card-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px; }
+.support-card-actions .support-card-btn { margin: 0; }
 .support-card-featured p { max-width: 760px; }
 @media (max-width: 1024px) { .support-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } .support-card-featured { grid-column: span 2; } }
 /* ===== Hope for Recovery promo video (inside the featured card) ===== */
@@ -1787,7 +1789,10 @@ footer p:first-child {
                             <p class="support-card-when">Mondays, 11am to 1:30pm</p>
                             <p>Our flagship two-year recovery pathway for anyone affected by addiction. Six 12-week courses, peer support and certificates along the way, in a relaxed and friendly setting. You do not need a faith to join us.</p>
                             <p class="hfr-video-intro">Hear from the people who lead and take part in Hope for Recovery in our short film.</p>
-                            <a href="hopeforrecovery.html" class="btn btn-primary support-card-btn">Find out about Hope for Recovery</a>
+                            <div class="support-card-actions">
+                                <a href="hopeforrecovery.html" class="btn btn-primary support-card-btn">Find out about Hope for Recovery</a>
+                                <a href="support-us.html" class="btn btn-secondary support-card-btn">Support Us</a>
+                            </div>
                         </div>
 
                         <!-- Hope for Recovery promo video.
