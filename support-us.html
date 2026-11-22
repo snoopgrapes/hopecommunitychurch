@@ -670,6 +670,8 @@
         .hcc-form button[type="submit"]:hover { background: #2D3748; }
         .hcc-form button[disabled] { opacity: .6; cursor: wait; }
         .hcc-form-status { margin-top: 12px; font-weight: 600; }
+        .hcc-toast { position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 20px); max-width: min(520px, calc(100% - 32px)); background: #2D3748; color: #fff; padding: 14px 20px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,.25); font-weight: 600; text-align: center; z-index: 1100; opacity: 0; pointer-events: none; transition: opacity .3s ease, transform .3s ease; }
+        .hcc-toast.show { opacity: 1; transform: translate(-50%, 0); }
         .hcc-form-status.ok { color: #276749; }
         .hcc-form-status.err { color: #C53030; }
         .ps-oneoff { flex-basis: 100%; margin: 0; font-size: .95rem; }
@@ -1039,6 +1041,9 @@
         </form>
     </div>
 
+    <!-- Thank-you message shown after a form is sent -->
+    <div id="formToast" class="hcc-toast" role="status" aria-live="polite"></div>
+
     <!-- Newsletter sign-up modal (sent to info@ via Formspree) -->
     <div id="newsletterModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="newsletterTitle">
         <form class="modal-content hcc-form" action="https://formspree.io/f/xjywanjl" method="POST" data-success="Thank you, you&rsquo;re signed up. Look out for our next quarterly newsletter.">
@@ -1168,6 +1173,15 @@
         }
 
         // Newsletter and volunteer form modals
+        var formToastTimer = null;
+        function showFormToast(html) {
+            var toast = document.getElementById('formToast');
+            if (!toast) return;
+            toast.innerHTML = html;
+            toast.classList.add('show');
+            clearTimeout(formToastTimer);
+            formToastTimer = setTimeout(function () { toast.classList.remove('show'); }, 6000);
+        }
         var lastFormTrigger = null;
         function openFormModal(id) {
             var m = document.getElementById(id);
@@ -1203,8 +1217,11 @@
                     .then(function (r) {
                         if (!r.ok) throw new Error('Form service returned ' + r.status);
                         form.reset();
-                        status.className = 'hcc-form-status ok';
-                        status.innerHTML = form.getAttribute('data-success');
+                        status.className = 'hcc-form-status';
+                        status.textContent = '';
+                        var modal = form.closest('.modal');
+                        if (modal) closeFormModal(modal.id);
+                        showFormToast(form.getAttribute('data-success'));
                     })
                     .catch(function (err) {
                         console.error(err);
